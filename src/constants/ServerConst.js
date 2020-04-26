@@ -8,6 +8,7 @@ export const Kelidha_User="https://resource.kelidiha.com/users/";
 export const Token=localStorage.getItem("token")  ;
 export const user="https://useralef.liara.run/users/";
 export const ResourceUser="https://resourcealef.liara.run/users/";
+export const ResourceAdmin="https://resourcealef.liara.run/admin/";
 export const admin_route="https://useralef.liara.run/admin_route/";
 
 

@@ -1619,6 +1619,162 @@ export async  function  loadMainCourse( ){
     });
     return resp;
 }
+export async  function  loadCourse(id ){
+
+    let headers = {
+        'token':Const.Token,
+        'accept': 'application/json'
+    };
+
+    var resp ="";
+    await axios.get(`${Const.ResourceAdmin}course/course/detail?course_id=${id}`, {headers: headers}).then(function (response) {
+        // console.log(response );
+        resp={state:200,Description:response.data};
+    }).catch(function (error) {
+        console.log(error.response);
+        console.log(error);
+        let {response}=error;
+        if (response===undefined){
+            resp={state: 400,Description: error.message}
+        } else if (response.status===422){
+            resp={state:422,Description:response.statusText}
+        }else{
+            resp={state:response.status||400,Description:response.data.detail||error.message}
+        }
+    });
+    return resp;
+}
+export async  function  AddCourseDetail(Data){
+
+    let headers = {
+        'Token': Const.Token,
+        'Content-Type': 'application/json',
+        'accept': 'application/json',
+        'Access-Control-Allow-Origin':'*'
+    };
+    console.log(Data);
+
+
+    var resp ="";
+    await axios.post(`${Const.ResourceAdmin}course/add`, Data, {headers: headers}).then(function (response) {
+        console.log(response );
+
+        // let {Items} = response.data;
+        resp={state:200,Description:response.data};
+
+    }).catch(function (error) {
+        console.log(error.response);
+        console.log(error);
+        let {response}=error;
+        if (response===undefined){
+            resp={state: 400,Description: error.message}
+        }else if (response.status===422){
+            resp={state:422,Description:response.statusText}
+        } else{
+            resp={state:response.status||400,Description:response.data.detail||error.message}
+        }
+    });
+    return resp;
+}
+export async  function  UpdateCourseDetail(Data){
+
+    let headers = {
+        'Token': Const.Token,
+        'Content-Type': 'application/json',
+        'accept': 'application/json',
+        'Access-Control-Allow-Origin':'*'
+    };
+    console.log(Data);
+
+
+    var resp ="";
+    await axios.put(`${Const.ResourceAdmin}course/update`, Data, {headers: headers}).then(function (response) {
+        console.log(response );
+
+        // let {Items} = response.data;
+        resp={state:200,Description:response.data};
+
+    }).catch(function (error) {
+        console.log(error.response);
+        console.log(error);
+        let {response}=error;
+        if (response===undefined){
+            resp={state: 400,Description: error.message}
+        }else if (response.status===422){
+            resp={state:422,Description:response.statusText}
+        } else{
+            resp={state:response.status||400,Description:response.data.detail||error.message}
+        }
+    });
+    return resp;
+}
+export async  function  DeleteID(Course_id){
+
+    let headers = {
+        'Token': Const.Token,
+         'accept': 'application/json',
+    };
+    console.log(Course_id);
+
+
+    var resp ="";
+    await axios.delete(`${Const.ResourceAdmin}course/delete?course_id=${Course_id}`, {headers: headers}).then(function (response) {
+        console.log(response );
+        let {Description}=response.data;
+        // let {Items} = response.data;
+        resp={state:200,Description:Description};
+
+    }).catch(function (error) {
+        console.log(error.response);
+        console.log(error);
+        let {response}=error;
+        if (response===undefined){
+            resp={state: 400,Description: error.message}
+        }else if (response.status===422){
+            resp={state:422,Description:response.statusText}
+        } else{
+            resp={state:response.status||400,Description:response.data.detail||error.message}
+        }
+    });
+    return resp;
+}
+
+export async  function  AddFileToCourse(file, Course_id, action){
+    let formData = new FormData();
+    // actions:schedule_pdf  course_image
+
+    formData.append("file", file);
+
+    let headers = {
+        'Token': Const.Token,
+        'Id': Const.ID,
+     };
+    var resp='';
+
+    await axios.post(`${Const.ResourceAdmin}course/content/upload?course_id=${Course_id}&action=${action}`, formData, {headers: headers}).then(function (response) {
+        // console.log(response);
+        console.log(response );
+
+        resp={state:200,Description:response.data};
+     }).catch(function (error) {
+        console.log(error.response);
+        console.log(error);
+        console.log(error.response.statusText);
+        let {response}=error;
+        if (response===undefined){
+            resp={state: 400,Description: error.message}
+        }else if (response.status===422){
+            resp={state:422,Description:response.statusText.toString()}
+        } else{
+            resp={state:response.status||400,Description:response.data.detail||error.message}
+        }
+    });
+    return resp
+
+}
+
+
+
 
 
 

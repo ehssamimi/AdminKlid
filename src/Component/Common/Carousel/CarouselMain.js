@@ -1,16 +1,15 @@
 import React, { useState,useEffect } from 'react';
-import { CardBody} from "reactstrap";
+import { CardBody ,Button} from "reactstrap";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import { FaAngleRight, FaAngleLeft } from "react-icons/fa";
 import VideoPlayerMain from "../VideoPlayerComponents/VideoPlayerMain";
-
-import { makeStyles } from '@material-ui/core/styles';
+ import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
  import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
-import Button from '@material-ui/core/Button';
+import {  TweenMax} from "gsap/TweenMax";
 import  Play from'./../img/play_on_video.png'
 import  lock from'./../img/lock_on_video.png'
 import {formatNumber} from "../../../Component/functions/componentHelpFunction";
@@ -19,8 +18,10 @@ import CardActionArea from '@material-ui/core/CardActionArea';
 import ax1 from "../../Common/img/alex-simpson-8DaRtnotCoQ-unsplash.png";
 // import {CourseBuy} from "../../../Common/Const/ServerConnection";
 import { useHistory } from 'react-router-dom';
-import {NotificationManager} from "react-notifications";
-import LabelValueRow from "../LabalValue/LabelValue";
+ import LabelValueRow from "../LabalValue/LabelValue";
+import {ModalDelete} from "../Modals/ModalDelete/ModalDelete";
+import {DeleteID} from "../../functions/ServerConnection";
+import {error_Notification, success_Notification} from "../../functions/componentHelpFunction";
 
 const useStyles = makeStyles({
     root: {
@@ -145,49 +146,45 @@ const CourseCarsMain = (props) => {
 
 
 
-    const history = useHistory();
-    // let{img,title,course,grade,button,cost,sellCost,sub_text,id}=props;
-    let{name,grade,field,price,image,off,course_id,sub_text }=props;
-    // console.log("image")
-    // console.log(image)
+    // const history = useHistory();
+    // history.push('/login');
+     let{name,grade,field,price,image,off,course_id,sub_text }=props;
+
 
     const [count, setCount] = useState(1);
+    const [isOpen, setIsOpen] = useState(false);
     useEffect(() => {
         // Update the document title using the browser API
 
         document.title = `You clicked ${count} times`;
     });
-    const handelClick=async (e)=>{
-        e.preventDefault();
-        let data = {"courses": [{"course_id": course_id}]};
+    const handelDelete = async() => {
+      let {state ,Description}=await DeleteID(course_id);
+        if (state===200 ) {
+            success_Notification("حذف شد");
+            const $el = document.getElementById(`${course_id}`);
+            const duration = 2;
+            const from = { opacity: 0};
+            TweenMax.to($el, duration, from);
+            setTimeout(() => {
+                $el.remove();
+            }, 2000)
 
+        } else {
+            error_Notification(state, Description)
+         }
+        setIsOpen(!isOpen)
+    };
+    const handelEdit=()=>{
+        console.log("edit");
+        props.getCourseID(course_id)
 
+    };
 
-
-
-       if(localStorage.getItem("token")===null){
-           history.push('/login');
-       }else {
-           // let {state, Description} = await CourseBuy(JSON.stringify(data));
-
-
-           // data:
-           //     gateway_url: "https://idpay.ir/p/ws-sandbox/b6c3567bc7491cb0cd847896b3df05da"
-           // request_id: "5ea06a53f013eedf22dd7aaa"
-           // if (state === 200) {
-           //     window.open(Description.gateway_url, '_blank');
-           // }else {
-           //     NotificationManager.error(state, Description);
-           // }
-
-
-       }
-
-    }
 
     return (
 
-        <Card  className= "m-2 br20px h-100 h-min-24vw  box-shadow-custom" >
+        <Card  className= "m-2 br20px h-100 h-min-24vw  box-shadow-custom" id={course_id}>
             <Link to={`/content/course/${course_id}`}  className="pt-4">
 
 
@@ -226,10 +223,19 @@ const CourseCarsMain = (props) => {
                     {/*<span className="second-color pl-2"> {field } </span>*/}
                 </div>
             </CardContent>
-
-
-
             </Link>
+                <CardActions className="row">
+                    <Button onClick={()=>{setIsOpen(!isOpen)}} className="btn btn-danger">حذف</Button>
+                    <Link to={`/content/courses/${course_id}`}  >
+                        <Button onClick={handelEdit} className="btn btn-warning">ویرایش</Button>
+                    </Link>
+
+                </CardActions>
+
+
+
+
+            <ModalDelete isOpen={isOpen} toggle={()=>{setIsOpen(!isOpen)}} item={name}  deleteComponent={handelDelete}/>
         </Card>
 
     );
@@ -340,5 +346,7 @@ export  function CarouselMain(props) {
             })}
 
         </Carousel>
+
+
     </div>
 };

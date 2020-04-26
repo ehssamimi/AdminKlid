@@ -27,7 +27,7 @@ export function FormSelect(props) {
 
     let{label,name,setFieldValue,setFieldTouched,errors,touched,option,values,DivClass}=props;
    return<div className={DivClass}>
-       <FormGroup className="form-group has-float-label">
+       <FormGroup className="form-group has-float-label br20px">
        <Label>
            <span>{label}</span>
        </Label>
@@ -38,6 +38,7 @@ export function FormSelect(props) {
            options={option}
            onChange={setFieldValue}
            onBlur={setFieldTouched}
+           // className="br20px"
        />
        {errors[`${name}`]  && touched[`${name}`] ? (
            <div className="invalid-feedback d-block">

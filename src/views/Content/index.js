@@ -23,7 +23,7 @@ class App extends Component {
             <Switch>
               <Redirect exact from={`${match.url}/`} to={`${match.url}/courses`} />
               <Route
-                path={`${match.url}/courses`}
+                path={`${match.url}/courses/:id?`}
                 render={props => <Courses {...props} />}
               />
                 <Route

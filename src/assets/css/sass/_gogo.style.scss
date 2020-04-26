@@ -101,6 +101,7 @@ html {
   width: 100%;
   height: 100%;
   background: $background-color;
+  font-family: IRANSans, sans-serif;
 }
 
 :root {
@@ -8882,6 +8883,9 @@ $background-color: #f7faf8 !important;
 }
 .fs15rem{
   font-size: 1.5rem;
+}
+.fs25rem{
+  font-size: 2.5rem;
 }
 .fs-lesion{
   font-size:1.5em;
