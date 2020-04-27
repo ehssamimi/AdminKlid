@@ -14,15 +14,9 @@ const Courses = (props) => {
     async function  getData(){
         const{state,Description }= await loadMainCourse();
         let{data , page , off }=Description;
-        console.log("data");
-        console.log(data);
+
         if (state===200 ) {
             setCourses({"data":data})
-
-            // let{Top,Teachers,Lesson}=seprateEachCourseData(Description);
-            //
-            // setData({...Data, Top,Teachers,Lesson})
-
         } else {
             NotificationManager.error(state, Description);
         }
@@ -43,6 +37,8 @@ const Courses = (props) => {
     const UpdateCoursList=()=>{
         getData()
     };
+    console.log("courses");
+    console.log(courses);
 
     return (
         <div>

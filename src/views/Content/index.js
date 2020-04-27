@@ -7,8 +7,12 @@ import AppLayout from '../../layout/AppLayout';
 
 const Courses = React.lazy(() =>
   import(/* webpackChunkName: "viwes-gogo" */ './../../Component/Content/Courses/Courses')
-);const CourseDetail = React.lazy(() =>
-  import(/* webpackChunkName: "viwes-gogo" */ './../../Component/Content/CourseDetail/CourseDetail')
+);
+const CourseDetail = React.lazy(() =>
+  import(/* webpackChunkName: "viwes-gogo" */ '../../Component/Content/DetailsContentComponent/CourseDetail/CourseDetail')
+);
+const LessonDetails = React.lazy(() =>
+  import(/* webpackChunkName: "viwes-gogo" */ '../../Component/Content/DetailsContentComponent/LessonDetails/LessonDetails')
 );
 
 
@@ -30,9 +34,10 @@ class App extends Component {
                 path={`${match.url}/course/:id`}
                 render={props => <CourseDetail {...props} />}
               />
-
-
-
+                <Route
+                path={`${match.url}/lesson/:id/:index/:lesson`}
+                render={props => <LessonDetails {...props} />}
+              />
               <Redirect to="/error" />
             </Switch>
           </Suspense>

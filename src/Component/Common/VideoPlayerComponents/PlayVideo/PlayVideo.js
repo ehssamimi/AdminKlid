@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import VideoPlayerMain from "../VideoPlayerMain";
-import profile from "../../../../Common/img/profile.jpg";
+import profile from "../../../Common/img/deault.svg";
 
 const PlayVideo169 = (props) => {
     const videoJsOptions = {

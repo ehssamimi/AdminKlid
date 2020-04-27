@@ -1,13 +1,13 @@
 import React, {useState, useEffect} from 'react';
 import VideoPlayerMain from "../VideoPlayerMain";
 import PlayVideo169 from "../PlayVideo/PlayVideo";
-import profile from "../../../../Common/img/profile.jpg";
-import CheckBoxCustom from "../../CheckBoxCustom/CheckBoxCustom";
+import profile from "../../../Common/img/deault.svg";
+// import CheckBoxCustom from "../../CheckBoxCustom/CheckBoxCustom";
 import {FaRegDotCircle, FaCheck,FaAngleRight,FaAngleLeft} from "react-icons/fa";
 import {GiStopwatch} from "react-icons/gi";
 import {FiDownload} from "react-icons/fi";
-import ShowMoreDescription from "../../../Main/Main-Courses/IntroducingCoursse/ShowMoreDescription/ShowMoreDescription";
 import {Link} from "react-router-dom";
+import ShowMoreDescription from "../ShowMoreDescription/ShowMoreDescription";
 
 const VideoModal = (props) => {
     // const [count, setCount] = useState(1);
