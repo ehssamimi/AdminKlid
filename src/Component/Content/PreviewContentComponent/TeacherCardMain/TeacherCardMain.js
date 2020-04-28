@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import {DeleteID, DeleteLesson} from "../../../functions/ServerConnection";
+import {DeleteID, DeleteLesson, DeleteTecherUrl} from "../../../functions/ServerConnection";
 import {error_Notification, formatNumber, success_Notification} from "../../../functions/componentHelpFunction";
 import {TweenMax} from "gsap/TweenMax";
 import Card from "@material-ui/core/Card/Card";
@@ -15,6 +15,7 @@ import VideoModalDemo from "../../../Common/VideoPlayerComponents/VideoModal/Vid
 import VideoModal from "../../../Common/VideoPlayerComponents/VideoModal/VideoModal";
 import {FaRegPlayCircle} from "react-icons/fa";
 import {FiDownload} from "react-icons/fi";
+import AddTeachers from "../../AddContentComponent/AddTeachers/AddTeachers";
 
 const TeacherCardMain = (props) => {
 
@@ -39,12 +40,9 @@ const TeacherCardMain = (props) => {
     const handelDelete = async() => {
         setIsOpen(false);
 
-        let Data={
-            "course_id": course_id,
-            "lesson_name": name
-        };
-
-        let {state ,Description}=await DeleteLesson(JSON.stringify(Data));
+        // Course_id,Lesson_name,teacher_name
+        const {match: {params}} =  props;
+         let {state ,Description}=await DeleteTecherUrl(params.id,params.lesson,name);
         if (state===200 ) {
             success_Notification("حذف شد");
             // props.updateContent();
@@ -114,9 +112,10 @@ const TeacherCardMain = (props) => {
                     <Button onClick={() => {
                         setIsOpen(!isOpen)
                     }} className="btn red-background">حذف</Button>
-                    {/*<Link to={`/content/courses/${course_id}`}  >*/}
+                    <Link to={`/content/lesson/${course_id}/${params.index}/${params.lesson}/${props.index}`}  >
+
                     <Button onClick={handelEdit} className="btn btn-warning">ویرایش</Button>
-                    {/*</Link>*/}
+                    </Link>
                 </CardActions>
 
 

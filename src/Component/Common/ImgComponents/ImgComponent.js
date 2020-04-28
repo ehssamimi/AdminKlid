@@ -21,7 +21,7 @@ class ImgComponent extends Component {
         if (props.img !== state.src && props.img!==undefined &&  state.count===1) {
             return {
                 src: props.img,
-                count:2
+                // count:2
             };
         }
         // Return null if the state hasn't changed
@@ -47,7 +47,6 @@ class ImgComponent extends Component {
         let{Type,errors}=this.props;
 
 
-        // console.log(ImgName);
         return (
             <div className='w-100 mb-5'>
 

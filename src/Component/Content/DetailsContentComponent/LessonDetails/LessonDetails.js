@@ -87,8 +87,7 @@ const LessonDetails = (props) => {
     console.log("course");
     console.log(course);
     // const {match: {params}} =  props;
-    console.log("props");
-    console.log(params.id);
+
 
     return (
 
@@ -100,7 +99,7 @@ const LessonDetails = (props) => {
                         </div>
                     </div> :
                     <div className="w-100"  >
-                        <AddTeachers  {...props} id={params.id} Lesson_index={params.index} Lesson_name={props.lesson}  index={Lesson_index} />
+                        <AddTeachers  {...props} id={params.id} Lesson_index={params.index} Lesson_name={params.lesson}  index={params.TeacherIndex} updateContent={getData}/>
                         <div dir="ltr" className="mt-5">
 
                             <div className="row mt-5">

@@ -31,11 +31,11 @@ class App extends Component {
                 render={props => <Courses {...props} />}
               />
                 <Route
-                path={`${match.url}/course/:id`}
+                path={`${match.url}/course/:id/:index?`}
                 render={props => <CourseDetail {...props} />}
               />
                 <Route
-                path={`${match.url}/lesson/:id/:index/:lesson`}
+                path={`${match.url}/lesson/:id/:index/:lesson/:TeacherIndex?`}
                 render={props => <LessonDetails {...props} />}
               />
               <Redirect to="/error" />

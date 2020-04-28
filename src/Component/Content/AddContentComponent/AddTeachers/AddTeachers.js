@@ -3,7 +3,7 @@ import { Collapse, Button, CardBody, Card } from 'reactstrap';
 import {Form, Formik} from "formik";
 import {FormInput, FormSelect} from "../../../Common/ComponentFunctional/FormFeilds";
 import {
-    AddCourseDetail, AddFileToCourse, AddFileToLesson, AddLessonUrl,
+    AddCourseDetail, AddFileToCourse, AddFileToLesson, AddFileToTeacher, AddLessonUrl,
     AddPermission, AddTecherUrl,
     GetUserDropDown,
     loadCourse,
@@ -43,70 +43,63 @@ class AddTeachers extends Component {
             isLoader:false,
             initialValue:{name:'', total_videos_time:""  },DefaultValue:{ name:'', total_videos_time:""  },
             Img:{"img_data":{"main":undefined},"img_file":{"main":undefined }},
-            id:props.id,EditCourse:"",
-            FileError:{"main":"", }
+            id:props.id,EditCourse:undefined,
+            FileError:{"main":"", },func1:this.updateValues.bind(this),model:false
         }
     }
     async componentDidMount(props){
 
     }
 
-    async  componentDidUpdate(props){
-        console.log(props);
+    static getDerivedStateFromProps(props, state) {
 
-        // if ( props.index !== this.state.EditCourse ) {
-        //
-        //     this.updateValues(props.index);
-        // }
 
-        // let{id}=this.props;
-        // if (id.length>0){
-        //     if (this.state.id===""){
-        //        this.updateValues(id);
-        //     }
-        // }
-
+        if (props.index !== state.EditCourse) {
+            console.log("ffffffffffffffffffffffffff");
+            console.log("props.index");
+            console.log(props.index);
+            return {
+                EditCourse: props.index,model:state.func1(props.index)
+            };
+        }
+        // Return null if the state hasn't changed
+        return null;
     }
 
     updateValues = async (index) => {
         console.log("we are in some update");
         this.setState({
-            collapse:true,EditCourse:index, isLoader:true
-        })
-        const{state,Description }= await loadCourse(this.state.id);
-        let EditCourse=Description.lessons[index];
-        console.log(EditCourse);
+            collapse:true,EditCourse:index,
+            // isLoader:true
+        });
 
-        // Lesson_index
+
+        const{state,Description }= await loadCourse(this.state.id);
+        let EditCourse=Description.lessons[this.props.Lesson_index].teachers[index];
+
+        // TeacherIndex: "0"
+        // id: "5ea5b9c08caa0ffcd238591c"
+        // index: "1"
+        // lesson: "قیزیک"
+
+
+
+
         let Data = {
-            name: EditCourse.name,
-            price: EditCourse.price,
-            chapter_count: EditCourse.chapter_count,
-            additional_percentage_course: EditCourse.additional_percentage_course,
-            additional_percentage_chapters: EditCourse.additional_percentage_chapters
+            name:EditCourse.name, total_videos_time:EditCourse.total_videos_time
         };
-        // console.log(Data);
-        // Img:{"img_data":{"main":undefined},"img_file":{"main":undefined }},
-        console.log(EditCourse.image);
+        console.log(Data);
+        let Img={"img_data":{"main":EditCourse.image},"img_file":{"main":undefined }} ;
+
         this.setState({
-            initialValue:Data,DefaultValue:Data,isLoader:false
+            initialValue:Data,DefaultValue:Data,isLoader:false,Img
         },()=>{
             console.log("this.state.initialValue");
-            console.log(this.state.initialValue)
+            console.log(this.state.initialValue);
         });
-        this.setState((prevState) => ({
-            Img: {...prevState.Img,"img_data":{...prevState.Img.img_data,"main":EditCourse.image}}
-        }));
-        //
 
-        //
-        //
-        // if (state===200 ) {
-        //
-        //
-        // } else {
-        //     error_Notification(state, Description)
-        // }
+        return true;
+
 
     }
 
@@ -124,7 +117,7 @@ class AddTeachers extends Component {
         let{Img: {img_data,img_file} }=this.state;
 
         let formValidate=true;
-        if (this.state.EditCourse === "") {
+        if (this.state.EditCourse === undefined) {
             console.log("img_file.main");
             console.log(img_file.main);
 
@@ -167,103 +160,95 @@ class AddTeachers extends Component {
                     "name": payload.name,
                     "total_videos_time": payload.total_videos_time
                 };
-                console.log("axxxxxxxxxxx");
-                console.log(this.state.Img.img_file['main']);
-                console.log("Data");
-                console.log(Data);
+
+                if (this.state.EditCourse===undefined){
+                    let Data ={
+                        "course_id": this.state.id,
+                        "lesson_name":this.props.Lesson_name,
+                        "name": payload.name,
+                        "total_videos_time": payload.total_videos_time
+                    };
+                    let {state, Description}= await AddTecherUrl(JSON.stringify(Data));
+                    if (state===200 ) {
+
+                        // let{course_id}=Description;
+
+                        let {state:state2, Description:Description2}= await AddFileToTeacher(this.state.Img.img_file['main'],this.state.id,'teacher_image',this.props.Lesson_name,payload.name);
+                        if (state2===200) {
+                            console.log(Description2);
+                            success_Notification("درس مورد نظر با موفقیت به پایان رسید");
+                            this.setState({
+                                isLoader:false
+                            });
+                            this.props.updateContent();
+                        }else{
+
+                            error_Notification(state2, Description2);
+                            this.setState({
+                                isLoader:false
+                            });
+                        }
+                    } else {
+                        error_Notification(state , Description );
+                        this.setState({
+                            isLoader:false
+                        });
+                    }
+                } else {
+                    let{DefaultValue}=this.state;
+                    console.log("DefaultValue");
+                    console.log(DefaultValue);
+                    let Data = {
+                        "course_id": this.state.id,
+                        "name": payload.name,
+                        "new_name": DefaultValue.name,
+                        "price": payload.price,
+                        "chapter_count": payload.chapter_count,
+                        "additional_percentage_course": payload.additional_percentage_course,
+                        "additional_percentage_chapters": payload.additional_percentage_chapters
+
+                    };
+                    console.log("Data");
+                    console.log(Data);
 
 
+                    if (payload.Name !== DefaultValue.Name || payload.Description !== DefaultValue.Description ||
+                        payload.grade.value !== DefaultValue.grade.value || payload.field.value !== DefaultValue.field.value) {
+                        let Data={
+                            "course_id": this.state.id,
+                            "name": payload.Name,
 
+                            "description": payload.Description
+                        };
+                        let {state, Description}= await UpdateCourseDetail(JSON.stringify(Data));
+                        console.log(state);
+                        console.log(Description);
+                        if (state!==200) {
+                            error_Notification(state  , Description  );
+                            this.setState({
+                                isLoader:false
+                            });
+                        }
+                    }
 
+                    if (this.state.Img.img_file['main'] !== undefined) {
+                        let {state: state2, Description: Description2} = await AddFileToCourse(this.state.Img.img_file['main'], this.state.id, 'course_image');
+                        if (state2!==200) {
+                            error_Notification(state2 , Description2 );
+                            this.setState({
+                                isLoader:false
+                            });
+                        }
+                    }
 
+                    success_Notification( "اطلاعات شما با موفقیت ثبت شد");
+                    this.setState({
+                        isLoader:false
+                    });
+                    this.props.UpdateCoursList();
+                    this.updateValues(this.state.id);
 
-                // if (this.state.EditCourse===""){
-                //     let Data = {
-                //         "course_id": this.state.id,
-                //         "name": payload.name,
-                //         "price": payload.price,
-                //         "chapter_count": payload.chapter_count,
-                //         "additional_percentage_course": payload.additional_percentage_course,
-                //         "additional_percentage_chapters": payload.additional_percentage_chapters
-                //     };
-                //     let {state, Description}= await AddTecherUrl(JSON.stringify(Data));
-                //     if (state===200 ) {
-                //         // let{course_id}=Description;
-                //         let {state:state2, Description:Description2}= await AddFileToLesson(this.state.Img.img_file['main'],this.state.id,'lesson_image',payload.name);
-                //         if (state2===200) {
-                //             success_Notification("درس مورد نظر با موفقیت به پایان رسید");
-                //             this.setState({
-                //                 isLoader:false
-                //             });
-                //             this.props.updateContent();
-                //         }else{
-                //
-                //             error_Notification(state2, Description2);
-                //             this.setState({
-                //                 isLoader:false
-                //             });
-                //         }
-                //     } else {
-                //         error_Notification(state , Description );
-                //         this.setState({
-                //             isLoader:false
-                //         });
-                //     }
-                // } else {
-                //     let{DefaultValue}=this.state;
-                //     console.log("DefaultValue");
-                //     console.log(DefaultValue);
-                //     let Data = {
-                //         "course_id": this.state.id,
-                //         "name": payload.name,
-                //         "new_name": DefaultValue.name,
-                //         "price": payload.price,
-                //         "chapter_count": payload.chapter_count,
-                //         "additional_percentage_course": payload.additional_percentage_course,
-                //         "additional_percentage_chapters": payload.additional_percentage_chapters
-                //
-                //     };
-                //     console.log("Data");
-                //     console.log(Data);
-
-
-                    // if (payload.Name !== DefaultValue.Name || payload.Description !== DefaultValue.Description ||
-                    //     payload.grade.value !== DefaultValue.grade.value || payload.field.value !== DefaultValue.field.value) {
-                    //     let Data={
-                    //         "course_id": this.state.id,
-                    //         "name": payload.Name,
-                    //
-                    //         "description": payload.Description
-                    //     };
-                    //     let {state, Description}= await UpdateCourseDetail(JSON.stringify(Data));
-                    //     console.log(state);
-                    //     console.log(Description);
-                    //     if (state!==200) {
-                    //         error_Notification(state  , Description  );
-                    //         this.setState({
-                    //             isLoader:false
-                    //         });
-                    //     }
-                    // }
-                    //
-                    // if (this.state.Img.img_file['main'] !== undefined) {
-                    //     let {state: state2, Description: Description2} = await AddFileToCourse(this.state.Img.img_file['main'], this.state.id, 'course_image');
-                    //     if (state2!==200) {
-                    //         error_Notification(state2 , Description2 );
-                    //         this.setState({
-                    //             isLoader:false
-                    //         });
-                    //     }
-                    // }
-                    //
-                    // success_Notification( "اطلاعات شما با موفقیت ثبت شد");
-                    // this.setState({
-                    //     isLoader:false
-                    // });
-                    // this.props.UpdateCoursList();
-                    // this.updateValues(this.state.id);
-
-                // }
+                }
 
 
 
@@ -281,6 +266,8 @@ class AddTeachers extends Component {
 
     render() {
         let{collapse,Option,isLoader,initialValue,Img,id,FileError}=this.state;
+        console.log("initialValueinitialValueinitialValueinitialValueinitialValue")
+        console.log(initialValue)
 
         return (
             <div id="addSlider">

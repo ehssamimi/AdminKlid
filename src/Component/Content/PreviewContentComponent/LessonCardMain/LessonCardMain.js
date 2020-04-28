@@ -23,7 +23,7 @@ import {ModalDelete} from "../../../Common/Modals/ModalDelete/ModalDelete";
 const LessonCardMain = (props) => {
 
     const {match: {params}} =  props;
-    console.log(params.id);
+
 
 
 
@@ -66,6 +66,8 @@ const LessonCardMain = (props) => {
         console.log("edit");
 
         props.getCourseID(props.index)
+        // props.changeIndex( )
+
 
     };
 
@@ -110,9 +112,9 @@ const LessonCardMain = (props) => {
                     <Button onClick={() => {
                         setIsOpen(!isOpen)
                     }} className="btn red-background">حذف</Button>
-                    {/*<Link to={`/content/courses/${course_id}`}  >*/}
+                    <Link to={`/content/course/${course_id}/${props.index}`}  >
                     <Button onClick={handelEdit} className="btn btn-warning">ویرایش</Button>
-                    {/*</Link>*/}
+                    </Link>
                 </CardActions>
 
 

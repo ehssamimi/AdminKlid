@@ -22,7 +22,7 @@ const CourseDetail = (props) => {
     const {match: {params}} =  props;
     const [course,setCourses]=useState( );
     const [id,setid]=useState( params.id);
-    const [Lesson_index,setLesson_index]=useState(0);
+    const [Lesson_index,setLesson_index]=useState(100);
     const [isLoader, setIsLoader] = useState(true);
     const [isOpenModal, setIsOpenModal] = useState(false);
     const[videos,setVideos]=useState({type:"",video:[]});
@@ -98,7 +98,7 @@ const CourseDetail = (props) => {
                         </div>
                     </div> :
                     <div className="w-100"  >
-                        <AddLesson  {...props} id={params.id}  index={Lesson_index} />
+                        <AddLesson  {...props} id={params.id}  index={ params.index} updateContent={getData} />
                         <div dir="ltr" className="mt-5">
 
                             <Card className='w-100 flex-row  m-0  br-product ' style={{height:"auto",minHeight:"40vh"}}>
@@ -174,10 +174,10 @@ const CourseDetail = (props) => {
                                     </div>
                                 </div>
                             </Card>
-                            <div className="row mt-5">
+                            <div className="row mt-5" dir="rtl">
                                 {course.lessons.map((item, index) =>
 
-                                    <LessonCardMain {...item}  key={index}  {...props} index={index} updateContent={getData} getCourseID={getCourseID}/>
+                                    <LessonCardMain {...item}  key={index}  {...props} index={index} updateContent={getData} getCourseID={getCourseID} changeIndex={ ()=>{setLesson_index(index)}}/>
 
                                 // </div>
 
