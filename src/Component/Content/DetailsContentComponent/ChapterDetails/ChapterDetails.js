@@ -17,21 +17,23 @@ import {FaRegPlayCircle} from "react-icons/fa";
 import {FiDownload} from "react-icons/fi";
 import AddTeachers from "../../AddContentComponent/AddTeachers/AddTeachers";
 
-const TeacherCardMain = (props) => {
+const ChapterDetails = (props) => {
 
     const {match: {params}} =  props;
     console.log(params );
 
-    // create_at: "2020-04-14T19:59:09.573000"
-    // demo_video: "https://stream.kelidiha.com/public/teachers/5e98606593bed458c5ded32e/2LHbjNin2LbbjA==/2KjYrti02YbYr9mH/stream/index.m3u8"
-    // demo_video_cover: "https://stream.kelidiha.com/public/teacher/5e98606593bed458c5ded32e/2LHbjNin2LbbjA==/2KjYrti02YbYr9mH/demo-video/image.png"
-    // image: "https://stream.kelidiha.com/public/teacher/5e98606593bed458c5ded32e/2LHbjNin2LbbjA==/2KjYrti02YbYr9mH/image.png"
-    // name: "بخشنده"
-    // total_videos_time: 54
+    {/*create_at: "2020-04-12T10:56:09.082000"*/}
+    {/*demo_video: "https://stream.kelidiha.com/public/chapter/5e9318063414ab42e3239506/2LHbjNin2LbbjA==/2KjYrti02YbYr9mH/2KfZhtiq2q-Ysdin2YQ=/stream/index.m3u8"*/}
+    {/*demo_video_cover: "https://stream.kelidiha.com/public/chapter/5e9318063414ab42e3239506/2LHbjNin2LbbjA==/2KjYrti02YbYr9mH/demo-video/image.png"*/}
+    {/*image: "https://stream.kelidiha.com/public/chapter/5e9318063414ab42e3239506/2LHbjNin2LbbjA==/2KjYrti02YbYr9mH/image.png"*/}
+    {/*items: [{…}]*/}
+    {/*name: "انتگرال"*/}
+    {/*price: 36000*/}
+    {/*total_video_times: 4*/}
 
 
 
-    let{name,image,demo_video,demo_video_cover, total_videos_time   }=props;
+    let{name,image,demo_video,demo_video_cover, total_video_times,price   }=props;
     let course_id=params.id;
 
     const [count, setCount] = useState(1);
@@ -49,7 +51,7 @@ const TeacherCardMain = (props) => {
 
         // Course_id,Lesson_name,teacher_name
         const {match: {params}} =  props;
-         let {state ,Description}=await DeleteTecherUrl(params.id,params.lesson,name);
+        let {state ,Description}=await DeleteTecherUrl(params.id,params.lesson,name);
         if (state===200 ) {
             success_Notification("حذف شد");
             // props.updateContent();
@@ -97,7 +99,12 @@ const TeacherCardMain = (props) => {
                 {/*index: "0"*/}
                 {/*lesson: "احسان صمیمی راد"*/}
 
-                <Link to={`/content/teacher/${course_id}/${params.index}/${params.lesson}/${props.index}/${name}`} className="pt-4">
+
+
+
+
+                {/*<Link to={`/content/teacher/${course_id}/${params.index}/${params.lesson}/${props.index}/${name}`} className="pt-4">*/}
+                <Link to={`#`} className="pt-4">
 
                     <CardMedia
                         className="hpx200 "
@@ -112,7 +119,9 @@ const TeacherCardMain = (props) => {
                         <div className="row pl-3" dir="rtl">
 
                             <LabelValueRow label={"نام معلم"} value={name} className="col-sm-12 col-md-6"/>
-                            <LabelValueRow label={"زمان تقریبی ویدیو"} value={total_videos_time} className="col-sm-12 col-md-6"/>
+
+                            <LabelValueRow label={"زمان تقریبی ویدیو"} value={total_video_times} className="col-sm-12 col-md-6"/>
+                            <LabelValueRow label={"قیمت"} value={price} className="col-sm-12 col-md-6"/>
 
                             <div className="mr-3 green-them cursor-pointer col-sm-12 mt-3 d-flex justify-content-center" onClick={( )=>{ toggle('demo',[demo_video_cover,demo_video])}}>
                                 <span className= ' '    ><FaRegPlayCircle/></span>
@@ -128,9 +137,9 @@ const TeacherCardMain = (props) => {
                     <Button onClick={() => {
                         setIsOpen(!isOpen)
                     }} className="btn red-background">حذف</Button>
-                    <Link to={`/content/lesson/${course_id}/${params.index}/${params.lesson}/${props.index}`}  >
+                    <Link to={`/content/teacher/${course_id}/${params.index}/${params.lesson}/${params.TeacherIndex}/${name}/${props.index}`}  >
 
-                    <Button onClick={handelEdit} className="btn btn-warning">ویرایش</Button>
+                        <Button onClick={handelEdit} className="btn btn-warning">ویرایش</Button>
                     </Link>
                 </CardActions>
 
@@ -154,4 +163,4 @@ const TeacherCardMain = (props) => {
 
     );
 };
-export default TeacherCardMain;
+export default ChapterDetails;

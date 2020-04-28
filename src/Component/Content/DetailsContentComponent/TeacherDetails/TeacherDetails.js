@@ -19,9 +19,11 @@ import AddLesson from "../../AddContentComponent/AddLesson/AddLesson";
 import TeacherCardMain from "../../PreviewContentComponent/TeacherCardMain/TeacherCardMain";
 import AddTeachers from "../../AddContentComponent/AddTeachers/AddTeachers";
 import AddTeacher2 from "../../AddContentComponent/AddTeachers/AddTeacher2";
+import AddChapter from "../../AddContentComponent/AddChapter/AddChapter";
+import ChapterCardMain from "../../PreviewContentComponent/ChapterCardMain/ChapterCardMain";
 
 
-const LessonDetails = (props) => {
+const TeacherDetails = (props) => {
     const {match: {params}} =  props;
 
     const [course,setCourses]=useState( );
@@ -85,10 +87,59 @@ const LessonDetails = (props) => {
         console.log(index);
     };
 
+    // {name: "محصول الکی31", image: "https://stream.kelidiha.com/public/course/5ea5b5b4d677657bec5531b2/image.png", grade: "هفتم", field: "", demo_video: "https://stream.kelidiha.com/public/course/5ea5b5b4d677657bec5531b2/stream/index.m3u8", …}
+    // create_at: "2020-04-26T12:18:01.637000"
+    // demo_video: "https://stream.kelidiha.com/public/course/5ea5b5b4d677657bec5531b2/stream/index.m3u8"
+    // demo_video_cover: "https://stream.kelidiha.com/public/course/5ea5b5b4d677657bec5531b2/demo-video/image.png"
+    // description: "محصول لکی است "
+    // field: ""
+    // grade: "هفتم"
+    // image: "https://stream.kelidiha.com/public/course/5ea5b5b4d677657bec5531b2/image.png"
+    // is_active: false
+    // lessons: Array(1)
+    // 0:
+    // additional_percentage_chapters: 0.2
+    // additional_percentage_course: 0.1
+    // chapter_count: 5
+    // create_at: "2020-04-28T17:17:52.338000"
+    // image: "https://stream.kelidiha.com/public/lesson/5ea5b5b4d677657bec5531b2/2KfYrdiz2KfZhiDYtdmF24zZhduMINix2KfYrw==/image.png"
+    // name: "احسان صمیمی راد"
+    // price: 20
+    // price_for_chapters: 8
+    // price_for_course: 18
+    // teachers: Array(1)
+    // 0:
+    // chapters: Array(0)
+    // length: 0
+    // __proto__: Array(0)
+    // create_at: "2020-04-28T17:17:51.923000"
+    // demo_video: "https://stream.kelidiha.com/public/teachers/5ea5b5b4d677657bec5531b2/2KfYrdiz2KfZhiDYtdmF24zZhduMINix2KfYrw==/2qnZhdix2KjZhtiv/stream/index.m3u8"
+    // demo_video_cover: "https://stream.kelidiha.com/public/teacher/5ea5b5b4d677657bec5531b2/2KfYrdiz2KfZhiDYtdmF24zZhduMINix2KfYrw==/2qnZhdix2KjZhtiv/demo-video/image.png"
+    // image: "https://stream.kelidiha.com/public/teacher/5ea5b5b4d677657bec5531b2/2KfYrdiz2KfZhiDYtdmF24zZhduMINix2KfYrw==/2qnZhdix2KjZhtiv/image.png"
+    // name: "کمربند"
+    // total_videos_time: 312
+    // __proto__: Object
+    // length: 1
+    // __proto__: Array(0)
+    // __proto__: Object
+    // length: 1
+    // __proto__: Array(0)
+    // name: "محصول الکی31"
+    // price: 18
+    // schedule: "https://stream.kelidiha.com/public/course/5ea5b5b4d677657bec5531b2/schedule.pdf"
+    // __proto__: Object
+
     console.log("course");
     console.log(course);
+    console.log("params");
+    console.log(params);
     // const {match: {params}} =  props;
-
+    // TeacherIndex: "0"
+    // chapterIndex: undefined
+    // id: "5ea5b5b4d677657bec5531b2"
+    // index: "0"
+    // lesson: "احسان صمیمی راد"
+    // teacher: "کمربند"
 
     return (
 
@@ -100,13 +151,16 @@ const LessonDetails = (props) => {
                         </div>
                     </div> :
                     <div className="w-100"  >
-                        <AddTeacher2  {...props} id={params.id} Lesson_index={params.index} Lesson_name={params.lesson}  index={params.TeacherIndex} updateContent={getData}/>
+
+                        <AddChapter {...props} id={params.id} Lesson_index={params.index} Lesson_name={params.lesson}  Teacher={params.teacher} TeacherIndex={params.TeacherIndex} index={params.chapterIndex} updateContent={getData}/>
+
+                        {/*<AddTeacher2  {...props} id={params.id} Lesson_index={params.index} Lesson_name={params.lesson}  index={params.TeacherIndex} updateContent={getData}/>*/}
                         <div dir="ltr" className="mt-5">
 
                             <div className="row mt-5">
-                                {course.lessons[params.index].teachers.map((item, index) =>
-
-                                        <TeacherCardMain {...item}  key={index}  {...props} index={index} updateContent={getData} getCourseID={getCourseID}/>
+                                 {course.lessons[params.index].teachers[params.TeacherIndex].chapters.map((item, index) =>
+                                     <ChapterCardMain {...item}  key={index}  {...props} index={index} updateContent={getData} getCourseID={getCourseID}/>
+                                     // *<TeacherCardMain {...item}  key={index}  {...props} index={index} updateContent={getData} getCourseID={getCourseID}/>*/}
 
                                     // </div>
 
@@ -148,4 +202,4 @@ const LessonDetails = (props) => {
     );
 };
 
-export default LessonDetails;
+export default TeacherDetails;

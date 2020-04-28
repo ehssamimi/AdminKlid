@@ -3,6 +3,7 @@ import { Route, withRouter, Switch, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import AppLayout from '../../layout/AppLayout';
+import TeacherDetails from "../../Component/Content/DetailsContentComponent/TeacherDetails/TeacherDetails";
 
 
 const Courses = React.lazy(() =>
@@ -37,6 +38,10 @@ class App extends Component {
                 <Route
                 path={`${match.url}/lesson/:id/:index/:lesson/:TeacherIndex?`}
                 render={props => <LessonDetails {...props} />}
+              />
+                <Route
+                path={`${match.url}/teacher/:id/:index/:lesson/:TeacherIndex/:teacher/:chapterIndex?`}
+                render={props => <TeacherDetails {...props} />}
               />
               <Redirect to="/error" />
             </Switch>

@@ -21,7 +21,7 @@ class ImgComponent extends Component {
         if (props.img !== state.src && props.img!==undefined &&  state.count===1) {
             return {
                 src: props.img,
-                // count:2
+                count:2
             };
         }
         // Return null if the state hasn't changed
