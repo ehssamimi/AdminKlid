@@ -121,7 +121,7 @@ const ChapterCardMain = (props) => {
 
                         <div className="row pl-3" dir="rtl">
 
-                            <LabelValueRow label={"نام معلم"} value={name} className="col-sm-12 col-md-6"/>
+                            <LabelValueRow label={"نام قسمت"} value={name} className="col-sm-12 col-md-6"/>
                             <LabelValueRow label={"زمان تقریبی ویدیو"} value={total_video_times} className="col-sm-12 col-md-6"/>
                             <LabelValueRow label={"هزینه"} value={price} className="col-sm-12 col-md-6"/>
 

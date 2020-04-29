@@ -8,7 +8,7 @@ import {
     AddPermission, AddTecherUrl,
     GetUserDropDown,
     loadCourse,
-    loadMainCourse, UpdateCourseDetail, UpdateLessonDetail, UpdateTeacherDetail
+    loadMainCourse, UpdateChapterDetail, UpdateCourseDetail, UpdateLessonDetail, UpdateTeacherDetail
 } from "../../../functions/ServerConnection";
 import {
     error_Notification,
@@ -69,9 +69,6 @@ class AddChapter extends Component {
         return null;
     }
 
-
-
-
     async  componentDidUpdate(props){
         // console.log("props.index");
         // console.log(props.index);
@@ -109,7 +106,7 @@ class AddChapter extends Component {
 
 
         const{state,Description }= await loadCourse(this.state.id);
-        let EditCourse= Description.lessons[this.props.Lesson_index].teachers[index];
+        let EditCourse= Description.lessons[this.props.Lesson_index].teachers[this.props.TeacherIndex].chapters[index];
         let Img={"img_data":{"main":EditCourse.image},"img_file":{"main":undefined }} ;
 
 
@@ -224,7 +221,7 @@ class AddChapter extends Component {
                     let {state, Description}= await AddChapterUrl(JSON.stringify(Data));
                     if (state===200 ) {
                         // let{course_id}=Description;
-                        let {state:state2, Description:Description2}= await AddFileToChapter(this.state.Img.img_file['main'],this.state.id,'teacher_image',this.props.Lesson_name,this.props.Teacher,payload.name);
+                        let {state:state2, Description:Description2}= await AddFileToChapter(this.state.Img.img_file['main'],this.state.id,'chapter_image',this.props.Lesson_name,this.props.Teacher,payload.name);
                         if (state2===200) {
                             success_Notification("درس مورد نظر با موفقیت به پایان رسید");
                             this.setState({
@@ -269,9 +266,19 @@ class AddChapter extends Component {
 
                     if (payload.name !== DefaultValue.name || payload.total_video_times !== DefaultValue.total_video_times) {
 
+                        // {
+                        //     "course_id": "string",
+                        //     "lesson_name": "string",
+                        //     "teacher_name": "string",
+                        //     "name": "string",
+                        //     "new_name": "string",
+                        //     "total_video_times": 0
+                        // }
+
                         let Data = {
                             "course_id": this.state.id,
                             "lesson_name":this.props.Lesson_name,
+                            "teacher_name": this.props.Teacher,
                             "name": DefaultValue.name,
 
                             // "course_id": "string",
@@ -293,7 +300,7 @@ class AddChapter extends Component {
 
                         console.log("Data");
                         console.log(Data);
-                        let {state, Description}= await UpdateTeacherDetail(JSON.stringify(Data));
+                        let {state, Description}= await UpdateChapterDetail(JSON.stringify(Data));
                         console.log(state);
                         console.log(Description);
                         if (state!==200) {
@@ -305,7 +312,7 @@ class AddChapter extends Component {
                     }
                     //
                     if (this.state.Img.img_file['main'] !== undefined) {
-                        let {state:state2, Description:Description2}= await AddFileToTeacher(this.state.Img.img_file['main'],this.state.id,'teacher_image',this.props.Lesson_name,payload.name);
+                        let {state:state2, Description:Description2}= await AddFileToChapter(this.state.Img.img_file['main'],this.state.id,'chapter_image',this.props.Lesson_name,this.props.Teacher,payload.name);
                         if (state2!==200) {
                             error_Notification(state2 , Description2 );
                             this.setState({
@@ -320,7 +327,8 @@ class AddChapter extends Component {
                         isLoader:false
                     });
                     this.props.updateContent();
-                    this.updateValues(this.state.EditCourse);
+                    this.updateValues(this.props.index);
+
 
                 }
 

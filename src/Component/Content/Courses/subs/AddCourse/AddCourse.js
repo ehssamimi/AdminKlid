@@ -144,10 +144,10 @@ class AddCourse extends Component {
                   formValidate = false;
                   FileError['cover'] = "عکس کاور ویدیو باید انتخاب شود ";
               }
-              if (pdf==="") {
-                  formValidate = false;
-                  FileError['pdf'] = "پی دی اف این دوره باید انتخاب شود ";
-              }
+              // if (pdf==="") {
+              //     formValidate = false;
+              //     FileError['pdf'] = "پی دی اف این دوره باید انتخاب شود ";
+              // }
 
           }
           console.log("FileError");
@@ -320,6 +320,8 @@ class AddCourse extends Component {
     render() {
           let{collapse,Option,isLoader,initialValue,Img,id,FileError}=this.state;
 
+
+
         return (
             <div>
                 <div onClick={this.toggle} className="d-flex align-items-center">
@@ -395,8 +397,11 @@ class AddCourse extends Component {
                                                                     placeHolder='پایه خود را وارد کنید' values={values}
                                                                     DivClass="col-sm-6  " setFieldTouched={setFieldTouched} setFieldValue={setFieldValue}
                                                                     errors={errors} touched={touched}/>
+
+
+
                                                         {
-                                                            ( values.grade.value === "دهم" || values.grade.value === "یازدهم" || values.grade.value === "فارغ التحصیل" || values.grade.value === "کنکوری (دوازدهم)")?
+                                                            ( values.grade.value === "طرح انسانی"   ||values.grade.value === "دهم" || values.grade.value === "دوازدهم" || values.grade.value === "طرح" ||values.grade.value === "یازدهم" || values.grade.value === "فارغ التحصیل" || values.grade.value === "کنکوری (دوازدهم)")?
                                                                 <FormSelect label='رشته' option={LabelValueOption(Option.field_type)} name='field'
                                                                             placeHolder='رشته خود را وارد کنید' setFieldValue={setFieldValue}
                                                                             DivClass="col-sm-6  " setFieldTouched={setFieldTouched} values={values}

@@ -21,6 +21,7 @@ import AddTeachers from "../../AddContentComponent/AddTeachers/AddTeachers";
 import AddTeacher2 from "../../AddContentComponent/AddTeachers/AddTeacher2";
 import AddChapter from "../../AddContentComponent/AddChapter/AddChapter";
 import ChapterCardMain from "../../PreviewContentComponent/ChapterCardMain/ChapterCardMain";
+import HeaderContentNavigation from "../../HeaderContentNavigation/HeaderContentNavigation";
 
 
 const TeacherDetails = (props) => {
@@ -151,6 +152,8 @@ const TeacherDetails = (props) => {
                         </div>
                     </div> :
                     <div className="w-100"  >
+                        <HeaderContentNavigation list={[{"name":"دوره ها", "address":"/content"},{"name":` دوره : ${course["name"]}`, "address":`/content/course/${params.id}`},{"name":` درس : ${params.lesson}`, "address":`/content/lesson/${params.id}/${params.index}/${params.lesson}`},{"name":` استاد : ${params.teacher}`, "address":`/content/teacher/${params.id}/${params.index}/${params.lesson}/${params.TeacherIndex}/${params.teacher}`}]}/>
+
 
                         <AddChapter {...props} id={params.id} Lesson_index={params.index} Lesson_name={params.lesson}  Teacher={params.teacher} TeacherIndex={params.TeacherIndex} index={params.chapterIndex} updateContent={getData}/>
 

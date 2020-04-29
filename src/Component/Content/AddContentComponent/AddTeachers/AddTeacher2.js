@@ -317,11 +317,7 @@ class AddTeacher2 extends Component {
                     });
                     this.props.updateContent();
                     this.updateValues(this.state.EditCourse);
-
                 }
-
-
-
 
             }
         });

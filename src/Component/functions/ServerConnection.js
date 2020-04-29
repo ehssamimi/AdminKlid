@@ -1760,7 +1760,6 @@ export async  function  AddFileToCourse(file, Course_id, action){
      }).catch(function (error) {
         console.log(error.response);
         console.log(error);
-        console.log(error.response.statusText);
         let {response}=error;
         if (response===undefined){
             resp={state: 400,Description: error.message}
@@ -1856,7 +1855,6 @@ export async  function  AddFileToLesson(file, Course_id, action,lesson_name){
     }).catch(function (error) {
         console.log(error.response);
         console.log(error);
-        console.log(error.response.statusText);
         let {response}=error;
         if (response===undefined){
             resp={state: 400,Description: error.message}
@@ -1984,7 +1982,7 @@ export async  function  AddFileToTeacher(file, Course_id,action,lesson_name,teac
     }).catch(function (error) {
         console.log(error.response);
         console.log(error);
-        console.log(error.response.statusText);
+
         let {response}=error;
         if (response===undefined){
             resp={state: 400,Description: error.message}
@@ -2065,7 +2063,6 @@ export async  function  AddChapterUrl(Data){
 export async  function  AddFileToChapter(file, Course_id,action,lesson_name,teacher_name,chapter_name){
     let formData = new FormData();
     // actions:schedule_pdf  course_image
-
     formData.append("file", file);
 
     let headers = {
@@ -2082,7 +2079,7 @@ export async  function  AddFileToChapter(file, Course_id,action,lesson_name,teac
     }).catch(function (error) {
         console.log(error.response);
         console.log(error);
-        console.log(error.response.statusText);
+
         let {response}=error;
         if (response===undefined){
             resp={state: 400,Description: error.message}
@@ -2095,7 +2092,6 @@ export async  function  AddFileToChapter(file, Course_id,action,lesson_name,teac
     return resp
 
 }
-
 export async  function  DeleteChapterUrl(Data){
 
     let headers = {
@@ -2109,6 +2105,38 @@ export async  function  DeleteChapterUrl(Data){
         let {Description}=response.data;
         // let {Items} = response.data;
         resp={state:200,Description:Description};
+
+    }).catch(function (error) {
+        console.log(error.response);
+        console.log(error);
+        let {response}=error;
+        if (response===undefined){
+            resp={state: 400,Description: error.message}
+        }else if (response.status===422){
+            resp={state:422,Description:response.statusText}
+        } else{
+            resp={state:response.status||400,Description:response.data.detail||error.message}
+        }
+    });
+    return resp;
+}
+export async  function  UpdateChapterDetail(Data){
+
+    let headers = {
+        'Token': Const.Token,
+        'Content-Type': 'application/json',
+        'accept': 'application/json',
+        'Access-Control-Allow-Origin':'*'
+    };
+    console.log(Data);
+
+
+    var resp ="";
+    await axios.put(`${Const.ResourceAdmin}course/chapter/update`, Data, {headers: headers}).then(function (response) {
+        console.log(response );
+
+        // let {Items} = response.data;
+        resp={state:200,Description:response.data};
 
     }).catch(function (error) {
         console.log(error.response);

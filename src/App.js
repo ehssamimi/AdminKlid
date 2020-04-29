@@ -97,16 +97,16 @@ class App extends Component {
                         path="/access-level"
                         render={props => <ViewAccessLevel {...props} />}
                     />
-                  <Route
-                    path="/"
-                    exact
-                    render={props => <ViewMain {...props} />}
-                  />
                     <Route
-                    path="/login"
-                    exact
-                    render={props => <Login {...props} />}
-                  />
+                        path="/"
+                        exact
+                        render={props => <ViewMain {...props} />}
+                    />
+                    <Route
+                        path="/login"
+                        exact
+                        render={props => <Login {...props} />}
+                    />
                   <Redirect to="/error" />
                 </Switch>
               </Router>

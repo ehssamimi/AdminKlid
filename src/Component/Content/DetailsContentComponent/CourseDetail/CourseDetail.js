@@ -16,6 +16,7 @@ import {FiDownload} from "react-icons/fi";
 import LessonCardMain from "../../PreviewContentComponent/LessonCardMain/LessonCardMain";
 import {Link} from "react-scroll/modules";
 import AddLesson from "../../AddContentComponent/AddLesson/AddLesson";
+import HeaderContentNavigation from "../../HeaderContentNavigation/HeaderContentNavigation";
 
 
 const CourseDetail = (props) => {
@@ -98,6 +99,8 @@ const CourseDetail = (props) => {
                         </div>
                     </div> :
                     <div className="w-100"  >
+                        <HeaderContentNavigation list={[{"name":"دوره ها", "address":"/content"},{"name":course["name"], "address":`/content/course/${params.id}`}]}/>
+
                         <AddLesson  {...props} id={params.id}  index={ params.index} updateContent={getData} />
                         <div dir="ltr" className="mt-5">
 

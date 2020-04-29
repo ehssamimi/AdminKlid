@@ -6,6 +6,7 @@ import {NotificationManager} from "react-notifications";
 import Loader from "../../Common/Loader/Loader";
 import AddCourse from "./subs/AddCourse/AddCourse";
 import {Link} from "react-scroll/modules";
+import HeaderContentNavigation from "../HeaderContentNavigation/HeaderContentNavigation";
 
 const Courses = (props) => {
     const [courses,setCourses]=useState({"data":[],off:[]});
@@ -49,6 +50,7 @@ const Courses = (props) => {
                         </div>
                     </div> :
                     <div className="w-100" dir="rtl">
+                        <HeaderContentNavigation list={[{"name":"دوره ها", "address":"/content"}]}/>
 
                         <AddCourse id={id} UpdateCoursList={UpdateCoursList}/>
 

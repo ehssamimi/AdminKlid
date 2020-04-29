@@ -19,6 +19,7 @@ import AddLesson from "../../AddContentComponent/AddLesson/AddLesson";
 import TeacherCardMain from "../../PreviewContentComponent/TeacherCardMain/TeacherCardMain";
 import AddTeachers from "../../AddContentComponent/AddTeachers/AddTeachers";
 import AddTeacher2 from "../../AddContentComponent/AddTeachers/AddTeacher2";
+import HeaderContentNavigation from "../../HeaderContentNavigation/HeaderContentNavigation";
 
 
 const LessonDetails = (props) => {
@@ -100,10 +101,13 @@ const LessonDetails = (props) => {
                         </div>
                     </div> :
                     <div className="w-100"  >
+                        <HeaderContentNavigation list={[{"name":"دوره ها", "address":"/content"},{"name":` دوره : ${course["name"]}`, "address":`/content/course/${params.id}`},{"name":` درس : ${params.lesson}`, "address":`/content/lesson/${params.id}/${params.index}/${params.lesson}`}]}/>
+
+
                         <AddTeacher2  {...props} id={params.id} Lesson_index={params.index} Lesson_name={params.lesson}  index={params.TeacherIndex} updateContent={getData}/>
                         <div dir="ltr" className="mt-5">
 
-                            <div className="row mt-5">
+                            <div className="row mt-5" dir="rtl">
                                 {course.lessons[params.index].teachers.map((item, index) =>
 
                                         <TeacherCardMain {...item}  key={index}  {...props} index={index} updateContent={getData} getCourseID={getCourseID}/>
