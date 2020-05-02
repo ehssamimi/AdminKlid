@@ -1738,8 +1738,6 @@ export async  function  DeleteID(Course_id){
     });
     return resp;
 }
-
-
 export async  function  AddFileToCourse(file, Course_id, action){
     let formData = new FormData();
     // actions:schedule_pdf  course_image
@@ -2133,6 +2131,133 @@ export async  function  UpdateChapterDetail(Data){
 
     var resp ="";
     await axios.put(`${Const.ResourceAdmin}course/chapter/update`, Data, {headers: headers}).then(function (response) {
+        console.log(response );
+
+        // let {Items} = response.data;
+        resp={state:200,Description:response.data};
+
+    }).catch(function (error) {
+        console.log(error.response);
+        console.log(error);
+        let {response}=error;
+        if (response===undefined){
+            resp={state: 400,Description: error.message}
+        }else if (response.status===422){
+            resp={state:422,Description:response.statusText}
+        } else{
+            resp={state:response.status||400,Description:response.data.detail||error.message}
+        }
+    });
+    return resp;
+}
+                    // ***********item*******
+export async  function  AddItemUrl(Data){
+
+    let headers = {
+        'Token': Const.Token,
+        'Content-Type': 'application/json',
+        'accept': 'application/json',
+        'Access-Control-Allow-Origin':'*'
+    };
+    console.log(Data);
+
+
+    var resp ="";
+    await axios.post(`${Const.ResourceAdmin}course/lesson/teacher/chapter/item/add`, Data, {headers: headers}).then(function (response) {
+        console.log(response );
+
+        // let {Items} = response.data;
+        resp={state:200,Description:response.data};
+
+    }).catch(function (error) {
+        console.log(error.response);
+        console.log(error);
+        let {response}=error;
+        if (response===undefined){
+            resp={state: 400,Description: error.message}
+        }else if (response.status===422){
+            resp={state:422,Description:response.statusText}
+        } else{
+            resp={state:response.status||400,Description:response.data.detail||error.message}
+        }
+    });
+    return resp;
+}
+export async  function  AddFileToItem(file, Course_id,action,lesson_name,teacher_name,chapter_name,item_name){
+    let formData = new FormData();
+    // actions:schedule_pdf  course_image
+
+    console.log(file, "Course_id: "+Course_id,"action: "+action,"lesson_name: "+lesson_name,"teacher_name: "+teacher_name,"chapter_name: "+chapter_name,"item_name: "+item_name);
+    formData.append("file", file);
+
+    let headers = {
+        'Token': Const.Token,
+        'Id': Const.ID,
+    };
+    var resp = '';
+
+    await axios.post(`${Const.ResourceAdmin}course/content/upload?course_id=${Course_id}&action=${action}&lesson_name=${lesson_name}&teacher_name=${teacher_name}&chapter_name=${chapter_name}&item_name=${item_name}`, formData, {headers: headers}).then(function (response) {
+        // console.log(response);
+        console.log(response);
+
+        resp={state:200,Description:response.data};
+    }).catch(function (error) {
+        console.log(error.response);
+        console.log(error);
+
+        let {response}=error;
+        if (response===undefined){
+            resp={state: 400,Description: error.message}
+        }else if (response.status===422){
+            resp={state:422,Description:response.statusText.toString()}
+        } else{
+            resp={state:response.status||400,Description:response.data.detail||error.message}
+        }
+    });
+    return resp
+
+}
+export async  function  DeleteItemUrl(Data){
+
+    let headers = {
+        'Token': Const.Token,
+        'accept': 'application/json',
+    };
+
+    var resp ="";
+    await axios.delete(`${Const.ResourceAdmin}course/item/delete`  ,{headers: headers, data:Data}).then(function (response) {
+        console.log(response );
+        let {Description}=response.data;
+        // let {Items} = response.data;
+        resp={state:200,Description:Description};
+
+    }).catch(function (error) {
+        console.log(error.response);
+        console.log(error);
+        let {response}=error;
+        if (response===undefined){
+            resp={state: 400,Description: error.message}
+        }else if (response.status===422){
+            resp={state:422,Description:response.statusText}
+        } else{
+            resp={state:response.status||400,Description:response.data.detail||error.message}
+        }
+    });
+    return resp;
+}
+export async  function  UpdateItemDetail(Data){
+
+    let headers = {
+        'Token': Const.Token,
+        'Content-Type': 'application/json',
+        'accept': 'application/json',
+        'Access-Control-Allow-Origin':'*'
+    };
+    console.log(Data);
+
+
+    var resp ="";
+    await axios.put(`${Const.ResourceAdmin}course/item/update`, Data, {headers: headers}).then(function (response) {
         console.log(response );
 
         // let {Items} = response.data;

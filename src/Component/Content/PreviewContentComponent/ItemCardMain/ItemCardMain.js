@@ -1,5 +1,11 @@
 import React, {useState, useEffect} from 'react';
-import {DeleteChapterUrl, DeleteID, DeleteLesson, DeleteTecherUrl} from "../../../functions/ServerConnection";
+import {
+    DeleteChapterUrl,
+    DeleteID,
+    DeleteItemUrl,
+    DeleteLesson,
+    DeleteTecherUrl
+} from "../../../functions/ServerConnection";
 import {error_Notification, formatNumber, success_Notification} from "../../../functions/componentHelpFunction";
 import {TweenMax} from "gsap/TweenMax";
 import Card from "@material-ui/core/Card/Card";
@@ -17,7 +23,7 @@ import {FaRegPlayCircle} from "react-icons/fa";
 import {FiDownload} from "react-icons/fi";
 import AddTeachers from "../../AddContentComponent/AddTeachers/AddTeachers";
 
-const ChapterCardMain = (props) => {
+const ItemCardMain = (props) => {
 
     const {match: {params}} =  props;
     console.log(params );
@@ -31,21 +37,17 @@ const ChapterCardMain = (props) => {
     // price: 36000
     // total_video_times: 4
 
-    let{name,image,demo_video,demo_video_cover,price ,total_video_times  }=props;
-    console.log("image");
-    console.log(image);
+    let{name, video:demo_video,video_cover:demo_video_cover,time_to_done ,is_free }=props;
+
     let course_id=params.id;
 
     const [count, setCount] = useState(1);
     const [isOpen, setIsOpen] = useState(false);
     const [isLoader, setIsLoader] = useState(true);
     const [isOpenModal, setIsOpenModal] = useState(false);
-    const[videos,setVideos]=useState({type:"",video:[]});
-    useEffect(() => {
-        // Update the document title using the browser API
 
-        document.title = `You clicked ${count} times`;
-    });
+    const[videos,setVideos]=useState({type:"",video:[]});
+
     const handelDelete = async() => {
         setIsOpen(false);
 
@@ -57,9 +59,11 @@ const ChapterCardMain = (props) => {
             "course_id": params.id,
             "lesson_name": params.lesson,
             "teacher_name": params.teacher,
-            "chapter_name": name
-        }
-        let {state ,Description}=await DeleteChapterUrl(JSON.stringify(Data));
+            "chapter_name": params.chapter,
+            "name": name
+        };
+
+        let {state ,Description}=await DeleteItemUrl(JSON.stringify(Data));
         if (state===200 ) {
             success_Notification("حذف شد");
             // props.updateContent();
@@ -96,24 +100,22 @@ const ChapterCardMain = (props) => {
 
 
     return (
-        <div className=" col-sm-12 col-md-4 p-0">
+        <div className=" col-sm-12 col-md-4 p-0 mt-2" >
             <Card className="m-2 br20px h-100 h-min-24vw  box-shadow-custom  " id={name}>
-                {/*teacher/:id/:index/:lesson/:TeacherIndex/:teacher/:chapterIndex?*/}
-                {/*/content/lesson/${course_id}/${props.index}/${name}*/}
-                {/*lesson/:id/:index/:lesson/:TeacherIndex?*/}
+
 
                 {/*TeacherIndex: "0"*/}
                 {/*id: "5ea5b5b4d677657bec5531b2"*/}
                 {/*index: "0"*/}
                 {/*lesson: "احسان صمیمی راد"*/}
 
-                {/*<Link to={`#`} className="pt-4">*/}
-                    <Link to={`/content/chapter/${course_id}/${params.index}/${params.lesson}/${params.TeacherIndex}/${params.teacher}/${props.index}/${name}`} className="pt-4">
-
+                {/*<Link to={`/content/chapter/${course_id}/${params.index}/${params.lesson}/${params.TeacherIndex}/${params.teacher}/${props.index}/${name}`} className="pt-4">*/}
+                <Link to={`/content/detail-item/${course_id}/${params.index}/${params.lesson}/${params.TeacherIndex}/${params.teacher}/${params.chapterIndex}/${params.chapter}/${props.index} `} className="pt-4">
+                {/*<Link to={`# `} className="pt-4">*/}
 
                     <CardMedia
                         className="hpx200 "
-                        image={image}
+                        image={demo_video_cover}
                         title="Course Section"
                     />
 
@@ -123,10 +125,9 @@ const ChapterCardMain = (props) => {
 
                         <div className="row pl-3" dir="rtl">
 
-                            <LabelValueRow label={"نام قسمت"} value={name} className="col-sm-12 col-md-6"/>
-                            <LabelValueRow label={"زمان تقریبی ویدیو"} value={total_video_times} className="col-sm-12 col-md-6"/>
-                            <LabelValueRow label={"هزینه"} value={price} className="col-sm-12 col-md-6"/>
-
+                            <LabelValueRow label={" بخش"} value={name} className="col-sm-12 col-md-6"/>
+                            <LabelValueRow label={"رایگان"} value={is_free?  "هست" :"نیست"} className="col-sm-12 col-md-6"/>
+                            <LabelValueRow label={"زمان تقریبی"} value={time_to_done} className="col-sm-12 col-md-6"/>
 
                             <div className="mr-3 green-them cursor-pointer col-sm-12 mt-3 d-flex justify-content-center" onClick={( )=>{ toggle('demo',[demo_video_cover,demo_video])}}>
                                 <span className= ' '    ><FaRegPlayCircle/></span>
@@ -151,7 +152,7 @@ const ChapterCardMain = (props) => {
                     {/*lesson: "ریاضی"*/}
                     {/*teacher: "بخشنده"*/}
 
-                    <Link to={`/content/teacher/${params.id}/${params.index}/${params.lesson}/${params.TeacherIndex}/${params.teacher}/${props.index}`}  >
+                    <Link to={`/content/chapter/${course_id}/${params.index}/${params.lesson}/${params.TeacherIndex}/${params.teacher}/${params.chapterIndex}/${params.chapter}/${props.index}`}  >
 
                         <Button onClick={handelEdit} className="btn btn-warning">ویرایش</Button>
                     </Link>
@@ -177,4 +178,4 @@ const ChapterCardMain = (props) => {
 
     );
 };
-export default ChapterCardMain;
+export default ItemCardMain;

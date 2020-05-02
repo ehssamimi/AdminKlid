@@ -102,8 +102,6 @@ const LessonDetails = (props) => {
                     </div> :
                     <div className="w-100"  >
                         <HeaderContentNavigation list={[{"name":"دوره ها", "address":"/content"},{"name":` دوره : ${course["name"]}`, "address":`/content/course/${params.id}`},{"name":` درس : ${params.lesson}`, "address":`/content/lesson/${params.id}/${params.index}/${params.lesson}`}]}/>
-
-
                         <AddTeacher2  {...props} id={params.id} Lesson_index={params.index} Lesson_name={params.lesson}  index={params.TeacherIndex} updateContent={getData}/>
                         <div dir="ltr" className="mt-5">
 

@@ -1,0 +1,212 @@
+import React, {useState, useEffect} from 'react';
+import {Card} from "reactstrap";
+import {RowShowShowColEdit} from "../../../Common/RowShowShowColEdit/ShowInRowComponents";
+import {convertBaseData} from "../../../functions/componentHelpFunction";
+import ax from "../../../Common/img/logo512.png";
+import {NavLink} from "react-router-dom";
+import {FaRegPlayCircle} from "react-icons/fa";
+import {FiDownload} from "react-icons/fi";
+import {loadCourse} from "../../../functions/ServerConnection";
+import {NotificationManager} from "react-notifications";
+import Loader from "../../../Common/Loader/Loader";
+import HeaderContentNavigation from "../../HeaderContentNavigation/HeaderContentNavigation";
+
+const ItemDetails = (props) => {
+    const {match: {params}} =  props;
+     const [course,setCourses]=useState( );
+    const [id,setid]=useState( params.id);
+    const [isLoader, setIsLoader] = useState(true);
+    const [isOpenModal, setIsOpenModal] = useState(false);
+    const[videos,setVideos]=useState({type:"",video:[]});
+    useEffect(() => {
+        // Update the document title using the browser API
+        getData()
+
+    }, [ ] );
+    async function  getData(){
+
+
+        const{state,Description }= await loadCourse(id);
+        // convertBaseData(Description.create_at) ;
+        // let{data , page , off }=Description;
+
+        if (state===200 ) {
+
+            console.log(Description);
+            setCourses(Description);
+
+            // setCourses(Description.lessons[params.index].teachers[params.TeacherIndex].chapters[params.chapterIndex].items[params.itemIndex])
+            // console.log(Description.lessons[params.index].teachers[params.TeacherIndex].chapters[params.chapterIndex].items[params.itemIndex])
+
+
+            // let{Top,Teachers,Lesson}=seprateEachCourseData(Description);
+            //
+            // setData({...Data, Top,Teachers,Lesson})
+
+        } else {
+            NotificationManager.error(state, Description);
+        }
+        setTimeout(function(){setIsLoader(false);}, 1500);
+    };
+    const toggle = (type,value) => {
+
+        setIsOpenModal(!isOpenModal);
+        if (type==="main"){
+            setVideos({type,video:value});
+        } else {
+            setVideos({type,video:value});
+        }
+    };
+    const deleteToggle=()=>{
+        console.log("delete")
+    };
+    console.log("course")
+    console.log(course)
+
+
+    // audio: "https://resourcealef.liara.run/admin/course/stream/item_audio/5e96169a01d73623037c281d/2LHbjNin2LbbjA==/2KjYrti02YbYr9mH/2KfZhtiq2q-Ysdin2YQ=/2YXZgdin2YfbjNmFINiv2YjZhduM2Yc=/audio.mp3"
+    // create_at: "2020-04-14T21:38:08.463000"
+    // description: "string"
+    // downloadable_content: "https://resourcealef.liara.run/admin/course/stream/item_downloadable_content/5e96169a01d73623037c281d/2LHbjNin2LbbjA==/2KjYrti02YbYr9mH/2KfZhtiq2q-Ysdin2YQ=/2YXZgdin2YfbjNmFINiv2YjZhduM2Yc=/pdf.pdf"
+    // is_free: false
+    // is_locked: true
+    // name: "مفاهیم دومیه"
+    // time_to_done: 3
+    // video: "https://resourcealef.liara.run/admin/course/stream/item_video/5e96169a01d73623037c281d/2LHbjNin2LbbjA==/2KjYrti02YbYr9mH/2KfZhtiq2q-Ysdin2YQ=/2YXZgdin2YfbjNmFINiv2YjZhduM2Yc=/index.m3u8"
+    // video_cover: "image.png"
+
+    return (
+        <div>
+            {
+                isLoader ? <div className='d-flex justify-content-center align-items-center'>
+                        <div className='col-6'>
+                            <Loader/>
+                        </div>
+                    </div> :
+
+                    <div className="w-100" dir="ltr">
+                        <HeaderContentNavigation list={[{"name": "دوره ها", "address": "/content"}, {
+                            "name": ` دوره : ${course["name"]}`,
+                            "address": `/content/course/${params.id}`
+                        }, {
+                            "name": ` درس : ${params.lesson}`,
+                            "address": `/content/lesson/${params.id}/${params.index}/${params.lesson}`
+                        }, {
+                            "name": ` استاد : ${params.teacher}`,
+                            "address": `/content/teacher/${params.id}/${params.index}/${params.lesson}/${params.TeacherIndex}/${params.teacher}`
+                        }, {
+                            "name": ` فصل : ${params.chapter}`,
+                            "address": `/content/chapter/${params.id}/${params.index}/${params.lesson}/${params.TeacherIndex}/${params.teacher}/${params.chapterIndex}/${params.chapter}/`
+                        }]}/>
+
+                        <Card className='w-100 flex-row  m-0  br-product ' style={{height: "auto", minHeight: "40vh"}}>
+                            {/********** product off and percentage*********/}
+
+
+                            <div className='col-8 d-flex flex-column align-items-center justify-content-center'>
+                                {/*<p className="fs-13vw color-gray">{course['name']}</p>*/}
+                                <div className='d-flex  w-100 flex-wrap justify-content-center' dir='rtl'>
+                                    <RowShowShowColEdit label={"اسم"} value={course["name"]}
+                                                        className='p-0 d-flex justify-content-center col-6'/>
+                                    {/*<RowShowShowColEdit label={"رشته"} value={course["is_free"]? "هست":"نیست"}*/}
+                                                        {/*className='p-0 d-flex justify-content-center col-6'/>*/}
+                                    {/*<RowShowShowColEdit label={"فغال"} value={!course["is_locked"] ? "فعال" : "غیر فعال"}*/}
+                                                        {/*className='p-0 d-flex justify-content-center col-6'/>*/}
+                                    {/*<RowShowShowColEdit label={"تولید"} value={convertBaseData(course.create_at)}*/}
+                                                        {/*className='p-0 d-flex justify-content-center col-6'/>*/}
+                                    <div className=" mt-3 mr-3 green-them cursor-pointer" onClick={() => {
+                                        toggle('demo', [course.video_cover, course.video])
+                                    }}>
+                                        <span className=' '><FaRegPlayCircle/></span>
+                                        <span className='  mr-2'> مشاهده پیش نمایش  </span>
+                                    </div>
+                                    {/*<div className="mr-3 mt-3 green-them">*/}
+                                        {/*<span className=' '><FiDownload/></span>*/}
+                                        {/*<span className=' mr-2'>*/}
+                                        {/*<a href={course.downloadable_content} target="_blank" download*/}
+                                           {/*className="second-color ml-1 ">دانلود جزوه</a>*/}
+                                        {/*</span>*/}
+                                    {/*</div>*/}
+
+
+
+                                </div>
+                                {/*<div className="mt-3 green-them">*/}
+
+                                    {/*<span className=' mr-2'>*/}
+                                            {/*<audio src={course.audio} controls={true} autoPlay={false}  />*/}
+                                        {/*/!*<span className='  mr-2'> صدای فصل   </span>*!/*/}
+                                        {/*/!*<a href={course.downloadable_content} target="_blank" download*!/*/}
+                                        {/*/!*className="second-color ml-1 ">دانلود جزوه</a>*!/*/}
+                                        {/*</span>*/}
+                                {/*</div>*/}
+
+                                <div className=' w-100  '>
+                                    <div className="  row  text-right  " dir='rtl'>
+                                        <span className='  mr-2'>توضیحات:  </span>
+                                        <p>{course['description']}</p>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <div className='col-4 p-0 position-relative'>
+                                {/**********background top-right********/}
+                                <div className="quarter-circle-top-right">
+
+                                </div>
+                                <div className="w-100 d-flex product-div-img-detail h-100 ">
+                                    <div className='col-9 h-100 d-flex align-items-center justify-content-end'>
+                                        {/***********image Product*******/}
+                                        <img src={course['image'] || ax} alt="ax" className="w-75 h-75"/>
+                                    </div>
+                                    <div className='col-3 '>
+                                        <div
+                                            className=' w-100 h-100   d-flex  flex-column mt-3 justify-content-start   '>
+                                            {/***************Buttons********/}
+                                            <div className='col-3 d-flex flex-column justify-content-around '>
+                                                {/***************Delete Button********/}
+                                                <div
+                                                    className="w-100 d-flex btn btn-primary justify-content-center align-items-center">
+                                                    <button
+                                                        className=' w-100 d-flex justify-content-center   cursor-pointer b-0     btn-primary'
+                                                        onClick={deleteToggle}><span
+                                                        className='glyph-icon iconsminds-folder-close'></span>
+                                                    </button>
+                                                </div>
+                                                {/***************edit Button********/}
+                                                <NavLink to={`/content/product/add/${id}`}
+                                                         className="w-100 d-flex btn btn-secondary justify-content-center align-items-center">
+                                                    <button
+                                                        className=' w-100 d-flex justify-content-center   cursor-pointer b-0    btn-secondary'>
+                                                        <span className='glyph-icon iconsminds-folder-edit'></span>
+                                                    </button>
+                                                </NavLink>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </Card>
+                    </div>
+
+            }
+        </div>
+    );
+};
+
+export default ItemDetails;
+
+
+
+
+
+
+
+
+
+
+
+
+

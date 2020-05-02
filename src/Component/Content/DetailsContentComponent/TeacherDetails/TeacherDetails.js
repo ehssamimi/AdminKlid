@@ -158,7 +158,7 @@ const TeacherDetails = (props) => {
                         <AddChapter {...props} id={params.id} Lesson_index={params.index} Lesson_name={params.lesson}  Teacher={params.teacher} TeacherIndex={params.TeacherIndex} index={params.chapterIndex} updateContent={getData}/>
 
                         {/*<AddTeacher2  {...props} id={params.id} Lesson_index={params.index} Lesson_name={params.lesson}  index={params.TeacherIndex} updateContent={getData}/>*/}
-                        <div dir="ltr" className="mt-5">
+                        <div dir="rtl" className="mt-5">
 
                             <div className="row mt-5">
                                  {course.lessons[params.index].teachers[params.TeacherIndex].chapters.map((item, index) =>

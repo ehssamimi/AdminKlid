@@ -15,6 +15,12 @@ const CourseDetail = React.lazy(() =>
 const LessonDetails = React.lazy(() =>
   import(/* webpackChunkName: "viwes-gogo" */ '../../Component/Content/DetailsContentComponent/LessonDetails/LessonDetails')
 );
+const ChapterDetails = React.lazy(() =>
+  import(/* webpackChunkName: "viwes-gogo" */ '../../Component/Content/DetailsContentComponent/ChapterDetails/ChapterDetails')
+);
+const ItemDetails = React.lazy(() =>
+  import(/* webpackChunkName: "viwes-gogo" */ '../../Component/Content/DetailsContentComponent/ItemDetails/ItemDetails')
+);
 
 
 class App extends Component {
@@ -42,6 +48,14 @@ class App extends Component {
                 <Route
                 path={`${match.url}/teacher/:id/:index/:lesson/:TeacherIndex/:teacher/:chapterIndex?`}
                 render={props => <TeacherDetails {...props} />}
+              />
+                <Route
+                path={`${match.url}/chapter/:id/:index/:lesson/:TeacherIndex/:teacher/:chapterIndex/:chapter/:itemIndex?`}
+                render={props => <ChapterDetails {...props} />}
+              />
+                <Route
+                path={`${match.url}/detail-item/:id/:index/:lesson/:TeacherIndex/:teacher/:chapterIndex/:chapter/:itemIndex`}
+                render={props => <ItemDetails {...props} />}
               />
               <Redirect to="/error" />
             </Switch>

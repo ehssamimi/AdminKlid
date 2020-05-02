@@ -1,7 +1,11 @@
 import {FormGroup, Label} from "reactstrap";
 import {Field, Form, Formik} from "formik";
 import React from "react";
-import {FormikReactSelect} from "../../../containers/form-validations/FormikFields";
+import {
+    FormikCustomCheckboxGroup,
+    FormikCustomRadioGroup,
+    FormikReactSelect
+} from "../../../containers/form-validations/FormikFields";
 
 export  function FormInput(props) {
     let{label,name,placeHolder,setFieldTouched,errors,touched,type,component,row,DivClass}=props;
@@ -48,3 +52,31 @@ export function FormSelect(props) {
    </FormGroup>
    </div>
 }
+export function FormCheckBox(props) {
+
+    let{label,name,setFieldValue,setFieldTouched,errors,touched,option,values,DivClass}=props;
+
+   return<div className={DivClass}>
+       <FormGroup className="error-l-175">
+           <Label className="d-block">{label}</Label>
+           <FormikCustomRadioGroup
+               inline
+               name={name}
+               id={name}
+               label={label}
+               value={values[`${name}`]}
+               onChange={setFieldValue}
+               onBlur={setFieldTouched}
+               options={option}
+           />
+           {errors[`${name}`]  && touched[`${name}`] ? (
+               <div className="invalid-feedback d-block">
+                   {errors[`${name}`]}
+               </div>
+           ) : null}
+       </FormGroup>
+
+   </div>
+}
+
+
