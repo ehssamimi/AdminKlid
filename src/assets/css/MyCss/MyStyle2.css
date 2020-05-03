@@ -184,6 +184,9 @@
 .fs13vw{
     font-size: 1.3vw;
 }
+.fs16calc{
+    font-size: Calc(0.5rem + 0.5vw);
+}
 .fw200{
     font-weight: 200;
 }

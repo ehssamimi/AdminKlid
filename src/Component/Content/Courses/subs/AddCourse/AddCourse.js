@@ -24,6 +24,7 @@ import ImgComponent from "../../../../Common/ImgComponents/ImgComponent";
 import AddPDf from "../../../../Common/AddPdf/AddPDf";
 import {NotificationManager} from "react-notifications";
 import validator from "validator";
+import AddVideoConvert from "../../../../Common/AddVideoConver/AddVideoConvert";
 const SignupSchema = Yup.object().shape({
 
     Name: Yup.string()
@@ -40,6 +41,7 @@ const SignupSchema = Yup.object().shape({
 
 
 class AddCourse extends Component {
+
     constructor(props) {
         super(props);
 
@@ -91,7 +93,7 @@ class AddCourse extends Component {
 
     }
 
-    updateValues = async (id) => {
+     updateValues = async (id) => {
         this.setState({
             isLoader:true,
             id,collapse:true
@@ -121,7 +123,7 @@ class AddCourse extends Component {
     }
 
 
-    toggle = () => {
+     toggle = () => {
         this.setState((prevState) => ({
             collapse: !prevState.collapse
         }))
@@ -160,7 +162,7 @@ class AddCourse extends Component {
     };
 
 
-       handleSubmit = async (values, { setSubmitting }) => {
+      handleSubmit = async (values, { setSubmitting }) => {
 
             this.validateForm(async (validate)=> {
                 if (validate) {
@@ -413,6 +415,8 @@ class AddCourse extends Component {
                                                                    name='Description' placeHolder='توضیحات را وارد کنید'
                                                                    DivClass="col-sm-12 " setFieldTouched={setFieldTouched}
                                                                    errors={errors} touched={touched}/>
+
+
 
                                                     </div>
                                                 </div>

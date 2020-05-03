@@ -10,6 +10,7 @@ import {loadCourse} from "../../../functions/ServerConnection";
 import {NotificationManager} from "react-notifications";
 import Loader from "../../../Common/Loader/Loader";
 import HeaderContentNavigation from "../../HeaderContentNavigation/HeaderContentNavigation";
+import PreviewVideoComponent from "../../../Common/PreviewVideoComponent/PreviewVideoComponent";
 
 const ItemDetails = (props) => {
     const {match: {params}} =  props;
@@ -31,17 +32,10 @@ const ItemDetails = (props) => {
         // let{data , page , off }=Description;
 
         if (state===200 ) {
+            let EditCourse= Description.lessons[params.index].teachers[params.TeacherIndex].chapters[params.chapterIndex].items[params.itemIndex];
 
-            console.log(Description);
-            setCourses(Description);
+            setCourses(EditCourse);
 
-            // setCourses(Description.lessons[params.index].teachers[params.TeacherIndex].chapters[params.chapterIndex].items[params.itemIndex])
-            // console.log(Description.lessons[params.index].teachers[params.TeacherIndex].chapters[params.chapterIndex].items[params.itemIndex])
-
-
-            // let{Top,Teachers,Lesson}=seprateEachCourseData(Description);
-            //
-            // setData({...Data, Top,Teachers,Lesson})
 
         } else {
             NotificationManager.error(state, Description);
@@ -103,51 +97,55 @@ const ItemDetails = (props) => {
                             {/********** product off and percentage*********/}
 
 
-                            <div className='col-8 d-flex flex-column align-items-center justify-content-center'>
+                            <div className='col-8 d-flex flex-column align-items-center justify-content-center fs16calc'>
                                 {/*<p className="fs-13vw color-gray">{course['name']}</p>*/}
-                                <div className='d-flex  w-100 flex-wrap justify-content-center' dir='rtl'>
+                                <div className='d-flex  w-100 flex-wrap  ' dir='rtl'>
                                     <RowShowShowColEdit label={"اسم"} value={course["name"]}
-                                                        className='p-0 d-flex justify-content-center col-6'/>
-                                    {/*<RowShowShowColEdit label={"رشته"} value={course["is_free"]? "هست":"نیست"}*/}
-                                                        {/*className='p-0 d-flex justify-content-center col-6'/>*/}
+                                                        className='p-0 d-flex justify-content-start col-6'/>
+                                    <RowShowShowColEdit label={"رشته"} value={course["is_free"]? "هست":"نیست"}
+                                                        className='p-0 d-flex justify-content-start col-6'/>
                                     {/*<RowShowShowColEdit label={"فغال"} value={!course["is_locked"] ? "فعال" : "غیر فعال"}*/}
                                                         {/*className='p-0 d-flex justify-content-center col-6'/>*/}
-                                    {/*<RowShowShowColEdit label={"تولید"} value={convertBaseData(course.create_at)}*/}
-                                                        {/*className='p-0 d-flex justify-content-center col-6'/>*/}
-                                    <div className=" mt-3 mr-3 green-them cursor-pointer" onClick={() => {
-                                        toggle('demo', [course.video_cover, course.video])
-                                    }}>
-                                        <span className=' '><FaRegPlayCircle/></span>
-                                        <span className='  mr-2'> مشاهده پیش نمایش  </span>
-                                    </div>
-                                    {/*<div className="mr-3 mt-3 green-them">*/}
-                                        {/*<span className=' '><FiDownload/></span>*/}
-                                        {/*<span className=' mr-2'>*/}
-                                        {/*<a href={course.downloadable_content} target="_blank" download*/}
-                                           {/*className="second-color ml-1 ">دانلود جزوه</a>*/}
-                                        {/*</span>*/}
-                                    {/*</div>*/}
+                                    <RowShowShowColEdit label={"زمان تقریبی اتمام"} value={course["time_to_done"]}
+                                                        className='p-0 d-flex justify-content-start col-6'/>
+                                    <RowShowShowColEdit label={"تولید"} value={convertBaseData(course.create_at)}
+                                                        className='p-0 d-flex justify-content-start col-6'/>
+                                    <div className="d-flex  justify-content-start w-100">
+                                        <div className="col-6 p-0">
+                                            <PreviewVideoComponent video={ [course["video_cover"],course["video"]]}/>
+                                        </div>
 
-
-
-                                </div>
-                                {/*<div className="mt-3 green-them">*/}
-
-                                    {/*<span className=' mr-2'>*/}
-                                            {/*<audio src={course.audio} controls={true} autoPlay={false}  />*/}
-                                        {/*/!*<span className='  mr-2'> صدای فصل   </span>*!/*/}
-                                        {/*/!*<a href={course.downloadable_content} target="_blank" download*!/*/}
-                                        {/*/!*className="second-color ml-1 ">دانلود جزوه</a>*!/*/}
-                                        {/*</span>*/}
-                                {/*</div>*/}
-
-                                <div className=' w-100  '>
-                                    <div className="  row  text-right  " dir='rtl'>
-                                        <span className='  mr-2'>توضیحات:  </span>
-                                        <p>{course['description']}</p>
+                                        <div className="mr-3 mt-3 green-them">
+                                            <span className=' '><FiDownload/></span>
+                                            <span className=' mr-2'>
+                                        <a href={course.downloadable_content} target="_blank" download
+                                           className="second-color ml-1 ">دانلود جزوه</a>
+                                        </span>
+                                        </div>
                                     </div>
 
+
+
+
+
+
+                                    <div className="mt-3 green-them w-100 d-flex justify-content-start ">
+
+                                    <span className=' mr-2'>
+                                    <audio src={course.audio} controls={true} autoPlay={false}/>
+                                    </span>
+                                    </div>
+
+
+
+
+                                    <RowShowShowColEdit label={"توضیحات"} value={course["description"]}
+                                                        className='p-0 d-flex justify-content-start col-12'/>
+
                                 </div>
+
+
+
                             </div>
 
                             <div className='col-4 p-0 position-relative'>
@@ -158,7 +156,7 @@ const ItemDetails = (props) => {
                                 <div className="w-100 d-flex product-div-img-detail h-100 ">
                                     <div className='col-9 h-100 d-flex align-items-center justify-content-end'>
                                         {/***********image Product*******/}
-                                        <img src={course['image'] || ax} alt="ax" className="w-75 h-75"/>
+                                        <img src={course["video_cover"] || ax} alt="ax" className="w-75 h-75"/>
                                     </div>
                                     <div className='col-3 '>
                                         <div

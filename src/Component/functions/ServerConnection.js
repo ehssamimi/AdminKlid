@@ -2277,7 +2277,102 @@ export async  function  UpdateItemDetail(Data){
     });
     return resp;
 }
+                        // *******convert Vedio****
+export async  function  SuggestName(Name){
 
+    let headers = {
+        'Token': Const.Token,
+        'Content-Type': 'application/json',
+        'accept': 'application/json',
+        'Access-Control-Allow-Origin':'*'
+    };
+
+
+    var resp ="";
+    await axios.post(`${Const.jobsalef}raw_file?name=a`, null , {headers: headers}).then(function (response) {
+        // console.log(response );
+
+        // let {Items} = response.data;
+        resp={state:200,Description:response.data};
+
+    }).catch(function (error) {
+        console.log(error.response);
+        console.log(error);
+        let {response}=error;
+        if (response===undefined){
+            resp={state: 400,Description: error.message}
+        }else if (response.status===422){
+            resp={state:422,Description:response.statusText}
+        } else{
+            resp={state:response.status||400,Description:response.data.detail||error.message}
+        }
+    });
+    return resp;
+}
+export async  function  ConvertURl(action,Data,filename){
+
+    let headers = {
+        'Token': Const.Token,
+        'Content-Type': 'application/json',
+        'accept': 'application/json',
+        'Access-Control-Allow-Origin':'*'
+    };
+    console.log(Data);
+
+
+    var resp ="";
+    await axios.post(`${Const.jobsalef}${action}/convert/${filename}`, Data, {headers: headers}).then(function (response) {
+        console.log(response );
+
+        // let {Items} = response.data;
+        resp={state:200,Description:response.data};
+
+    }).catch(function (error) {
+        console.log(error.response);
+        console.log(error);
+        let {response}=error;
+        if (response===undefined){
+            resp={state: 400,Description: error.message}
+        }else if (response.status===422){
+            resp={state:422,Description:response.statusText}
+        } else{
+            resp={state:response.status||400,Description:response.data.detail||error.message}
+        }
+    });
+    return resp;
+}
+export async  function  GetProgressive(action,Data){
+
+    let headers = {
+        'Token': Const.Token,
+        'Content-Type': 'application/json',
+        'accept': 'application/json',
+        'Access-Control-Allow-Origin':'*'
+    };
+
+
+
+    var resp ="";
+    await axios.post(`${Const.jobsalef}${action}/progress/info`, Data, {headers: headers}).then(function (response) {
+        console.log(response );
+
+        // let {Items} = response.data;
+        resp={state:200,Description:response.data};
+
+    }).catch(function (error) {
+        console.log(error.response);
+        console.log(error);
+        let {response}=error;
+        if (response===undefined){
+            resp={state: 400,Description: error.message}
+        }else if (response.status===422){
+            resp={state:422,Description:response.statusText}
+        } else{
+            resp={state:response.status||400,Description:response.data.detail||error.message}
+        }
+    });
+    return resp;
+}
 
 
 

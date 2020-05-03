@@ -22,6 +22,7 @@ import ax from './../../../Common/img/deault.svg'
 import ImgComponent from "../../../Common/ImgComponents/ImgComponent";
 import AddPDf from "../../../Common/AddPdf/AddPDf";
 import Loader from "../../../Common/Loader/Loader";
+import AddVideoConvert from "../../../Common/AddVideoConver/AddVideoConvert";
 const SignupSchema = Yup.object().shape({
 
     name: Yup.string()
@@ -411,6 +412,12 @@ class AddTeacher2 extends Component {
                                                                    {/*placeHolder='مازاد درصد فصل را وارد کنید '*/}
                                                                    {/*DivClass="col-sm-12  " setFieldTouched={setFieldTouched}*/}
                                                                    {/*errors={errors} touched={touched}/>*/}
+
+                                                        {
+                                                            this.state.EditCourse!==undefined?
+                                                                <AddVideoConvert ListData={{"course_id":this.props.id,"lesson_name":this.props.Lesson_name,"teacher_name": this.state.DefaultValue["name"]}} action={"teacher_video"} />
+                                                                : ""
+                                                        }
 
                                                     </div>
                                                 </div>

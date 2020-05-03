@@ -92,6 +92,14 @@ export const LabelValueOption=(sub)=>{
         });
         return SubCat;
 }
+export const AutoSuggestNameVAlue=(sub)=>{
+        let SubCat=[];
+        sub.map((each,index)=>{
+            let subRow= { name: each , value: each  };
+            SubCat.push(subRow);
+        });
+        return SubCat;
+}
 // *************Remove item**********
 export const RemoveItem=(id)=>{
     const $el = document.getElementById(id);

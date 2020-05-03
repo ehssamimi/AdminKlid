@@ -22,6 +22,7 @@ import * as Yup from "yup";
 import ImgComponent from "../../../Common/ImgComponents/ImgComponent";
 import AddPDf from "../../../Common/AddPdf/AddPDf";
 import Loader from "../../../Common/Loader/Loader";
+ import AddVideoConvert from "../../../Common/AddVideoConver/AddVideoConvert";
 const SignupSchema = Yup.object().shape({
 
     name: Yup.string()
@@ -420,6 +421,9 @@ class AddLesson extends Component {
                                                                    placeHolder='مازاد درصد فصل را وارد کنید '
                                                                    DivClass="col-sm-12  " setFieldTouched={setFieldTouched}
                                                                    errors={errors} touched={touched}/>
+
+
+
 
                                                     </div>
                                                 </div>

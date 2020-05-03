@@ -24,6 +24,8 @@ import Loader from "../../../Common/Loader/Loader";
 import {FormikCustomRadioGroup} from "../../../../containers/form-validations/FormikFields";
 import AddVoice from "../../../Common/AddVoice/AddVoice";
 import AddPreviewPdf from "../../../Common/AddPdf/AddPreviewPdf";
+import AddVideoConvert from "../../../Common/AddVideoConver/AddVideoConvert";
+import PreviewVideoComponent from "../../../Common/PreviewVideoComponent/PreviewVideoComponent";
 const SignupSchema = Yup.object().shape({
 
     name: Yup.string().required("نام اجباری است!"),
@@ -46,7 +48,7 @@ class AddItem extends Component {
 
         this.state={
             collapse:false,
-            isLoader:false,
+            isLoader:false,videoURl:['a','b'],
             initialValue:{name:'', time_to_done:'' ,isFree: "",Description:""},DefaultValue:{name:'', time_to_done:'',isFree: "",Description:""},
             Img:{"img_data":{"main":undefined},"img_file":{"main":undefined }},
             id:props.id,EditCourse:undefined,content:{"file":undefined,"upload":undefined} ,voice:{"file":undefined,"upload":undefined},
@@ -120,7 +122,8 @@ class AddItem extends Component {
 
 
 
-
+        // video: "https://resourcealef.liara.run/admin/course/stream/item_video/5ea5777ec055423e3719c894/ZWhzYW4=/bWFtYWQ=/emlzdA==/d2VzdA==/index.m3u8"
+        // video_cover: "https://stream.kelidiha.com/public/item/5ea5777ec055423e3719c894/ZWhzYW4=/bWFtYWQ=/emlzdA==/d2VzdA==/video_cover/image.png"
 
         // Object
         // audio: "https://resourcealef.liara.run/admin/course/stream/item_audio/5e9318063414ab42e3239506/2LHbjNin2LbbjA==/2KjYrti02YbYr9mH/2KfYrdiz2KfZhiDYtdmF24zZhduMINix2KfYrw==/2q-ZiNqG24w=/dad.pdf"
@@ -147,7 +150,7 @@ class AddItem extends Component {
 
 
         this.setState({
-            initialValue:Data,DefaultValue:Data,isLoader:false,Img,voice,content
+            initialValue:Data,DefaultValue:Data,isLoader:false,Img,voice,content,videoURl:[EditCourse.video_cover,EditCourse.video]
         });
 
         return true;
@@ -518,10 +521,17 @@ class AddItem extends Component {
                                                     <div className="col-md-4 col-sm-12">
                                                         <ImgComponent GetData={this.HandelAddImg}   label={"اضافه کردن عکس اصلی"} img={Img["img_data"]["main"]} Type="main"  errors={FileError}/>
                                                     </div>
-                                                    <div className="col-md-4 col-sm-12">
+                                                    <div className="col-md-4 col-sm-12 d-flex flex-column">
                                                         <AddVoice GetData={this.HandelAddImg}
                                                                   label={"اضافه کردن وویس اصلی"} img={voice["upload"]}
                                                                   Type="voice" errors={FileError}/>
+                                                        {
+                                                            this.state.EditCourse!==undefined?
+                                                                <PreviewVideoComponent video={ this.state.videoURl}/>:""
+                                                        }
+
+
+
                                                     </div>
                                                     <div className="col-md-4 col-sm-12">
                                                         {/*<AddPreviewPdf/>*/}
@@ -559,6 +569,11 @@ class AddItem extends Component {
                                                                    setFieldTouched={setFieldTouched} setFieldValue={setFieldValue}
                                                                    errors={errors} touched={touched}/>
 
+                                                        {
+                                                            this.state.EditCourse!==undefined?
+                                                                <AddVideoConvert ListData={{"course_id":this.props.id,"lesson_name":this.props.Lesson_name,"teacher_name":this.props.Teacher ,"chapter_name": this.props.chapter,"item_name": this.state.DefaultValue["name"]}} action={"item_video"} />
+                                                                : ""
+                                                        }
 
                                                         {/*<FormInput label='مازاد درصد دوره' type='number' name='additional_percentage_course'*/}
                                                         {/*placeHolder='مازاد درصد دوره زا وارد کنید'*/}
