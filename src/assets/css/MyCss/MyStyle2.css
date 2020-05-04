@@ -374,6 +374,9 @@ select option:hover {
     white-space:nowrap;
     height:auto;
 }
+.opacity-0{
+    opacity: 0!important;
+}
 
 
 /*.col-container {*/

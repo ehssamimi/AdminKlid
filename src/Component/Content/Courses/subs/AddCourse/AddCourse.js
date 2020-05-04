@@ -25,6 +25,7 @@ import AddPDf from "../../../../Common/AddPdf/AddPDf";
 import {NotificationManager} from "react-notifications";
 import validator from "validator";
 import AddVideoConvert from "../../../../Common/AddVideoConver/AddVideoConvert";
+import AddPreviewPdf from "../../../../Common/AddPdf/AddPreviewPdf";
 const SignupSchema = Yup.object().shape({
 
     Name: Yup.string()
@@ -51,7 +52,7 @@ class AddCourse extends Component {
             isLoader:true,
             initialValue:{Name:'', Description:"" , grade: '', field: ''},DefaultValue:{Name:'', Description:"" , grade: '', field: ''},pdf:"",
             Img:{"img_data":{"main":undefined,"cover":undefined},"img_file":{"main":undefined,"cover":undefined}},
-            id:"",
+            id:undefined,model:false, func1:this.updateValues.bind(this),
             FileError:{"main":"","cover":"","pdf":""}
         }
     }
@@ -60,46 +61,63 @@ class AddCourse extends Component {
               this.setState({
                   isLoader:true
               })
-            const{state,Description }= await GetUserDropDown();
-            if (state===200 ) {
-                this.setState({
-                    Option:Description
-                })
 
-            } else {
-                error_Notification(state, Description)
-                // NotificationManager.error(state, Description);
-            }
+          await this.getOptions()
               this.setState({
                   isLoader:false
               })
-            // setIsLoader(false);
 
     }
 
-   async  componentDidUpdate(props){
-       console.log("props.id");
-       console.log(props.id);
-       if ( props.id !== this.state.id ) {
-           this.updateValues(props.id);
-       }
+   // async  componentDidUpdate(props){
+   //     console.log("props.id");
+   //     console.log(props.id);
+   //     if ( props.id !== this.state.id ) {
+   //         this.updateValues(props.id);
+   //     }
+   //
+   //  }
 
-        // let{id}=this.props;
-        // if (id.length>0){
-        //     if (this.state.id===""){
-        //        this.updateValues(id);
-        //     }
-        // }
+    static getDerivedStateFromProps(props, state) {
 
+
+        if (props.id !== state.id) {
+            console.log("ffffffffffffffffffffffffff");
+            console.log("props.index");
+            console.log(props.id);
+            return {
+              model:state.func1(props.id)
+            };
+        }
+        // Return null if the state hasn't changed
+        return null;
     }
+
+    getOptions = async () => {
+        const{state,Description }= await GetUserDropDown();
+        if (state===200 ) {
+            this.setState({
+                Option:Description
+            })
+
+        } else {
+            error_Notification(state, Description)
+            // NotificationManager.error(state, Description);
+        }
+    }
+
 
      updateValues = async (id) => {
-        this.setState({
-            isLoader:true,
-            id,collapse:true
-        });
-        const{state,Description }= await loadCourse(id);
+        console.log("log")
 
+        this.setState({
+            isLoader:true,id,
+            collapse:true
+        });
+
+
+        const{state,Description }= await loadCourse(id);
+        //
         if (state===200 ) {
             let initialValue= {
                 Name: Description.name,
@@ -113,6 +131,8 @@ class AddCourse extends Component {
                 initialValue,
                 DefaultValue:initialValue
             }));
+            await this.getOptions();
+
 
         } else {
             error_Notification(state, Description)
@@ -180,7 +200,7 @@ class AddCourse extends Component {
                     });
 
 
-                    if (this.state.id===""){
+                    if (this.state.id===undefined){
                         let Data = {
                             "name": payload.Name,
                             "grade": payload.grade.value,
@@ -195,16 +215,22 @@ class AddCourse extends Component {
                                 let {state:state3, Description:Description3}= await AddFileToCourse(this.state.Img.img_file['cover'],course_id,'course_demo_cover');
                                 console.log(Description3);
                                 if (state3===200) {
-                                    let {state:state4, Description:Description4}= await AddFileToCourse(this.state.pdf,course_id,'schedule_pdf');
-                                    console.log(Description4);
-                                    if (state4===200) {
+                                    if (this.state.pdf!=="") {
+                                        let {state:state4, Description:Description4}= await AddFileToCourse(this.state.pdf,course_id,'schedule_pdf');
+                                        if (state4!==200){
+                                            error_Notification(state4, Description4);
+                                        }
+                                        console.log(Description4);
+                                    }
+
+                                    if (state3===200) {
                                         this.props.UpdateCoursList()
                                         success_Notification( "اطلاعات شما با موفقیت ثبت شد");
                                         this.setState({
                                             isLoader:false
                                         });
                                     }else{
-                                        error_Notification(state4, Description4);
+
                                         this.setState({
                                             isLoader:false
                                         });
@@ -321,6 +347,8 @@ class AddCourse extends Component {
 
     render() {
           let{collapse,Option,isLoader,initialValue,Img,id,FileError}=this.state;
+          console.log("initialValue")
+          console.log(initialValue)
 
 
 
@@ -379,8 +407,19 @@ class AddCourse extends Component {
 
                                                         <ImgComponent GetData={this.HandelAddImg}   label={"اضافه کردن عکس اصلی"} img={Img["img_data"]["main"]} Type="main"  errors={FileError}/>
                                                     </div>
-                                                    <div className="col-md-4 col-sm-12">
+                                                    <div className="col-md-4 col-sm-12 d-flex flex-column">
+                                                        {/*<AddPreviewPdf GetData={this.HandelAddImg}*/}
+                                                                       {/*label={"اضافه کردن فایل "} img={content["upload"]}*/}
+                                                                       {/*Type="content" errors={FileError}/>*/}
+
+
                                                         <AddPDf GetData={this.HandelAddImg}   label={"اضافه کردن pdf"} Type="pdf" errors={FileError}/>
+                                                        {
+                                                            this.state.id!==undefined?
+                                                                <AddVideoConvert ListData={{"course_id":this.props.id}} action={"course_demo_video"} />
+                                                                : ""
+                                                        }
+
                                                     </div>
                                                     <div className="col-md-4 col-sm-12">
                                                         <ImgComponent GetData={this.HandelAddImg}  label={"اضافه کردن عکس کاور"} img={Img["img_data"]["cover"]} Type="cover" errors={FileError} />
@@ -440,196 +479,3 @@ class AddCourse extends Component {
 }
 
 export default AddCourse;
-
-
-
-
-// const AddCourse = (props) => {
-//     const [collapse, setCollapse] = useState(false);
-//     const [Option, setOption] = useState({});
-//     const [isLoader, setIsLoader] = useState(true);
-//     const [initialValue, setinitialValue] = useState([]);
-//     const [Img, setImg] = useState([]);
-//
-//     useEffect(( ) => {
-//          console.log("props.id");
-//          console.log(props.id);
-//         if (props.id.length>1){
-//             console.log("thi sis id lenght")
-//         }
-//
-//         async function  getData(){
-//             const{state,Description }= await GetUserDropDown();
-//             const initialValue={
-//                 Name:'',
-//                 Description:"" ,
-//                 // grade:LabelValueOption(Description.grade_type)[0],
-//                 // field: LabelValueOption(Description.field_type)[0]
-//                 grade: '',
-//                 field: ''
-//             };
-//             setinitialValue(initialValue);
-//
-//
-//             if (state===200 ) {
-//
-//                 setOption(Description)
-//
-//             } else {
-//                 error_Notification(state, Description)
-//                 // NotificationManager.error(state, Description);
-//             }
-//             setIsLoader(false);
-//         }
-//         getData()
-//
-//     }, [ ] );
-//     // const onEntering = () => setStatus('Opening...');const onEntered = () => setStatus('Opened');const onExiting = () => setStatus('Closing...');const onExited = () => setStatus('Closed');
-//
-//     const toggle = () => setCollapse(!collapse);
-//     const  handleSubmit = async (values, { setSubmitting }) => {
-//         const payload = {
-//             ...values,
-//             // field: payload.field.value ,
-//             // grade: payload.grade.value ,
-//
-//         };
-//
-//         // **********send validate data*********
-//         setIsLoader(true);
-//         let Data= {
-//             "name": payload.Name,
-//             "grade": payload.grade.value  ,
-//             "field": payload.field.value!==undefined?payload.field.value:"" ,
-//             "description": payload.Description
-//         };
-//         console.log(Data);
-//
-//         let {state, Description}= await AddCourseDetail(JSON.stringify(Data));
-//
-//         setIsLoader(false);
-//         //  course_id: "5ea47cdd4f0bb72998eb6dd8"
-//
-//         if (state===200 ) {
-//              console.log("Description");
-//             console.log(Description);
-//             success_Notification( "اطلاعات شما با موفقیت ثبت شد")
-//         } else {
-//             error_Notification(state, Description)
-//         }
-//
-//     };
-//     const HandelAddImg=(value)=>{
-//          setImg(value);
-//     }
-//
-//
-//
-//
-//     return (
-//         <div>
-//             <div onClick={toggle} className="d-flex align-items-center">
-//                 <Button color="primary"  className=" p-0 d-flex align-items-center justify-content-center">
-//                     {
-//                         collapse? <span color="primary" className="glyph-icon simple-icon-minus fs25rem  "></span>: <span color="primary" className="glyph-icon simple-icon-plus fs25rem  "></span>
-//                     }
-//                  </Button>
-//                 <span className="fs13vw ml-3">اضافه کردن</span>
-//
-//
-//             </div >
-//               <Collapse
-//                 isOpen={collapse}
-//                 className="mt-3"
-//                 // onEntering={onEntering}
-//                 // onEntered={onEntered}
-//                 // onExiting={onExiting}
-//                 // onExited={onExited}
-//             >
-//                 <Card>
-//                     <CardBody>
-//
-//                         {
-//                             isLoader ? <div className='d-flex justify-content-center align-items-center'>
-//                                     <div className='col-6'>
-//                                         <Loader/>
-//                                     </div>
-//                                 </div> :
-//                                 <Formik
-//                                     initialValues={
-//                                         initialValue
-//                                     }
-//                                     validationSchema={SignupSchema}
-//                                     onSubmit={handleSubmit}
-//                                 >
-//                                     {({
-//                                           handleSubmit,
-//                                           setFieldValue,
-//                                           setFieldTouched,
-//                                           handleChange,
-//                                           handleBlur,
-//                                           values,
-//                                           errors,
-//                                           touched,
-//                                           isSubmitting
-//                                       }) => (
-//                                         <Form className="av-tooltip tooltip-label-bottom w-100 row m-0">
-//                                             <div className="row">
-//                                                 <div className="col-md-4 col-sm-12">
-//                                                     <ImgComponent GetData={HandelAddImg}   label={"اضافه کردن عکس اصلی"} />
-//                                                 </div>
-//                                                 <div className="col-md-4 col-sm-12">
-//                                                     <AddPDf GetData={HandelAddImg}   label={"اضافه کردن pdf"}/>
-//                                                 </div>
-//                                                 <div className="col-md-4 col-sm-12">
-//                                                     <ImgComponent GetData={HandelAddImg}  label={"اضافه کردن عکس کاور"}/>
-//                                                 </div>
-//                                             </div>
-//
-//
-//                                             <div className=" col-sm-12 col-md-8  d-flex flex-column justify-content-between">
-//                                                 <div className="w-100 row m-0 ">
-//
-//                                                     <FormInput label='نام' type='text' name='Name'
-//                                                                placeHolder='نام permission را وارد کنید !'
-//                                                                DivClass="col-sm-12  " setFieldTouched={setFieldTouched}
-//                                                                errors={errors} touched={touched}/>
-//                                                     <FormSelect label='پایه' option={LabelValueOption(Option.grade_type) } name='grade'
-//                                                                 placeHolder='پایه خود را وارد کنید' values={values}
-//                                                                 DivClass="col-sm-6  " setFieldTouched={setFieldTouched} setFieldValue={setFieldValue}
-//                                                                 errors={errors} touched={touched}/>
-//                                                     {
-//                                                           ( values.grade.value === "دهم" || values.grade.value === "یازدهم" || values.grade.value === "فارغ التحصیل" || values.grade.value === "کنکوری (دوازدهم)")?
-//                                                         <FormSelect label='رشته' option={LabelValueOption(Option.field_type)} name='field'
-//                                                         placeHolder='رشته خود را وارد کنید' setFieldValue={setFieldValue}
-//                                                         DivClass="col-sm-6  " setFieldTouched={setFieldTouched} values={values}
-//                                                         errors={errors} touched={touched}/>
-//                                                   :""
-//                                                     }
-//
-//                                                     <FormInput label='توضیحات' component='textarea' rows="4" type='text'
-//                                                                name='Description' placeHolder='توضیحات را وارد کنید'
-//                                                                DivClass="col-sm-12 " setFieldTouched={setFieldTouched}
-//                                                                errors={errors} touched={touched}/>
-//
-//                                                 </div>
-//                                             </div>
-//                                             <div className="col-6 offset-3 ">
-//                                                 <button className="btn btn-success text-center col-6 offset-3 "
-//                                                         type="submit">
-//                                                     فرستادن
-//                                                 </button>
-//                                             </div>
-//
-//                                         </Form>
-//                                     )}
-//                                 </Formik>
-//                         }
-//                     </CardBody>
-//                 </Card>
-//             </Collapse>
-//         </div>
-//     );
-// };
-//
-// export default AddCourse;

@@ -9,6 +9,7 @@ import {Link} from "react-scroll/modules";
 import HeaderContentNavigation from "../HeaderContentNavigation/HeaderContentNavigation";
 
 const Courses = (props) => {
+    const {match: {params}} =  props;
     const [courses,setCourses]=useState({"data":[],off:[]});
     const [isLoader, setIsLoader] = useState(true);
     const [id, setId] = useState("");
@@ -52,7 +53,7 @@ const Courses = (props) => {
                     <div className="w-100" dir="rtl">
                         <HeaderContentNavigation list={[{"name":"دوره ها", "address":"/content"}]}/>
 
-                        <AddCourse id={id} UpdateCoursList={UpdateCoursList}/>
+                        <AddCourse id={params.id} UpdateCoursList={UpdateCoursList}/>
 
 
                         {courses.data.map((item, index) =>

@@ -24,7 +24,6 @@ import HeaderContentNavigation from "../../HeaderContentNavigation/HeaderContent
 
 const LessonDetails = (props) => {
     const {match: {params}} =  props;
-
     const [course,setCourses]=useState( );
     const [id,setid]=useState( params.id);
     const [Lesson_index,setLesson_index]=useState(0);

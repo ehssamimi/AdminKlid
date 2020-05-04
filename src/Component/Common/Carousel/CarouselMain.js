@@ -168,6 +168,8 @@ const CourseCarsMain = (props) => {
         if (state===200 ) {
             success_Notification("حذف شد");
             const $el = document.getElementById(`${course_id}`);
+            console.log($el);
+            $el.classList.add("opacity-0")
             const duration = 2;
             const from = { opacity: 0};
             TweenMax.to($el, duration, from);
@@ -218,12 +220,15 @@ const CourseCarsMain = (props) => {
 
                 </div>
 
-                <div className="row pl-3">
+                <div className="row pl-3 justify-content-end">
                     {/*<span className="second-color">{grade} </span>*/}
                     {/*<span className="second-color"> {field? "|"+ field:""} </span>*/}
+                    {
+                        field!==""? <LabelValueRow label={"رشته"} value={field} className="col-sm-12 col-md-6"/>:""
+                    }
+
 
                     <LabelValueRow label={"پایه"} value={grade} className="col-sm-12 col-md-6"/>
-                    <LabelValueRow label={"رشته"} value={field} className="col-sm-12 col-md-6"/>
 
                     {/*<span className="second-color pl-2"> {field } </span>*/}
                 </div>

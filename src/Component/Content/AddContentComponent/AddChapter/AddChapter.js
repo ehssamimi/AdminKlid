@@ -47,13 +47,10 @@ class AddChapter extends Component {
             initialValue:{name:'', total_video_times:''  },DefaultValue:{name:'', total_video_times:'' },
             Img:{"img_data":{"main":undefined},"img_file":{"main":undefined }},
             id:props.id,EditCourse:undefined,
-            FileError:{"main":"", "pdf":""},model:false,
-            func1:this.updateValues.bind(this)
+            FileError:{"main":"", "pdf":""},model:false, func1:this.updateValues.bind(this)
         }
     }
-    async componentDidMount(props){
 
-    }
 
     static getDerivedStateFromProps(props, state) {
 
