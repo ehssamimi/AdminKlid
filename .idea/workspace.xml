@@ -1,30 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3127a07d-e1e7-46b9-a05b-d8fa367c791f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Component/Common/HeaderAddCommon/HeaderAddCommon.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/img/logo-mobile.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/img/logo-mobile.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/img/logo-white.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/img/logo-white.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/favicon.ico" beforeDir="false" afterPath="$PROJECT_DIR$/public/favicon.ico" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Component/Common/AddVideoConver/AddVideoConvert.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/Common/AddVideoConver/AddVideoConvert.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Component/Common/Carousel/CarouselMain.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/Common/Carousel/CarouselMain.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Component/Common/ImgComponents/ImgComponent.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/Common/ImgComponents/ImgComponent.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Component/Content/AddContentComponent/AddChapter/AddChapter.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/Content/AddContentComponent/AddChapter/AddChapter.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Component/Content/AddContentComponent/AddItem/AddItem.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/Content/AddContentComponent/AddItem/AddItem.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Component/Content/AddContentComponent/AddLesson/AddLesson.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/Content/AddContentComponent/AddLesson/AddLesson.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Component/Content/AddContentComponent/AddTeachers/AddTeacher2.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/Content/AddContentComponent/AddTeachers/AddTeacher2.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Component/Content/Courses/Courses.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/Content/Courses/Courses.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Component/Content/Courses/subs/AddCourse/AddCourse.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/Content/Courses/subs/AddCourse/AddCourse.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Component/Content/DetailsContentComponent/ItemDetails/ItemDetails.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/Content/DetailsContentComponent/ItemDetails/ItemDetails.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Component/Content/PreviewContentComponent/LessonCardMain/LessonCardMain.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/Content/PreviewContentComponent/LessonCardMain/LessonCardMain.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/css/MyCss/MyStyle2.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/css/MyCss/MyStyle2.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/constants/ServerConst.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/constants/ServerConst.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/constants/defaultValues.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/constants/defaultValues.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/constants/menu.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/constants/menu.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/navs/Topnav.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/navs/Topnav.js" afterDir="false" />
-    </list>
+    <list default="true" id="3127a07d-e1e7-46b9-a05b-d8fa367c791f" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,7 +12,7 @@
     <session id="602434569">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="14" />
+          <entry key="project.closed" value="15" />
           <entry key="project.open.time.11" value="1" />
           <entry key="project.open.time.116" value="1" />
           <entry key="project.open.time.124" value="1" />
@@ -58,7 +35,7 @@
         <counts>
           <entry key="css" value="9" />
           <entry key="html" value="6" />
-          <entry key="js" value="420" />
+          <entry key="js" value="421" />
           <entry key="json" value="1" />
           <entry key="png" value="12" />
           <entry key="scss" value="8" />
@@ -72,7 +49,7 @@
           <entry key="HTML" value="6" />
           <entry key="Image" value="12" />
           <entry key="JSON" value="1" />
-          <entry key="JavaScript" value="420" />
+          <entry key="JavaScript" value="421" />
           <entry key="SCSS" value="8" />
           <entry key="SVG" value="2" />
           <entry key="TypeScript" value="4" />
@@ -120,6 +97,25 @@
           </provider>
         </entry>
       </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Component/Content/DetailsContentComponent/CourseDetail/CourseDetail.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="362">
+              <caret line="172" column="57" lean-forward="true" selection-start-line="159" selection-start-column="51" selection-end-line="172" selection-end-column="57" />
+              <folding>
+                <element signature="e#3800#3848#0" expanded="true" />
+                <element signature="e#3884#6878#0" expanded="true" />
+                <element signature="e#4102#6525#0" expanded="true" />
+                <element signature="e#7073#7159#0" expanded="true" />
+                <element signature="e#7298#7610#0" expanded="true" />
+                <element signature="e#7419#7452#0" expanded="true" />
+                <element signature="e#9632#10074#0" expanded="true" />
+                <element signature="e#10174#10522#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Component/Content/AddContentComponent/AddItem/AddItem.js">
           <provider selected="true" editor-type-id="text-editor">
@@ -135,10 +131,10 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Component/Content/DetailsContentComponent/ItemDetails/ItemDetails.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="619">
+            <state relative-caret-position="688">
               <caret line="179" lean-forward="true" selection-start-line="179" selection-end-line="179" />
               <folding>
                 <element signature="e#0#49#0" expanded="true" />
@@ -300,7 +296,6 @@
         <option value="$PROJECT_DIR$/src/Component/Content/PreviewContentComponent/TeacherCardMain/TeacherCardMain.js" />
         <option value="$PROJECT_DIR$/src/App.js" />
         <option value="$PROJECT_DIR$/src/Component/Content/HeaderContentNavigation/HeaderContentNavigation.js" />
-        <option value="$PROJECT_DIR$/src/Component/Content/DetailsContentComponent/CourseDetail/CourseDetail.js" />
         <option value="$PROJECT_DIR$/src/Component/Content/DetailsContentComponent/TeacherDetails/TeacherDetails.js" />
         <option value="$PROJECT_DIR$/src/Component/Content/PreviewContentComponent/ItemCardMain.js" />
         <option value="$PROJECT_DIR$/src/Component/Content/DetailsContentComponent/ItemDetails.js" />
@@ -333,6 +328,7 @@
         <option value="$PROJECT_DIR$/src/Component/Common/AddVideoConver/AddVideoConvert.js" />
         <option value="$PROJECT_DIR$/src/Component/Content/Courses/subs/AddCourse/AddCourse.js" />
         <option value="$PROJECT_DIR$/src/Component/Content/DetailsContentComponent/ItemDetails/ItemDetails.js" />
+        <option value="$PROJECT_DIR$/src/Component/Content/DetailsContentComponent/CourseDetail/CourseDetail.js" />
       </list>
     </option>
   </component>
@@ -409,7 +405,7 @@
               <item name="Component" type="462c0819:PsiDirectoryNode" />
               <item name="Content" type="462c0819:PsiDirectoryNode" />
               <item name="DetailsContentComponent" type="462c0819:PsiDirectoryNode" />
-              <item name="ItemDetails" type="462c0819:PsiDirectoryNode" />
+              <item name="CourseDetail" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -480,12 +476,12 @@
       <workItem from="1588497250074" duration="35318000" />
       <workItem from="1588628134653" duration="5692000" />
       <workItem from="1588639824095" duration="228000" />
-      <workItem from="1588677422824" duration="31196000" />
+      <workItem from="1588677422824" duration="31401000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="275149000" />
+    <option name="totallyTimeSpent" value="275354000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -797,30 +793,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Component/Content/DetailsContentComponent/CourseDetail/CourseDetail.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="966">
-          <caret line="182" column="42" selection-start-line="182" selection-start-column="42" selection-end-line="182" selection-end-column="42" />
-          <folding>
-            <element signature="e#3674#9603#0" expanded="true" />
-            <element signature="e#3800#3848#0" expanded="true" />
-            <element signature="e#3884#6878#0" expanded="true" />
-            <element signature="e#4102#6525#0" expanded="true" />
-            <element signature="e#6912#9567#0" expanded="true" />
-            <element signature="e#7073#7159#0" expanded="true" />
-            <element signature="e#7196#9528#0" expanded="true" />
-            <element signature="e#7298#7610#0" expanded="true" />
-            <element signature="e#7419#7452#0" expanded="true" />
-            <element signature="e#7651#9485#0" expanded="true" />
-            <element signature="e#7720#9438#0" expanded="true" />
-            <element signature="e#7934#9386#0" expanded="true" />
-            <element signature="e#8146#8658#0" expanded="true" />
-            <element signature="e#8292#8599#0" expanded="true" />
-            <element signature="e#10174#10522#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Component/Content/AddContentComponent/AddLesson/AddLesson.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="445">
@@ -1103,20 +1075,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Component/Content/Courses/Courses.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="230">
-          <caret line="55" column="29" selection-start-line="55" selection-start-column="29" selection-end-line="55" selection-end-column="29" />
-          <folding>
-            <element signature="e#1107#1194#0" expanded="true" />
-            <element signature="e#1514#1724#0" expanded="true" />
-            <element signature="e#1605#1697#0" expanded="true" />
-            <element signature="e#2058#2721#0" expanded="true" />
-            <element signature="e#2185#2686#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Component/Content/Courses/subs/AddCourse/AddCourse.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1012">
@@ -1144,7 +1102,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Component/Content/DetailsContentComponent/ItemDetails/ItemDetails.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="619">
+        <state relative-caret-position="688">
           <caret line="179" lean-forward="true" selection-start-line="179" selection-end-line="179" />
           <folding>
             <element signature="e#0#49#0" expanded="true" />
@@ -1168,6 +1126,37 @@
             <element signature="e#6733#6910#0" expanded="true" />
             <element signature="e#7171#7253#0" expanded="true" />
             <element signature="e#7383#7689#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Component/Content/Courses/Courses.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="230">
+          <caret line="55" column="29" selection-start-line="55" selection-start-column="29" selection-end-line="55" selection-end-column="29" />
+          <folding>
+            <element signature="e#1107#1194#0" expanded="true" />
+            <element signature="e#1514#1724#0" expanded="true" />
+            <element signature="e#1605#1697#0" expanded="true" />
+            <element signature="e#2058#2721#0" expanded="true" />
+            <element signature="e#2185#2686#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Component/Content/DetailsContentComponent/CourseDetail/CourseDetail.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="362">
+          <caret line="172" column="57" lean-forward="true" selection-start-line="159" selection-start-column="51" selection-end-line="172" selection-end-column="57" />
+          <folding>
+            <element signature="e#3800#3848#0" expanded="true" />
+            <element signature="e#3884#6878#0" expanded="true" />
+            <element signature="e#4102#6525#0" expanded="true" />
+            <element signature="e#7073#7159#0" expanded="true" />
+            <element signature="e#7298#7610#0" expanded="true" />
+            <element signature="e#7419#7452#0" expanded="true" />
+            <element signature="e#9632#10074#0" expanded="true" />
+            <element signature="e#10174#10522#0" expanded="true" />
           </folding>
         </state>
       </provider>
