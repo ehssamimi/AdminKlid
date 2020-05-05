@@ -20,7 +20,7 @@ class ImgComponent extends Component {
     static getDerivedStateFromProps(props, state) {
         if (props.img !== state.src && props.img!==undefined &&  state.count===1) {
             return {
-                src: props.img,
+                src: props.img!==undefined? props.img:ax,
                 count:2
             };
         }
@@ -45,6 +45,7 @@ class ImgComponent extends Component {
     render() {
         let{src,ImgName,touched}=this.state;
         let{Type,errors}=this.props;
+
 
 
         return (

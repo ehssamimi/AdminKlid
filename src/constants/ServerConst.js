@@ -11,7 +11,8 @@ export const ResourceUser="https://resourcealef.liara.run/users/";
 export const ResourceAdmin="https://resourcealef.liara.run/admin/";
 export const admin_route="https://useralef.liara.run/admin_route/";
 // export const jobsalef="https://jobsalef.liara.run/admin/";
-export const jobsalef="http://194.5.206.127:3000/admin/";
+// export const jobsalef="http://194.5.206.127:3000/admin/";
+export const jobsalef="http://aminjamal.ir/admin/";
 
 
 

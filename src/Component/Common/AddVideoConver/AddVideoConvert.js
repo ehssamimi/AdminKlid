@@ -20,7 +20,7 @@ class AddVideoConvert extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            value: "",
+            value: "",error:"",
             data:"",isOpenModal:false,isLoader:true,
             currentCount:0,type:"info",textPercent:"ََشروع",time_left:0
         }
@@ -95,41 +95,49 @@ class AddVideoConvert extends Component {
         ))
     };
      onChangeValue=async(value)=>{
-
-
-        let data=await this.getName(value);
-        this.setState({
-            value
-            ,data
-        });
+         this.setState({
+             value
+         });
+         let data = await this.getName(value);
+         this.setState({
+             data
+         });
 
         console.log("value");
         console.log(value);
     };
 
     handelConvert=async ()=>{
-        console.log(this.props.ListData);
-        console.log(this.state.value);
-        console.log(this.props.action);
+       if (this.state.value!==""){
+           console.log(this.props.ListData);
+           console.log(this.state.value);
+           console.log(this.props.action);
 
-        // let {state ,Description }=await ConvertURl(this.props.action,this.props.ListData,this.state.value);
-        let {state ,Description }=await ConvertURl(this.props.action,this.props.ListData,this.state.value);
-        // let {state ,Description }=await GetProgressive(this.props.action,this.props.ListData );
-
-
-        if (state===200){
+           // let {state ,Description }=await ConvertURl(this.props.action,this.props.ListData,this.state.value);
+           let {state ,Description }=await ConvertURl(this.props.action,this.props.ListData,this.state.value);
+           // let {state ,Description }=await GetProgressive(this.props.action,this.props.ListData );
 
 
+           if (state===200){
 
 
-            var intervalId = setInterval( await this.timer, 10000);
-            // store intervalId in the state so it can be accessed later:
-            this.setState({intervalId: intervalId,
-                currentCount:3
-            });
-        }else {
-            error_Notification(state , Description );
-        }
+
+
+               var intervalId = setInterval( await this.timer, 10000);
+               // store intervalId in the state so it can be accessed later:
+               this.setState({intervalId: intervalId,
+                   currentCount:3
+               });
+           }else {
+               error_Notification(state , Description );
+           }
+
+
+       } else {
+           this.setState({error:"نام ویدیو باید انتخاب شود "})
+       }
+
+
 
 
 
@@ -140,43 +148,51 @@ class AddVideoConvert extends Component {
     }
     timer=async()=>{
 
-        let {state ,Description }=await GetProgressive(this.props.action,this.props.ListData );
-        if (state===200){
-            var newCount = Description.percentage;
-            if (newCount>0&&newCount<20) {
+        if (this.currentCount!==0){
 
-                this.setState({
-                    type:"info",
-                    textPercent:" شروع آپلود ..",
-                });
+            let {state ,Description }=await GetProgressive(this.props.action,this.props.ListData );
+            if (state===200){
+                var newCount = Description.percentage;
+                if (newCount>0&&newCount<20) {
 
-            }
-            if (newCount>20&&newCount<70) {
+                    this.setState({
+                        type:"info",
+                        textPercent:" شروع آپلود ..",
+                    });
 
-                this.setState({
-                    type:"success",
-                    textPercent:"درحال آپلود...",
-                });
+                }
+                if (newCount>20&&newCount<70) {
 
-            }
-            if (newCount>70&&newCount<100) {
+                    this.setState({
+                        type:"success",
+                        textPercent:"درحال آپلود...",
+                    });
 
-                this.setState({
-                    type:"warning",
-                    textPercent:"دیگه تمومه ...",
-                });
+                }
+                if (newCount>70&&newCount<100) {
 
-            }
+                    this.setState({
+                        type:"warning",
+                        textPercent:"دیگه تمومه ...",
+                    });
+
+                }
 
 
-            if(newCount < 100) {
-                this.setState({ currentCount: newCount });
-            } else {
+                if(newCount < 100) {
+                    this.setState({ currentCount: newCount,time_left:Description.time_left.split(" ")[0] });
+                } else {
+                    this.setState({ currentCount: 0 });
+                    this.toggle();
+                    success_Notification("تبدیل با موفقیت به اتمام رسید");
+                    clearInterval(this.state.intervalId);
+                }
+            }else {
                 this.setState({ currentCount: 0 });
                 this.toggle();
-                success_Notification("تبدیل با موفقیت به اتمام رسید");
-                clearInterval(this.state.intervalId);
+                error_Notification(state,Description)
             }
+
         }
 
     };
@@ -209,10 +225,18 @@ class AddVideoConvert extends Component {
                             {/*</div>*/}
 
 
+
+
+
                             {
                                 (currentCount>0 && currentCount<100)?
-                                    <div className="d-flex flex-column">
-                                        <span className="fs16calc"> زمان باقی مانده :{ time_left}</span>
+                                    <div className="d-flex flex-column col-12">
+                                        <div className="d-flex justify-content-between align-items-start mt-1 ">
+                                            <span className="fs16calc"> زمان باقی مانده :{ time_left}</span>
+                                            <span className="btn btn-outline-primary ml-auto" onClick={this.toggle}>اضافه کردن ویدیو پیش نمایش </span>
+
+                                        </div>
+
                                         <Progress bar animated color={this.state.type} value={this.state.currentCount} className={this.state.currentCount>0?"br10px p-2":""}>{this.state.currentCount +"%"+ " " +this.state.textPercent  }</Progress>
                                     </div>
 
@@ -230,16 +254,27 @@ class AddVideoConvert extends Component {
 
                                 <div className="w-100 d-flex  justify-content-center hpx250 align-items-center">
                                     <div className="col-8  ">
+                                        <span className="FsFooterLogin mb-3">انتخاب نام ویدیو:</span>
                                         <AutoSuggestEdit
-                                            placeholder={ "aAAAAAAAAAA"}
+                                            placeholder={ "لطفا نام ویدیو را وارد کنید"}
                                             data={this.state.data}
                                             value={this.state.value}
                                             onChange={value => { this.onChangeValue(value)}}
                                         />
-                                        <div className="mt-3  ">
-                                            <Progress bar animated color={this.state.type} value={this.state.currentCount} className={this.state.currentCount>0?"br10px p-2":""}>{this.state.currentCount +"%"+ " " +this.state.textPercent  }</Progress>
-                                        </div>
-                                        <span className="btn btn-primary mt-3" onClick={this.handelConvert}>convert</span>
+                                        {
+                                            this.state.error!==""?  <span className="red-color " style={{fontSize:"12px"}}> {this.state.error}</span>:""
+                                        }
+                                        {
+                                            this.state.currentCount!==0?     <div className="mt-3 d-flex flex-column ">
+                                                <span>لطفا منتظر بمانید ...</span>
+                                                <Progress bar animated color={this.state.type} value={this.state.currentCount} className={this.state.currentCount>0?"br10px p-2":""}>{this.state.currentCount +"%"+ " " +this.state.textPercent  }</Progress>
+                                            </div>:""
+                                        }
+
+
+                                         <span className="btn btn-primary mt-3" onClick={this.handelConvert}>convert</span>
+
+
                                     </div>
 
                                 </div>

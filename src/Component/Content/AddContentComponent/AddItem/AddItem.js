@@ -4,7 +4,7 @@ import {Form, Formik} from "formik";
 import {FormCheckBox, FormInput, FormSelect} from "../../../Common/ComponentFunctional/FormFeilds";
 import {
     AddFileToItem,
-    AddItemUrl,
+    AddItemUrl, GetUserDropDown,
     loadCourse,
     UpdateChapterDetail, UpdateItemDetail,
 } from "../../../functions/ServerConnection";
@@ -26,6 +26,7 @@ import AddVoice from "../../../Common/AddVoice/AddVoice";
 import AddPreviewPdf from "../../../Common/AddPdf/AddPreviewPdf";
 import AddVideoConvert from "../../../Common/AddVideoConver/AddVideoConvert";
 import PreviewVideoComponent from "../../../Common/PreviewVideoComponent/PreviewVideoComponent";
+import HeaderAddCommon from "../../../Common/HeaderAddCommon/HeaderAddCommon";
 const SignupSchema = Yup.object().shape({
 
     name: Yup.string().required("نام اجباری است!"),
@@ -106,72 +107,52 @@ class AddItem extends Component {
 
     updateValues = async (index) => {
         console.log("we are in update ");
-
         this.setState({
-            collapse:true,EditCourse:index, isLoader:true
+            collapse: true, EditCourse: index, isLoader: true
         });
-        let{Lesson_index,TeacherIndex,chapterIndex}=this.props;
+        if (index!==undefined){
 
-        const{state,Description }= await loadCourse(this.state.id);
+            let{Lesson_index,TeacherIndex,chapterIndex}=this.props;
 
-
-
-        let EditCourse= Description.lessons[Lesson_index].teachers[TeacherIndex].chapters[chapterIndex].items[index];
-        // console.log("EditCourse update update");
-        // console.log(EditCourse);
+            const{state,Description }= await loadCourse(this.state.id);
 
 
 
-        // video: "https://resourcealef.liara.run/admin/course/stream/item_video/5ea5777ec055423e3719c894/ZWhzYW4=/bWFtYWQ=/emlzdA==/d2VzdA==/index.m3u8"
-        // video_cover: "https://stream.kelidiha.com/public/item/5ea5777ec055423e3719c894/ZWhzYW4=/bWFtYWQ=/emlzdA==/d2VzdA==/video_cover/image.png"
+            let EditCourse= Description.lessons[Lesson_index].teachers[TeacherIndex].chapters[chapterIndex].items[index];
 
-        // Object
-        // audio: "https://resourcealef.liara.run/admin/course/stream/item_audio/5e9318063414ab42e3239506/2LHbjNin2LbbjA==/2KjYrti02YbYr9mH/2KfYrdiz2KfZhiDYtdmF24zZhduMINix2KfYrw==/2q-ZiNqG24w=/dad.pdf"
-        // create_at: "2020-05-02T20:23:05.612000"
-        // description: "asas"
-        // downloadable_content: "https://resourcealef.liara.run/admin/course/stream/item_downloadable_content/5e9318063414ab42e3239506/2LHbjNin2LbbjA==/2KjYrti02YbYr9mH/2KfYrdiz2KfZhiDYtdmF24zZhduMINix2KfYrw==/2q-ZiNqG24w=/None"
-        // is_free: false
-        // is_locked: true
-        // name: "گوچی"
-        // time_to_done: 21
-        // video: "https://resourcealef.liara.run/admin/course/stream/item_video/5e9318063414ab42e3239506/2LHbjNin2LbbjA==/2KjYrti02YbYr9mH/2KfYrdiz2KfZhiDYtdmF24zZhduMINix2KfYrw==/2q-ZiNqG24w=/index.m3u8"
-        // video_cover: "https://stream.kelidiha.com/public/item/5e9318063414ab42e3239506/2LHbjNin2LbbjA==/2KjYrti02YbYr9mH/2KfYrdiz2KfZhiDYtdmF24zZhduMINix2KfYrw==/2q-ZiNqG24w=/video_cover/image.png"
-        //
-        //
-        let Img={"img_data":{"main":EditCourse.video_cover},"img_file":{"main":undefined }} ;
-        let content={"file":undefined,"upload":EditCourse.downloadable_content} ;let voice={"file":undefined,"upload":EditCourse.audio};
+            let Img={"img_data":{"main":EditCourse.video_cover},"img_file":{"main":undefined }} ;
+            let content={"file":undefined,"upload":EditCourse.downloadable_content} ;let voice={"file":undefined,"upload":EditCourse.audio};
 
 
-        let Data = {
-            name:EditCourse.name,
-            time_to_done:EditCourse.time_to_done,isFree: EditCourse.is_free? "هست" :"نیست",Description:EditCourse.description
-        };
+            let Data = {
+                name:EditCourse.name,
+                time_to_done:EditCourse.time_to_done,isFree: EditCourse.is_free? "هست" :"نیست",Description:EditCourse.description
+            };
 
 
 
-        this.setState({
-            initialValue:Data,DefaultValue:Data,isLoader:false,Img,voice,content,videoURl:[EditCourse.video_cover,EditCourse.video]
-        });
+            this.setState({
+                initialValue:Data,DefaultValue:Data,isLoader:false,Img,voice,content,videoURl:[EditCourse.video_cover,EditCourse.video]
+            });
+
+
+        }else {
+
+            const{state,Description }= await GetUserDropDown();
+
+            let Data = {name:'', time_to_done:'' ,isFree: "",Description:""};
+            let Img ={"img_data":{"main":undefined},"img_file":{"main":undefined }};
+            let content={"file":undefined,"upload":undefined} ; let voice={"file":undefined,"upload":undefined};
+            let videoURl=['a','b'];
+
+            this.setState({
+                initialValue:Data,DefaultValue:Data , Img ,isLoader: false,content,voice,videoURl
+            });
+
+        }
 
         return true;
 
-
-        // Lesson_index
-
-
-
-
-
-        //
-
-        //
-        //
-        // if (state===200 ) {
-        //
-        //
-        // } else {
-        //     error_Notification(state, Description)
-        // }
 
     }
 
@@ -239,6 +220,7 @@ class AddItem extends Component {
 
 
                 if (this.state.EditCourse===undefined){
+                    console.log("submit item")
 
 
                     let Data = {
@@ -307,7 +289,7 @@ class AddItem extends Component {
                     }
                 } else {
 
-                    console.log("this.state.update course");
+                    console.log(" update items");
 
 
                     // console.log(this.state.);
@@ -465,21 +447,25 @@ class AddItem extends Component {
 
     render() {
         let{collapse,Option,isLoader,initialValue,Img,id,FileError,voice,content}=this.state;
-
+        const {match: {params}} =this.props;
         return (
             <div id="addSlider">
-                <div onClick={this.toggle} className="d-flex align-items-center">
-                    <Button color="primary"  className=" p-0 d-flex align-items-center justify-content-center">
-                        {
-                            collapse? <span color="primary" className="glyph-icon simple-icon-minus fs25rem  "></span>: <span color="primary" className="glyph-icon simple-icon-plus fs25rem  "></span>
-                        }
-                    </Button>
-                    {
-                        this.state.EditCourse===""?<span className="fs13vw ml-3">اضافه کردن</span>:<span className="fs13vw ml-3">به روز رسانی</span>
-                    }
+
+                <HeaderAddCommon collapse={collapse} toggle={this.toggle} item={"فصل"} id={this.state.EditCourse}
+                                 to={`/content/chapter/${id}/${params.index}/${params.lesson}/${params.TeacherIndex}/${params.teacher}/${params.chapterIndex}/${params.chapter}`}/>
+
+                {/*<div onClick={this.toggle} className="d-flex align-items-center">*/}
+                    {/*<Button color="primary"  className=" p-0 d-flex align-items-center justify-content-center">*/}
+                        {/*{*/}
+                            {/*collapse? <span color="primary" className="glyph-icon simple-icon-minus fs25rem  "></span>: <span color="primary" className="glyph-icon simple-icon-plus fs25rem  "></span>*/}
+                        {/*}*/}
+                    {/*</Button>*/}
+                    {/*{*/}
+                        {/*this.state.EditCourse===""?<span className="fs13vw ml-3">اضافه کردن</span>:<span className="fs13vw ml-3">به روز رسانی</span>*/}
+                    {/*}*/}
 
 
-                </div >
+                {/*</div >*/}
                 <Collapse
                     isOpen={collapse}
                     className="mt-3"

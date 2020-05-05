@@ -157,20 +157,20 @@ const CourseDetail = (props) => {
                                         <div className='col-3 '>
                                             <div className=' w-100 h-100   d-flex  flex-column mt-3 justify-content-start   '>
                                                 {/***************Buttons********/}
-                                                <div className='col-3 d-flex flex-column justify-content-around '>
-                                                    {/***************Delete Button********/}
-                                                    <div  className="w-100 d-flex btn btn-primary justify-content-center align-items-center">
-                                                        <button
-                                                            className=' w-100 d-flex justify-content-center   cursor-pointer b-0     btn-primary'   onClick={ deleteToggle}> <span className='glyph-icon iconsminds-folder-close'></span>
-                                                        </button>
-                                                    </div>
-                                                    {/***************edit Button********/}
-                                                    <NavLink to={`/content/product/add/${id}`} className="w-100 d-flex btn btn-secondary justify-content-center align-items-center">
-                                                        <button
-                                                            className=' w-100 d-flex justify-content-center   cursor-pointer b-0    btn-secondary'> <span className='glyph-icon iconsminds-folder-edit'></span>
-                                                        </button>
-                                                    </NavLink>
-                                                </div>
+                                                {/*<div className='col-3 d-flex flex-column justify-content-around '>*/}
+                                                    {/*/!***************Delete Button********!/*/}
+                                                    {/*<div  className="w-100 d-flex btn btn-primary justify-content-center align-items-center">*/}
+                                                        {/*<button*/}
+                                                            {/*className=' w-100 d-flex justify-content-center   cursor-pointer b-0     btn-primary'   onClick={ deleteToggle}> <span className='glyph-icon iconsminds-folder-close'></span>*/}
+                                                        {/*</button>*/}
+                                                    {/*</div>*/}
+                                                    {/*/!***************edit Button********!/*/}
+                                                    {/*<NavLink to={`/content/product/add/${id}`} className="w-100 d-flex btn btn-secondary justify-content-center align-items-center">*/}
+                                                        {/*<button*/}
+                                                            {/*className=' w-100 d-flex justify-content-center   cursor-pointer b-0    btn-secondary'> <span className='glyph-icon iconsminds-folder-edit'></span>*/}
+                                                        {/*</button>*/}
+                                                    {/*</NavLink>*/}
+                                                {/*</div>*/}
 
                                             </div>
                                         </div>

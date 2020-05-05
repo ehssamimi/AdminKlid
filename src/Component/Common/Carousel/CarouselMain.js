@@ -168,6 +168,7 @@ const CourseCarsMain = (props) => {
         if (state===200 ) {
             success_Notification("حذف شد");
             const $el = document.getElementById(`${course_id}`);
+            props.UpdateCoursList();
             console.log($el);
             $el.classList.add("opacity-0")
             const duration = 2;
@@ -191,7 +192,7 @@ const CourseCarsMain = (props) => {
 
     return (
 
-        <Card  className= "m-2 br20px h-100 h-min-24vw  box-shadow-custom" id={course_id}>
+        <Card  className= "m-2 br20px h-100 MainCardCourseHeight  box-shadow-custom FsFooterLogin" id={course_id}>
             <Link to={`/content/course/${course_id}`}  className="pt-4">
 
 
@@ -217,7 +218,6 @@ const CourseCarsMain = (props) => {
                         </div>
                     </div>
                     <span className="header-color mr-auto  ">{ name}</span>
-
                 </div>
 
                 <div className="row pl-3 justify-content-end">
@@ -385,6 +385,26 @@ const ButtonGroup = ({ next, previous, goToSlide , ...rest }) => {
 };
 
 export  function CarouselMain(props) {
+    const [isMobile, SetIsMobile] = useState(true);
+
+    function windowsDimention(){
+        const Width = window.outerWidth;
+
+        if (Width <= 768) {
+            SetIsMobile(true)
+
+        } else {
+            SetIsMobile(false)
+        }
+    }
+
+    useEffect(() => {
+        windowsDimention();
+        window.addEventListener("resize",windowsDimention);
+        return ()=>window.removeEventListener("resize",windowsDimention)
+    }, []);
+
+
 
     return <div className="position-relative hpx300  w-100  ">
         {/*h-header-slider*/}
@@ -396,9 +416,9 @@ export  function CarouselMain(props) {
             additionalTransfrom={0}
              autoPlaySpeed={3000}
             centerMode={false}
-            className={['pt-5', props.files.length>2?"":"d-flex justify-content-end"  ].join(' ')}
+            className={['pt-5', (props.files.length>2 || isMobile)?"":"d-flex justify-content-end"  ].join(' ')}
             containerClass="container-with-dots"
-            customButtonGroup={props.files.length>2?<ButtonGroup />:""}
+            customButtonGroup={(props.files.length>2 || isMobile)?<ButtonGroup />:""}
             // customDot={<CustomDot />}
             arrows={false}
             dotListClass=""

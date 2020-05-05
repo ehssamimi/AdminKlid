@@ -23,6 +23,9 @@ import ImgComponent from "../../../Common/ImgComponents/ImgComponent";
 import AddPDf from "../../../Common/AddPdf/AddPDf";
 import Loader from "../../../Common/Loader/Loader";
  import AddVideoConvert from "../../../Common/AddVideoConver/AddVideoConvert";
+ import {Link} from "react-router-dom";
+ import HeaderAddCommon from "../../../Common/HeaderAddCommon/HeaderAddCommon";
+
 const SignupSchema = Yup.object().shape({
 
     name: Yup.string()
@@ -50,7 +53,7 @@ class AddLesson extends Component {
             isLoader:false,
             initialValue:{name:'', price:"",chapter_count:'', additional_percentage_course:"",additional_percentage_chapters:''  },DefaultValue:{name:'', price:"",chapter_count:'', additional_percentage_course:"",additional_percentage_chapters:''  },
             Img:{"img_data":{"main":undefined},"img_file":{"main":undefined }},
-            id:props.id,EditCourse:undefined,
+            id:props.id,EditCourse:undefined ,
             FileError:{"main":"", "pdf":""},model:false,
             func1:this.updateValues.bind(this)
         }
@@ -61,13 +64,12 @@ class AddLesson extends Component {
 
     static getDerivedStateFromProps(props, state) {
 
-
         if (props.index !== state.EditCourse) {
             console.log("ffffffffffffffffffffffffff");
             console.log("props.index");
             console.log(props.index);
             return {
-                EditCourse: props.index,model:state.func1(props.index)
+               model:state.func1(props.index)
             };
         }
         // Return null if the state hasn't changed
@@ -78,44 +80,30 @@ class AddLesson extends Component {
 
 
     async  componentDidUpdate(props){
-        // console.log("props.index");
-        // console.log(props.index);
-        // console.log("this.state.EditCourse");
-        // console.log(this.state.EditCourse);
-        // console.log(props.index !== this.state.EditCourse);
-         const {match: {params}} =  props;
-        // console.log("params");
-        // console.log(params);
 
-        // if ( params.index !== this.state.EditCourse ) {
-        //
-        //
-        //     this.updateValues(params.index);
+
+
+        // if (this.state.EditCourse=undefined) {
+        //     console.log("component did mount")
+        //     this.setState({
+        //         initialValue:{name:'', price:"",chapter_count:'', additional_percentage_course:"",additional_percentage_chapters:''  }
+        //         ,DefaultValue:{name:'', price:"",chapter_count:'', additional_percentage_course:"",additional_percentage_chapters:''  },
+        //         Img:{"img_data":{"main":undefined},"img_file":{"main":undefined }}
+        //     });
         // }
 
-
-
-
-
-        // let{id}=this.props;
-        // if (id.length>0){
-        //     if (this.state.id===""){
-        //        this.updateValues(id);
-        //     }
-        // }
 
     }
 
     updateValues = async (index) => {
-        console.log("we are in update ")
-       this.setState({
-           collapse:true,EditCourse:index, isLoader:true
-       });
-         const{state,Description }= await loadCourse(this.state.id);
-        let EditCourse=Description.lessons[index];
-       let Img={"img_data":{"main":EditCourse.image},"img_file":{"main":undefined }} ;
-
-
+        console.log("we are in update ");
+        this.setState({
+            collapse: true, EditCourse: index, isLoader: true
+        });
+        if (index!==undefined){
+            const {state, Description} = await loadCourse(this.state.id);
+            let EditCourse = Description.lessons[index];
+            let Img = {"img_data": {"main": EditCourse.image}, "img_file": {"main": undefined}};
 
 
             let Data = {
@@ -127,28 +115,28 @@ class AddLesson extends Component {
             };
 
             this.setState({
-                initialValue:Data,DefaultValue:Data,isLoader:false,Img
+                initialValue: Data, DefaultValue: Data, isLoader: false, Img
             });
 
-            return true;
+        }else {
+            const {state, Description} = await loadCourse(this.state.id);
+
+            let Data = {
+                name: "",
+                price: "",
+                chapter_count: "",
+                additional_percentage_course: "",
+                additional_percentage_chapters: ""
+            };
+            let Img = {"img_data": {"main": undefined}, "img_file": {"main": undefined}};
+
+            this.setState({
+                initialValue:Data,DefaultValue:Data , Img ,isLoader: false
+            });
+        }
+        return true;
 
 
-        // Lesson_index
-
-
-
-
-
-        //
-
-        //
-        //
-        // if (state===200 ) {
-        //
-        //
-        // } else {
-        //     error_Notification(state, Description)
-        // }
 
     }
 
@@ -340,23 +328,19 @@ class AddLesson extends Component {
 
     };
 
+
+
     render() {
+
         let{collapse,Option,isLoader,initialValue,Img,id,FileError}=this.state;
 
         return (
             <div id="addSlider">
-                <div onClick={this.toggle} className="d-flex align-items-center">
-                    <Button color="primary"  className=" p-0 d-flex align-items-center justify-content-center">
-                        {
-                            collapse? <span color="primary" className="glyph-icon simple-icon-minus fs25rem  "></span>: <span color="primary" className="glyph-icon simple-icon-plus fs25rem  "></span>
-                        }
-                    </Button>
-                    {
-                       this.state.EditCourse===""?<span className="fs13vw ml-3">اضافه کردن</span>:<span className="fs13vw ml-3">به روز رسانی</span>
-                    }
+
+                <HeaderAddCommon collapse={collapse} toggle={this.toggle}   item={"درس"}
+                                 id={this.state.EditCourse} to={`/content/course/${id}`}/>
 
 
-                </div >
                 <Collapse
                     isOpen={collapse}
                     className="mt-3"
@@ -401,6 +385,7 @@ class AddLesson extends Component {
                                                 <div className=" col-sm-12 col-md-8  d-flex flex-column justify-content-between">
                                                     <div className="w-100 row m-0 ">
 
+
                                                         <FormInput label='نام' type='text' name='name'
                                                                    placeHolder='نام permission را وارد کنید !'
                                                                    DivClass="col-sm-12  " setFieldTouched={setFieldTouched}
@@ -441,6 +426,7 @@ class AddLesson extends Component {
                         </CardBody>
                     </Card>
                 </Collapse>
+                <Link to={`/content/courses` } id="refresh"/>
             </div>
         );
     }

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { injectIntl } from "react-intl";
+import logo from'./../../assets/common/img/logo512.png'
 import {
   UncontrolledDropdown,
   DropdownItem,
@@ -219,68 +220,72 @@ class TopNav extends Component {
             <MobileMenuIcon />
           </NavLink>
 
-          <div className="search" data-search-path="/app/pages/search">
-            <Input
-              name="searchKeyword"
-              id="searchKeyword"
-              placeholder={messages["menu.search"]}
-              value={this.state.searchKeyword}
-              onChange={e => this.handleSearchInputChange(e)}
-              onKeyPress={e => this.handleSearchInputKeyPress(e)}
-            />
-            <span
-              className="search-icon"
-              onClick={e => this.handleSearchIconClick(e)}
-            >
-              <i className="simple-icon-magnifier" />
-            </span>
-          </div>
+          {/*<div className="search" data-search-path="/app/pages/search">*/}
+            {/*<Input*/}
+              {/*name="searchKeyword"*/}
+              {/*id="searchKeyword"*/}
+              {/*placeholder={messages["menu.search"]}*/}
+              {/*value={this.state.searchKeyword}*/}
+              {/*onChange={e => this.handleSearchInputChange(e)}*/}
+              {/*onKeyPress={e => this.handleSearchInputKeyPress(e)}*/}
+            {/*/>*/}
+            {/*<span*/}
+              {/*className="search-icon"*/}
+              {/*onClick={e => this.handleSearchIconClick(e)}*/}
+            {/*>*/}
+              {/*<i className="simple-icon-magnifier" />*/}
+            {/*</span>*/}
+          {/*</div>*/}
 
-          <div className="d-inline-block">
-            <UncontrolledDropdown className="ml-2">
-              <DropdownToggle
-                caret
-                color="light"
-                size="sm"
-                className="language-button"
-              >
-                <span className="name">{locale.toUpperCase()}</span>
-              </DropdownToggle>
-              <DropdownMenu className="mt-3" right>
-                {localeOptions.map(l => {
-                  return (
-                    <DropdownItem
-                      onClick={() => this.handleChangeLocale(l.id, l.direction)}
-                      key={l.id}
-                    >
-                      {l.name}
-                    </DropdownItem>
-                  );
-                })}
-              </DropdownMenu>
-            </UncontrolledDropdown>
-          </div>
-          <div className="position-relative d-none d-none d-lg-inline-block">
-            <a
-              className="btn btn-outline-primary btn-sm ml-2"
-              target="_top"
-              href="https://themeforest.net/cart/configure_before_adding/22544383?license=regular&ref=ColoredStrategies&size=source"
-            >
-              <IntlMessages id="user.buy" />
-            </a>
-          </div>
+          {/*<div className="d-inline-block">*/}
+            {/*<UncontrolledDropdown className="ml-2">*/}
+              {/*<DropdownToggle*/}
+                {/*caret*/}
+                {/*color="light"*/}
+                {/*size="sm"*/}
+                {/*className="language-button"*/}
+              {/*>*/}
+                {/*<span className="name">{locale.toUpperCase()}</span>*/}
+              {/*</DropdownToggle>*/}
+              {/*<DropdownMenu className="mt-3" right>*/}
+                {/*{localeOptions.map(l => {*/}
+                  {/*return (*/}
+                    {/*<DropdownItem*/}
+                      {/*onClick={() => this.handleChangeLocale(l.id, l.direction)}*/}
+                      {/*key={l.id}*/}
+                    {/*>*/}
+                      {/*{l.name}*/}
+                    {/*</DropdownItem>*/}
+                  {/*);*/}
+                {/*})}*/}
+              {/*</DropdownMenu>*/}
+            {/*</UncontrolledDropdown>*/}
+          {/*</div>*/}
+
+
+          {/*<div className="position-relative d-none d-none d-lg-inline-block">*/}
+            {/*<a*/}
+              {/*className="btn btn-outline-primary btn-sm ml-2"*/}
+              {/*target="_top"*/}
+              {/*href="https://themeforest.net/cart/configure_before_adding/22544383?license=regular&ref=ColoredStrategies&size=source"*/}
+            {/*>*/}
+              {/*<IntlMessages id="user.buy" />*/}
+            {/*</a>*/}
+          {/*</div>*/}
         </div>
-        <a className="navbar-logo" href="/">
-          <span className="logo d-none d-xs-block" />
-          <span className="logo-mobile d-block d-xs-none" />
+
+        <a className="navbar-logo profile-pic profile-pic br-w br-r50  p-05" href="/">
+          <img src={logo} alt={logo} className="img-self-cover br-r50 br-y   "/>
+          {/*<span className="logo d-none d-xs-block" />*/}
+          {/*<span className="logo-mobile d-block d-xs-none" />*/}
         </a>
         <div className="navbar-right">
-          {isDarkSwitchActive && <TopnavDarkSwitch />}
+          {/*{isDarkSwitchActive && <TopnavDarkSwitch />}*/}
 
           <div className="header-icons d-inline-block align-middle">
 
-            <TopnavEasyAccess />
-            <TopnavNotifications />
+            {/*<TopnavEasyAccess />*/}
+            {/*<TopnavNotifications />*/}
             <button
               className="header-icon btn btn-empty d-none d-sm-inline-block"
               type="button"
@@ -302,16 +307,16 @@ class TopNav extends Component {
                   <img alt="Profile" src="/assets/img/profile-pic-l.jpg" />
                 </span>
               </DropdownToggle>
-              <DropdownMenu className="mt-3" right>
-                <DropdownItem>Account</DropdownItem>
-                <DropdownItem>Features</DropdownItem>
-                <DropdownItem>History</DropdownItem>
-                <DropdownItem>Support</DropdownItem>
-                <DropdownItem divider />
-                <DropdownItem onClick={() => this.handleLogout()}>
-                  Sign out
-                </DropdownItem>
-              </DropdownMenu>
+              {/*<DropdownMenu className="mt-3" right>*/}
+                {/*<DropdownItem>Account</DropdownItem>*/}
+                {/*<DropdownItem>Features</DropdownItem>*/}
+                {/*<DropdownItem>History</DropdownItem>*/}
+                {/*<DropdownItem>Support</DropdownItem>*/}
+                {/*<DropdownItem divider />*/}
+                {/*<DropdownItem onClick={() => this.handleLogout()}>*/}
+                  {/*Sign out*/}
+                {/*</DropdownItem>*/}
+              {/*</DropdownMenu>*/}
             </UncontrolledDropdown>
           </div>
         </div>

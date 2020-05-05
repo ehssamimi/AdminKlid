@@ -85,12 +85,12 @@ const LessonCardMain = (props) => {
 
                     <CardContent>
                         <div className="row col-12 m-0">
-                            <div className="d-inline-block  ">
-                                <div className="d-flex flex-column" dir="rtl">
-                                    <span className="header-color "> {formatNumber(price)} تومان </span>
-                                    {/*{off!==0?<span className="  red-color  text-decoration-line-through">{ formatNumber(price) } تومان</span>:""}*/}
-                                </div>
-                            </div>
+                            {/*<div className="d-inline-block  ">*/}
+                                {/*<div className="d-flex flex-column" dir="rtl">*/}
+                                    {/*<span className="header-color "> {formatNumber(price)} تومان </span>*/}
+                                    {/*/!*{off!==0?<span className="  red-color  text-decoration-line-through">{ formatNumber(price) } تومان</span>:""}*!/*/}
+                                {/*</div>*/}
+                            {/*</div>*/}
                             <span className="header-color mr-auto  ">{name}</span>
 
                         </div>

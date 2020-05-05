@@ -23,6 +23,7 @@ import ImgComponent from "../../../Common/ImgComponents/ImgComponent";
 import AddPDf from "../../../Common/AddPdf/AddPDf";
 import Loader from "../../../Common/Loader/Loader";
 import AddVideoConvert from "../../../Common/AddVideoConver/AddVideoConvert";
+import HeaderAddCommon from "../../../Common/HeaderAddCommon/HeaderAddCommon";
 const SignupSchema = Yup.object().shape({
 
     name: Yup.string()
@@ -102,47 +103,38 @@ class AddTeacher2 extends Component {
     }
 
     updateValues = async (index) => {
-        console.log("we are in update ")
+        console.log("we are in update ");
         this.setState({
-            collapse:true,EditCourse:index, isLoader:true
+            collapse: true, EditCourse: index, isLoader: true
         });
+        if (index!==undefined){
+            const{state,Description }= await loadCourse(this.state.id);
+            let EditCourse= Description.lessons[this.props.Lesson_index].teachers[index];
+            let Img={"img_data":{"main":EditCourse.image},"img_file":{"main":undefined }} ;
 
 
-        const{state,Description }= await loadCourse(this.state.id);
-        let EditCourse= Description.lessons[this.props.Lesson_index].teachers[index];
-        let Img={"img_data":{"main":EditCourse.image},"img_file":{"main":undefined }} ;
+            let Data = {
+                name:EditCourse.name,
+                total_videos_time:EditCourse.total_videos_time
+            };
 
+            this.setState({
+                initialValue:Data,DefaultValue:Data,isLoader:false,Img
+            });
 
+        }else {
+            const{state,Description }= await GetUserDropDown();
 
+            let Data = {name:'', total_videos_time:''  };
+            let Img = {"img_data": {"main": undefined}, "img_file": {"main": undefined}};
 
-        let Data = {
-            name:EditCourse.name,
-            total_videos_time:EditCourse.total_videos_time
-        };
+            this.setState({
+                initialValue:Data,DefaultValue:Data , Img ,isLoader: false
+            });
 
-        this.setState({
-            initialValue:Data,DefaultValue:Data,isLoader:false,Img
-        });
+        }
 
         return true;
-
-
-        // Lesson_index
-
-
-
-
-
-        //
-
-        //
-        //
-        // if (state===200 ) {
-        //
-        //
-        // } else {
-        //     error_Notification(state, Description)
-        // }
 
     }
 
@@ -333,21 +325,13 @@ class AddTeacher2 extends Component {
 
     render() {
         let{collapse,Option,isLoader,initialValue,Img,id,FileError}=this.state;
-
+        const {match: {params}} =  this.props;
         return (
             <div id="addSlider">
-                <div onClick={this.toggle} className="d-flex align-items-center">
-                    <Button color="primary"  className=" p-0 d-flex align-items-center justify-content-center">
-                        {
-                            collapse? <span color="primary" className="glyph-icon simple-icon-minus fs25rem  "></span>: <span color="primary" className="glyph-icon simple-icon-plus fs25rem  "></span>
-                        }
-                    </Button>
-                    {
-                        this.state.EditCourse===""?<span className="fs13vw ml-3">اضافه کردن</span>:<span className="fs13vw ml-3">به روز رسانی</span>
-                    }
 
+                <HeaderAddCommon collapse={collapse} toggle={this.toggle}   item={"استاد"}
+                                 id={this.state.EditCourse} to={`/content/lesson/${id}/${params.index}/${params.lesson}`}/>
 
-                </div >
                 <Collapse
                     isOpen={collapse}
                     className="mt-3"

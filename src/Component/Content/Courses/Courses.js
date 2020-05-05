@@ -60,6 +60,7 @@ const Courses = (props) => {
                             <div  key={index} className={["row w-100 ", index===0?"mt-4":"mt-14"].join(" ") } dir={"ltr"}>
                                 <CarouselMain type={"courseMain"}
                                     // files={file}
+                                              UpdateCoursList={UpdateCoursList}
                                               getCourseID={getCourseID}
                                               files={item.courses}
                                               off={0}

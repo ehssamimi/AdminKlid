@@ -26,6 +26,9 @@ import {NotificationManager} from "react-notifications";
 import validator from "validator";
 import AddVideoConvert from "../../../../Common/AddVideoConver/AddVideoConvert";
 import AddPreviewPdf from "../../../../Common/AddPdf/AddPreviewPdf";
+import {Link} from "react-router-dom";
+import HeaderAddCommon from "../../../../Common/HeaderAddCommon/HeaderAddCommon";
+import PreviewVideoComponent from "../../../../Common/PreviewVideoComponent/PreviewVideoComponent";
 const SignupSchema = Yup.object().shape({
 
     Name: Yup.string()
@@ -53,7 +56,7 @@ class AddCourse extends Component {
             initialValue:{Name:'', Description:"" , grade: '', field: ''},DefaultValue:{Name:'', Description:"" , grade: '', field: ''},pdf:"",
             Img:{"img_data":{"main":undefined,"cover":undefined},"img_file":{"main":undefined,"cover":undefined}},
             id:undefined,model:false, func1:this.updateValues.bind(this),
-            FileError:{"main":"","cover":"","pdf":""}
+            FileError:{"main":"","cover":"","pdf":""},courses:""
         }
     }
       async componentDidMount(){
@@ -79,9 +82,13 @@ class AddCourse extends Component {
    //  }
 
     static getDerivedStateFromProps(props, state) {
+        console.log("props.id");
+        console.log(props.id);
+        console.log("state.id ");
+        console.log(state.id );
 
 
-        if (props.id !== state.id) {
+        if (props.id !== state.id ) {
             console.log("ffffffffffffffffffffffffff");
             console.log("props.index");
             console.log(props.id);
@@ -108,38 +115,51 @@ class AddCourse extends Component {
 
 
      updateValues = async (id) => {
-        console.log("log")
+         console.log("we are in update ")
+         this.setState({
+             collapse: true, id: id, isLoader: true
+         });
+         if (id!==undefined){
 
-        this.setState({
-            isLoader:true,id,
-            collapse:true
-        });
-
-
-        const{state,Description }= await loadCourse(id);
-        //
-        if (state===200 ) {
-            let initialValue= {
-                Name: Description.name,
-                Description: Description.description,
-                grade: {"label": Description.grade, "value": Description.grade},
-                field: {"label": Description.field, "value": Description.field}
-            };
-            console.log(Description);
-            this.setState((prevState) => ({
-                Img: {...prevState.Img,"img_data":{"main":Description.image,"cover":Description.demo_video_cover}},
-                initialValue,
-                DefaultValue:initialValue
-            }));
-            await this.getOptions();
+             const{state,Description }= await loadCourse(id);
+             //
+             if (state===200 ) {
+                 let initialValue= {
+                     Name: Description.name,
+                     Description: Description.description,
+                     grade: {"label": Description.grade, "value": Description.grade},
+                     field: {"label": Description.field, "value": Description.field}
+                 };
+                 console.log(Description);
+                 this.setState((prevState) => ({
+                     Img: {...prevState.Img,"img_data":{"main":Description.image,"cover":Description.demo_video_cover}},
+                     initialValue,
+                     DefaultValue:initialValue,courses:Description
+                 }));
+                 await this.getOptions();
 
 
-        } else {
-            error_Notification(state, Description)
-        }
-        this.setState({
-            isLoader:false
-        })
+             } else {
+                 error_Notification(state, Description)
+             }
+             this.setState({
+                 isLoader:false
+             })
+         } else {
+
+             const{state,Description }= await GetUserDropDown();
+             let Data = {Name:'', Description:"" , grade: '', field: ''};
+             let Img = {"img_data": {"main": undefined}, "img_file": {"main": undefined}};
+
+             this.setState({
+                 initialValue:Data,DefaultValue:Data , Img ,isLoader: false,pdf:"",courses:""
+             });
+
+
+
+         }
+
+
     }
 
 
@@ -150,13 +170,14 @@ class AddCourse extends Component {
     };
 
 
+
       validateForm=(callback)=> {
         // let errors={"name":"","class":"","fields":"","phoneNumber":""};
          let FileError={"main":"","cover":"","pdf":""};
          let{Img: {img_data,img_file},pdf}=this.state;
 
         let formValidate=true;
-          if (this.state.id === "") {
+          if (this.state.id === undefined) {
 
               if (img_file.main===undefined) {
                   formValidate = false;
@@ -186,7 +207,7 @@ class AddCourse extends Component {
 
             this.validateForm(async (validate)=> {
                 if (validate) {
-                    console.log("validate")
+                    console.log("validate");
 
 
                    const payload = {
@@ -346,26 +367,14 @@ class AddCourse extends Component {
     };
 
     render() {
-          let{collapse,Option,isLoader,initialValue,Img,id,FileError}=this.state;
-          console.log("initialValue")
-          console.log(initialValue)
+          let{collapse,Option,isLoader,initialValue,Img,id,FileError,courses}=this.state;
+
 
 
 
         return (
             <div>
-                <div onClick={this.toggle} className="d-flex align-items-center">
-                    <Button color="primary"  className=" p-0 d-flex align-items-center justify-content-center">
-                        {
-                            collapse? <span color="primary" className="glyph-icon simple-icon-minus fs25rem  "></span>: <span color="primary" className="glyph-icon simple-icon-plus fs25rem  "></span>
-                        }
-                    </Button>
-                    {
-                        id===""?<span className="fs13vw ml-3">اضافه کردن</span>:<span className="fs13vw ml-3">به روز رسانی</span>
-                    }
-
-
-                </div >
+                 <HeaderAddCommon collapse={collapse} toggle={this.toggle}   item={"دوره"} id={id} to={'/content/courses'}/>
                 <Collapse
                     isOpen={collapse}
                     className="mt-3"
@@ -414,9 +423,17 @@ class AddCourse extends Component {
 
 
                                                         <AddPDf GetData={this.HandelAddImg}   label={"اضافه کردن pdf"} Type="pdf" errors={FileError}/>
+
                                                         {
                                                             this.state.id!==undefined?
-                                                                <AddVideoConvert ListData={{"course_id":this.props.id}} action={"course_demo_video"} />
+                                                                <div>
+                                                                    <AddVideoConvert ListData={{"course_id":this.props.id}} action={"course_demo_video"} />
+                                                                    <div className="col-12 p-0">
+                                                                        <PreviewVideoComponent video={ [courses["demo_video_cover"],courses["demo_video"]]}/>
+                                                                    </div>
+                                                                </div>
+
+
                                                                 : ""
                                                         }
 
@@ -473,6 +490,7 @@ class AddCourse extends Component {
                         </CardBody>
                     </Card>
                 </Collapse>
+
             </div>
         );
     }

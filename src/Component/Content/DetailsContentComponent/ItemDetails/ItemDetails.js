@@ -6,7 +6,7 @@ import ax from "../../../Common/img/logo512.png";
 import {NavLink} from "react-router-dom";
 import {FaRegPlayCircle} from "react-icons/fa";
 import {FiDownload} from "react-icons/fi";
-import {loadCourse} from "../../../functions/ServerConnection";
+import {GetUserDropDown, loadCourse} from "../../../functions/ServerConnection";
 import {NotificationManager} from "react-notifications";
 import Loader from "../../../Common/Loader/Loader";
 import HeaderContentNavigation from "../../HeaderContentNavigation/HeaderContentNavigation";
@@ -26,21 +26,31 @@ const ItemDetails = (props) => {
     }, [ ] );
     async function  getData(){
 
-
+        console.log("id")
+        console.log(id)
         const{state,Description }= await loadCourse(id);
         // convertBaseData(Description.create_at) ;
         // let{data , page , off }=Description;
+        console.log("Description");
+        console.log(Description);
 
         if (state===200 ) {
-            let EditCourse= Description.lessons[params.index].teachers[params.TeacherIndex].chapters[params.chapterIndex].items[params.itemIndex];
+            let EditCourse= await Description.lessons[params.index].teachers[params.TeacherIndex].chapters[params.chapterIndex].items[params.itemIndex];
 
             setCourses(EditCourse);
 
+            if (EditCourse===undefined){
+                // const{state:state2,Description:DEscription2 }= await GetUserDropDown();
+
+                window.location.reload();
+            }
+
+            setIsLoader(false);
 
         } else {
             NotificationManager.error(state, Description);
         }
-        setTimeout(function(){setIsLoader(false);}, 1500);
+        // setTimeout(function(){setIsLoader(false);}, 1500);
     };
     const toggle = (type,value) => {
 
@@ -54,20 +64,11 @@ const ItemDetails = (props) => {
     const deleteToggle=()=>{
         console.log("delete")
     };
-    console.log("course")
-    console.log(course)
+    console.log("course");
+    console.log(course);
 
 
-    // audio: "https://resourcealef.liara.run/admin/course/stream/item_audio/5e96169a01d73623037c281d/2LHbjNin2LbbjA==/2KjYrti02YbYr9mH/2KfZhtiq2q-Ysdin2YQ=/2YXZgdin2YfbjNmFINiv2YjZhduM2Yc=/audio.mp3"
-    // create_at: "2020-04-14T21:38:08.463000"
-    // description: "string"
-    // downloadable_content: "https://resourcealef.liara.run/admin/course/stream/item_downloadable_content/5e96169a01d73623037c281d/2LHbjNin2LbbjA==/2KjYrti02YbYr9mH/2KfZhtiq2q-Ysdin2YQ=/2YXZgdin2YfbjNmFINiv2YjZhduM2Yc=/pdf.pdf"
-    // is_free: false
-    // is_locked: true
-    // name: "مفاهیم دومیه"
-    // time_to_done: 3
-    // video: "https://resourcealef.liara.run/admin/course/stream/item_video/5e96169a01d73623037c281d/2LHbjNin2LbbjA==/2KjYrti02YbYr9mH/2KfZhtiq2q-Ysdin2YQ=/2YXZgdin2YfbjNmFINiv2YjZhduM2Yc=/index.m3u8"
-    // video_cover: "image.png"
+
 
     return (
         <div>
@@ -102,14 +103,14 @@ const ItemDetails = (props) => {
                                 <div className='d-flex  w-100 flex-wrap  ' dir='rtl'>
                                     <RowShowShowColEdit label={"اسم"} value={course["name"]}
                                                         className='p-0 d-flex justify-content-start col-6'/>
-                                    <RowShowShowColEdit label={"رشته"} value={course["is_free"]? "هست":"نیست"}
+                                    <RowShowShowColEdit label={"رایگان"} value={course["is_free"]? "هست":"نیست"}
                                                         className='p-0 d-flex justify-content-start col-6'/>
                                     {/*<RowShowShowColEdit label={"فغال"} value={!course["is_locked"] ? "فعال" : "غیر فعال"}*/}
                                                         {/*className='p-0 d-flex justify-content-center col-6'/>*/}
                                     <RowShowShowColEdit label={"زمان تقریبی اتمام"} value={course["time_to_done"]}
-                                                        className='p-0 d-flex justify-content-start col-6'/>
+                                                        className='p-0 d-flex justify-content-start col-6 mt-1'/>
                                     <RowShowShowColEdit label={"تولید"} value={convertBaseData(course.create_at)}
-                                                        className='p-0 d-flex justify-content-start col-6'/>
+                                                        className='p-0 d-flex justify-content-start col-6 mt-1'/>
                                     <div className="d-flex  justify-content-start w-100">
                                         <div className="col-6 p-0">
                                             <PreviewVideoComponent video={ [course["video_cover"],course["video"]]}/>
@@ -126,17 +127,12 @@ const ItemDetails = (props) => {
 
 
 
-
-
-
                                     <div className="mt-3 green-them w-100 d-flex justify-content-start ">
 
                                     <span className=' mr-2'>
                                     <audio src={course.audio} controls={true} autoPlay={false}/>
                                     </span>
                                     </div>
-
-
 
 
                                     <RowShowShowColEdit label={"توضیحات"} value={course["description"]}
@@ -162,25 +158,25 @@ const ItemDetails = (props) => {
                                         <div
                                             className=' w-100 h-100   d-flex  flex-column mt-3 justify-content-start   '>
                                             {/***************Buttons********/}
-                                            <div className='col-3 d-flex flex-column justify-content-around '>
-                                                {/***************Delete Button********/}
-                                                <div
-                                                    className="w-100 d-flex btn btn-primary justify-content-center align-items-center">
-                                                    <button
-                                                        className=' w-100 d-flex justify-content-center   cursor-pointer b-0     btn-primary'
-                                                        onClick={deleteToggle}><span
-                                                        className='glyph-icon iconsminds-folder-close'></span>
-                                                    </button>
-                                                </div>
-                                                {/***************edit Button********/}
-                                                <NavLink to={`/content/product/add/${id}`}
-                                                         className="w-100 d-flex btn btn-secondary justify-content-center align-items-center">
-                                                    <button
-                                                        className=' w-100 d-flex justify-content-center   cursor-pointer b-0    btn-secondary'>
-                                                        <span className='glyph-icon iconsminds-folder-edit'></span>
-                                                    </button>
-                                                </NavLink>
-                                            </div>
+                                            {/*<div className='col-3 d-flex flex-column justify-content-around '>*/}
+                                                {/*/!***************Delete Button********!/*/}
+                                                {/*<div*/}
+                                                    {/*className="w-100 d-flex btn btn-primary justify-content-center align-items-center">*/}
+                                                    {/*<button*/}
+                                                        {/*className=' w-100 d-flex justify-content-center   cursor-pointer b-0     btn-primary'*/}
+                                                        {/*onClick={deleteToggle}><span*/}
+                                                        {/*className='glyph-icon iconsminds-folder-close'></span>*/}
+                                                    {/*</button>*/}
+                                                {/*</div>*/}
+                                                {/*/!***************edit Button********!/*/}
+                                                {/*<NavLink to={`/content/product/add/${id}`}*/}
+                                                         {/*className="w-100 d-flex btn btn-secondary justify-content-center align-items-center">*/}
+                                                    {/*<button*/}
+                                                        {/*className=' w-100 d-flex justify-content-center   cursor-pointer b-0    btn-secondary'>*/}
+                                                        {/*<span className='glyph-icon iconsminds-folder-edit'></span>*/}
+                                                    {/*</button>*/}
+                                                {/*</NavLink>*/}
+                                            {/*</div>*/}
 
                                         </div>
                                     </div>
