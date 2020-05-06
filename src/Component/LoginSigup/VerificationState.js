@@ -47,7 +47,7 @@ const VerificationState = (props) => {
 
         if (validator.isEmpty(values.verificationCode)) {
             formValidate = false;
-            errors['verificationCode']="کد ارسالی به تلفت همراه خود را وارد کنید ";
+            errors['verificationCode']="کد ارسالی به تلفن همراه خود را وارد کنید ";
         }
 
         seterror(errors);
@@ -61,27 +61,33 @@ const VerificationState = (props) => {
         validateForm(async (validate)=>{
 
             if (validate){
+                let VerificationCode=values.verificationCode.toString().toEnglishDigit();
+                // let VerificationCode=Number(VerificationCodeString);
+
+
+
                 console.log("کد فعال سازی");
                 console.log( "type : "+type);
                 console.log( "phoneNumber : "+localStorage.getItem("phoneNumber_K"));
-                console.log( "cooe : "+values.verificationCode);
+                console.log( "cooe : "+VerificationCode);
                 loading(100,1);
 
 
-                let {state ,Description} = await Verify(type,localStorage.getItem("phoneNumber_K"),values.verificationCode);
+                let {state ,Description} = await Verify(type,localStorage.getItem("phoneNumber_K"),VerificationCode);
                 console.log(state ,Description);
 
                  if (state===200 ) {
                     localStorage.setItem("token",Description.token);
                      let home= document.getElementById("UserAccess");
-                     home.click();
                      User.HandelLogin();
+                     home.click();
+
 
                     //  history.push('/user-info');
                     // handelChangeForm("Profile");
 
                 } else {
-                    NotificationManager.error(state, Description)
+                    NotificationManager.error(state, Description);
                      setTimeout(function(){
                          loading(50, 1);
 
@@ -110,28 +116,29 @@ const VerificationState = (props) => {
 
 
     return (
-        <div className="w-50 h-100  overflow-hidden "     dir="rtl" >
+        <div className="col-sm-12 col-md-6 h-100  overflow-hidden   "     dir="rtl" >
             <div className="w-100 h-100  d-flex justify-content-center overflow-hidden">
-                <div className="main-login-field col-8">
-                    <p className="header-color" style={{fontSize:"1.5rem"}}>{header}  </p>
-                    <p className="header-color font-weight-bold  mb-2 mt-2" style={{fontSize:"3rem"}}>{subHeader} </p>
+                <div className="  col-10 col-xl-8 " style={{marginTop:'5.5rem'}}>
+                    <p className="header-color FsHeaderLogin1 mb-0">{header}  </p>
+                    <p className="header-color font-weight-bold  mb-2 mt-5 FsHeaderLogin2  " style={{ whiteSpace: "break-spaces"}}>{subHeader} </p>
                     <div className="row m-0  w-100">
 
-                        <Col sm={12} className="d-flex   flex-column justify-content-between   ml-r-auto   ">
-                            <Form onSubmit={handelSubmit}>
+                        <Col sm={12} className="d-flex   flex-column justify-content-between   ml-r-auto  p-0 ">
+                            <Form onSubmit={handelSubmit} className="mt-login-form col-10 p-0 bgInput">
 
                                 <TextInput onChange={onChange} label={"کد فعال سازی"} id={'verificationCode'}
-                                           placeholder={"****"} type={"number"}
-                                           is_required={true} value={values.verificationCode}
+                                           placeholder={"کد چهار رقمی"} type={"number"}
+                                           is_required={false} value={values.verificationCode}
                                            error={error.verificationCode}/>
+                                {
+                                    count<0?<p onClick={HandelResend} className="">ارسال دوباره کد </p>:<p className="FsFooterLogin mt-2 color-placeHolder">ارسال مجدد کد فعال سازی تا {count} ثانیه </p>
+                                }
 
                                 <button
-                                    className="btn green-background  br10px text-white col-5 h-input-s col-md-6 col-sm-12 sendButton-shadow mt-3"
+                                    className="btn green-background  br10px text-white col-8 h-input-s col-md-6 col-sm-12 sendButton-shadow  "
                                     type="submit">{btn_txt}
                                 </button>
-                                {
-                                    count<0?<p onClick={HandelResend}>ارسال دوباره کد </p>:<p>ارسال دوباره کد در {count} ثانیه </p>
-                                }
+
 
                             </Form>
 
@@ -140,7 +147,7 @@ const VerificationState = (props) => {
 
                 </div>
             </div>
-            <a href="/access-level"  id="UserAccess" className="d-none">go user profile</a>
+            <a href="/"  id="UserAccess" className="d-none">go user profile</a>
 
             <NotificationContainer />
         </div>

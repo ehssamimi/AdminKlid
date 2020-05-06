@@ -13,6 +13,8 @@ import NotificationContainer from './components/common/react-notifications/Notif
 import { isMultiColorActive } from './constants/defaultValues';
 import { getDirection } from './helpers/Utils';
 import './assets/css/MyCss/MyStyle2.css'
+import AuthRoute from "./Component/Common/AuthRoute/AuthRoute";
+import UserProvider from "./Component/Common/Context/UserProvider";
 
 const ViewMain = React.lazy(() =>
   import(/* webpackChunkName: "views" */ './views')
@@ -27,21 +29,32 @@ const ViewCourse = React.lazy(() =>
 const Login = React.lazy(() =>
   import(/* webpackChunkName: "views" */ './Component/LoginSigup/LogIn')
 );
+const Exit = React.lazy(() =>
+  import(/* webpackChunkName: "views" */ './Component/Exit/Exit')
+);
 const ViewUpload = React.lazy(() =>
     import(/* webpackChunkName: "views-app" */ './views/upload/index')
 );
 const ViewAccessLevel = React.lazy(() =>
     import(/* webpackChunkName: "views-app" */ './views/accessLevel')
 );
-// const ViewUser = React.lazy(() =>
-//     import(/* webpackChunkName: "views-user" */ './views/user')
-// );
+const ViewUser = React.lazy(() =>
+    import(/* webpackChunkName: "views-user" */ './views/user')
+);
 const ViewApp = React.lazy(() =>
   import(/* webpackChunkName: "views-app" */ './views/app')
 );
 const ViewError = React.lazy(() =>
   import(/* webpackChunkName: "views-error" */ './views/error')
 );
+
+
+
+
+
+
+
+
 
 class App extends Component {
   constructor(props) {
@@ -60,6 +73,7 @@ class App extends Component {
     const { locale } = this.props;
     const currentAppLocale = AppLocale[locale];
 
+
     return (
       <div className="h-100">
         <IntlProvider
@@ -69,6 +83,8 @@ class App extends Component {
           <React.Fragment>
             <NotificationContainer />
             {isMultiColorActive && <ColorSwitcher />}
+
+              <UserProvider>
             <Suspense fallback={<div className="loading" />}>
               <Router>
                 <Switch>
@@ -81,36 +97,39 @@ class App extends Component {
                     exact
                     render={props => <ViewError {...props} />}
                   />
+
+                    <AuthRoute path="/user"  component={ViewUser} {...this.props}/>
+                    <AuthRoute path="/content"  component={ViewCourse} {...this.props}/>
+                    <AuthRoute path="/upload"  component={ViewUpload} {...this.props}/>
+                    <AuthRoute path="/access-level"  component={ViewAccessLevel} {...this.props}/>
+                    <AuthRoute path="/"  component={ViewMain} {...this.props}/>
+                    <AuthRoute path="/exit"  component={Exit} {...this.props}/>
                     {/*<Route*/}
-                        {/*path="/user"*/}
-                        {/*render={props => <ViewUser {...props} />}*/}
-                    {/*/>   */}
-                    <Route
-                        path="/content"
-                        render={props => <ViewCourse {...props} />}
-                    />
-                    <Route
-                        path="/upload"
-                        render={props => <ViewUpload {...props} />}
-                    />
-                    <Route
-                        path="/access-level"
-                        render={props => <ViewAccessLevel {...props} />}
-                    />
-                    <Route
-                        path="/"
-                        exact
-                        render={props => <ViewMain {...props} />}
-                    />
+                        {/*path="/exit"*/}
+                        {/*exact*/}
+                        {/*render={props => <Exit {...props} />}*/}
+                    {/*/>*/}
+
+                    {/*<Route*/}
+                        {/*path="/access-level"*/}
+                        {/*render={props => <ViewAccessLevel {...props} />}*/}
+                    {/*/>*/}
+                    {/*<Route*/}
+                        {/*path="/"*/}
+                        {/*exact*/}
+                        {/*render={props => <ViewMain {...props} />}*/}
+                    {/*/>*/}
                     <Route
                         path="/login"
                         exact
                         render={props => <Login {...props} />}
                     />
+
                   <Redirect to="/error" />
                 </Switch>
               </Router>
             </Suspense>
+              </UserProvider>
           </React.Fragment>
         </IntlProvider>
           <NotificationContainer />

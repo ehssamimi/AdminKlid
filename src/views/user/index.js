@@ -1,40 +1,60 @@
-import React, { Suspense } from 'react';
-import { Route, Switch, Redirect } from 'react-router-dom';
-import UserLayout from '../../layout/UserLayout';
+import React, { Component, Suspense } from 'react';
+import { Route, withRouter, Switch, Redirect } from 'react-router-dom';
+import { connect } from 'react-redux';
 
-const Login = React.lazy(() =>
-  import(/* webpackChunkName: "user-login" */ './login')
+import AppLayout from '../../layout/AppLayout';
+
+const UserAll = React.lazy(() =>
+    import(/* webpackChunkName: "viwes-gogo" */ '../../Component/User/UserShowAll/UserShowAll')
 );
-const Register = React.lazy(() =>
-  import(/* webpackChunkName: "user-register" */ './register')
-);
-const ForgotPassword = React.lazy(() =>
-  import(/* webpackChunkName: "user-forgot-password" */ './forgot-password')
+const UserInfo = React.lazy(() =>
+    import(/* webpackChunkName: "viwes-gogo" */ '../../Component/User/UserInfo/UserInfo')
 );
 
-const User = ({ match }) => {
-  return (
-    <UserLayout>
-      <Suspense fallback={<div className="loading" />}>
-        <Switch>
-          <Redirect exact from={`${match.url}/`} to={`${match.url}/login`} />
-          <Route
-            path={`${match.url}/login`}
-            render={props => <Login {...props} />}
-          />
-          <Route
-            path={`${match.url}/register`}
-            render={props => <Register {...props} />}
-          />
-          <Route
-            path={`${match.url}/forgot-password`}
-            render={props => <ForgotPassword {...props} />}
-          />
-          <Redirect to="/error" />
-        </Switch>
-      </Suspense>
-    </UserLayout>
-  );
+
+class App extends Component {
+    render() {
+        const { match } = this.props;
+
+        return (
+            <AppLayout>
+                <div className="dashboard-wrapper">
+                    <Suspense fallback={<div className="loading" />}>
+                        <Switch>
+                            <Redirect exact from={`${match.url}/`} to={`${match.url}/all`} />
+                            <Route
+                                path={`${match.url}/all`}
+                                render={props => <UserAll {...props} />}
+                            />
+                            <Route
+                                path={`${match.url}/info/:phoneNumber?`}
+                                render={props => <UserInfo {...props} />}
+                            />
+
+                            {/*<Route*/}
+                            {/*path={`${match.url}/second-menu`}*/}
+                            {/*render={props => <SecondMenu {...props} />}*/}
+                            {/*/>*/}
+                            {/*<Route*/}
+                            {/*path={`${match.url}/blank-page`}*/}
+                            {/*render={props => <BlankPage {...props} />}*/}
+                            {/*/>*/}
+                            <Redirect to="/error" />
+                        </Switch>
+                    </Suspense>
+                </div>
+            </AppLayout>
+        );
+    }
+}
+const mapStateToProps = ({ menu }) => {
+    const { containerClassnames } = menu;
+    return { containerClassnames };
 };
 
-export default User;
+export default withRouter(
+    connect(
+        mapStateToProps,
+        {}
+    )(App)
+);

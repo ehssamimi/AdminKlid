@@ -32,16 +32,34 @@ import TopnavNotifications from "./Topnav.Notifications";
 import TopnavDarkSwitch from "./Topnav.DarkSwitch";
 
 import { getDirection, setDirection } from "../../helpers/Utils";
+import {error_Notification} from "../../Component/functions/componentHelpFunction";
+import {GetUserProfile} from "../../Component/functions/ServerConnection";
 
 class TopNav extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      isInFullScreen: false,
+      isInFullScreen: false,ItemValue:[],
       searchKeyword: ""
     };
   }
+  async componentDidMount(){
+    console.log("thi sis  profile ");
+
+      const {state, Description}=await GetUserProfile();
+      if (state===200 ) {
+          console.log(Description);
+          let ItemValue = [Description.personal_info.name, Description.profile.image_id, Description.education.grade];
+          this.setState({
+              ItemValue
+          })
+      }else {
+        error_Notification(state,Description);
+      }
+
+  }
+
 
   handleChangeLocale = (locale, direction) => {
     this.props.changeLocale(locale);
@@ -302,9 +320,9 @@ class TopNav extends Component {
           <div className="user d-inline-block">
             <UncontrolledDropdown className="dropdown-menu-right">
               <DropdownToggle className="p-0" color="empty">
-                <span className="name mr-1">Sarah Kortney</span>
+                 <span className="name mr-1">{this.state.ItemValue[0]}</span>
                 <span>
-                  <img alt="Profile" src="/assets/img/profile-pic-l.jpg" />
+                  <img alt="Profile" src={this.state.ItemValue[1]} />
                 </span>
               </DropdownToggle>
               {/*<DropdownMenu className="mt-3" right>*/}

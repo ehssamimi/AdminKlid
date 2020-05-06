@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import AppLayout from '../../layout/AppLayout';
 
 const Upload = React.lazy(() =>
-  import(/* webpackChunkName: "viwes-gogo" */ './../../Component/Upload/UploadVideos')
+  import(/* webpackChunkName: "viwes-gogo" */ '../../Component/Common/Upload/UploadVideos')
 );
 
 

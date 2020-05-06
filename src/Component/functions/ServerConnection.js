@@ -1068,26 +1068,26 @@ export async  function  GetDestination( ) {
 // // **************************Content**************
 //
 // // **************product********
-// export async  function  GetAllProduct(id){
-//
-//     let headers = {
-//         'Token': Const.Token,
-//         'Id': Const.ID,
-//         'Content-Type': 'application/x-www-form-urlencoded'
-//     };
-//     var resp ="";
-//     await axios.get(`${Const.product}admin/product/all?page=${id}`, {headers: headers}).then(function (response) {
-//          // console.log(response );
-//         let {Description}=response.data;
-//         // let {Items} = response.data;
-//         resp=Description;
-//     }).catch(function (error) {
-//         console.log(error);
-//         console.log(error.message);
-//         resp='error'
-//     });
-//     return resp;
-// }
+export async  function  GetAllProduct(id){
+
+    let headers = {
+        'Token': Const.Token,
+        'Id': Const.ID,
+        'Content-Type': 'application/x-www-form-urlencoded'
+    };
+    var resp ="";
+    await axios.get(`${Const.product}admin/product/all?page=${id}`, {headers: headers}).then(function (response) {
+         // console.log(response );
+        let {Description}=response.data;
+        // let {Items} = response.data;
+        resp=Description;
+    }).catch(function (error) {
+        console.log(error);
+        console.log(error.message);
+        resp='error'
+    });
+    return resp;
+}
 // export async  function  GetProductDetail(id){
 //
 //     let headers = {
@@ -1420,6 +1420,8 @@ export async  function  GetDestination( ) {
 //     });
 //     return resp;
 // }
+
+
 
 // **********Login/Out********
 export async  function  Regestry(Data){
@@ -2402,6 +2404,31 @@ export async  function  GetUserInfo(phone_number){
     });
     return resp;
 }
+export async  function  GetUserProfile(){
+
+    let headers = {
+
+        'accept': 'application/json',
+        'token':Const.Token
+    };
+
+    var resp ="";
+    await axios.get(`${Const.user}profile`, {headers: headers}).then(function (response) {
+        console.log(response );
+        resp={state:200,Description:response.data};
+    }).catch(function (error) {
+        console.log(error.response);
+        console.log(error);
+        let {response}=error;
+        if (response===undefined){
+            resp={state: 400,Description: error.message}
+        } else{
+            resp={state:response.status||400,Description:response.data.detail||error.message}
+        }
+    });
+    return resp;
+}
+
 // ************permission**********
 export async  function  GetAllPermission(page_number){
 
