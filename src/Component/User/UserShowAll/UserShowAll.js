@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import {GetAllProduct} from "../../functions/ServerConnection";
+import {GetAllProduct, GetAllUser} from "../../functions/ServerConnection";
 import {error_Notification, getProductList} from "../../functions/componentHelpFunction";
 import InfiniteScroll from "react-infinite-scroller";
 import Loader from "../../Common/Loader/Loader";
 import PreviewUserCard from "./Subs/PreviewUserCard";
-import ax from './../../../assets/common/img/logo512.png'
+import ax from './../../../assets/common/img/default_pic@3x.png'
 
 export default function UserShowAll() {
 
@@ -15,17 +15,24 @@ export default function UserShowAll() {
     const loadMore=async()=>{
 
         // ***get all product and current page ***
-        let Response = await GetAllProduct(pageStart);
+        let {state,Description}=await GetAllUser(pageStart);
+        console.log("Description");
+        console.log(Description);
+        console.log("pageStart")
+        console.log(pageStart)
+
+
+        // let Response = await GetAllProduct(pageStart);
         if (Response!=='error') {
-            let{Products,Page}=Response;
+            let{users,page}=Description;
             // *** modify  products to our label value ***
-            let productsSeparate = getProductList(Products);
+            let productsSeparate = users;
             // *******update state*****
             setproductSeparate([...productSeparate,...productsSeparate]);
             console.log(productSeparate);
-            setpageStart(Page+1);
+            setpageStart(page+1);
             // ***** check if product length is zero then stop loop****
-            sethasMore(Products.length !== 0);
+            sethasMore(users.length !== 0);
         }else {
             error_Notification('Network Error')
         }
@@ -43,7 +50,8 @@ export default function UserShowAll() {
             <div className='d-flex  w-100  flex-wrap'  >
                 {productSeparate.length>0 && Array.isArray(productSeparate)  ?
                     productSeparate.map((todo, index) =>
-                        <PreviewUserCard name={"احسان صمیمی راد"} grade={"دروه دهم"} field={"علوم تجربی"} image={ax} phoneNumber={"09112561701"}/>
+                        <PreviewUserCard key={index} {...todo}/>
+
 
                     ) : ''
                 }

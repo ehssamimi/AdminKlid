@@ -10,17 +10,25 @@ import {Button} from "reactstrap";
 import {ModalDelete} from "../../../Common/Modals/ModalDelete/ModalDelete";
 
 const PreviewUserCard = (props) => {
-    let{name,grade,field,image,phoneNumber }=props;
+    let{name,grade,field,image,phone_number }=props;
     // const [count, setCount] = useState(1);
     // useEffect(() => {
     //     // Update the document title using the browser API
     //     document.title = `You clicked ${count} times`;
     // });
 
+
+    // field: "ریاضی فیزیک"
+    // grade: "طرح"
+    // image: "https://5e7df4522174ce0011232b00.liara.space/user-service/system/profiles_pic/5e82a422dc5d87cead3bab42?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=11CAOPNDQWXGU8FVAUF2J%2F20200508%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20200508T170134Z&X-Amz-Expires=25200&X-Amz-SignedHeaders=host&X-Amz-Signature=69ef1b07233f1c264f440c4421386abfb479a48d0eda44e33838efc92feb5517"
+    // name: "amin jamal"
+    // phone_number: "09119518867"
+    //
+
     return (
-        <div className="  MainCardCourseHeight  col-sm-6 col-md-4   ">
-            <Card  className= "     br20px  box-shadow-custom FsFooterLogin w-100 h-100   m-1 " id={phoneNumber}>
-                <Link to={`/content/course/${phoneNumber}`}  className="pt-4">
+        <div className="  MainCardCourseHeight  col-sm-6 col-md-4 mt-4  ">
+            <Card  className= "     br20px  box-shadow-custom FsFooterLogin w-100 h-100   m-1 " id={phone_number}>
+                <Link to={`/content/course/${phone_number}`}  className="pt-4">
 
 
                     {/*<CardMedia*/}
@@ -30,12 +38,12 @@ const PreviewUserCard = (props) => {
                     {/*title="Course Section"*/}
                     {/*/>*/}
                     <CardMedia
-                        className="hpx200 "
+                        className="hpx150 "
                         image={ image}
                         title="Course Section"
                     />
 
-                    {/*<img src={image} alt={image}/>*/}
+                    {/*<img src={"https://5e7df4522174ce0011232b00.liara.space/user-service/system/profiles_pic/default?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=11CAOPNDQWXGU8FVAUF2J%2F20200508%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20200508T170348Z&X-Amz-Expires=25200&X-Amz-SignedHeaders=host&X-Amz-Signature=79c4fc8adfa6d66e7280dfbc9d8c4012696385d6b4fa974bd53dca751393fee7"} alt={image}/>*/}
                     <CardContent>
 
 
@@ -43,20 +51,20 @@ const PreviewUserCard = (props) => {
                             <span className="header-color text-center  ">{ name}</span>
                         </div>
 
-                        <LabelValueRow label={"شماره تماس"} value={phoneNumber} className="d-flex col-12 justify-content-center text-center   "/>
+                        <LabelValueRow label={"شماره تماس"} value={phone_number} className="d-flex col-12 justify-content-center text-center   "/>
 
 
 
 
-                        <div className="row pl-3 justify-content-end">
+                        <div className="row     m-0">
                             {/*<span className="second-color">{grade} </span>*/}
                             {/*<span className="second-color"> {field? "|"+ field:""} </span>*/}
                             {
-                                field!==""? <LabelValueRow label={"رشته"} value={field} className="col-sm-12 col-md-6  "/>:""
+                                field!==""? <LabelValueRow label={"رشته"} value={field} className="col-6 p-0 justify-content-center "/>:""
                             }
 
 
-                            <LabelValueRow label={"پایه"} value={grade} className="col-sm-12 col-md-6  "/>
+                            <LabelValueRow label={"پایه"} value={grade} className="col-6 p-0 justify-content-center "/>
 
                             {/*<span className="second-color pl-2"> {field } </span>*/}
                         </div>

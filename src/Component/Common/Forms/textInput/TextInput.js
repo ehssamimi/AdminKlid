@@ -1,9 +1,9 @@
 import React, { useState,useEffect } from 'react';
 import {Col, FormFeedback, FormGroup, Input, Label} from "reactstrap";
  export  function TextInput (props){
-    let{id,placeholder,type,error,label,is_required,changeEdit ,onChange,value}=props;
+    let{id,placeholder,type,error,label,is_required,changeEdit ,onChange,value,DivClass}=props;
 
-    return <div className=" ">
+    return <div className={DivClass}>
         <FormGroup>
             <Label for={id}>
                 <span>{label +':'  }</span>
@@ -16,8 +16,8 @@ import {Col, FormFeedback, FormGroup, Input, Label} from "reactstrap";
     </div>
 };
 export  function SelectedInput (props){
-    let{id,placeholder,type,error,label,is_required,changeEdit ,onChange,options,value,class_input}=props;
-    return <div>
+    let{id,placeholder,type,error,label,is_required,changeEdit ,onChange,options,value,class_input,DivClass}=props;
+    return <div className={DivClass}>
         <FormGroup className={class_input}>
             <Label for={id}  >
                 <span>{label +':'  }</span>

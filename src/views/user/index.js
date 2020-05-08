@@ -10,6 +10,9 @@ const UserAll = React.lazy(() =>
 const UserInfo = React.lazy(() =>
     import(/* webpackChunkName: "viwes-gogo" */ '../../Component/User/UserInfo/UserInfo')
 );
+const UserSignUp = React.lazy(() =>
+    import(/* webpackChunkName: "viwes-gogo" */ '../../Component/User/UserSignUp/UserSignUp')
+);
 
 
 class App extends Component {
@@ -29,6 +32,10 @@ class App extends Component {
                             <Route
                                 path={`${match.url}/info/:phoneNumber?`}
                                 render={props => <UserInfo {...props} />}
+                            />
+                            <Route
+                                path={`${match.url}/sign-up`}
+                                render={props => <UserSignUp {...props} />}
                             />
 
                             {/*<Route*/}

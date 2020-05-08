@@ -211,3 +211,24 @@ export function convertBaseData(data) {
     // console.log(eng_data);
     // console.log(eng_array);
 }
+export const getProfileValue=(data)=>{
+    let{profile,personal_info,education,parent,address}=data;
+
+    return ({
+        "name": personal_info.name,
+        "profile_img":profile.image_id,
+        "phoneNumber":personal_info.phone_number,
+        "ID": personal_info.ssn,
+        "class":  education.grade,
+        "fields": education.field,
+        "average_num": education.gpa,
+        "schoolName": education.school_name,
+        "Schoolkind":education.school_type,
+        "country": address.province,
+        "city": address.city,
+        "parent_name": parent.name,
+        "parent_num": parent.phone_number,
+        "parent_verify":parent['verify']
+    } )
+}
+

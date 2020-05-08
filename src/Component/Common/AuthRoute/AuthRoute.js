@@ -1,6 +1,7 @@
 import React, {useState, useEffect, useContext} from 'react';
 import {Redirect, Route} from "react-router-dom";
 import {UserContext} from "../Context/UserProvider";
+import Login from "../../LoginSigup/LogIn";
 
 
 
@@ -16,18 +17,17 @@ const AuthRoute = ({ component: Component, ...rest }) => {
                 authUser ? (
                     <Component {...props} />
                 ) : (
-                    <Redirect
-                        to={{
-                            pathname: "/login",
-                            state: { from: props.location }
-                        }}
-                    />
+                  <>
+                      <Login/>
+                  </>
+
                 )
             }
         />
 
     );
 };
+
 
 
 export default AuthRoute;

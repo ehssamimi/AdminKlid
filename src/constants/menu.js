@@ -104,6 +104,11 @@ const data = [
                 label: "اطلاعات کاربر",
                 to: "/user/info/:phoneNumber?",
 
+            }, {
+                icon: "simple-icon-paper-plane",
+                label: "ثبت کاربر",
+                to: "/user/sign-up",
+
             }
         ]
 

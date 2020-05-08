@@ -2379,6 +2379,26 @@ export async  function  GetProgressive(action,Data){
 
 
 // *************user*****
+export async  function  GetAllUser(page_num){
+
+    let headers = {
+        'Token': Const.Token,
+        'Id': Const.ID,
+        'Content-Type': 'application/x-www-form-urlencoded'
+    };
+
+    var resp ="";
+    await axios.get(`${Const.admin_route}users/list?page=${page_num}`, {headers: headers}).then(function (response) {
+        console.log(response );
+         // let {Items} = response.data;
+        resp={state:200,Description:response.data};
+    }).catch(function (error) {
+        console.log(error);
+        console.log(error.message);
+        resp='error'
+    });
+    return resp;
+}
 export async  function  GetUserInfo(phone_number){
 
     let headers = {
@@ -2425,6 +2445,27 @@ export async  function  GetUserProfile(){
         } else{
             resp={state:response.status||400,Description:response.data.detail||error.message}
         }
+    });
+    return resp;
+}
+export async  function  RegestryUser(Data){
+
+    let headers = {
+        'Content-Type': 'application/json',
+        'accept': 'application/json',
+    };
+    console.log(Data);
+
+
+    var resp ="";
+    await axios.post(`${Const.admin_route}user/signup`, Data, {headers: headers}).then(function (response) {
+        console.log(response );
+        let {Description}=response.data;
+        // let {Items} = response.data;
+        resp={state:200,Description:Description};
+
+    }).catch(function (error) {
+        resp=Error(error)
     });
     return resp;
 }
@@ -2890,4 +2931,31 @@ export async  function  DeleteTrustedService(name){
 
 
 
+}
+
+
+function Error(error) {
+    console.log(error.response);
+
+    console.log(error);
+    var resp ="";
+    if (error.response.status===400) {
+        resp={state: 400,Description: error.response.data.detail}
+        if (error.response.data.detail==="access denied") {
+            console.log("we are out !!!!!!!!!!");
+             // localStorage.clear();
+             //     window.location.reload();
+        }
+
+    }else if (error.response===undefined){
+        resp={state: 400,Description: error.message}
+
+    } else if (error.response.status===422){
+        resp={state:422,Description:error.response.statusText}
+    }else{
+        resp={state:error.response.status||400,Description:error.response.data.detail||error.message}
+    }
+    console.log("resp");
+    console.log(resp);
+    return resp;
 }
