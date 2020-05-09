@@ -99,15 +99,15 @@ const data = [
                 label: "لیست کاربران",
                 to: "/user/all",
 
-            }, {
-                icon: "simple-icon-paper-plane",
-                label: "اطلاعات کاربر",
-                to: "/user/info/:phoneNumber?",
-
-            }, {
+            } , {
                 icon: "simple-icon-paper-plane",
                 label: "ثبت کاربر",
                 to: "/user/sign-up",
+
+            }, {
+                icon: "simple-icon-paper-plane",
+                label: "مشاهده اطلاعات کاربر",
+                to: "/user/get-info",
 
             }
         ]

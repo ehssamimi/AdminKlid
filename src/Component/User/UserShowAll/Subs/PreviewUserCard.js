@@ -28,7 +28,7 @@ const PreviewUserCard = (props) => {
     return (
         <div className="  MainCardCourseHeight  col-sm-6 col-md-4 mt-4  ">
             <Card  className= "     br20px  box-shadow-custom FsFooterLogin w-100 h-100   m-1 " id={phone_number}>
-                <Link to={`/content/course/${phone_number}`}  className="pt-4">
+                <Link to={`/user/info/${phone_number}`}  className="pt-4">
 
 
                     {/*<CardMedia*/}

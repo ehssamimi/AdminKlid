@@ -13,20 +13,26 @@ const UserInfo = (props) => {
     const [isLoader, setIsLoader] = useState(false);
     const [values, setvalues] = useState({});
     useEffect(  () => {
-        async function getData( ) {
+        async function getData( phone_number) {
             setIsLoader(true);
-            let {state ,Description } =await GetUserInfo('09118597833');
-            let values=getProfileValue(Description.user);
-            setvalues(values);
-            setIsLoader(false);
-            if (state===200){
-                return Description
-            } else {
+            let {state ,Description } =await GetUserInfo(phone_number);
+
+            if(state===200){
+                let values=getProfileValue(Description.user);
+                setvalues(values);
+                setIsLoader(false);
+
+                    return Description
+
+            }
+           else {
                 NotificationManager.error(state, Description);
                 return false;
             }
         }
-        getData();
+        let{match:{params}}=props;
+
+        getData(params.phoneNumber);
 
 
     },[]);
@@ -54,9 +60,15 @@ const UserInfo = (props) => {
                         </div>
                     </div> :
                     <div className="w-100">
-                        <div className="d-flex align-items-center ">
-                            <span className="second-color FssubmitLogin">اطلاعات کاربر:</span>
-                            <span className="primary-color FsHeaderLogin1 ml-2">{values.name}</span>
+                        <div className="d-flex align-items-center flex-column justify-content-center col-8 offset-2">
+                            <div className="hpx200 col-6">
+                                <img src={values.profile_img} alt="img_profile " className="img-self-cover br10px"/>
+                            </div>
+                            <div>
+                                <span className="second-color FssubmitLogin">اطلاعات کاربر:</span>
+                                <span className="primary-color FsHeaderLogin1 ml-2">{values.name}</span>
+                            </div>
+
                         </div>
 
                         < ExtentionDiv name={"اطلاعات فردی"}  >

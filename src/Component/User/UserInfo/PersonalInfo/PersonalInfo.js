@@ -61,13 +61,13 @@ let{values}=props;
  //     profile_img: "https://5e7df4522174ce0011232b00.liara.space/user-service/system/profiles_pic/5ea0132cd8cbe2eb0b7e2361?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=11CAOPNDQWXGU8FVAUF2J%2F20200508%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20200508T090029Z&X-Amz-Expires=25200&X-Amz-SignedHeaders=host&X-Amz-Signature=69554c583910b85feb8f3b24b72e0225f2bed503d798ef2ecfdbf8fc269c8307"
 
     return (
-        <div className="w-100 mt-3 h-100" dir="rtl">
+        <div className="w-100 mt-3 h-100 pb-3" dir="rtl">
 
             <div className="w-100 h-100 ow m-0">
                 <div className="row m-0  w-100    ">
                     <LabelValueRow label={"نام و نام خانوادگی"} value={values.name} className="col-6 col-md-6 col-lg-6    justify-content-start FsFooterLogin "/>
                     <LabelValueRow label={"شماره تماس"} value={values.phoneNumber} className="col-6 col-md-4 col-lg-4 col-lg-3  justify-content-start FsFooterLogin "/>
-                    <LabelValueRow label={"پایه"} value={values.grade} className="col-6 col-md-4 col-lg-4 col-lg-3  justify-content-start FsFooterLogin "/>
+                    <LabelValueRow label={"پایه"} value={values.class} className="col-6 col-md-4 col-lg-4 col-lg-3  justify-content-start FsFooterLogin "/>
                     {
                         values.fields ? <LabelValueRow label={"رشته"} value={values.fields} className="col-6 col-md-4 justify-content-start FsFooterLogin "/> : ""
                     }
