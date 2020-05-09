@@ -105,73 +105,81 @@ export function gregorian_to_jalali(g_y, g_m, g_d) {
     //return jalali[0] + "_" + jalali[1] + "_" + jalali[2];
     //return jy + "/" + jm + "/" + jd;
 }
+export function convertData(Data){
+    console.log(Data);
 
-export async  function  sendImg(file,permission){
-    // let data = new FormData();
-    // data.append("PermissionLevel",permission);
-    // data.append("file",file);
-    //
-    // let xhr = new XMLHttpRequest();
-    // xhr.withCredentials = true;
-    //
-    // xhr.open("POST", `${Const.Download_Server_URL}upload/data-form`);
-    // xhr.setRequestHeader("Id",  Const.ID );
-    // xhr.setRequestHeader("Token", Const.Token);
-    //
-    // xhr.send(data);
-    //
-    // await xhr.addEventListener("readystatechange", function () {
-    //     if (this.readyState === 4) {
-    //         let response=JSON.parse(this.responseText);
-    //         let {UploadId} = response;
-    //         console.log(UploadId);
-    //         return UploadId;
-    //      }
-    // });
-    let formData = new FormData();
-    formData.append("PermissionLevel", 'Public');
-    formData.append("file", file);
-
-    // formData.append("Name",'Public1');
-    // let  data= {"Name": "adsfasfasgf"}
-    //  let BODY={"Name": "adsfasfasgf"};
-    //
-    let headers = {
-        'Token': Const.Token,
-        'Id': Const.ID,
-        // 'Content-Type':'application/x-www-form-urlencoded'
-    };
-
-    let res = await axios.post(`${Const.Download_Server_URL}upload/data-form`,formData, {headers: headers});
-    let { UploadId } = res.data ;
-    let { status } = res ;
-    // console.log(res);
-    if (status===200) {
-        return UploadId
-    }else {
-        return ""
-    }
-    // console.log(UploadId);
-    // console.log(status);
-
-    // //
-    // await axios.post(`${Const.Download_Server_URL}upload/data-form`,formData, {headers: headers}).then(response => {
-    //     console.log(response);
-    //     console.log(response.data);
-    //     console.log(response.status);
-    //     if (response.status===200) {
-    //                 let {UploadId} = response.data;
-    //                 console.log(UploadId);
-    //         return UploadId
-    //     }
-
-
-    //
-    // }).catch(error => {
-    //     console.log(error)
-    //  });
-
+    let Original_Data = Data.slice(0, 10);
+    let newData = Original_Data.split("-");
+    let persian = gregorian_to_jalali(newData[0], newData[1], newData[2])
+    return persian.join("-")
 }
+
+// export async  function  sendImg(file,permission){
+//     // let data = new FormData();
+//     // data.append("PermissionLevel",permission);
+//     // data.append("file",file);
+//     //
+//     // let xhr = new XMLHttpRequest();
+//     // xhr.withCredentials = true;
+//     //
+//     // xhr.open("POST", `${Const.Download_Server_URL}upload/data-form`);
+//     // xhr.setRequestHeader("Id",  Const.ID );
+//     // xhr.setRequestHeader("Token", Const.Token);
+//     //
+//     // xhr.send(data);
+//     //
+//     // await xhr.addEventListener("readystatechange", function () {
+//     //     if (this.readyState === 4) {
+//     //         let response=JSON.parse(this.responseText);
+//     //         let {UploadId} = response;
+//     //         console.log(UploadId);
+//     //         return UploadId;
+//     //      }
+//     // });
+//     let formData = new FormData();
+//     formData.append("PermissionLevel", 'Public');
+//     formData.append("file", file);
+//
+//     // formData.append("Name",'Public1');
+//     // let  data= {"Name": "adsfasfasgf"}
+//     //  let BODY={"Name": "adsfasfasgf"};
+//     //
+//     let headers = {
+//         'Token': Const.Token,
+//         'Id': Const.ID,
+//         // 'Content-Type':'application/x-www-form-urlencoded'
+//     };
+//
+//     let res = await axios.post(`${Const.Download_Server_URL}upload/data-form`,formData, {headers: headers});
+//     let { UploadId } = res.data ;
+//     let { status } = res ;
+//     // console.log(res);
+//     if (status===200) {
+//         return UploadId
+//     }else {
+//         return ""
+//     }
+//     // console.log(UploadId);
+//     // console.log(status);
+//
+//     // //
+//     // await axios.post(`${Const.Download_Server_URL}upload/data-form`,formData, {headers: headers}).then(response => {
+//     //     console.log(response);
+//     //     console.log(response.data);
+//     //     console.log(response.status);
+//     //     if (response.status===200) {
+//     //                 let {UploadId} = response.data;
+//     //                 console.log(UploadId);
+//     //         return UploadId
+//     //     }
+//
+//
+//     //
+//     // }).catch(error => {
+//     //     console.log(error)
+//     //  });
+//
+// }
 
 
 

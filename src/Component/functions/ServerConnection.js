@@ -2407,10 +2407,8 @@ export async  function  GetUserInfo(phone_number){
     };
 
     var resp ="";
-    await axios.get(`${Const.User}admin_route/users/get_user_id?phone_number=${phone_number}`, {headers: headers}).then(function (response) {
+    await axios.get(`${Const.admin_route}user/info?phone_number=${phone_number}`, {headers: headers}).then(function (response) {
         console.log(response );
-
-
         resp={state:200,Description:response.data };
     }).catch(function (error) {
         console.log(error.response);

@@ -85,12 +85,18 @@ export const GetData=(Data)=>{
 };
 // ************ Label-Value-Option*********
 export const LabelValueOption=(sub)=>{
+    if ( sub!==undefined&&sub.length>0) {
+
         let SubCat=[];
         sub.map((each,index)=>{
             let subRow= { value: each , label: each  };
             SubCat.push(subRow);
         });
         return SubCat;
+    }else {
+        return [];
+    }
+
 }
 export const AutoSuggestNameVAlue=(sub)=>{
         let SubCat=[];
@@ -212,7 +218,7 @@ export function convertBaseData(data) {
     // console.log(eng_array);
 }
 export const getProfileValue=(data)=>{
-    let{profile,personal_info,education,parent,address}=data;
+    let{profile,personal_info,education,parent,address,personal_schedule}=data;
 
     return ({
         "name": personal_info.name,
@@ -228,7 +234,23 @@ export const getProfileValue=(data)=>{
         "city": address.city,
         "parent_name": parent.name,
         "parent_num": parent.phone_number,
-        "parent_verify":parent['verify']
+        "parent_verify":parent['verify'],
+        "personal_code": data.code.code,
+        "parent_code":parent.code!==null?parent.code.code:"--",
+        "personal_schedule": personal_schedule
     } )
 }
 
+// code: {code: 9721, create_at: "2020-05-04T11:32:56.059000", is_used: true}
+// create_at: "2020-04-19T21:20:33.475000"
+// education: {grade: "نهم", field: "ریاضی فیزیک", gpa: 18, school_name: "شهید بهشتی", school_type: "تیزهوشان"}
+// email: {email: null, is_active: false}
+// institute_info: {our_student: false}
+// is_active: true
+// parent: {code: {…}, name: "محمد", phone_number: "09112571484"}
+// personal_schedule:
+//     request_at: "2020-04-19T21:20:33.475000"
+// request_schedule: false
+// schedule: "https://5e7df4522174ce0011232b00.liara.space/user-service/system/personal_schedule/5ea0132cd8cbe2eb0b7e2361/None?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=11CAOPNDQWXGU8FVAUF2J%2F20200509%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20200509T080121Z&X-Amz-Expires=25200&X-Amz-SignedHeaders=host&X-Amz-Signature=9eec2843355b25b9656a99564d26c9e5feaa44e23868cca9ff794ac4df593692"
+// __proto__: Object
+// profile: {image_id: "https://5e7df4522174ce0011232b00.liara.space/user-…74d33933f8ec845e0d5413afbd61d618c06958a5fc6d1254d"}

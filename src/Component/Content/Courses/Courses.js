@@ -56,7 +56,10 @@ const Courses = (props) => {
                         <AddCourse id={params.id} UpdateCoursList={UpdateCoursList}/>
 
 
-                        {courses.data.map((item, index) =>
+                        {
+                            (courses.data!==undefined&&courses.data.length>0)?
+
+                            courses.data.map((item, index) =>
                             <div  key={index} className={["row w-100 ", index===0?"mt-4":"mt-14"].join(" ") } dir={"ltr"}>
                                 <CarouselMain type={"courseMain"}
                                     // files={file}
@@ -68,7 +71,7 @@ const Courses = (props) => {
                                               header={item.grade}/>
                             </div>
 
-                        )
+                        ):" "
                         }
                     </div>
 

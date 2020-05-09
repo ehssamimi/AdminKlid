@@ -2,22 +2,27 @@ import React, {useState, useEffect} from 'react';
 import Card from "@material-ui/core/Card/Card";
  import CardContent from "@material-ui/core/CardContent/CardContent";
 import {FiDownload} from "react-icons/fi";
+import {convertData} from "../../../functions/Functions";
+import LabelValueRow from "../../../Common/LabalValue/LabelValue";
 
 const DownloadPdf=(props)=>{
-    let {schedule}=props;
+    let {schedule,request_at}=props;
     return (
         <div className="col-12  mt-2">
+            <div className="d-flex ">
+                <LabelValueRow label={"درخواست برنامه در"} value={request_at?convertData(request_at):""} className="col-6   justify-content-start FsFooterLogin "/>
 
-            <div className="    FssubmitLogin d-flex align-items-center">
-                            <span className=' mr-2 '>
-                                <a href={schedule} target="_blank" download className="second-color ml-1 ">دانلود برنامه این دوره </a>
-                            </span>
-                <span className='green-them '><FiDownload/></span>
+                <div className=" FssubmitLogin d-flex align-items-center ml-auto">
+                      <span className=' mr-2 '>
+                        <a href={ schedule} target="_blank" download  className="second-color ml-1 ">دانلود برنامه این دوره </a>
+                      </span>
+                      <span className='green-them '><FiDownload/></span>
+                </div>
             </div>
 
         </div>
     )
-}
+};
 const HaveNotPdf=(props)=>{
     let {message}=props;
      return (
@@ -48,24 +53,29 @@ const PersonalProgram = (props) => {
         document.title = `You clicked ${count} times`;
     });
 
+    // request_at: "2020-04-19T21:20:33.475000"
+// request_schedule: false
+// schedule: "https://5e7df4
+//     useEffect(() => {
+
+    let{pdf}=props;
+    console.log(pdf);
+    // :{request_at,request_schedule,schedule}
     return (
         <div className="m-2 w-100" dir="rtl">
 
-
-
-
                     <div>
                         {
-                            count !== null ?
+                            // count !== null ?
+                            //
+                            //     <DownloadPdf schedule={"#"}/>
+                            //
+                            //     : <HaveNotPdf message={message}/>
 
-                                <DownloadPdf schedule={"#"}/>
+                            <DownloadPdf {...pdf}/>
 
-                                : <HaveNotPdf message={message}/>
                         }
                     </div>
-
-
-
 
         </div>
     );
