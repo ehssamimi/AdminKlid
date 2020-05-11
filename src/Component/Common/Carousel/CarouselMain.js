@@ -252,6 +252,114 @@ const CourseCarsMain = (props) => {
 };
 
 
+const ShowCourseUser = (props) => {
+
+
+
+    // const history = useHistory();
+    // history.push('/login');
+    let{name,grade,field,image  ,id:course_id }=props;
+
+
+    const [count, setCount] = useState(1);
+    const [isOpen, setIsOpen] = useState(false);
+    useEffect(() => {
+        // Update the document title using the browser API
+
+        document.title = `You clicked ${count} times`;
+    });
+    const handelDelete = async() => {
+        let {state ,Description}=await DeleteID(course_id);
+        if (state===200 ) {
+            success_Notification("حذف شد");
+            const $el = document.getElementById(`${course_id}`);
+            props.UpdateCoursList();
+            console.log($el);
+            $el.classList.add("opacity-0")
+            const duration = 2;
+            const from = { opacity: 0};
+            TweenMax.to($el, duration, from);
+            setTimeout(() => {
+                $el.remove();
+            }, 2000)
+
+        } else {
+            error_Notification(state, Description)
+        }
+        setIsOpen(!isOpen)
+    };
+    const handelEdit=()=>{
+        console.log("edit");
+        props.getCourseID(course_id)
+
+    };
+
+
+    return (
+
+        <Card  className= "m-2 br20px h-100 MainCardCourseHeight  box-shadow-custom FsFooterLogin" id={course_id}>
+            <Link to={`/content/course/${course_id}`}  className="pt-4">
+
+
+                {/*<CardMedia*/}
+                {/*// className={props.class}*/}
+                {/*className={'this is courseeeeeeeeeeeeeeeeee'}*/}
+                {/*image={image}*/}
+                {/*title="Course Section"*/}
+                {/*/>*/}
+                <CardMedia
+                    className="hpx200 "
+                    image={ image}
+                    title="Course Section"
+                />
+
+                {/*<img src={image} alt={image}/>*/}
+                <CardContent>
+                    <div className="row col-12 m-0">
+
+                        <span className="header-color mr-auto  ">{ name}</span>
+                    </div>
+
+                    <div className="row pl-3 justify-content-end">
+                        {/*<span className="second-color">{grade} </span>*/}
+                        {/*<span className="second-color"> {field? "|"+ field:""} </span>*/}
+                        {
+                            field!==""? <LabelValueRow label={"رشته"} value={field} className="col-sm-12 col-md-6"/>:""
+                        }
+
+
+                        <LabelValueRow label={"پایه"} value={grade} className="col-sm-12 col-md-6"/>
+
+                        {/*<span className="second-color pl-2"> {field } </span>*/}
+                    </div>
+                </CardContent>
+            </Link>
+            <CardActions className="d-flex justify-content-center">
+                <Button onClick={()=>{setIsOpen(!isOpen)}} className="btn red-background">حذف</Button>
+                <Link to={`/content/courses/${course_id}`}  >
+                    <Button onClick={handelEdit} className="btn btn-warning">ویرایش</Button>
+                </Link>
+
+            </CardActions>
+
+
+
+
+            <ModalDelete isOpen={isOpen} toggle={()=>{setIsOpen(!isOpen)}} item={name}  deleteComponent={handelDelete}/>
+        </Card>
+
+    );
+};
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -288,10 +396,13 @@ export  function CarouselMain(props) {
         window.addEventListener("resize",windowsDimention);
         return ()=>window.removeEventListener("resize",windowsDimention)
     }, []);
+    console.log("props.files");
+    console.log(props.files);
 
 
 
-    return <div className="position-relative hpx300  w-100  ">
+    // return <div className="position-relative hpx300  w-100  ">
+    return <div className={["position-relative  w-100  ",  props.type==="userFile"? "":"hpx300" ].join(" ") }  >
         {/*h-header-slider*/}
         <div className="d-flex align-items-center ">
             <span className="carousel-header">{props.header} </span>
@@ -364,6 +475,13 @@ export  function CarouselMain(props) {
                         {
                             props.type==="courseMain"?  <CourseCarsMain {...item} {...props} index={key}  />:""
                         }
+
+                        {
+                            props.type==="userFile"?  <ShowCourseUser {...item} {...props} index={key}  />:""
+                        }
+
+
+
                         {/*{*/}
                             {/*props.type==="lesson"?  <LessonCardMain {...item} {...props} index={key}  />:""*/}
                         {/*}*/}

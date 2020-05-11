@@ -6,13 +6,17 @@ export const ID="5d87e194549ae0267b5268cc";
 export const Kelidha_User="https://resource.kelidiha.com/users/";
 // export const Token="eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoiNWU4MmE0MjJkYzVkODdjZWFkM2JhYjQyIiwib3RoZXJzIjp7fSwic2VlZCI6OTE4NjN9.sXUiLnLmHQq1NsXJIMB4TGhgcnEcZMoMG-N1yaLatHw"  ;
 export const Token=localStorage.getItem("token")  ;
-export const user="https://useralef.liara.run/users/";
-export const ResourceUser="https://resourcealef.liara.run/users/";
-export const ResourceAdmin="https://resourcealef.liara.run/admin/";
-export const admin_route="https://useralef.liara.run/admin_route/";
+export const user="https://user.kelidiha.com/users/";
+export const ResourceUser="https://resource.kelidiha.com/users/";
+export const ResourceAdmin="https://resource.kelidiha.com/admin/";
+export const admin_route="https://user.kelidiha.com/admin_route/";
+export const admin_route2="https://useralef.liara.run/admin_route/";
+export const aminJamal="http://aminjamal.ir/admin/";
+// export const admin_route="https://user.kelidiha.com/admin_route/"; https://resource.kelidiha.com/
+
 // export const jobsalef="https://jobsalef.liara.run/admin/";
 // export const jobsalef="http://194.5.206.127:3000/admin/";
-export const jobsalef="https://aminjamal.ir/admin/";
+export const jobsalef="https://converter.kelidiha.com/admin/";
 
 
 

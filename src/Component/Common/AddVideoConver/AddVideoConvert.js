@@ -29,6 +29,7 @@ class AddVideoConvert extends Component {
         let data=await this.getName("a");
 
         let {state ,Description }=await GetProgressive(this.props.action,this.props.ListData );
+        console.log(Description)
         this.setState({
             isLoader:false
         });
@@ -36,7 +37,8 @@ class AddVideoConvert extends Component {
 
         if (state===200){
            let newCount=Description.percentage;
-            if(newCount!==100){
+            var is_complete = Description.is_complete;
+            if(newCount <= 100 && !is_complete){
                 if (newCount>0&&newCount<20) {
 
                     this.setState({
@@ -58,6 +60,13 @@ class AddVideoConvert extends Component {
                     this.setState({
                         type:"warning",
                         textPercent:"دیگه تمومه ...",
+                    });
+
+                }    if ( newCount===100) {
+
+                    this.setState({
+                        type:"danger",
+                        textPercent:"در حال آماده سازی ...",
                     });
 
                 }
@@ -151,8 +160,11 @@ class AddVideoConvert extends Component {
         if (this.currentCount!==0){
 
             let {state ,Description }=await GetProgressive(this.props.action,this.props.ListData );
+            console.log(Description)
             if (state===200){
+
                 var newCount = Description.percentage;
+                var is_complete = Description.is_complete;
                 if (newCount>0&&newCount<20) {
 
                     this.setState({
@@ -177,9 +189,17 @@ class AddVideoConvert extends Component {
                     });
 
                 }
+                if ( newCount===100) {
+
+                    this.setState({
+                        type:"danger",
+                        textPercent:"در حال آماده سازی ...",
+                    });
+
+                }
 
 
-                if(newCount < 100) {
+                if(newCount <= 100 && !is_complete) {
                     this.setState({ currentCount: newCount,time_left:Description.time_left.split(" ")[0] });
                 } else {
                     this.setState({ currentCount: 0 });

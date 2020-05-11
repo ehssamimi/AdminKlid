@@ -1772,6 +1772,70 @@ export async  function  AddFileToCourse(file, Course_id, action){
     return resp
 
 }
+export async  function  SuggestCourse(name){
+
+    let headers = {
+        'Token': Const.Token,
+        'Content-Type': 'application/json',
+        'accept': 'application/json',
+        'Access-Control-Allow-Origin':'*'
+    };
+
+
+    var resp ="";
+    await axios.get(`${Const.ResourceAdmin}course/course/suggestion?value=${name}`,  {headers: headers}).then(function (response) {
+        // console.log(response );
+
+        // let {Items} = response.data;
+        resp={state:200,Description:response.data};
+
+    }).catch(function (error) {
+        console.log(error.response);
+        console.log(error);
+        let {response}=error;
+        if (response===undefined){
+            resp={state: 400,Description: error.message}
+        }else if (response.status===422){
+            resp={state:422,Description:response.statusText}
+        } else{
+            resp={state:response.status||400,Description:response.data.detail||error.message}
+        }
+    });
+    return resp;
+}
+export async  function  AddCourseToUser(phoneNumber,Data){
+
+    let headers = {
+        'Token': Const.Token,
+        'Content-Type': 'application/json',
+        'accept': 'application/json',
+        'Access-Control-Allow-Origin':'*'
+    };
+    console.log(Data);
+
+
+    var resp ="";
+    await axios.post(`${Const.admin_route2}users/course/permission/add?phone_number=${phoneNumber}`, Data, {headers: headers}).then(function (response) {
+        console.log(response );
+
+        // let {Items} = response.data;
+        resp={state:200,Description:response.data};
+
+    }).catch(function (error) {
+        console.log(error.response);
+        console.log(error);
+        let {response}=error;
+        if (response===undefined){
+            resp={state: 400,Description: error.message}
+        }else if (response.status===422){
+            resp={state:422,Description:response.statusText}
+        } else{
+            resp={state:response.status||400,Description:response.data.detail||error.message}
+        }
+    });
+    return resp;
+}
+
 
 
             // *******Lesson*****
@@ -2377,7 +2441,6 @@ export async  function  GetProgressive(action,Data){
 }
 
 
-
 // *************user*****
 export async  function  GetAllUser(page_num){
 
@@ -2929,6 +2992,30 @@ export async  function  DeleteTrustedService(name){
 
 
 
+}
+
+
+// ****************progress*******
+export async  function  GetAllInprogress(page_num){
+
+    let headers = {
+        'Token': Const.Token,
+        'Id': Const.ID,
+        'Content-Type': 'application/x-www-form-urlencoded'
+    };
+
+
+    var resp ="";
+    await axios.get(`${Const.aminJamal}tasks/in-progress?page=${page_num}`, {headers: headers}).then(function (response) {
+        console.log(response );
+        // let {Items} = response.data;
+        resp={state:200,Description:response.data};
+    }).catch(function (error) {
+        console.log(error);
+        console.log(error.message);
+        resp='error'
+    });
+    return resp;
 }
 
 

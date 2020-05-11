@@ -7,19 +7,23 @@ import Loader from "../../Common/Loader/Loader";
 import {NotificationManager} from "react-notifications";
 import {getProfileValue} from "../../functions/componentHelpFunction";
 import {convertData} from "../../functions/Functions";
+import UserCourse from "./UserCourse/USerCourse";
 
 const UserInfo = (props) => {
      // const [count, setCount] = useState(1);
     const [isLoader, setIsLoader] = useState(false);
     const [values, setvalues] = useState({});
+    const [owned_product, set_owned_product] = useState({});
     useEffect(  () => {
         async function getData( phone_number) {
             setIsLoader(true);
             let {state ,Description } =await GetUserInfo(phone_number);
 
+
             if(state===200){
                 let values=getProfileValue(Description.user);
                 setvalues(values);
+                set_owned_product(Description.owned_product);
                 setIsLoader(false);
 
                     return Description
@@ -77,6 +81,11 @@ const UserInfo = (props) => {
 
                         <ExtentionDiv name={"برنامه شخصی"}  >
                             <PersonalProgram pdf={values.personal_schedule}/>
+                        </ExtentionDiv>
+
+
+                        <ExtentionDiv name={"دوره های فردی "}  >
+                           <UserCourse  {...props}/>
                         </ExtentionDiv>
                     </div>
 

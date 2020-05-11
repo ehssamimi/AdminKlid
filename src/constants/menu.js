@@ -85,6 +85,10 @@ const data = [
                 icon: "simple-icon-paper-plane",
                 label: "کورس ها",
                 to: "/content/courses"
+            },    {
+                icon: "simple-icon-paper-plane",
+                label: "ویدیو های در حال تبدیل",
+                to: "/content/in-progress"
             }
         ]
     },
