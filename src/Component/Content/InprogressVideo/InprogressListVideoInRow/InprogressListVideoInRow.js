@@ -1,21 +1,30 @@
 import React, {useState, useEffect} from 'react';
-import {Progress} from "reactstrap";
+import {Card,CardBody,Progress} from "reactstrap";
 import AddVideoConvert from "../../../Common/AddVideoConver/AddVideoConvert";
 import {GetProgressive, GetUserInfo} from "../../../functions/ServerConnection";
 import {getProfileValue} from "../../../functions/componentHelpFunction";
 import {NotificationManager} from "react-notifications";
 import {  TweenMax} from "gsap/TweenMax";
+import {handelTypeVideo} from "../../../functions/Functions";
+import {RowShowShowColEdit} from "../../../Common/RowShowShowColEdit/ShowInRowComponents";
 
 const InProgressListVideo = (props) => {
 
-    // "location": {
-    //     "course_id": "5ea9dac81314a6b4f5d06bbf",
-    //         "lesson_name": "عربی",
-    //         "teacher_name": "استاد مژگان فروتن",
-    //         "chapter_name": "الدرس الاول : دوره هفتم و هشتم",
-    //         "item_name": "پارت 3"
-    // },
-    // "action": "item_video",
+
+    let{location}=props;
+  console.log(props)
+    // action: "item_video"
+    // file_name: "riazi_sajjadi_yazdahom_fasle6_part10.mp4"
+    // index: 0
+    // is_complete: false
+    // last_update: "2020-05-11T17:22:10.807000"
+    // location: {course_id: "5ea9d7291314a6b4f5d06bbe", lesson_name: "حسابان 1", teacher_name: "مهندس سجادی", chapter_name: "حد و پیوستگی", item_name: "پارت 9"}
+    // percentage: 95
+    // state: "queue"
+    // task_id: "351354aa-7fa8-469c-9f0d-722d98c41298"
+    // text: "
+    // Transcoding...(95%) 0:02:00 left [###############################################################################################-----]"
+    // time_left: "0:02:00 left"
 
 
     const [time_left, settime_left] = useState(props.time_left);
@@ -23,7 +32,14 @@ const InProgressListVideo = (props) => {
     const [percentage, setpercentage] = useState(props.percentage);
     const [type, setType] = useState("");
     const [intervalId, setintervalId] = useState('');
+    // const [kind, setkind] = useState('');
+    //
+    // let vv = handelTypeVideo(props.action)
+    // setkind(vv);
      useEffect((props) => {
+
+
+
         async function getData(  ) {
 
             var intervalId = setInterval( await  timer, 30000);
@@ -85,15 +101,34 @@ const InProgressListVideo = (props) => {
 
 
     return (
+        <Card className="w-100 m-2 " id={props.index}>
+            <CardBody >
+                <div>
 
-            <div className="d-flex flex-column col-12" id={props.index}>
-                <div className="d-flex justify-content-between align-items-start mt-1   ">
-                    <span className="fs16calc"> زمان باقی مانده :{ time_left}</span>
+                    <div className="d-flex  mb-2" >
+                        {/*{<span className="second-color">{item.content.course_name}</span>}*/}
+                        {/*{item.content.grade?<span className="second-color"><span className="second-color ml-2"> | </span>{item.content.grade}</span>:""}*/}
+                        {location.lesson_name?<span className="second-color"><span className="second-color  ">  </span>{location.lesson_name}</span>:""}
+                        {location.teacher_name?<span className="second-color"><span className="second-color ml-2"> | </span>{location.teacher_name}</span>:""}
+                        {location.chapter_name?<span className="second-color"><span className="second-color ml-2"> | </span>{location.chapter_name}</span>:""}
+                        {location.item_name?<span className="second-color"><span className="second-color ml-2"> | </span>{location.item_name}</span>:""}
+                        {/*{chapter?<span className="second-color"><span className="second-color ml-2"> | </span>{chapter}</span>:""}*/}
+
+                    </div>
+                    <RowShowShowColEdit label={`  ویدیو   ${handelTypeVideo(props.action)}`} value={props.file_name } className='p-0 d-flex justify-content-start col-12 mt-2 mb-2' />
+
 
                 </div>
 
-                <Progress bar animated color={type } value={percentage} className={percentage>0?"br10px p-2 text-black-color ":""}>{percentage +"%"+ " " +state  }</Progress>
-            </div>
+                <div className="d-flex flex-column col-12" >
+                    <div className="d-flex justify-content-between align-items-start mt-1   ">
+                        <span className="fs16calc"> زمان باقی مانده :{ time_left}</span>
+                    </div>
+                    <Progress bar animated color={type } value={percentage} className={percentage>0?"br10px p-2 text-black-color ":""}>{percentage +"%"+ " " +state  }</Progress>
+                </div>
+            </CardBody>
+
+        </Card>
 
     );
 };

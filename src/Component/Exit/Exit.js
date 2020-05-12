@@ -6,13 +6,20 @@ import Loader from "../Common/Loader/Loader";
 
 const Exit = (props) => {
     const [isLoder, setisLoder] = useState(true);
+
+
+
     useEffect(()=>{
         async function Exit(user_id) {
 
             let {state ,Description}=await LogOut();
+            console.log(Description);
+            console.log(state);
+            setisLoder(false);
             if (state===200 ) {
-                 localStorage.clear();
-                // NotificationManager.success(state, Description);
+
+                await localStorage.clear();
+                 NotificationManager.success(state, Description);
                 let home= document.getElementById("home");
                 home.click()
                 // props.history.push('/');
@@ -39,7 +46,7 @@ const Exit = (props) => {
             <div className='d-flex justify-content-center align-items-center'>
                 <div className='col-6'>
                     <Loader/>
-                </div>
+                 </div>
             </div>
             <a href="/"  id="home" className="d-none">go home</a>
 

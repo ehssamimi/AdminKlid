@@ -1,4 +1,4 @@
-import React, { Component, Suspense } from 'react';
+import React, {Component, Suspense, useContext} from 'react';
 import { connect } from 'react-redux';
 import {
   BrowserRouter as Router,
@@ -14,7 +14,8 @@ import { isMultiColorActive } from './constants/defaultValues';
 import { getDirection } from './helpers/Utils';
 import './assets/css/MyCss/MyStyle2.css'
 import AuthRoute from "./Component/Common/AuthRoute/AuthRoute";
-import UserProvider from "./Component/Common/Context/UserProvider";
+import UserProvider, {UserContext} from "./Component/Common/Context/UserProvider";
+import Courses from "./Component/Content/Courses/Courses";
 
 const ViewMain = React.lazy(() =>
   import(/* webpackChunkName: "views" */ './views')
@@ -30,7 +31,7 @@ const Login = React.lazy(() =>
   import(/* webpackChunkName: "views" */ './Component/LoginSigup/LogIn')
 );
 const Exit = React.lazy(() =>
-  import(/* webpackChunkName: "views" */ './Component/Exit/Exit')
+  import(/* webpackChunkName: "views" */ './views/ExitView')
 );
 const ViewUpload = React.lazy(() =>
     import(/* webpackChunkName: "views-app" */ './views/upload/index')
@@ -47,6 +48,27 @@ const ViewApp = React.lazy(() =>
 const ViewError = React.lazy(() =>
   import(/* webpackChunkName: "views-error" */ './views/error')
 );
+const UnAuthRoute = ({ component: Component, ...rest }) => {
+    const User=useContext(UserContext);
+    let authUser=User.isLogIn;
+
+    return (
+        <Route
+            {...rest}
+            render={props =>
+                !authUser ? (
+                    <Component {...props} />
+                ) : (
+                    <>
+                        <Redirect to="/content" />
+                    </>
+
+                )
+            }
+        />
+
+    );
+};
 
 
 
@@ -103,8 +125,17 @@ class App extends Component {
                     <AuthRoute path="/content"  component={ViewCourse} {...this.props}/>
                     <AuthRoute path="/upload"  component={ViewUpload} {...this.props}/>
                     <AuthRoute path="/access-level"  component={ViewAccessLevel} {...this.props}/>
-                    <AuthRoute path="/"  component={ViewMain} {...this.props}/>
+
                     <AuthRoute path="/exit"  component={Exit} {...this.props}/>
+                    <UnAuthRoute  path="/login"  component={Login} {...this.props} />
+                    {/*<Route*/}
+                        {/*path="/login"*/}
+                        {/*exact*/}
+                        {/*render={props => <Login {...props} />}*/}
+                    {/*/>*/}
+                    <AuthRoute path="/"  component={ViewMain} {...this.props}/>
+
+
                     {/*<Route*/}
                         {/*path="/exit"*/}
                         {/*exact*/}
@@ -120,11 +151,7 @@ class App extends Component {
                         {/*exact*/}
                         {/*render={props => <ViewMain {...props} />}*/}
                     {/*/>*/}
-                    <Route
-                        path="/login"
-                        exact
-                        render={props => <Login {...props} />}
-                    />
+
 
                   <Redirect to="/error" />
                 </Switch>

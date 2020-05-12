@@ -3,6 +3,10 @@ import { Route, withRouter, Switch, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import AppLayout from '../../layout/AppLayout';
+import UserSchedualRequested
+    from "../../Component/User/UserInfo/User-Scheduale/User-Schedual-requested/User-Schedual-requested";
+import UserSchedualAllocate
+    from "../../Component/User/UserInfo/User-Scheduale/User-Schedual-Allocate/UserSchedualAllocate";
 
 const UserAll = React.lazy(() =>
     import(/* webpackChunkName: "viwes-gogo" */ '../../Component/User/UserShowAll/UserShowAll')
@@ -43,6 +47,14 @@ class App extends Component {
                             <Route
                                 path={`${match.url}/sign-up`}
                                 render={props => <UserSignUp {...props} />}
+                            />
+                            <Route
+                                path={`${match.url}/schedule/requested`}
+                                render={props => <UserSchedualRequested {...props} />}
+                            />
+                            <Route
+                                path={`${match.url}/schedule/allocate`}
+                                render={props => <UserSchedualAllocate {...props} />}
                             />
 
                             {/*<Route*/}

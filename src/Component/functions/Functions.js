@@ -113,6 +113,22 @@ export function convertData(Data){
     let persian = gregorian_to_jalali(newData[0], newData[1], newData[2])
     return persian.join("-")
 }
+export function handelTypeVideo(Data){
+    let value="";
+    if (Data==="course_demo_video"){
+        value="دوره"
+    } else if (Data==="teacher_video"){
+        value="معلم"
+    } else if (Data==="chapter_video"){
+        value="فصل"
+    } else if (Data==="item_video"){
+        value="قسمت"
+    }
+
+    console.log(value);
+
+    return value;
+}
 
 // export async  function  sendImg(file,permission){
 //     // let data = new FormData();

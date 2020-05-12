@@ -113,6 +113,23 @@ const data = [
                 label: "مشاهده اطلاعات کاربر",
                 to: "/user/get-info",
 
+            }, {
+                icon: "simple-icon-paper-plane",
+                label: "برنامه درسی",
+                to: "/user/schedule",
+                subs: [
+                    {
+                        icon: "simple-icon-paper-plane",
+                        label: "درخواست کننده ها",
+                        to: "/user/schedule/requested"
+                    },
+                    {
+                        icon: "simple-icon-paper-plane",
+                        label: "تخصیص داده  شده ها",
+                        to: "/user/schedule/allocate"
+                    }
+                ]
+
             }
         ]
 
@@ -121,9 +138,17 @@ const data = [
         id: "exit",
         icon: "iconsminds-air-balloon-1",
         label: "خروج",
-        to: "/exit"
+        to: "/exit",
+    },
 
-    }
+    // {
+    //     id: "exit",
+    //     icon: "iconsminds-air-balloon-1",
+    //     label: "خروج",
+    //     to: "/exit"
+    //
+    // },
+
     // {
     //     id: "gogo",
     //     icon: "iconsminds-air-balloon-1",

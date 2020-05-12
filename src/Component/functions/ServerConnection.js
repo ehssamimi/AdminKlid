@@ -2531,6 +2531,29 @@ export async  function  RegestryUser(Data){
     return resp;
 }
 
+
+
+// *************User-schedule*********
+export async  function  GetAllUserRequested(page_num){
+
+    let headers = {
+        'Token': Const.Token,
+         'Content-Type': 'application/x-www-form-urlencoded'
+    };
+
+    var resp ="";
+    await axios.get(`${Const.admin_route2}personal_schedule/requested?page=${page_num}`, {headers: headers}).then(function (response) {
+        console.log(response );
+        // let {Items} = response.data;
+        resp={state:200,Description:response.data};
+    }).catch(function (error) {
+        console.log(error);
+        console.log(error.message);
+        resp='error'
+    });
+    return resp;
+}
+
 // ************permission**********
 export async  function  GetAllPermission(page_number){
 
