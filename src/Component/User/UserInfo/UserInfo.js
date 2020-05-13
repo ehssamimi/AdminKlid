@@ -78,10 +78,14 @@ const UserInfo = (props) => {
                         < ExtentionDiv name={"اطلاعات فردی"}  >
                             <PersonalInfo values={values}/>
                         </ExtentionDiv>
+                        {
+                            values.personal_schedule!==undefined?
+                                <ExtentionDiv name={"برنامه شخصی"}  >
+                                    <PersonalProgram pdf={values.personal_schedule}/>
+                                </ExtentionDiv>:""
+                        }
 
-                        <ExtentionDiv name={"برنامه شخصی"}  >
-                            <PersonalProgram pdf={values.personal_schedule}/>
-                        </ExtentionDiv>
+
 
 
                         <ExtentionDiv name={"دوره های فردی "}  >

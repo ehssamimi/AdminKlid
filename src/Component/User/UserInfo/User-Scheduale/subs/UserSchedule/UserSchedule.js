@@ -3,17 +3,22 @@ import Card from "@material-ui/core/Card/Card";
 import {Link} from "react-router-dom";
 import CardMedia from "@material-ui/core/CardMedia/CardMedia";
 import CardContent from "@material-ui/core/CardContent/CardContent";
-import {formatNumber} from "../../../../../functions/componentHelpFunction";
+import {error_Notification, formatNumber, success_Notification} from "../../../../../functions/componentHelpFunction";
 import LabelValueRow from "../../../../../Common/LabalValue/LabelValue";
 import CardActions from "@material-ui/core/CardActions/CardActions";
 import {Button} from "reactstrap";
 import {ModalDelete} from "../../../../../Common/Modals/ModalDelete/ModalDelete";
 import AddPreviewPdf from "../../../../../Common/AddPdf/AddPreviewPdf";
+import Loader from "../../../../../Common/Loader/Loader";
+import {GetAllUser, UploadSchedule} from "../../../../../functions/ServerConnection";
+import {Power4, TweenMax} from "gsap/TweenMax";
 
 const UserSchedule = (props) => {
     const [count, setCount] = useState(1);
-    const [content, setcontent] = useState(null);
+    const [content, setContent] = useState(null);
     const [error, setError] = useState("");
+    const [isLoader, setisLoader] = useState(false);
+    const [upload, setUpload] = useState(true);
 
 
      // education_info: {grade: "یازدهم", field: "تجربی", gpa: null, school_name: null, school_type: null}
@@ -25,13 +30,31 @@ const UserSchedule = (props) => {
 
 
     let{user_id,image,user_info:{name,phone_number},education_info:{field,grade},date}=props;
+
     useEffect(() => {
         // Update the document title using the browser API
         document.title = `You clicked ${count} times`;
     });
-    const Handelcontent=(type, value)=>{
-        setcontent(value)
-    }
+
+    const HandelSubmit=async ( )=>{
+        setisLoader(true);
+        let {state,Description}=await UploadSchedule(user_id,content);
+        setisLoader(false);
+        if (state===200){
+
+            const $el = document.getElementById(`${user_id}`);
+            const duration = 2;
+            const from = { opacity: 0};
+            TweenMax.to($el, duration, from);
+            setTimeout(() => {
+                $el.remove();
+            }, 2000)
+
+            success_Notification("موفق شدید","برنامه مورد نظر برای این دانش آموز ثبت شد ")
+        } else {
+            error_Notification(state,Description)
+        }
+    };
 
     return (
         <Card  className= "m-2 br20px h-100 MainCardCourseHeight  box-shadow-custom FsFooterLogin" id={user_id}>
@@ -44,19 +67,20 @@ const UserSchedule = (props) => {
 
                 {/*<img src={image} alt={image}/>*/}
                 <CardContent>
-                    <div className="row col-12 m-0">
+                    <div className="row col-12 m-0 p-0">
                         <LabelValueRow label={"نام"} value={name} className="col-sm-12  "/>
                         <LabelValueRow label={"شماره"} value={phone_number} className="col-sm-12  "/>
                     </div>
 
-                    <div className="row pl-3 justify-content-end">
+                    <div className="row pl-3 justify-content-start">
+                        <LabelValueRow label={"پایه"} value={grade} className="col-sm-12 col-md-6"/>
 
                         {
-                            field!==""? <LabelValueRow label={"رشته"} value={field} className="col-sm-12 col-md-6"/>:""
+                            field!==null? <LabelValueRow label={"رشته"} value={field} className="col-sm-12 col-md-6"/>:""
                         }
 
 
-                        <LabelValueRow label={"پایه"} value={grade} className="col-sm-12 col-md-6"/>
+
 
                         {/*<span className="second-color pl-2"> {field } </span>*/}
                     </div>
@@ -64,13 +88,50 @@ const UserSchedule = (props) => {
 
             <CardActions className="d-flex justify-content-center flex-column">
                 <div className="w-100">
-                    <AddPreviewPdf GetData={ Handelcontent}
-                                   label={"اضافه کردن فایل "} img={content }
-                                   Type="content" errors={error}/>
+
+                    <div className="w-100">
+                        {
+                            upload?
+                                <div className="w-100 d-flex justify-content-center">
+                                    <button className="btn btn-primary" onClick={()=>{setUpload(false)}}>آپلود</button>
+                                </div>:
+
+                                <div className="w-100">
+
+                                    {
+                                        isLoader ? <div className='d-flex justify-content-center align-items-center'>
+                                                <div className='col-6'>
+                                                    <Loader/>
+                                                </div>
+                                            </div> :
+                                            <div className="w-100  ">
+                                                <AddPreviewPdf GetData={  (type, value)=>{setContent(value)}}
+                                                               label={"اضافه کردن فایل "} img={content }
+                                                               Type="content" errors={error}/>
+                                                <div className="d-flex justify-content-center">
+                                                    <button className="btn btn-primary col-6   text-center" onClick={HandelSubmit}> ثبت </button>
+                                                </div>
+                                            </div>
+                                    }
+
+
+                                </div>
+                        }
+
+                    </div>
+
+
+
+
+
+
+
+
+
 
                 </div>
                 <div className="100">
-                    <LabelValueRow label={"زمان"} value={date} className="col-sm-12 col-md-6 justify-content-center"/>
+                    <LabelValueRow label={"زمان"} value={date} className="col-sm-12   justify-content-center"/>
 
                 </div>
 

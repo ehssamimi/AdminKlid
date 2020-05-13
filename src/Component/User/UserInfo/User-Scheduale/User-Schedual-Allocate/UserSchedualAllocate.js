@@ -6,11 +6,13 @@ import Loader from "../../../../Common/Loader/Loader";
 import PreviewUserCard from "../../../UserShowAll/Subs/PreviewUserCard";
 import {GetAllUser, GetAllUserRequested} from "../../../../functions/ServerConnection";
 import {error_Notification} from "../../../../functions/componentHelpFunction";
+import IsLoaderComponent from "../../../../Common/ISLodader/IsLoader";
 
 const UserSchedualAllocate = (props) => {
     const [productSeparate, setproductSeparate] = useState([]);
     const [pageStart, setpageStart] = useState(1);
     const [hasMore, sethasMore] = useState(true);
+
 
     const loadMore=async()=>{
 
@@ -23,7 +25,7 @@ const UserSchedualAllocate = (props) => {
 
 
         // let Response = await GetAllProduct(pageStart);
-        if (Response!=='error') {
+        if (state===200) {
             let{data,page}=Description;
             // *** modify  products to our label value ***
             let productsSeparate = data;
@@ -34,31 +36,47 @@ const UserSchedualAllocate = (props) => {
             // ***** check if product length is zero then stop loop****
             sethasMore(data.length !== 0);
         }else {
-            error_Notification('Network Error')
+            error_Notification(state,Description)
         }
     };
 
     return (
-        <InfiniteScroll
-            className="row rtl m-0"
-            pageStart={0}
-            loadMore={loadMore}
-            hasMore={hasMore}
-            loader={<div className="loader col-6 offset-3" key={0}><Loader/></div>}
-        >
-            <div className='d-flex  w-100  flex-wrap'  >
-                {productSeparate.length>0 && Array.isArray(productSeparate)  ?
-                    productSeparate.map((todo, index) =>
-                        <div className="col-12 col-sm-6 col-md-4 "  key={index}>
-                            <UserSchedule {...todo}   image={img}   />
+        <div>
+            {
+                productSeparate===[]?
+                    <p>کاربری درخواست جدید نداده است </p>:
 
-                        </div>
+                        <InfiniteScroll
+                            className="row rtl m-0"
+                            pageStart={0}
+                            loadMore={loadMore}
+                            hasMore={hasMore}
+                            loader={<div className="loader col-6 offset-3" key={0}><Loader/></div>}
+                        >
+                            <div className='d-flex  w-100  flex-wrap'  >
+                                {productSeparate.length>0 && Array.isArray(productSeparate)  ?
+                                    productSeparate.map((todo, index) =>
+                                        <div className="col-12 col-sm-6 col-md-4 "  key={index}>
+                                            <UserSchedule {...todo}   image={img}   />
+
+                                        </div>
 
 
-                    ) : ''
-                }
-            </div>
-        </InfiniteScroll>
+                                    ) : ''
+                                }
+                            </div>
+                        </InfiniteScroll>
+
+
+
+            }
+        </div>
+
+
+
+
+
+
 
 
 

@@ -135,6 +135,20 @@ const data = [
 
     },
     {
+        id: "configure",
+        icon: "iconsminds-air-balloon-1",
+        label: "پیکربندی",
+        to: "/configure",
+        subs:[
+            {
+                icon: "simple-icon-paper-plane",
+                label: "عکس پیش فرض کاربر",
+                to: "/configure/default-profile"
+            }
+
+        ]
+    },
+    {
         id: "exit",
         icon: "iconsminds-air-balloon-1",
         label: "خروج",

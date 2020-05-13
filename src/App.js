@@ -45,6 +45,9 @@ const ViewUser = React.lazy(() =>
 const ViewApp = React.lazy(() =>
   import(/* webpackChunkName: "views-app" */ './views/app')
 );
+const ViewConfigure = React.lazy(() =>
+  import(/* webpackChunkName: "views-app" */ './views/configure/index')
+);
 const ViewError = React.lazy(() =>
   import(/* webpackChunkName: "views-error" */ './views/error')
 );
@@ -127,7 +130,9 @@ class App extends Component {
                     <AuthRoute path="/access-level"  component={ViewAccessLevel} {...this.props}/>
 
                     <AuthRoute path="/exit"  component={Exit} {...this.props}/>
+                    <AuthRoute  path="/configure"  component={ViewConfigure} {...this.props} />
                     <UnAuthRoute  path="/login"  component={Login} {...this.props} />
+
                     {/*<Route*/}
                         {/*path="/login"*/}
                         {/*exact*/}

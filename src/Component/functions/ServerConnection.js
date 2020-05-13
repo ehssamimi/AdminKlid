@@ -1559,14 +1559,8 @@ export async  function  LogOut(){
     }).catch(function (error) {
         console.log(error.response);
         console.log(error);
-        let {response}=error;
-        if (response===undefined){
-            resp={state: 400,Description: error.message}
-        }else if (response.status===422){
-            resp={state:422,Description:response.statusText}
-        } else{
-            resp={state:response.status||400,Description:response.data.detail||error.message}
-        }
+        Error2(error)
+
     });
     return resp;
 };
@@ -2549,6 +2543,27 @@ export async  function  GetAllUserRequested(page_num){
     }).catch(function (error) {
         console.log(error);
         console.log(error.message);
+        resp=Error(error)
+    });
+    return resp;
+}
+export async  function  UploadSchedule(user_id,content){
+    let formData = new FormData();
+    formData.append("file", content);
+
+    let headers = {
+        'Token': Const.Token,
+         'Content-Type': 'application/x-www-form-urlencoded'
+    };
+
+    var resp ="";
+    await axios.post(`${Const.admin_route}personal_schedule/upload?user_id=${user_id}`, formData , {headers: headers}).then(function (response) {
+        console.log(response );
+        // let {Items} = response.data;
+        resp={state:200,Description:response.data};
+    }).catch(function (error) {
+        console.log(error);
+        console.log(error.message);
         resp='error'
     });
     return resp;
@@ -3041,6 +3056,28 @@ export async  function  GetAllInprogress(page_num){
     return resp;
 }
 
+// *********configure*********
+export async  function  UploadDefaultImg(content){
+    let formData = new FormData();
+    formData.append("file", content);
+
+    let headers = {
+        'Token': Const.Token,
+        'Content-Type': 'application/x-www-form-urlencoded'
+    };
+
+    var resp ="";
+    await axios.post(`${Const.admin_route}upload/default-profile-picture`, formData , {headers: headers}).then(function (response) {
+        console.log(response );
+        // let {Items} = response.data;
+        resp={state:200,Description:response.data};
+    }).catch(function (error) {
+        console.log(error);
+        console.log(error.message);
+        resp='error'
+    });
+    return resp;
+}
 
 function Error(error) {
     console.log(error.response);
@@ -3053,6 +3090,31 @@ function Error(error) {
             console.log("we are out !!!!!!!!!!");
              // localStorage.clear();
              //     window.location.reload();
+        }
+
+    }else if (error.response===undefined){
+        resp={state: 400,Description: error.message}
+
+    } else if (error.response.status===422){
+        resp={state:422,Description:error.response.statusText}
+    }else{
+        resp={state:error.response.status||400,Description:error.response.data.detail||error.message}
+    }
+    console.log("resp");
+    console.log(resp);
+    return resp;
+}
+function Error2(error) {
+    console.log(error.response);
+
+    console.log(error);
+    var resp ="";
+    if (error.response.status===400) {
+        resp={state: 400,Description: error.response.data.detail}
+        if (error.response.data.detail==="access denied") {
+            console.log("we are out !!!!!!!!!!");
+             localStorage.clear();
+                 window.location.reload();
         }
 
     }else if (error.response===undefined){

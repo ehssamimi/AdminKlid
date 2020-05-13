@@ -14,7 +14,7 @@ const DownloadPdf=(props)=>{
 
                 <div className=" FssubmitLogin d-flex align-items-center ml-auto">
                       <span className=' mr-2 '>
-                        <a href={ schedule} target="_blank" download  className="second-color ml-1 ">دانلود برنامه این دوره </a>
+                        <a href={ schedule} target="_blank" download  className="second-color ml-1 ">دانلود برنامه درسی </a>
                       </span>
                       <span className='green-them '><FiDownload/></span>
                 </div>
@@ -24,14 +24,14 @@ const DownloadPdf=(props)=>{
     )
 };
 const HaveNotPdf=(props)=>{
-    let {message}=props;
+    let {message,request_at}=props;
      return (
         <div className="col-12  mt-3  ">
 
             {
                 message==="requested"?
                     <div className="    FssubmitLogin d-flex align-items-center">
-                        <p className="FssubmitLogin">این داش آموز درخواست  برنامه داده است و هنوز برنامه ای برای او ثبت نشده است </p>
+                        <p className="FssubmitLogin">این داش آموز در تاریخ {request_at?convertData(request_at):""} درخواست   برنامه داده است و هنوز برنامه ای برای او ثبت نشده است </p>
                     </div>:
                     <div className="    FssubmitLogin d-flex align-items-center">
                         <p className="FssubmitLogin">این داش آموز هنوز برنامه ای درخواست نداده است  </p>
@@ -59,6 +59,7 @@ const PersonalProgram = (props) => {
 //     useEffect(() => {
 
     let{pdf}=props;
+    console.log("pdf");
     console.log(pdf);
     // :{request_at,request_schedule,schedule}
     return (
@@ -66,13 +67,15 @@ const PersonalProgram = (props) => {
 
                     <div>
                         {
-                            // count !== null ?
-                            //
-                            //     <DownloadPdf schedule={"#"}/>
-                            //
-                            //     : <HaveNotPdf message={message}/>
+                            pdf.request_schedule ?
 
-                            <DownloadPdf {...pdf}/>
+                                // count !== null ?
+                                //
+                                //     <DownloadPdf schedule={"#"}/>
+                                //
+                                <HaveNotPdf message={"requested"} {...pdf}/> :
+
+                                <DownloadPdf {...pdf}/>
 
                         }
                     </div>
