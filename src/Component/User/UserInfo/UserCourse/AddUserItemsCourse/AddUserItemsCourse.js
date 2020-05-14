@@ -56,7 +56,7 @@ const AddUserItemsCourse = (props) => {
         let Data={
             "course_ids": Courses
         };
-        let{state,Description}=await AddCourseToUser(params.phoneNumber,Data);
+        let{state,Description}=await AddCourseToUser('add',params.phoneNumber,Data);
         if (state===200){
             props.updateItem();
             success_Notification( "موفق شدید" ,"تعداد دوره های این کاربر به روز رسانی شد ")

@@ -89,6 +89,18 @@ const data = [
                 icon: "simple-icon-paper-plane",
                 label: "ویدیو های در حال تبدیل",
                 to: "/content/in-progress"
+
+            },   {
+                icon: "simple-icon-paper-plane",
+                label: "دسترسی ویدیو ها",
+                to: "/content/permission",
+                subs:[
+                    {
+                        icon: "simple-icon-paper-plane",
+                        label: "به روز رسانی دسترسی ها",
+                        to: "/content/permission/access-all",
+                    }
+                ]
             }
         ]
     },

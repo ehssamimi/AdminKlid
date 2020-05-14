@@ -11,8 +11,9 @@ export const user="https://user.kelidiha.com/users/";
 export const ResourceUser="https://resource.kelidiha.com/users/";
 export const ResourceAdmin="https://resource.kelidiha.com/admin/";
 export const admin_route="https://user.kelidiha.com/admin_route/";
-export const admin_route2="https://useralef.liara.run/admin_route/";
-export const aminJamal="http://aminjamal.ir/admin/";
+export const admin_route2="https://user.kelidiha.com/admin_route/";
+export const aminJamal="https://converter.kelidiha.com/admin/";
+// export const aminJamal2="http://aminjamal.ir/admin/";
 // export const admin_route="https://user.kelidiha.com/admin_route/"; https://resource.kelidiha.com/
 
 // export const jobsalef="https://jobsalef.liara.run/admin/";

@@ -3,8 +3,9 @@ import ImgComponent from "../../Common/ImgComponents/ImgComponent";
 import defaultImg from "../../Common/img/deault.svg";
 import Loader from "../../Common/Loader/Loader";
 import IsLoaderComponent from "../../Common/ISLodader/IsLoader";
-import {loadMainCourse, UploadDefaultImg, UploadSchedule} from "../../functions/ServerConnection";
+import {GetDefaultUserImg, loadMainCourse, UploadDefaultImg, UploadSchedule} from "../../functions/ServerConnection";
 import {error_Notification, success_Notification} from "../../functions/componentHelpFunction";
+import {NotificationManager} from "react-notifications";
 
 const DefaultProfile = (props) => {
     const [error, setError] = useState({"main":""});
@@ -13,8 +14,26 @@ const DefaultProfile = (props) => {
     const [isLoader, setisLoader] = useState(false);
 
      useEffect(() => {
+
+         getData();
         // Update the document title using the browser API
-     });
+     },[]);
+
+    async function  getData(){
+        setisLoader(true);
+        const{state,Description }= await GetDefaultUserImg();
+        console.log("Description");
+        console.log(Description);
+        // let{data}=Description;
+
+        if (state===200 ) {
+            setFile( Description);
+            setDefaultImg( Description);
+        } else {
+            NotificationManager.error(state, Description);
+        }
+        setisLoader(false);
+    }
     const HandelAddImg = (type, value) => {
         console.log(value)
         setFile(value)
@@ -44,9 +63,8 @@ const DefaultProfile = (props) => {
                 setisLoader(true);
                 const{state,Description }= await UploadDefaultImg(file);
                 setisLoader(false);
-                setFile(Description.url);
-                setDefaultImg(Description.url);
-                console.log(Description.url);
+                getData()
+
                 if (state===200){
                     success_Notification("موفق شدید" ,"عکس دیفالت جایگزین شد")
                 } else {

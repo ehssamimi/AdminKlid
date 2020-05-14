@@ -3,7 +3,8 @@ import {CarouselMain} from "../../../../Common/Carousel/CarouselMain";
 
 const ShowUserItemsCourse = (props) => {
     let{chapters,courses,lessons}=props;
-    return (
+     let{match:{params}}=props;
+     return (
         <div className="w-100">
 
             {
@@ -15,7 +16,10 @@ const ShowUserItemsCourse = (props) => {
                                       files={courses}
                                       off={0}
                                       sub_text={"مشاهده اطلاعات "}
-                                      header={"دوره ها  "}/>
+                                      header={"دوره ها  "}
+                                      phoneNumber={params.phoneNumber}
+
+                        />
 
                     </div>
 
@@ -39,6 +43,7 @@ const ShowUserItemsCourse = (props) => {
                                       sub_text={"مشاهده اطلاعات "}
                                       header={"فصل ها  "}/>
 
+
                     </div>
 
                     :
@@ -57,6 +62,7 @@ const ShowUserItemsCourse = (props) => {
                                       off={0}
                                       sub_text={"مشاهده اطلاعات "}
                                       header={"فصل ها  "}/>
+
 
                     </div>
 

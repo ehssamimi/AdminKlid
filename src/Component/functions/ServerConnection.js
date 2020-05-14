@@ -1564,6 +1564,7 @@ export async  function  LogOut(){
     });
     return resp;
 };
+
 export async  function  GetUserDropDown( ){
 
     let headers = {
@@ -1797,7 +1798,7 @@ export async  function  SuggestCourse(name){
     });
     return resp;
 }
-export async  function  AddCourseToUser(phoneNumber,Data){
+export async  function  AddCourseToUser(action,phoneNumber,Data){
 
     let headers = {
         'Token': Const.Token,
@@ -1809,7 +1810,7 @@ export async  function  AddCourseToUser(phoneNumber,Data){
 
 
     var resp ="";
-    await axios.post(`${Const.admin_route2}users/course/permission/add?phone_number=${phoneNumber}`, Data, {headers: headers}).then(function (response) {
+    await axios.post(`${Const.admin_route}users/course/permission/${action}?phone_number=${phoneNumber}`, Data, {headers: headers}).then(function (response) {
         console.log(response );
 
         // let {Items} = response.data;
@@ -2547,6 +2548,25 @@ export async  function  GetAllUserRequested(page_num){
     });
     return resp;
 }
+export async  function  GetAllUserAllocated(page_num){
+
+    let headers = {
+        'Token': Const.Token,
+         'Content-Type': 'application/x-www-form-urlencoded'
+    };
+
+    var resp ="";
+    await axios.get(`${Const.admin_route}personal_schedule/assigned?page=${page_num}`, {headers: headers}).then(function (response) {
+        console.log(response );
+        // let {Items} = response.data;
+        resp={state:200,Description:response.data};
+    }).catch(function (error) {
+        console.log(error);
+        console.log(error.message);
+        resp=Error(error)
+    });
+    return resp;
+}
 export async  function  UploadSchedule(user_id,content){
     let formData = new FormData();
     formData.append("file", content);
@@ -3078,6 +3098,45 @@ export async  function  UploadDefaultImg(content){
     });
     return resp;
 }
+export async  function  GetDefaultUserImg( ){
+
+
+    let headers = {
+        'Token': Const.Token,
+        'Content-Type': 'application/x-www-form-urlencoded'
+    };
+
+    var resp ="";
+    await axios.get(`${Const.admin_route}default-profile-picture` , {headers: headers}).then(function (response) {
+        console.log(response );
+        // let {Items} = response.data;
+        resp={state:200,Description:response.data};
+    }).catch(function (error) {
+        console.log(error);
+        console.log(error.message);
+        resp='error'
+    });
+    return resp;
+}
+export async  function  UpdateAllPermission(){
+
+    let headers = {
+        'Token': Const.Token,
+        'accept': 'application/json'
+    };
+
+    var resp ="";
+    await axios.get(`${Const.ResourceAdmin}course/course/update-all-permission`, {headers: headers}).then(function (response) {
+        console.log(response );
+        resp={state:200,Description:response.data};
+    }).catch(function (error) {
+        console.log(error.response);
+        console.log(error);
+        Error(error)
+
+    });
+    return resp;
+};
 
 function Error(error) {
     console.log(error.response);

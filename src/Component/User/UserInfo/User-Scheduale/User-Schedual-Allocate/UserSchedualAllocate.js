@@ -4,7 +4,7 @@ import img from './../../../../../assets/common/img/default_pic@3x.png'
 import InfiniteScroll from "react-infinite-scroller";
 import Loader from "../../../../Common/Loader/Loader";
 import PreviewUserCard from "../../../UserShowAll/Subs/PreviewUserCard";
-import {GetAllUser, GetAllUserRequested} from "../../../../functions/ServerConnection";
+import {GetAllUser, GetAllUserAllocated, GetAllUserRequested} from "../../../../functions/ServerConnection";
 import {error_Notification} from "../../../../functions/componentHelpFunction";
 import IsLoaderComponent from "../../../../Common/ISLodader/IsLoader";
 
@@ -17,7 +17,7 @@ const UserSchedualAllocate = (props) => {
     const loadMore=async()=>{
 
         // ***get all product and current page ***
-        let {state,Description}=await GetAllUserRequested(pageStart);
+        let {state,Description}=await GetAllUserAllocated(pageStart);
         console.log("Description");
         console.log(Description);
         console.log("pageStart")
@@ -26,15 +26,17 @@ const UserSchedualAllocate = (props) => {
 
         // let Response = await GetAllProduct(pageStart);
         if (state===200) {
-            let{data,page}=Description;
+            // let{data,page}=Description;
             // *** modify  products to our label value ***
-            let productsSeparate = data;
+            // let productsSeparate = data;
+            let productsSeparate = Description;
             // *******update state*****
             setproductSeparate([...productSeparate,...productsSeparate]);
             console.log(productSeparate);
-            setpageStart(page+1);
+            // setpageStart(page+1);
             // ***** check if product length is zero then stop loop****
-            sethasMore(data.length !== 0);
+            // sethasMore(data.length !== 0);
+            sethasMore(Description.length !== 0);
         }else {
             error_Notification(state,Description)
         }
@@ -71,19 +73,6 @@ const UserSchedualAllocate = (props) => {
 
             }
         </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     );
 };

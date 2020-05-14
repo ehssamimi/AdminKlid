@@ -20,7 +20,7 @@ import ax1 from "../../Common/img/alex-simpson-8DaRtnotCoQ-unsplash.png";
 import { useHistory } from 'react-router-dom';
  import LabelValueRow from "../LabalValue/LabelValue";
 import {ModalDelete} from "../Modals/ModalDelete/ModalDelete";
-import {DeleteID} from "../../functions/ServerConnection";
+import {AddCourseToUser, DeleteID} from "../../functions/ServerConnection";
 import {error_Notification, success_Notification} from "../../functions/componentHelpFunction";
 
 const useStyles = makeStyles({
@@ -258,6 +258,15 @@ const ShowCourseUser = (props) => {
 
     // const history = useHistory();
     // history.push('/login');
+    // let {match:{params}}=props;
+
+
+    // let{match:{params}}=props;
+    // console.log(params)
+    // console.log("props props props")
+    // console.log(props)
+
+
     let{name,grade,field,image  ,id:course_id }=props;
 
 
@@ -269,11 +278,18 @@ const ShowCourseUser = (props) => {
         document.title = `You clicked ${count} times`;
     });
     const handelDelete = async() => {
-        let {state ,Description}=await DeleteID(course_id);
+        console.log("props.phoneNumber");
+        console.log(props.phoneNumber);
+        let Data={
+            "course_ids": [course_id]
+        };
+
+
+        let{state,Description}=await AddCourseToUser('remove',props.phoneNumber,Data);
         if (state===200 ) {
             success_Notification("حذف شد");
             const $el = document.getElementById(`${course_id}`);
-            props.UpdateCoursList();
+            // props.updateItem();
             console.log($el);
             $el.classList.add("opacity-0")
             const duration = 2;
@@ -336,9 +352,7 @@ const ShowCourseUser = (props) => {
             </Link>
             <CardActions className="d-flex justify-content-center">
                 <Button onClick={()=>{setIsOpen(!isOpen)}} className="btn red-background">حذف</Button>
-                <Link to={`/content/courses/${course_id}`}  >
-                    <Button onClick={handelEdit} className="btn btn-warning">ویرایش</Button>
-                </Link>
+
 
             </CardActions>
 
@@ -396,8 +410,7 @@ export  function CarouselMain(props) {
         window.addEventListener("resize",windowsDimention);
         return ()=>window.removeEventListener("resize",windowsDimention)
     }, []);
-    console.log("props.files");
-    console.log(props.files);
+
 
 
 

@@ -24,6 +24,9 @@ const ItemDetails = React.lazy(() =>
 const InprogressVideo = React.lazy(() =>
   import(/* webpackChunkName: "viwes-gogo" */ '../../Component/Content/InprogressVideo/InprogressVideo')
 );
+const Permission = React.lazy(() =>
+  import(/* webpackChunkName: "viwes-gogo" */ './permission/index')
+);
 
 
 class App extends Component {
@@ -37,6 +40,10 @@ class App extends Component {
             <Switch>
               <Redirect exact from={`${match.url}/`} to={`${match.url}/courses`} />
               <Route
+                path={`${match.url}/permission`}
+                render={props => <Permission {...props} />}
+              />
+                <Route
                 path={`${match.url}/in-progress`}
                 render={props => <InprogressVideo {...props} />}
               />

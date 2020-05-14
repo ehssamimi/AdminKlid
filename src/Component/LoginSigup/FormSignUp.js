@@ -159,14 +159,14 @@ const FormSignUp = (props) => {
                                         <div className="col-12 row">
 
                                             <SelectedInput onChange={onChange} label={'پایه تحصیلی'} id={'class'}
-                                                           type={"select"} className={"mt-4 "} DivClass={"w-50"}
+                                                           type={"select"} className={"mt-4 "} DivClass={"col-6 padding-l-0"}
                                                            is_required={true} value={values.class} options={options.grade_type}
                                                            error={error.class}/>
 
                                             {
                                                 nessesery ?
                                                     <SelectedInput onChange={onChange} label={'رشته تحصیلی'} id={'fields'}
-                                                                   type={"select"} className={"mt-4 "} DivClass={"w-50"}
+                                                                   type={"select"} className={"mt-4 "} DivClass={"col-6    padding-r-0 pl-sm-4"}
                                                                    is_required={true} value={values.fields}
                                                                    options={options.field_type}
                                                                    error={error.fields}/> : ""
