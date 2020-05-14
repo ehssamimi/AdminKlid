@@ -8976,7 +8976,13 @@ $background-color: #f7faf8 !important;
   outline: 0;
   border-radius: 20px!important;
 }
-
+.card-active-shadow:hover{
+  -webkit-box-shadow: 9px 10px 14px -5px rgba(234, 225, 234, 0.91) !important;
+  -moz-box-shadow: 9px 10px 14px -5px rgba(234, 225, 234, 0.91) !important;
+  box-shadow: 9px 10px 14px -5px rgba(234, 225, 234, 0.91) !important;
+  //border: 1px solid $theme-color-1!important;
+  //box-sizing: border-box;
+}
 
 
 

@@ -57,7 +57,7 @@ const UserSchedule = (props) => {
     };
 
     return (
-        <Card  className= "m-2 br20px h-100 MainCardCourseHeight  box-shadow-custom FsFooterLogin" id={user_id}>
+        <Card  className= "m-2 br20px h-100 MainCardCourseHeight  card-active-shadow   FsFooterLogin  " id={user_id}>
 
                 <CardMedia
                     className="hpx200 "
@@ -88,43 +88,39 @@ const UserSchedule = (props) => {
 
             <CardActions className="d-flex justify-content-center flex-column">
                 <div className="w-100">
+                    {
+                        props.allocate?"":
+                            <div className="w-100">
+                                {
+                                    upload?
+                                        <div className="w-100 d-flex justify-content-center">
+                                            <button className="btn btn-primary" onClick={()=>{setUpload(false)}}>آپلود</button>
+                                        </div>:
 
-                    <div className="w-100">
-                        {
-                            upload?
-                                <div className="w-100 d-flex justify-content-center">
-                                    <button className="btn btn-primary" onClick={()=>{setUpload(false)}}>آپلود</button>
-                                </div>:
+                                        <div className="w-100">
 
-                                <div className="w-100">
-
-                                    {
-                                        isLoader ? <div className='d-flex justify-content-center align-items-center'>
-                                                <div className='col-6'>
-                                                    <Loader/>
-                                                </div>
-                                            </div> :
-                                            <div className="w-100  ">
-                                                <AddPreviewPdf GetData={  (type, value)=>{setContent(value)}}
-                                                               label={"اضافه کردن فایل "} img={content }
-                                                               Type="content" errors={error}/>
-                                                <div className="d-flex justify-content-center">
-                                                    <button className="btn btn-primary col-6   text-center" onClick={HandelSubmit}> ثبت </button>
-                                                </div>
-                                            </div>
-                                    }
-
-
-                                </div>
-                        }
-
-                    </div>
+                                            {
+                                                isLoader ? <div className='d-flex justify-content-center align-items-center'>
+                                                        <div className='col-6'>
+                                                            <Loader/>
+                                                        </div>
+                                                    </div> :
+                                                    <div className="w-100  ">
+                                                        <AddPreviewPdf GetData={  (type, value)=>{setContent(value)}}
+                                                                       label={"اضافه کردن فایل "} img={content }
+                                                                       Type="content" errors={error}/>
+                                                        <div className="d-flex justify-content-center">
+                                                            <button className="btn btn-primary col-6   text-center" onClick={HandelSubmit}> ثبت </button>
+                                                        </div>
+                                                    </div>
+                                            }
 
 
+                                        </div>
+                                }
 
-
-
-
+                            </div>
+                    }
 
 
 

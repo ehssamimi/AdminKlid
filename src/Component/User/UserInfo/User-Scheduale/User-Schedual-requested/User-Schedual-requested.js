@@ -54,7 +54,7 @@ const UserSchedualRequested = (props) => {
                         <div className='d-flex  w-100  flex-wrap'  >
                             {productSeparate.length>0 && Array.isArray(productSeparate)  ?
                                 productSeparate.map((todo, index) =>
-                                    <div className="col-12 col-sm-6 col-md-4 "  key={index}>
+                                    <div className="col-12 col-sm-6 col-md-4 mb-5"  key={index}>
                                         <UserSchedule {...todo}   image={img}   />
 
                                     </div>

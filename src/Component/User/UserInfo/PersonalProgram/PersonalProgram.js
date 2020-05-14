@@ -47,11 +47,12 @@ const HaveNotPdf=(props)=>{
 
 const PersonalProgram = (props) => {
     const [count, setCount] = useState(1);
-    const [message, setmessage] = useState("requested");
+    const [message, setmessage] = useState(props.message);
     useEffect(() => {
         // Update the document title using the browser API
         document.title = `You clicked ${count} times`;
     });
+
 
     // request_at: "2020-04-19T21:20:33.475000"
 // request_schedule: false

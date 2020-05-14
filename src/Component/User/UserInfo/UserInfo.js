@@ -12,16 +12,18 @@ import UserCourse from "./UserCourse/USerCourse";
 const UserInfo = (props) => {
      // const [count, setCount] = useState(1);
     const [isLoader, setIsLoader] = useState(false);
+    const [schedule, setschedule] = useState(null);
     const [values, setvalues] = useState({});
     const [owned_product, set_owned_product] = useState({});
     useEffect(  () => {
         async function getData( phone_number) {
             setIsLoader(true);
             let {state ,Description } =await GetUserInfo(phone_number);
-
-
+            console.log("Description");
+            console.log(Description);
             if(state===200){
                 let values=getProfileValue(Description.user);
+                setschedule(Description.schedule_info)
                 setvalues(values);
                 set_owned_product(Description.owned_product);
                 setIsLoader(false);
@@ -54,7 +56,8 @@ const UserInfo = (props) => {
     // profile: {image_id: "https://5e7df4522174ce0011232b00.liara.space/user-…9926eabd0031e29149beb9efcc4c5cf2699f23830cd576bbd"}
     // __proto__: Object
 
-
+console.log("schedule");
+console.log(schedule);
     return (
         <div>
             {
@@ -81,7 +84,7 @@ const UserInfo = (props) => {
                         {
                             values.personal_schedule!==undefined?
                                 <ExtentionDiv name={"برنامه شخصی"}  >
-                                    <PersonalProgram pdf={values.personal_schedule}/>
+                                    <PersonalProgram pdf={values.personal_schedule} message={schedule.message}/>
                                 </ExtentionDiv>:""
                         }
 

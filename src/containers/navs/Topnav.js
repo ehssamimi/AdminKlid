@@ -47,16 +47,32 @@ class TopNav extends Component {
   async componentDidMount(){
     console.log("thi sis  profile ");
 
-      const {state, Description}=await GetUserProfile();
-      if (state===200 ) {
-          console.log(Description);
-          let ItemValue = [Description.personal_info.name, Description.profile.image_id, Description.education.grade];
-          this.setState({
-              ItemValue
-          })
+    if(localStorage.getItem("token")){
+      if (localStorage.getItem("ItemValue")) {
+        this.setState({
+            ItemValue:localStorage.getItem("ItemValue").split(",")
+
+        });
       }else {
-        error_Notification(state,Description);
+          const {state, Description}=await GetUserProfile();
+          if (state===200 ) {
+              console.log(Description);
+              let ItemValue = [Description.personal_info.name, Description.profile.image_id, Description.education.grade];
+              localStorage.setItem("ItemValue",ItemValue );
+              // localStorage.setItem("ItemValue",ItemValue.toString());
+              this.setState({
+                  ItemValue
+              })
+          }else {
+              error_Notification(state,Description);
+          }
       }
+
+    }else {
+      console.log("we are not login")
+    }
+
+
 
   }
 

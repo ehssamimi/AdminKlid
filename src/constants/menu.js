@@ -1,92 +1,92 @@
 const data = [
-    {
-        id: "access_level",
-        icon: "iconsminds-air-balloon-1",
-        label: "AccessLevel",
-        to: "/access-level",
-        subs: [
-            {
-                icon: "simple-icon-paper-plane",
-                label: "permission",
-                to: "/access-level/permission",
-                subs: [
-                    {
-                        icon: "simple-icon-paper-plane",
-                        label: "permission Show",
-                        to: "/access-level/permission/show"
-                    },
-                    {
-                        icon: "simple-icon-paper-plane",
-                        label: "permission Create",
-                        to: "/access-level/permission/create"
-                    }
-                ]
-            },
-            {
-                icon: "simple-icon-paper-plane",
-                label: "Role",
-                to: "/access-level/role",
-                subs: [
-                    {
-                        icon: "simple-icon-paper-plane",
-                        label: "role Show",
-                        to: "/access-level/role/show"
-                    },
-                    {
-                        icon: "simple-icon-paper-plane",
-                        label: "role Create",
-                        to: "/access-level/role/create/:Id?"
-                    }
-                ]
-            },
-            {
-                icon: "simple-icon-paper-plane",
-                label: "user role",
-                to: "/access-level/user-role",
-                subs: [
-                    {
-                        icon: "simple-icon-paper-plane",
-                        label: "user role Show",
-                        to: "/access-level/user-role/show"
-                    },
-                    {
-                        icon: "simple-icon-paper-plane",
-                        label: "user role Create",
-                        to: "/access-level/user-role/create/:Id?"
-                    }
-                ]
-            },
-            {
-                icon: "simple-icon-paper-plane",
-                label: "trusted service",
-                to: "/access-level/trusted_service",
-                subs: [
-                    {
-                        icon: "simple-icon-paper-plane",
-                        label: "trusted service Show",
-                        to: "/access-level/trusted_service/show"
-                    },
-                    {
-                        icon: "simple-icon-paper-plane",
-                        label: "trusted serviceCreate",
-                        to: "/access-level/trusted_service/create/:Id?"
-                    }
-                ]
-            }
-        ]
-    },
+    // {
+    //     id: "access_level",
+    //     icon: "iconsminds-key-lock",
+    //     label: "مدیریت دسترسی",
+    //     to: "/access-level",
+    //     subs: [
+    //         {
+    //             icon: "simple-icon-paper-plane",
+    //             label: "permission",
+    //             to: "/access-level/permission",
+    //             subs: [
+    //                 {
+    //                     icon: "simple-icon-paper-plane",
+    //                     label: "permission Show",
+    //                     to: "/access-level/permission/show"
+    //                 },
+    //                 {
+    //                     icon: "simple-icon-paper-plane",
+    //                     label: "permission Create",
+    //                     to: "/access-level/permission/create"
+    //                 }
+    //             ]
+    //         },
+    //         {
+    //             icon: "simple-icon-paper-plane",
+    //             label: "Role",
+    //             to: "/access-level/role",
+    //             subs: [
+    //                 {
+    //                     icon: "simple-icon-paper-plane",
+    //                     label: "role Show",
+    //                     to: "/access-level/role/show"
+    //                 },
+    //                 {
+    //                     icon: "simple-icon-paper-plane",
+    //                     label: "role Create",
+    //                     to: "/access-level/role/create/:Id?"
+    //                 }
+    //             ]
+    //         },
+    //         {
+    //             icon: "simple-icon-paper-plane",
+    //             label: "user role",
+    //             to: "/access-level/user-role",
+    //             subs: [
+    //                 {
+    //                     icon: "simple-icon-paper-plane",
+    //                     label: "user role Show",
+    //                     to: "/access-level/user-role/show"
+    //                 },
+    //                 {
+    //                     icon: "simple-icon-paper-plane",
+    //                     label: "user role Create",
+    //                     to: "/access-level/user-role/create/:Id?"
+    //                 }
+    //             ]
+    //         },
+    //         {
+    //             icon: "simple-icon-paper-plane",
+    //             label: "trusted service",
+    //             to: "/access-level/trusted_service",
+    //             subs: [
+    //                 {
+    //                     icon: "simple-icon-paper-plane",
+    //                     label: "trusted service Show",
+    //                     to: "/access-level/trusted_service/show"
+    //                 },
+    //                 {
+    //                     icon: "simple-icon-paper-plane",
+    //                     label: "trusted serviceCreate",
+    //                     to: "/access-level/trusted_service/create/:Id?"
+    //                 }
+    //             ]
+    //         }
+    //     ]
+    // },
     {
         id: "content",
-        icon: "iconsminds-air-balloon-1",
+        icon: "iconsminds-data-center",
         label: "محتوا",
         to: "/content",
         subs: [
             {
-                icon: "simple-icon-paper-plane",
+                icon: "iconsminds-folders",
                 label: "کورس ها",
                 to: "/content/courses"
             },    {
-                icon: "simple-icon-paper-plane",
+                icon: "iconsminds-loading",
                 label: "ویدیو های در حال تبدیل",
                 to: "/content/in-progress"
 
@@ -96,7 +96,7 @@ const data = [
                 to: "/content/permission",
                 subs:[
                     {
-                        icon: "simple-icon-paper-plane",
+                        icon: "iconsminds-flash-2",
                         label: "به روز رسانی دسترسی ها",
                         to: "/content/permission/access-all",
                     }
@@ -106,22 +106,22 @@ const data = [
     },
     {
         id: "User",
-        icon: "iconsminds-air-balloon-1",
+        icon: "iconsminds-student-male-female",
         label: "کاربران",
         to: "/user",
         subs: [
             {
-                icon: "simple-icon-paper-plane",
+                icon: "iconsminds-mens",
                 label: "لیست کاربران",
                 to: "/user/all",
 
             } , {
-                icon: "simple-icon-paper-plane",
+                icon: "iconsminds-add-user",
                 label: "ثبت کاربر",
                 to: "/user/sign-up",
 
             }, {
-                icon: "simple-icon-paper-plane",
+                icon: "iconsminds-female-2",
                 label: "مشاهده اطلاعات کاربر",
                 to: "/user/get-info",
 
@@ -131,12 +131,12 @@ const data = [
                 to: "/user/schedule",
                 subs: [
                     {
-                        icon: "simple-icon-paper-plane",
+                        icon: "simple-icon-grid",
                         label: "درخواست کننده ها",
                         to: "/user/schedule/requested"
                     },
                     {
-                        icon: "simple-icon-paper-plane",
+                        icon: "iconsminds-check",
                         label: "تخصیص داده  شده ها",
                         to: "/user/schedule/allocate"
                     }
@@ -148,21 +148,26 @@ const data = [
     },
     {
         id: "configure",
-        icon: "iconsminds-air-balloon-1",
+        icon: "iconsminds-gears",
         label: "پیکربندی",
         to: "/configure",
         subs:[
             {
-                icon: "simple-icon-paper-plane",
+                icon: "simple-icon-user",
                 label: "عکس پیش فرض کاربر",
                 to: "/configure/default-profile"
+            },
+            {
+                icon: "iconsminds-speach-bubble-5",
+                label: "سخن بزرگان",
+                to: "/configure/quote"
             }
 
         ]
     },
     {
         id: "exit",
-        icon: "iconsminds-air-balloon-1",
+        icon: "simple-icon-login",
         label: "خروج",
         to: "/exit",
     },

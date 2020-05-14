@@ -1,8 +1,8 @@
 import React, {useState, useEffect} from 'react';
 import {Card,CardBody,Progress} from "reactstrap";
 import AddVideoConvert from "../../../Common/AddVideoConver/AddVideoConvert";
-import {GetProgressive, GetUserInfo} from "../../../functions/ServerConnection";
-import {getProfileValue} from "../../../functions/componentHelpFunction";
+import {GetProgressive, GetUserInfo, ResetEachVideoInProgress} from "../../../functions/ServerConnection";
+import {error_Notification, getProfileValue, success_Notification} from "../../../functions/componentHelpFunction";
 import {NotificationManager} from "react-notifications";
 import {  TweenMax} from "gsap/TweenMax";
 import {handelTypeVideo} from "../../../functions/Functions";
@@ -97,6 +97,15 @@ const InProgressListVideo = (props) => {
 
         }
     }
+    const handelReset=async()=>{
+
+        let {state ,Description}=ResetEachVideoInProgress(props.task_id);
+        if (state===200){
+            success_Notification("موفق شدید " ,"این ویدیو دوباره بارگذاری می شود")
+        } else {
+            error_Notification(state,Description)
+        }
+    }
 
 
 
@@ -122,7 +131,7 @@ const InProgressListVideo = (props) => {
 
                 <div className="d-flex flex-column col-12" >
                     <div className="d-flex justify-content-between align-items-start mt-1   ">
-                        <span className="fs16calc"> زمان باقی مانده :{ time_left}</span>
+                        <span className="fs16calc"> زمان باقی مانده :{ time_left}</span> <span className="btn btn-danger" onClick={handelReset}>ریست</span>
                     </div>
                     <Progress bar animated color={type } value={percentage} className={percentage>0?"br10px p-2 text-black-color ":""}>{percentage +"%"+ " " +state  }</Progress>
                 </div>

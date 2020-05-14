@@ -2350,7 +2350,7 @@ export async  function  SuggestName(Name){
 
 
     var resp ="";
-    await axios.post(`${Const.jobsalef}raw_file?name=a`, null , {headers: headers}).then(function (response) {
+    await axios.post(`${Const.jobsalef}raw_file?name=${Name}`, null , {headers: headers}).then(function (response) {
         // console.log(response );
 
         // let {Items} = response.data;
@@ -2431,6 +2431,31 @@ export async  function  GetProgressive(action,Data){
         } else{
             resp={state:response.status||400,Description:response.data.detail||error.message}
         }
+    });
+    return resp;
+}
+export async  function  ResetEachVideoInProgress(action){
+
+    let headers = {
+        'Token': Const.Token,
+        'Content-Type': 'application/json',
+        'accept': 'application/json',
+        'Access-Control-Allow-Origin':'*'
+    };
+
+
+
+    var resp ="";
+    await axios.get(`${Const.jobsalef}task/${action}/reset`, {headers: headers}).then(function (response) {
+        console.log(response );
+
+        // let {Items} = response.data;
+        resp={state:200,Description:response.data};
+
+    }).catch(function (error) {
+        console.log(error.response);
+        console.log(error);
+        resp=Error(error);
     });
     return resp;
 }
@@ -3137,6 +3162,51 @@ export async  function  UpdateAllPermission(){
     });
     return resp;
 };
+export async  function  Getqoute( ){
+
+
+    let headers = {
+        'Token': Const.Token,
+        'Content-Type': 'application/x-www-form-urlencoded'
+    };
+
+    var resp ="";
+    await axios.get(`${Const.admin_route}quote` , {headers: headers}).then(function (response) {
+        console.log(response );
+        // let {Items} = response.data;
+        resp={state:200,Description:response.data};
+    }).catch(function (error) {
+        console.log(error);
+        console.log(error.message);
+        resp='error'
+    });
+    return resp;
+}
+export async  function  UpdateQoute(name,text){
+
+    let headers = {
+        'Token': Const.Token,
+        'Content-Type': 'application/json',
+        'accept': 'application/json',
+        'Access-Control-Allow-Origin':'*'
+    };
+
+
+    var resp ="";
+    await axios.post(`${Const.admin_route}quote/update?name=${name}&text=${text}`, null , {headers: headers}).then(function (response) {
+        // console.log(response );
+
+        // let {Items} = response.data;
+        resp={state:200,Description:response.data};
+
+    }).catch(function (error) {
+        console.log(error.response);
+        console.log(error);
+        resp=Error(error);
+
+    });
+    return resp;
+}
 
 function Error(error) {
     console.log(error.response);

@@ -18,25 +18,21 @@ const UserSchedualAllocate = (props) => {
 
         // ***get all product and current page ***
         let {state,Description}=await GetAllUserAllocated(pageStart);
-        console.log("Description");
-        console.log(Description);
-        console.log("pageStart")
-        console.log(pageStart)
 
 
         // let Response = await GetAllProduct(pageStart);
         if (state===200) {
-            // let{data,page}=Description;
+            let{result,page}=Description;
             // *** modify  products to our label value ***
             // let productsSeparate = data;
-            let productsSeparate = Description;
+            let productsSeparate = result;
             // *******update state*****
             setproductSeparate([...productSeparate,...productsSeparate]);
             console.log(productSeparate);
-            // setpageStart(page+1);
+            setpageStart(page+1);
             // ***** check if product length is zero then stop loop****
-            // sethasMore(data.length !== 0);
-            sethasMore(Description.length !== 0);
+            sethasMore(result.length !== 0);
+            // sethasMore(Description.length !== 0);
         }else {
             error_Notification(state,Description)
         }
@@ -58,11 +54,9 @@ const UserSchedualAllocate = (props) => {
                             <div className='d-flex  w-100  flex-wrap'  >
                                 {productSeparate.length>0 && Array.isArray(productSeparate)  ?
                                     productSeparate.map((todo, index) =>
-                                        <div className="col-12 col-sm-6 col-md-4 "  key={index}>
-                                            <UserSchedule {...todo}   image={img}   />
-
+                                        <div className="col-12 col-sm-6 col-md-4  mb-5 "  key={index}>
+                                            <UserSchedule {...todo}   image={img}  allocate={true}  />
                                         </div>
-
 
                                     ) : ''
                                 }

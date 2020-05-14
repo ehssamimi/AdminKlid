@@ -7,6 +7,9 @@ import AppLayout from '../../layout/AppLayout';
 const Default = React.lazy(() =>
   import(/* webpackChunkName: "viwes-gogo" */ '../../Component/Configure/Default-Profile/DefaultProfile')
 );
+const Quote = React.lazy(() =>
+  import(/* webpackChunkName: "viwes-gogo" */ '../../Component/Configure/Quote/Quote')
+);
 
 
 class App extends Component {
@@ -22,6 +25,9 @@ class App extends Component {
               <Route
                 path={`${match.url}/default-profile`}
                 render={props => <Default {...props} />}
+              /> <Route
+                path={`${match.url}/quote`}
+                render={props => <Quote {...props} />}
               />
 
               <Redirect to="/error" />
