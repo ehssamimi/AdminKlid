@@ -402,8 +402,8 @@ select option:hover {
 }
 
 
-.FsHeaderCarousal {
-    font-size: calc(1.3vw + 0.5rem)!important;
+.FsSmall {
+    font-size: Calc(0.35vw + 0.35rem) !important;
     font-family: IRANSans!important;
 
 }.FsFooterLogin {
@@ -423,6 +423,11 @@ select option:hover {
 
 .FssubmitLogin {
     font-size: Calc(0.7vw + 0.5rem) !important;
+    font-family: IRANSans!important;
+
+}
+.FsHeaderCarousal {
+    font-size: calc(1.3vw + 0.5rem)!important;
     font-family: IRANSans!important;
 
 }
@@ -859,5 +864,11 @@ select option:hover {
         width: 40%;
     }
 
+}
+.rtl{
+    direction: rtl !important;
+}
+.ltr{
+    direction: ltr !important;
 }
 

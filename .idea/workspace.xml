@@ -2,11 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3127a07d-e1e7-46b9-a05b-d8fa367c791f" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Component/User/UserInfo/UserCourse/AddUserItemsCourse/AddUserItemsCourse.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/User/UserInfo/UserCourse/AddUserItemsCourse/AddUserItemsCourse.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Component/User/UserInfo/UserCourse/AddUserItemsCourse/GetCourseMulti/GetCourseMulti.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/User/UserInfo/UserCourse/AddUserItemsCourse/GetCourseMulti/GetCourseMulti.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Component/functions/ServerConnection.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/functions/ServerConnection.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/navs/Topnav.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/navs/Topnav.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Component/User/UserInfo/UserCourse/ShowUserItemsCourse/ShowUserItemsCourse.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/User/UserInfo/UserCourse/ShowUserItemsCourse/ShowUserItemsCourse.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/css/MyCss/MyStyle2.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/css/MyCss/MyStyle2.css" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -49,9 +48,9 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="css" value="26" />
+          <entry key="css" value="27" />
           <entry key="html" value="17" />
-          <entry key="js" value="701" />
+          <entry key="js" value="702" />
           <entry key="json" value="1" />
           <entry key="png" value="14" />
           <entry key="rnc" value="1" />
@@ -62,11 +61,11 @@
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="CSS" value="26" />
+          <entry key="CSS" value="27" />
           <entry key="HTML" value="17" />
           <entry key="Image" value="14" />
           <entry key="JSON" value="1" />
-          <entry key="JavaScript" value="701" />
+          <entry key="JavaScript" value="702" />
           <entry key="RNG Compact" value="1" />
           <entry key="SCSS" value="11" />
           <entry key="SVG" value="4" />
@@ -81,17 +80,17 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="css" value="638" />
+          <entry key="css" value="677" />
           <entry key="html" value="934" />
-          <entry key="js" value="30581" />
+          <entry key="js" value="30760" />
           <entry key="scss" value="139" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="CSS" value="638" />
+          <entry key="CSS" value="677" />
           <entry key="HTML" value="934" />
-          <entry key="JavaScript" value="30581" />
+          <entry key="JavaScript" value="30760" />
           <entry key="SCSS" value="139" />
         </counts>
       </usages-collector>
@@ -105,12 +104,24 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Component/User/UserInfo/UserInfo.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="354">
-              <caret line="94" column="32" selection-start-line="94" selection-start-column="32" selection-end-line="94" selection-end-column="32" />
+            <state relative-caret-position="147">
+              <caret line="71" column="111" selection-start-line="71" selection-start-column="111" selection-end-line="71" selection-end-column="111" />
               <folding>
                 <element signature="e#0#49#0" expanded="true" />
+                <element signature="e#2930#3174#0" expanded="true" />
+                <element signature="e#3232#3371#0" expanded="true" />
                 <element signature="e#3496#3694#0" expanded="true" />
+                <element signature="e#3752#3885#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/assets/css/MyCss/MyStyle2.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="187">
+              <caret line="404" column="8" selection-start-line="404" selection-start-column="1" selection-end-line="404" selection-end-column="8" />
             </state>
           </provider>
         </entry>
@@ -118,8 +129,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Component/User/UserInfo/UserCourse/USerCourse.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="454">
-              <caret line="49" column="38" lean-forward="true" selection-start-line="49" selection-start-column="38" selection-end-line="49" selection-end-column="38" />
+            <state relative-caret-position="408">
+              <caret line="51" column="37" selection-start-line="51" selection-start-column="37" selection-end-line="51" selection-end-column="37" />
               <folding>
                 <element signature="e#0#49#0" expanded="true" />
                 <element signature="e#800#801#0" expanded="true" />
@@ -130,53 +141,60 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Component/functions/ServerConnection.js">
+        <entry file="file://$PROJECT_DIR$/src/Component/User/UserInfo/UserCourse/ShowUserItemsCourse/ShowUserItemsCourse.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="316">
-              <caret line="1783" lean-forward="true" selection-start-line="1783" selection-end-line="1783" />
+            <state relative-caret-position="138">
+              <caret line="7" column="36" selection-start-line="7" selection-start-column="36" selection-end-line="7" selection-end-column="36" />
               <folding>
-                <element signature="e#5343#5680#0" expanded="true" />
-                <element signature="e#34601#34722#0" expanded="true" />
-                <element signature="e#34855#35005#0" expanded="true" />
-                <element signature="e#35030#35122#0" expanded="true" />
-                <element signature="e#50717#50791#0" expanded="true" />
-                <element signature="e#57518#57679#0" expanded="true" />
-                <element signature="e#76238#76399#0" expanded="true" />
-                <element signature="e#78189#79106#0" expanded="true" />
-                <element signature="e#79163#79752#0" expanded="true" />
-                <element signature="e#79474#79607#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Component/User/UserInfo/UserCourse/AddUserItemsCourse/AddUserItemsCourse.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="322">
-              <caret line="78" column="23" lean-forward="true" selection-start-line="78" selection-start-column="23" selection-end-line="78" selection-end-column="23" />
-              <folding>
-                <element signature="e#0#49#0" expanded="true" />
-                <element signature="e#1402#1841#0" expanded="true" />
-                <element signature="e#1878#1963#0" expanded="true" />
-                <element signature="e#1999#2506#0" expanded="true" />
-                <element signature="e#2140#2185#0" expanded="true" />
+                <element signature="e#374#973#0" expanded="true" />
+                <element signature="e#467#945#0" expanded="true" />
+                <element signature="e#1017#1257#0" expanded="true" />
+                <element signature="e#1367#1870#0" expanded="true" />
+                <element signature="e#1914#2149#0" expanded="true" />
+                <element signature="e#2255#2757#0" expanded="true" />
+                <element signature="e#2801#3036#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Component/User/UserInfo/UserCourse/AddUserItemsCourse/AddUserItemsCourse.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="137">
+              <caret line="72" lean-forward="true" selection-start-line="72" selection-end-line="72" />
+              <folding>
+                <element signature="e#0#49#0" expanded="true" />
+                <element signature="e#1402#1841#0" expanded="true" />
+                <element signature="e#1878#1963#0" expanded="true" />
+                <element signature="e#2140#2185#0" expanded="true" />
+                <element signature="e#2530#2851#0" expanded="true" />
+                <element signature="e#2592#2754#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Component/User/UserInfo/UserCourse/AddUserItemsCourse/GetCourseMulti/GetCourseMulti.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="145">
-              <caret line="136" column="77" lean-forward="true" selection-start-line="136" selection-start-column="77" selection-end-line="136" selection-end-column="77" />
+            <state relative-caret-position="-3212">
+              <caret line="10" column="24" selection-start-line="10" selection-start-column="24" selection-end-line="10" selection-end-column="24" />
               <folding>
                 <element signature="e#1#27#0" expanded="true" />
+                <element signature="e#258#4761#0" expanded="true" />
                 <element signature="e#657#816#0" expanded="true" />
                 <element signature="e#845#1224#0" expanded="true" />
                 <element signature="e#1019#1125#0" expanded="true" />
-                <element signature="e#3832#3939#0" expanded="true" />
+                <element signature="e#3558#5398#1" expanded="true" />
+                <element signature="e#3688#3689#0" expanded="true" />
+                <element signature="e#3733#3734#0" expanded="true" />
+                <element signature="e#3763#3764#0" expanded="true" />
+                <element signature="e#3809#3810#0" expanded="true" />
+                <element signature="e#4441#4548#0" expanded="true" />
+                <element signature="e#4607#5370#0" expanded="true" />
+                <element signature="e#4960#5350#0" expanded="true" />
+                <element signature="e#5076#5301#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -193,8 +211,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>error</find>
-      <find>ajax</find>
       <find>background</find>
       <find>.yes</find>
       <find>yes-btn</find>
@@ -221,8 +237,10 @@
       <find>job</find>
       <find>getOption</find>
       <find>getOptionSelected</find>
-      <find>AddCourseToUser</find>
       <find>GetValues</find>
+      <find>setOptions</find>
+      <find>دوره</find>
+      <find>AddCourseToUser</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -258,7 +276,6 @@
         <option value="$PROJECT_DIR$/src/Component/Common/ISLodader/IsLoader.js" />
         <option value="$PROJECT_DIR$/src/Component/Configure/Default-Profile/DefaultProfile.js" />
         <option value="$PROJECT_DIR$/src/Component/LoginSigup/FormSignUp.js" />
-        <option value="$PROJECT_DIR$/src/Component/User/UserInfo/UserCourse/ShowUserItemsCourse/ShowUserItemsCourse.js" />
         <option value="$PROJECT_DIR$/src/Component/Common/Carousel/CarouselMain.js" />
         <option value="$PROJECT_DIR$/src/constants/ServerConst.js" />
         <option value="$PROJECT_DIR$/src/Component/Content/Inprogress.js" />
@@ -268,7 +285,6 @@
         <option value="$PROJECT_DIR$/src/Component/User/UserInfo/User-Scheduale/User-Schedual-requested/User-Schedual-requested.js" />
         <option value="$PROJECT_DIR$/src/Component/User/UserInfo/User-Scheduale/User-Schedual-Allocate/UserSchedualAllocate.js" />
         <option value="$PROJECT_DIR$/src/Component/User/UserInfo/User-Scheduale/subs/UserSchedule/UserSchedule.js" />
-        <option value="$PROJECT_DIR$/src/assets/css/MyCss/MyStyle2.css" />
         <option value="$PROJECT_DIR$/src/assets/css/sass/_gogo.style.scss" />
         <option value="$PROJECT_DIR$/src/Component/User/UserInfo/UserInfo.js" />
         <option value="$PROJECT_DIR$/src/Component/User/UserInfo/PersonalProgram/PersonalProgram.js" />
@@ -280,8 +296,10 @@
         <option value="$PROJECT_DIR$/src/Component/Content/InprogressVideo/InprogressListVideoInRow/InprogressListVideoInRow.js" />
         <option value="$PROJECT_DIR$/src/containers/navs/Topnav.js" />
         <option value="$PROJECT_DIR$/src/Component/functions/ServerConnection.js" />
-        <option value="$PROJECT_DIR$/src/Component/User/UserInfo/UserCourse/AddUserItemsCourse/AddUserItemsCourse.js" />
         <option value="$PROJECT_DIR$/src/Component/User/UserInfo/UserCourse/AddUserItemsCourse/GetCourseMulti/GetCourseMulti.js" />
+        <option value="$PROJECT_DIR$/src/Component/User/UserInfo/UserCourse/ShowUserItemsCourse/ShowUserItemsCourse.js" />
+        <option value="$PROJECT_DIR$/src/assets/css/MyCss/MyStyle2.css" />
+        <option value="$PROJECT_DIR$/src/Component/User/UserInfo/UserCourse/AddUserItemsCourse/AddUserItemsCourse.js" />
       </list>
     </option>
   </component>
@@ -301,7 +319,7 @@
       <path value="$PROJECT_DIR$/package.json" />
     </packageJsonPaths>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="590" />
     <option name="y" value="125" />
     <option name="width" value="1195" />
@@ -446,12 +464,12 @@
       <workItem from="1589357199809" duration="19208000" />
       <workItem from="1589447024016" duration="8443000" />
       <workItem from="1589460464015" duration="16091000" />
-      <workItem from="1589570320364" duration="3857000" />
+      <workItem from="1589570320364" duration="5909000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="443018000" />
+    <option name="totallyTimeSpent" value="445070000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -583,6 +601,12 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="500">
           <caret line="56" column="61" selection-start-line="56" selection-start-column="61" selection-end-line="56" selection-end-column="61" />
+          <folding>
+            <element signature="e#0#51#0" expanded="true" />
+            <element signature="e#1837#2010#0" expanded="true" />
+            <element signature="e#2039#2214#0" expanded="true" />
+            <element signature="e#2243#2440#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -678,24 +702,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Component/User/UserInfo/UserCourse/ShowUserItemsCourse/ShowUserItemsCourse.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="23">
-          <caret line="12" column="31" selection-start-line="12" selection-start-column="31" selection-end-line="12" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/node_modules/@material-ui/core/Card/Card.d.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="230">
           <caret line="24" column="24" selection-start-line="24" selection-start-column="24" selection-end-line="24" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/assets/css/MyCss/MyStyle2.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="408" column="2" selection-start-line="408" selection-start-column="2" selection-end-line="408" selection-end-column="2" />
         </state>
       </provider>
     </entry>
@@ -878,17 +888,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Component/User/UserInfo/UserInfo.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="354">
-          <caret line="94" column="32" selection-start-line="94" selection-start-column="32" selection-end-line="94" selection-end-column="32" />
-          <folding>
-            <element signature="e#0#49#0" expanded="true" />
-            <element signature="e#3496#3694#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/containers/navs/Topnav.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="331">
@@ -899,21 +898,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Component/User/UserInfo/UserCourse/USerCourse.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="454">
-          <caret line="49" column="38" lean-forward="true" selection-start-line="49" selection-start-column="38" selection-end-line="49" selection-end-column="38" />
-          <folding>
-            <element signature="e#0#49#0" expanded="true" />
-            <element signature="e#800#801#0" expanded="true" />
-            <element signature="e#843#844#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Component/functions/ServerConnection.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="316">
+        <state relative-caret-position="178">
           <caret line="1783" lean-forward="true" selection-start-line="1783" selection-end-line="1783" />
           <folding>
             <element signature="e#5343#5680#0" expanded="true" />
@@ -930,30 +917,89 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Component/User/UserInfo/UserCourse/AddUserItemsCourse/AddUserItemsCourse.js">
+    <entry file="file://$PROJECT_DIR$/src/Component/User/UserInfo/UserInfo.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="322">
-          <caret line="78" column="23" lean-forward="true" selection-start-line="78" selection-start-column="23" selection-end-line="78" selection-end-column="23" />
+        <state relative-caret-position="147">
+          <caret line="71" column="111" selection-start-line="71" selection-start-column="111" selection-end-line="71" selection-end-column="111" />
           <folding>
             <element signature="e#0#49#0" expanded="true" />
-            <element signature="e#1402#1841#0" expanded="true" />
-            <element signature="e#1878#1963#0" expanded="true" />
-            <element signature="e#1999#2506#0" expanded="true" />
-            <element signature="e#2140#2185#0" expanded="true" />
+            <element signature="e#2930#3174#0" expanded="true" />
+            <element signature="e#3232#3371#0" expanded="true" />
+            <element signature="e#3496#3694#0" expanded="true" />
+            <element signature="e#3752#3885#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Component/User/UserInfo/UserCourse/USerCourse.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="51" column="37" selection-start-line="51" selection-start-column="37" selection-end-line="51" selection-end-column="37" />
+          <folding>
+            <element signature="e#0#49#0" expanded="true" />
+            <element signature="e#800#801#0" expanded="true" />
+            <element signature="e#843#844#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Component/User/UserInfo/UserCourse/AddUserItemsCourse/GetCourseMulti/GetCourseMulti.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="145">
-          <caret line="136" column="77" lean-forward="true" selection-start-line="136" selection-start-column="77" selection-end-line="136" selection-end-column="77" />
+        <state relative-caret-position="-3212">
+          <caret line="10" column="24" selection-start-line="10" selection-start-column="24" selection-end-line="10" selection-end-column="24" />
           <folding>
             <element signature="e#1#27#0" expanded="true" />
+            <element signature="e#258#4761#0" expanded="true" />
             <element signature="e#657#816#0" expanded="true" />
             <element signature="e#845#1224#0" expanded="true" />
             <element signature="e#1019#1125#0" expanded="true" />
-            <element signature="e#3832#3939#0" expanded="true" />
+            <element signature="e#3558#5398#1" expanded="true" />
+            <element signature="e#3688#3689#0" expanded="true" />
+            <element signature="e#3733#3734#0" expanded="true" />
+            <element signature="e#3763#3764#0" expanded="true" />
+            <element signature="e#3809#3810#0" expanded="true" />
+            <element signature="e#4441#4548#0" expanded="true" />
+            <element signature="e#4607#5370#0" expanded="true" />
+            <element signature="e#4960#5350#0" expanded="true" />
+            <element signature="e#5076#5301#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/assets/css/MyCss/MyStyle2.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="404" column="8" selection-start-line="404" selection-start-column="1" selection-end-line="404" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Component/User/UserInfo/UserCourse/ShowUserItemsCourse/ShowUserItemsCourse.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="138">
+          <caret line="7" column="36" selection-start-line="7" selection-start-column="36" selection-end-line="7" selection-end-column="36" />
+          <folding>
+            <element signature="e#374#973#0" expanded="true" />
+            <element signature="e#467#945#0" expanded="true" />
+            <element signature="e#1017#1257#0" expanded="true" />
+            <element signature="e#1367#1870#0" expanded="true" />
+            <element signature="e#1914#2149#0" expanded="true" />
+            <element signature="e#2255#2757#0" expanded="true" />
+            <element signature="e#2801#3036#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Component/User/UserInfo/UserCourse/AddUserItemsCourse/AddUserItemsCourse.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="137">
+          <caret line="72" lean-forward="true" selection-start-line="72" selection-end-line="72" />
+          <folding>
+            <element signature="e#0#49#0" expanded="true" />
+            <element signature="e#1402#1841#0" expanded="true" />
+            <element signature="e#1878#1963#0" expanded="true" />
+            <element signature="e#2140#2185#0" expanded="true" />
+            <element signature="e#2530#2851#0" expanded="true" />
+            <element signature="e#2592#2754#0" expanded="true" />
           </folding>
         </state>
       </provider>

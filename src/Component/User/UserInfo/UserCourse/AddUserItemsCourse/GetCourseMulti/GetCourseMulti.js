@@ -121,9 +121,11 @@ export default function GetCourseMulti(props) {
 
       //  {/*/>*/}
 
+
+
         <Autocomplete
             multiple
-            className={"col-12 m-2 text-left"}
+            className={"col-12 m-2 "}
             id="tags-outlined"
             onOpen={() => {
                 setOpen(true);
@@ -155,8 +157,9 @@ export default function GetCourseMulti(props) {
                     helperText={error.length > 2 ? error : ""}
                     label={name}
                     onChange={handelChange}
-                    variant="outlined"
-                    InputProps={{
+                    variant="standard"
+                    className={"ltr"}
+                     InputProps={{
                         ...params.InputProps,
                         endAdornment: (
                             <React.Fragment>

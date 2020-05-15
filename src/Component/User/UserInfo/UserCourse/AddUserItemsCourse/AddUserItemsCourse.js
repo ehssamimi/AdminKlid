@@ -74,11 +74,11 @@ const AddUserItemsCourse = (props) => {
     };
 
     return (
-        <div className=" formmmmmm text-left" dir="ltr">
-
+        <div className="  rtl pb-3 pt-4  "  >
+            <span className="FsSmall mb-2 ml-3"  >اضافه کردن دوره جدید</span>
             <GetCourseMulti getOption={getOption} error={error.permissions} GetValues={getValues}
-                            DefaultValue={permissonInitioal} name={"دوره"}/>
-            <span className="btn btn-primary" onClick={handelSubmit}>ارسال</span>
+                            DefaultValue={permissonInitioal} name={""}/>
+            <span className="btn btn-primary mt-3 ml-3" onClick={handelSubmit}>ارسال</span>
         </div>
     );
 };

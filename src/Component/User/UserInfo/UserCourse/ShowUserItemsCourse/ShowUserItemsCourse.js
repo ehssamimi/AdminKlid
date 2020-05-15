@@ -5,11 +5,11 @@ const ShowUserItemsCourse = (props) => {
     let{chapters,courses,lessons}=props;
      let{match:{params}}=props;
      return (
-        <div className="w-100">
+        <div className="w-100 pt-2  ">
 
             {
                 (courses!==undefined&&courses.length>0)?
-                    <div    className={["row w-100 ",  "mt-4" ].join(" ") } dir={"ltr"}>
+                    <div    className={["row w-100 ",  "mt-4 pr-3" ].join(" ") } dir={"ltr"}>
                         <CarouselMain type={"userFile"}
                                       UpdateCoursList={()=>{}}
                                       getCourseID={()=>{}}
@@ -24,7 +24,7 @@ const ShowUserItemsCourse = (props) => {
                     </div>
 
                     :
-                    <div className="d-flex flex-column">
+                    <div className="d-flex flex-column mt-5">
                         <p className="carousel-header">دوره ها</p>
                         <p className="FsFooterLogin mt-4 ml-4"> دور ای برای این دانش آموز ثبت نشده است  </p>
                     </div>
@@ -34,7 +34,7 @@ const ShowUserItemsCourse = (props) => {
 
             {
                 (chapters!==undefined&&chapters.length>0)?
-                    <div    className={["row w-100 ",  "mt-4" ].join(" ") } dir={"ltr"}>
+                    <div    className={["row w-100 ",  "mt-4 pr-3" ].join(" ") } dir={"ltr"}>
                         <CarouselMain type={"userFile"}
                                       UpdateCoursList={()=>{}}
                                       getCourseID={()=>{}}
@@ -54,7 +54,7 @@ const ShowUserItemsCourse = (props) => {
             }
             {
                 (lessons!==undefined&&lessons.length>0)?
-                    <div    className={["row w-100 ",  "mt-4" ].join(" ") } dir={"ltr"}>
+                    <div    className={["row w-100 ",  "mt-4 pr-3" ].join(" ") } dir={"ltr"}>
                         <CarouselMain type={"userFile"}
                                       UpdateCoursList={()=>{}}
                                       getCourseID={()=>{}}
