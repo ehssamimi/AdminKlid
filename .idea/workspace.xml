@@ -2,21 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3127a07d-e1e7-46b9-a05b-d8fa367c791f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Component/Configure/Quote/CreateQoute.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Component/Configure/Quote/Quote.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Component/Content/InprogressVideo/InprogressListVideoInRow/InprogressListVideoInRow.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/Content/InprogressVideo/InprogressListVideoInRow/InprogressListVideoInRow.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Component/User/UserInfo/PersonalProgram/PersonalProgram.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/User/UserInfo/PersonalProgram/PersonalProgram.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Component/User/UserInfo/User-Scheduale/User-Schedual-Allocate/UserSchedualAllocate.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/User/UserInfo/User-Scheduale/User-Schedual-Allocate/UserSchedualAllocate.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Component/User/UserInfo/User-Scheduale/User-Schedual-requested/User-Schedual-requested.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/User/UserInfo/User-Scheduale/User-Schedual-requested/User-Schedual-requested.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Component/User/UserInfo/User-Scheduale/subs/UserSchedule/UserSchedule.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/User/UserInfo/User-Scheduale/subs/UserSchedule/UserSchedule.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Component/User/UserInfo/UserInfo.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/User/UserInfo/UserInfo.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Component/User/UserInfo/UserCourse/AddUserItemsCourse/AddUserItemsCourse.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/User/UserInfo/UserCourse/AddUserItemsCourse/AddUserItemsCourse.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Component/User/UserInfo/UserCourse/AddUserItemsCourse/GetCourseMulti/GetCourseMulti.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/User/UserInfo/UserCourse/AddUserItemsCourse/GetCourseMulti/GetCourseMulti.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Component/functions/ServerConnection.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/functions/ServerConnection.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/css/MyCss/MyStyle2.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/css/MyCss/MyStyle2.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/css/sass/_gogo.style.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/css/sass/_gogo.style.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/constants/menu.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/constants/menu.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/containers/navs/Topnav.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/navs/Topnav.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/configure/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/configure/index.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -28,7 +18,7 @@
     <session id="602434569">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="25" />
+          <entry key="project.closed" value="26" />
           <entry key="project.open.time.101" value="1" />
           <entry key="project.open.time.11" value="1" />
           <entry key="project.open.time.111" value="1" />
@@ -46,6 +36,7 @@
           <entry key="project.open.time.5" value="2" />
           <entry key="project.open.time.54" value="1" />
           <entry key="project.open.time.57" value="1" />
+          <entry key="project.open.time.59" value="1" />
           <entry key="project.open.time.6" value="1" />
           <entry key="project.open.time.61" value="1" />
           <entry key="project.open.time.67" value="1" />
@@ -53,14 +44,14 @@
           <entry key="project.open.time.81" value="1" />
           <entry key="project.open.time.83" value="1" />
           <entry key="project.open.time.89" value="1" />
-          <entry key="project.opened" value="28" />
+          <entry key="project.opened" value="29" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="css" value="26" />
           <entry key="html" value="17" />
-          <entry key="js" value="694" />
+          <entry key="js" value="701" />
           <entry key="json" value="1" />
           <entry key="png" value="14" />
           <entry key="rnc" value="1" />
@@ -75,7 +66,7 @@
           <entry key="HTML" value="17" />
           <entry key="Image" value="14" />
           <entry key="JSON" value="1" />
-          <entry key="JavaScript" value="694" />
+          <entry key="JavaScript" value="701" />
           <entry key="RNG Compact" value="1" />
           <entry key="SCSS" value="11" />
           <entry key="SVG" value="4" />
@@ -84,7 +75,7 @@
       </usages-collector>
       <usages-collector id="statistics.js.language.service.starts">
         <counts>
-          <entry key="ESLintLanguageService" value="28" />
+          <entry key="ESLintLanguageService" value="29" />
           <entry key="TypeScriptServerServiceImpl" value="5" />
         </counts>
       </usages-collector>
@@ -92,7 +83,7 @@
         <counts>
           <entry key="css" value="638" />
           <entry key="html" value="934" />
-          <entry key="js" value="30333" />
+          <entry key="js" value="30581" />
           <entry key="scss" value="139" />
         </counts>
       </usages-collector>
@@ -100,7 +91,7 @@
         <counts>
           <entry key="CSS" value="638" />
           <entry key="HTML" value="934" />
-          <entry key="JavaScript" value="30333" />
+          <entry key="JavaScript" value="30581" />
           <entry key="SCSS" value="139" />
         </counts>
       </usages-collector>
@@ -111,33 +102,28 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/Component/Content/InprogressVideo/InprogressListVideoInRow/InprogressListVideoInRow.js">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Component/User/UserInfo/UserInfo.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="230">
-              <caret line="107" column="5" lean-forward="true" selection-start-line="107" selection-start-column="5" selection-end-line="107" selection-end-column="5" />
+            <state relative-caret-position="354">
+              <caret line="94" column="32" selection-start-line="94" selection-start-column="32" selection-end-line="94" selection-end-column="32" />
               <folding>
                 <element signature="e#0#49#0" expanded="true" />
-                <element signature="e#3298#3511#0" expanded="true" />
-                <element signature="e#3243#5156#0" expanded="true" />
-                <element signature="e#3302#5139#0" expanded="true" />
-                <element signature="e#3330#4641#0" expanded="true" />
-                <element signature="e#3357#4433#0" expanded="true" />
-                <element signature="e#4659#5115#0" expanded="true" />
-                <element signature="e#4724#4914#0" expanded="true" />
+                <element signature="e#3496#3694#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Component/Common/AddVideoConver/AddVideoConvert.js">
+        <entry file="file://$PROJECT_DIR$/src/Component/User/UserInfo/UserCourse/USerCourse.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="159">
-              <caret line="30" column="46" lean-forward="true" selection-start-line="30" selection-start-column="46" selection-end-line="30" selection-end-column="46" />
+            <state relative-caret-position="454">
+              <caret line="49" column="38" lean-forward="true" selection-start-line="49" selection-start-column="38" selection-end-line="49" selection-end-column="38" />
               <folding>
-                <element signature="e#2904#3199#0" expanded="true" />
-                <element signature="e#3401#3627#0" expanded="true" />
+                <element signature="e#0#49#0" expanded="true" />
+                <element signature="e#800#801#0" expanded="true" />
+                <element signature="e#843#844#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -146,28 +132,52 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Component/functions/ServerConnection.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="352">
-              <caret line="2452" column="35" lean-forward="true" selection-start-line="2452" selection-start-column="14" selection-end-line="2452" selection-end-column="35" />
+            <state relative-caret-position="316">
+              <caret line="1783" lean-forward="true" selection-start-line="1783" selection-end-line="1783" />
               <folding>
                 <element signature="e#5343#5680#0" expanded="true" />
                 <element signature="e#34601#34722#0" expanded="true" />
                 <element signature="e#34855#35005#0" expanded="true" />
                 <element signature="e#35030#35122#0" expanded="true" />
                 <element signature="e#50717#50791#0" expanded="true" />
+                <element signature="e#57518#57679#0" expanded="true" />
                 <element signature="e#76238#76399#0" expanded="true" />
                 <element signature="e#78189#79106#0" expanded="true" />
-                <element signature="e#79179#79340#0" expanded="true" />
-                <element signature="e#79637#80054#0" expanded="true" />
+                <element signature="e#79163#79752#0" expanded="true" />
+                <element signature="e#79474#79607#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/constants/ServerConst.js">
+        <entry file="file://$PROJECT_DIR$/src/Component/User/UserInfo/UserCourse/AddUserItemsCourse/AddUserItemsCourse.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="276">
-              <caret line="20" column="13" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
+            <state relative-caret-position="322">
+              <caret line="78" column="23" lean-forward="true" selection-start-line="78" selection-start-column="23" selection-end-line="78" selection-end-column="23" />
+              <folding>
+                <element signature="e#0#49#0" expanded="true" />
+                <element signature="e#1402#1841#0" expanded="true" />
+                <element signature="e#1878#1963#0" expanded="true" />
+                <element signature="e#1999#2506#0" expanded="true" />
+                <element signature="e#2140#2185#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Component/User/UserInfo/UserCourse/AddUserItemsCourse/GetCourseMulti/GetCourseMulti.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="145">
+              <caret line="136" column="77" lean-forward="true" selection-start-line="136" selection-start-column="77" selection-end-line="136" selection-end-column="77" />
+              <folding>
+                <element signature="e#1#27#0" expanded="true" />
+                <element signature="e#657#816#0" expanded="true" />
+                <element signature="e#845#1224#0" expanded="true" />
+                <element signature="e#1019#1125#0" expanded="true" />
+                <element signature="e#3832#3939#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -183,10 +193,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>page</find>
-      <find>TweenMax</find>
-      <find>Video</find>
-      <find>tab-send-massage</find>
       <find>error</find>
       <find>ajax</find>
       <find>background</find>
@@ -213,6 +219,10 @@
       <find>ro</find>
       <find>post</find>
       <find>job</find>
+      <find>getOption</find>
+      <find>getOptionSelected</find>
+      <find>AddCourseToUser</find>
+      <find>GetValues</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -227,7 +237,6 @@
         <option value="$PROJECT_DIR$/src/Component/User/UserInfo/GetUserPhoneNumber/GetUserPhoneNumber.js" />
         <option value="$PROJECT_DIR$/src/Component/Common/AddVideoConver/AddVideoConvert.js" />
         <option value="$PROJECT_DIR$/src/Component/User/UserInfo/UserCourse/ShowIUserItemsCourse/ShowIUserItemsCourse.js" />
-        <option value="$PROJECT_DIR$/src/Component/User/UserInfo/UserCourse/AddUserItemsCourse/GetCourseMulti/GetCourseMulti.js" />
         <option value="$PROJECT_DIR$/src/Component/User/UserInfo/UserCourse/USerCourse.js" />
         <option value="$PROJECT_DIR$/src/Component/Content/InprogressVideo/InprogressVideo.js" />
         <option value="$PROJECT_DIR$/public/assets/fonts/WebFonts/css/style.css" />
@@ -249,7 +258,6 @@
         <option value="$PROJECT_DIR$/src/Component/Common/ISLodader/IsLoader.js" />
         <option value="$PROJECT_DIR$/src/Component/Configure/Default-Profile/DefaultProfile.js" />
         <option value="$PROJECT_DIR$/src/Component/LoginSigup/FormSignUp.js" />
-        <option value="$PROJECT_DIR$/src/Component/User/UserInfo/UserCourse/AddUserItemsCourse/AddUserItemsCourse.js" />
         <option value="$PROJECT_DIR$/src/Component/User/UserInfo/UserCourse/ShowUserItemsCourse/ShowUserItemsCourse.js" />
         <option value="$PROJECT_DIR$/src/Component/Common/Carousel/CarouselMain.js" />
         <option value="$PROJECT_DIR$/src/constants/ServerConst.js" />
@@ -262,7 +270,6 @@
         <option value="$PROJECT_DIR$/src/Component/User/UserInfo/User-Scheduale/subs/UserSchedule/UserSchedule.js" />
         <option value="$PROJECT_DIR$/src/assets/css/MyCss/MyStyle2.css" />
         <option value="$PROJECT_DIR$/src/assets/css/sass/_gogo.style.scss" />
-        <option value="$PROJECT_DIR$/src/containers/navs/Topnav.js" />
         <option value="$PROJECT_DIR$/src/Component/User/UserInfo/UserInfo.js" />
         <option value="$PROJECT_DIR$/src/Component/User/UserInfo/PersonalProgram/PersonalProgram.js" />
         <option value="$PROJECT_DIR$/src/views/configure/index.js" />
@@ -270,8 +277,11 @@
         <option value="$PROJECT_DIR$/src/Component/Configure/Quote/Quote.js" />
         <option value="$PROJECT_DIR$/src/Component/Configure/Quote/CreateQoute.js" />
         <option value="$PROJECT_DIR$/src/Component/Configure/Quote/TodayText.js" />
-        <option value="$PROJECT_DIR$/src/Component/functions/ServerConnection.js" />
         <option value="$PROJECT_DIR$/src/Component/Content/InprogressVideo/InprogressListVideoInRow/InprogressListVideoInRow.js" />
+        <option value="$PROJECT_DIR$/src/containers/navs/Topnav.js" />
+        <option value="$PROJECT_DIR$/src/Component/functions/ServerConnection.js" />
+        <option value="$PROJECT_DIR$/src/Component/User/UserInfo/UserCourse/AddUserItemsCourse/AddUserItemsCourse.js" />
+        <option value="$PROJECT_DIR$/src/Component/User/UserInfo/UserCourse/AddUserItemsCourse/GetCourseMulti/GetCourseMulti.js" />
       </list>
     </option>
   </component>
@@ -291,7 +301,7 @@
       <path value="$PROJECT_DIR$/package.json" />
     </packageJsonPaths>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="590" />
     <option name="y" value="125" />
     <option name="width" value="1195" />
@@ -302,6 +312,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -324,31 +335,20 @@
               <item name="AdminKlid" type="b2602c69:ProjectViewProjectNode" />
               <item name="AdminKlid" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="Component" type="462c0819:PsiDirectoryNode" />
-              <item name="Content" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="AdminKlid" type="b2602c69:ProjectViewProjectNode" />
-              <item name="AdminKlid" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="Component" type="462c0819:PsiDirectoryNode" />
-              <item name="Content" type="462c0819:PsiDirectoryNode" />
-              <item name="InprogressVideo" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="AdminKlid" type="b2602c69:ProjectViewProjectNode" />
-              <item name="AdminKlid" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="Component" type="462c0819:PsiDirectoryNode" />
-              <item name="Content" type="462c0819:PsiDirectoryNode" />
-              <item name="InprogressVideo" type="462c0819:PsiDirectoryNode" />
-              <item name="InprogressListVideoInRow" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="AdminKlid" type="b2602c69:ProjectViewProjectNode" />
-              <item name="AdminKlid" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="constants" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="AdminKlid" type="b2602c69:ProjectViewProjectNode" />
+              <item name="AdminKlid" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="containers" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="AdminKlid" type="b2602c69:ProjectViewProjectNode" />
+              <item name="AdminKlid" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="containers" type="462c0819:PsiDirectoryNode" />
+              <item name="navs" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="AdminKlid" type="b2602c69:ProjectViewProjectNode" />
@@ -367,7 +367,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -446,12 +445,13 @@
       <workItem from="1589270011610" duration="32252000" />
       <workItem from="1589357199809" duration="19208000" />
       <workItem from="1589447024016" duration="8443000" />
-      <workItem from="1589460464015" duration="15920000" />
+      <workItem from="1589460464015" duration="16091000" />
+      <workItem from="1589570320364" duration="3857000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="438990000" />
+    <option name="totallyTimeSpent" value="443018000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -468,7 +468,7 @@
     <layout>
       <window_info id="Favorites" order="0" sideWeight="0.5007194" side_tool="true" weight="0.24262735" />
       <window_info id="npm" order="1" side_tool="true" />
-      <window_info active="true" content_ui="combo" id="Project" order="2" sideWeight="0.49928057" visible="true" weight="0.23726542" />
+      <window_info active="true" content_ui="combo" id="Project" order="2" sideWeight="0.49928057" visible="true" weight="0.24061662" />
       <window_info id="Structure" order="3" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" order="0" weight="0.3294964" />
       <window_info anchor="bottom" id="Database Changes" order="1" show_stripe_button="false" />
@@ -497,20 +497,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/Component/Content/DetailsContentComponent/CourseDetail/CourseDetail.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="354">
-          <caret line="113" column="47" selection-start-line="113" selection-end-line="114" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../Alef_UserPanel/Alef_user_panel/src/Components/Common/BuyFooter/BuyFooter.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="239">
-          <caret line="164" column="28" selection-start-line="164" selection-start-column="28" selection-end-line="173" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/Desktop/New folder/thank_you.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="325">
@@ -597,12 +583,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="500">
           <caret line="56" column="61" selection-start-line="56" selection-start-column="61" selection-end-line="56" selection-end-column="61" />
-          <folding>
-            <element signature="e#0#51#0" expanded="true" />
-            <element signature="e#1837#2010#0" expanded="true" />
-            <element signature="e#2039#2214#0" expanded="true" />
-            <element signature="e#2243#2440#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -639,13 +619,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="161">
           <caret line="15" selection-start-line="15" selection-end-line="25" selection-end-column="5" />
-          <folding>
-            <element signature="e#1231#1332#0" expanded="true" />
-            <element signature="e#1467#3176#0" expanded="true" />
-            <element signature="e#1747#2914#0" expanded="true" />
-            <element signature="e#2167#2830#0" expanded="true" />
-            <element signature="e#2294#2795#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -663,28 +636,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Component/User/UserInfo/UserCourse/USerCourse.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="483">
-          <caret line="51" column="34" selection-start-line="51" selection-start-column="34" selection-end-line="51" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Component/Content/Inprogress.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Component/Content/Inprogress.js" />
     <entry file="file://$PROJECT_DIR$/src/views/Content/permission/index.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="92">
           <caret line="4" selection-start-line="4" selection-end-line="4" />
-          <folding>
-            <element signature="e#0#51#0" expanded="true" />
-            <element signature="n#!!block;n#render#0;n#App#0" expanded="true" />
-            <element signature="e#459#1249#0" expanded="true" />
-            <element signature="e#505#1234#0" expanded="true" />
-            <element signature="e#567#1212#0" expanded="true" />
-            <element signature="e#679#809#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -692,19 +648,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="146">
           <caret line="36" column="3" lean-forward="true" selection-start-line="36" selection-start-column="3" selection-end-line="36" selection-end-column="17" />
-          <folding>
-            <element signature="e#1359#2999#0" expanded="true" />
-            <element signature="e#1379#2980#0" expanded="true" />
-            <element signature="e#1425#2965#0" expanded="true" />
-            <element signature="e#1487#2943#0" expanded="true" />
-            <element signature="e#1594#1732#0" expanded="true" />
-            <element signature="e#1841#1979#0" expanded="true" />
-            <element signature="e#1749#1880#0" expanded="true" />
-            <element signature="e#1897#2039#0" expanded="true" />
-            <element signature="e#2056#2221#0" expanded="true" />
-            <element signature="e#2445#2655#0" expanded="true" />
-            <element signature="e#2672#2882#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -712,11 +655,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="270">
           <caret line="26" column="60" lean-forward="true" selection-start-line="26" selection-start-column="60" selection-end-line="26" selection-end-column="60" />
-          <folding>
-            <element signature="e#0#61#0" expanded="true" />
-            <element signature="n#!!block;n#constructor#0;n#App#0" expanded="true" />
-            <element signature="n#!!block;n#render#0;n#App#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -737,14 +675,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
           <caret line="287" column="46" selection-start-line="287" selection-start-column="46" selection-end-line="287" selection-end-column="46" />
-          <folding>
-            <element signature="e#0#50#0" expanded="true" />
-            <element signature="e#10244#10293#0" expanded="true" />
-            <element signature="e#11067#12930#0" expanded="true" />
-            <element signature="e#11186#12589#0" expanded="true" />
-            <element signature="e#12602#12789#0" expanded="true" />
-            <element signature="n#!!block;n#CarouselMain#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -752,16 +682,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="23">
           <caret line="12" column="31" selection-start-line="12" selection-start-column="31" selection-end-line="12" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Component/User/UserInfo/UserCourse/AddUserItemsCourse/AddUserItemsCourse.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="147">
-          <caret line="59" column="25" lean-forward="true" selection-start-line="59" selection-start-column="25" selection-end-line="59" selection-end-column="25" />
-          <folding>
-            <element signature="e#2140#2185#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -776,10 +696,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="200">
           <caret line="408" column="2" selection-start-line="408" selection-start-column="2" selection-end-line="408" selection-end-column="2" />
-          <folding>
-            <element signature="e#8456#8988#0" />
-            <element signature="e#9006#9036#0" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -814,38 +730,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="371">
           <caret line="30" column="58" lean-forward="true" selection-start-line="30" selection-start-column="49" selection-end-line="30" selection-end-column="58" />
-          <folding>
-            <element signature="e#0#61#0" expanded="true" />
-            <element signature="e#3087#9721#0" expanded="true" />
-            <element signature="e#3145#9483#0" expanded="true" />
-            <element signature="e#3216#9462#0" expanded="true" />
-            <element signature="e#3298#4132#0" expanded="true" />
-            <element signature="e#3425#3727#0" expanded="true" />
-            <element signature="e#3473#3696#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/containers/navs/Topnav.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="56" column="51" lean-forward="true" selection-start-line="56" selection-start-column="51" selection-end-line="56" selection-end-column="51" />
-          <folding>
-            <element signature="e#0#41#0" expanded="true" />
-            <element signature="e#1421#1501#0" expanded="true" />
-            <element signature="e#1792#1833#0" expanded="true" />
-            <element signature="n#!!block;n#render#0;n#TopNav#0" expanded="true" />
-            <element signature="e#6209#11065#0" expanded="true" />
-            <element signature="e#6252#9016#0" expanded="true" />
-            <element signature="e#9026#9325#0" expanded="true" />
-            <element signature="e#9334#11052#0" expanded="true" />
-            <element signature="e#9437#10059#0" expanded="true" />
-            <element signature="e#9590#10042#0" expanded="true" />
-            <element signature="e#10070#11037#0" expanded="true" />
-            <element signature="e#10120#11020#0" expanded="true" />
-            <element signature="e#10189#10462#0" expanded="true" />
-            <element signature="e#10330#10430#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -853,23 +737,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1472">
           <caret line="18" column="2" lean-forward="true" selection-start-line="18" selection-start-column="2" selection-end-line="18" selection-end-column="43" />
-          <folding>
-            <element signature="e#1535#1656#0" expanded="true" />
-            <element signature="e#1694#2286#0" expanded="true" />
-            <element signature="e#2310#5874#0" expanded="true" />
-            <element signature="e#2655#3438#0" expanded="true" />
-            <element signature="e#2968#3407#0" expanded="true" />
-            <element signature="e#3452#5853#0" expanded="true" />
-            <element signature="e#3536#5542#0" expanded="true" />
-            <element signature="e#3653#5493#0" expanded="true" />
-            <element signature="e#3795#4023#0" expanded="true" />
-            <element signature="e#4066#5423#0" expanded="true" />
-            <element signature="e#4196#4534#0" expanded="true" />
-            <element signature="e#4589#5328#0" expanded="true" />
-            <element signature="e#4671#4948#0" expanded="true" />
-            <element signature="e#5005#5269#0" expanded="true" />
-            <element signature="e#5559#5716#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -877,10 +744,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="580">
           <caret line="57" column="47" lean-forward="true" selection-start-line="57" selection-start-column="47" selection-end-line="57" selection-end-column="47" />
-          <folding>
-            <element signature="e#0#49#0" expanded="true" />
-            <element signature="e#687#1558#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -888,12 +751,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="276">
           <caret line="34" column="20" lean-forward="true" selection-start-line="34" selection-start-column="20" selection-end-line="34" selection-end-column="20" />
-          <folding>
-            <element signature="e#3285#3478#0" expanded="true" />
-            <element signature="e#3557#4619#0" expanded="true" />
-            <element signature="e#4071#4610#0" expanded="true" />
-            <element signature="e#4130#4594#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -901,13 +758,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="483">
           <caret line="21" column="6" lean-forward="true" selection-start-line="21" selection-start-column="6" selection-end-line="21" selection-end-column="6" />
-          <folding>
-            <element signature="e#0#27#0" expanded="true" />
-            <element signature="e#180#750#0" expanded="true" />
-            <element signature="e#273#734#0" expanded="true" />
-            <element signature="e#335#714#0" expanded="true" />
-            <element signature="e#448#685#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -915,18 +765,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="258">
           <caret line="153" column="14" selection-start-line="153" selection-start-column="14" selection-end-line="153" selection-end-column="14" />
-          <folding>
-            <element signature="e#2854#2986#0" expanded="true" />
-            <element signature="e#2991#3143#0" expanded="true" />
-            <element signature="e#3326#3520#0" expanded="true" />
-            <element signature="e#3719#3848#0" expanded="true" />
-            <element signature="e#3851#3985#0" expanded="true" />
-            <element signature="e#3987#4133#0" expanded="true" />
-            <element signature="e#4306#4485#0" expanded="true" />
-            <element signature="e#4884#5034#0" expanded="true" />
-            <element signature="e#5276#5419#0" expanded="true" />
-            <element signature="e#5057#5163#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -934,33 +772,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="138">
           <caret line="10" column="83" lean-forward="true" selection-start-line="10" selection-start-column="83" selection-end-line="10" selection-end-column="83" />
-          <folding>
-            <element signature="n#!!block;n#render#0;n#App#0" expanded="true" />
-            <element signature="e#454#949#0" expanded="true" />
-            <element signature="e#474#930#0" expanded="true" />
-            <element signature="e#520#915#0" expanded="true" />
-            <element signature="e#582#893#0" expanded="true" />
-            <element signature="e#697#831#0" expanded="true" />
-            <element signature="e#832#966#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Component/User/UserInfo/UserInfo.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="161">
-          <caret line="13" selection-start-line="13" selection-end-line="13" selection-end-column="52" />
-          <folding>
-            <element signature="e#0#49#0" expanded="true" />
-            <element signature="e#859#1508#0" expanded="true" />
-            <element signature="e#2039#3691#0" expanded="true" />
-            <element signature="e#2319#3655#0" expanded="true" />
-            <element signature="e#2367#2976#0" expanded="true" />
-            <element signature="e#2489#2671#0" expanded="true" />
-            <element signature="e#3002#3141#0" expanded="true" />
-            <element signature="e#3266#3437#0" expanded="true" />
-            <element signature="e#3495#3628#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -968,11 +779,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="138">
           <caret line="8" column="35" selection-start-line="8" selection-start-column="35" selection-end-line="8" selection-end-column="35" />
-          <folding>
-            <element signature="e#273#734#0" expanded="true" />
-            <element signature="e#335#714#0" expanded="true" />
-            <element signature="e#448#685#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -980,18 +786,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-55">
           <caret line="132" column="8" lean-forward="true" selection-start-line="132" selection-start-column="8" selection-end-line="132" selection-end-column="8" />
-          <folding>
-            <element signature="e#0#61#0" expanded="true" />
-            <element signature="e#5064#11286#0" expanded="true" />
-            <element signature="e#5347#11257#0" expanded="true" />
-            <element signature="e#5456#11179#0" expanded="true" />
-            <element signature="e#5562#11146#0" expanded="true" />
-            <element signature="e#5654#11111#0" expanded="true" />
-            <element signature="e#5779#11071#0" expanded="true" />
-            <element signature="e#5958#6323#0" expanded="true" />
-            <element signature="e#6365#6736#0" expanded="true" />
-            <element signature="e#6777#8022#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -999,10 +793,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="276">
           <caret line="12" column="25" lean-forward="true" selection-start-line="12" selection-start-column="25" selection-end-line="12" selection-end-column="25" />
-          <folding>
-            <element signature="e#0#49#0" expanded="true" />
-            <element signature="e#200#321#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1010,9 +800,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="230">
           <caret line="13" column="24" selection-start-line="13" selection-start-column="16" selection-end-line="13" selection-end-column="24" />
-          <folding>
-            <element signature="e#0#49#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1020,14 +807,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="46">
           <caret line="2" column="18" selection-start-line="2" selection-start-column="18" selection-end-line="2" selection-end-column="18" />
-          <folding>
-            <element signature="e#0#50#0" expanded="true" />
-            <element signature="n#!!block;n#TextInput#0" expanded="true" />
-            <element signature="e#267#815#0" expanded="true" />
-            <element signature="e#302#804#0" expanded="true" />
-            <element signature="e#326#565#0" expanded="true" />
-            <element signature="n#!!block;n#SelectedInput#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1061,28 +840,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Component/functions/ServerConnection.js">
+    <entry file="file://$PROJECT_DIR$/src/constants/ServerConst.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="352">
-          <caret line="2452" column="35" lean-forward="true" selection-start-line="2452" selection-start-column="14" selection-end-line="2452" selection-end-column="35" />
-          <folding>
-            <element signature="e#5343#5680#0" expanded="true" />
-            <element signature="e#34601#34722#0" expanded="true" />
-            <element signature="e#34855#35005#0" expanded="true" />
-            <element signature="e#35030#35122#0" expanded="true" />
-            <element signature="e#50717#50791#0" expanded="true" />
-            <element signature="e#76238#76399#0" expanded="true" />
-            <element signature="e#78189#79106#0" expanded="true" />
-            <element signature="e#79179#79340#0" expanded="true" />
-            <element signature="e#79637#80054#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="460">
+          <caret line="20" column="13" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Component/Common/AddVideoConver/AddVideoConvert.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="159">
-          <caret line="30" column="46" lean-forward="true" selection-start-line="30" selection-start-column="46" selection-end-line="30" selection-end-column="46" />
+          <caret line="30" column="46" selection-start-line="30" selection-start-column="46" selection-end-line="30" selection-end-column="46" />
           <folding>
             <element signature="e#2904#3199#0" expanded="true" />
             <element signature="e#3401#3627#0" expanded="true" />
@@ -1090,26 +858,102 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/constants/ServerConst.js">
+    <entry file="file://$PROJECT_DIR$/src/Component/Content/InprogressVideo/InprogressListVideoInRow/InprogressListVideoInRow.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="276">
-          <caret line="20" column="13" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
+        <state relative-caret-position="317">
+          <caret line="110" lean-forward="true" selection-start-line="110" selection-end-line="110" />
+          <folding>
+            <element signature="e#0#49#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Component/Content/InprogressVideo/InprogressListVideoInRow/InprogressListVideoInRow.js">
+    <entry file="file://$PROJECT_DIR$/src/Component/Common/ExtentionDiv/ExtentionDiv.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="230">
-          <caret line="107" column="5" lean-forward="true" selection-start-line="107" selection-start-column="5" selection-end-line="107" selection-end-column="5" />
+        <state relative-caret-position="299">
+          <caret line="47" column="28" lean-forward="true" selection-start-line="47" selection-start-column="28" selection-end-line="47" selection-end-column="28" />
+          <folding>
+            <element signature="e#173#1625#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Component/User/UserInfo/UserInfo.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="354">
+          <caret line="94" column="32" selection-start-line="94" selection-start-column="32" selection-end-line="94" selection-end-column="32" />
           <folding>
             <element signature="e#0#49#0" expanded="true" />
-            <element signature="e#3298#3511#0" expanded="true" />
-            <element signature="e#3243#5156#0" expanded="true" />
-            <element signature="e#3302#5139#0" expanded="true" />
-            <element signature="e#3330#4641#0" expanded="true" />
-            <element signature="e#3357#4433#0" expanded="true" />
-            <element signature="e#4659#5115#0" expanded="true" />
-            <element signature="e#4724#4914#0" expanded="true" />
+            <element signature="e#3496#3694#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/containers/navs/Topnav.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="331">
+          <caret line="61" column="50" selection-start-line="61" selection-start-column="50" selection-end-line="61" selection-end-column="50" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Component/User/UserInfo/UserCourse/USerCourse.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="454">
+          <caret line="49" column="38" lean-forward="true" selection-start-line="49" selection-start-column="38" selection-end-line="49" selection-end-column="38" />
+          <folding>
+            <element signature="e#0#49#0" expanded="true" />
+            <element signature="e#800#801#0" expanded="true" />
+            <element signature="e#843#844#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Component/functions/ServerConnection.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="316">
+          <caret line="1783" lean-forward="true" selection-start-line="1783" selection-end-line="1783" />
+          <folding>
+            <element signature="e#5343#5680#0" expanded="true" />
+            <element signature="e#34601#34722#0" expanded="true" />
+            <element signature="e#34855#35005#0" expanded="true" />
+            <element signature="e#35030#35122#0" expanded="true" />
+            <element signature="e#50717#50791#0" expanded="true" />
+            <element signature="e#57518#57679#0" expanded="true" />
+            <element signature="e#76238#76399#0" expanded="true" />
+            <element signature="e#78189#79106#0" expanded="true" />
+            <element signature="e#79163#79752#0" expanded="true" />
+            <element signature="e#79474#79607#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Component/User/UserInfo/UserCourse/AddUserItemsCourse/AddUserItemsCourse.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="322">
+          <caret line="78" column="23" lean-forward="true" selection-start-line="78" selection-start-column="23" selection-end-line="78" selection-end-column="23" />
+          <folding>
+            <element signature="e#0#49#0" expanded="true" />
+            <element signature="e#1402#1841#0" expanded="true" />
+            <element signature="e#1878#1963#0" expanded="true" />
+            <element signature="e#1999#2506#0" expanded="true" />
+            <element signature="e#2140#2185#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Component/User/UserInfo/UserCourse/AddUserItemsCourse/GetCourseMulti/GetCourseMulti.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="145">
+          <caret line="136" column="77" lean-forward="true" selection-start-line="136" selection-start-column="77" selection-end-line="136" selection-end-column="77" />
+          <folding>
+            <element signature="e#1#27#0" expanded="true" />
+            <element signature="e#657#816#0" expanded="true" />
+            <element signature="e#845#1224#0" expanded="true" />
+            <element signature="e#1019#1125#0" expanded="true" />
+            <element signature="e#3832#3939#0" expanded="true" />
           </folding>
         </state>
       </provider>

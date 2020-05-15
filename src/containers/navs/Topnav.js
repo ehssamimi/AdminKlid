@@ -48,12 +48,12 @@ class TopNav extends Component {
     console.log("thi sis  profile ");
 
     if(localStorage.getItem("token")){
-      if (localStorage.getItem("ItemValue")) {
-        this.setState({
-            ItemValue:localStorage.getItem("ItemValue").split(",")
-
-        });
-      }else {
+      // if (localStorage.getItem("ItemValue")) {
+      //   this.setState({
+      //       ItemValue:localStorage.getItem("ItemValue").split(",")
+      //
+      //   });
+      // }else {
           const {state, Description}=await GetUserProfile();
           if (state===200 ) {
               console.log(Description);
@@ -66,7 +66,7 @@ class TopNav extends Component {
           }else {
               error_Notification(state,Description);
           }
-      }
+      // }
 
     }else {
       console.log("we are not login")

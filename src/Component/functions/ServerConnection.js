@@ -1769,6 +1769,7 @@ export async  function  AddFileToCourse(file, Course_id, action){
 }
 export async  function  SuggestCourse(name){
 
+
     let headers = {
         'Token': Const.Token,
         'Content-Type': 'application/json',
@@ -1779,7 +1780,7 @@ export async  function  SuggestCourse(name){
 
     var resp ="";
     await axios.get(`${Const.ResourceAdmin}course/course/suggestion?value=${name}`,  {headers: headers}).then(function (response) {
-        // console.log(response );
+        // console.log(response.data );
 
         // let {Items} = response.data;
         resp={state:200,Description:response.data};

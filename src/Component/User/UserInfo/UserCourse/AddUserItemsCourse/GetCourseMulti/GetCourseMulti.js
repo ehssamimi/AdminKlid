@@ -20,9 +20,12 @@ export default function GetCourseMulti(props) {
 
 
     const handelChange = async (event) => {
+        console.log("handelChange")
         let {value} = event.target;
         setinputValue(value);
         let parents = await props.getOption(inputValue);
+        console.log("parents")
+        console.log(parents)
         setOptions(parents);
     };
 
@@ -36,6 +39,7 @@ export default function GetCourseMulti(props) {
         }
 
         async function getOptionFromParent() {
+            console.log("getOptionFromParent")
             let parents = await props.getOption(inputValue);
             setOptions(parents);
 
@@ -59,7 +63,12 @@ export default function GetCourseMulti(props) {
 
     },[props.DefaultValue] );
 
-console.log(inputValue)
+// console.log("inputValue");
+// console.log(inputValue);
+// console.log("options");
+// console.log(options);
+// console.log("defaultValue")
+// console.log(defaultValue)
 
     return (
 
@@ -124,9 +133,12 @@ console.log(inputValue)
             }}
             loading={loading}
             options={options}
-            getOptionSelected={(option, value) => option.name === value.name}
+            getOptionSelected={(option, value) => option.id === value.id}
+            // getOptionSelected={(option, defaultValue) =>   defaultValue.name}
+            // getOptionSelected={(defaultValue)=>defaultValue.map(item=>item.name )}
+            // getOptionSelected={(defaultValue)=>defaultValue.name}
 
-            getOptionLabel={(option) => option.name+" - "+option.field}
+            getOptionLabel={(option) => option.name + (option.field!=="" ?(" - "+option.field):"")}
             // defaultValue={[top100Films[13]]}
             filterSelectedOptions
             value={defaultValue}

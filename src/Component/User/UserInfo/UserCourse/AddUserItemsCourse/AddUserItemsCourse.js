@@ -26,18 +26,23 @@ const AddUserItemsCourse = (props) => {
         {id: "5eb03ed0bbd3ced76712c90c", name: "دوره دهم", grade: "دهم", field: "تجربی"}];
 
     const getOption=async(name)=>{
-        console.log("set option");
-        console.log(name);
+        // console.log("set option");
+        // console.log(name);
         let optionValue=""
         if (name==="a"){
             optionValue= await SuggestCourse("د");
         }else {
             optionValue= await SuggestCourse(name);
+
         }
+
 
         let {state,Description}=optionValue
 
+
         if (state===200){
+            console.log("Description Description Description");
+            console.log( Description.result);
              return Description.result
          }else {
             error_Notification(state,Description)
@@ -45,7 +50,8 @@ const AddUserItemsCourse = (props) => {
 
     };
     const getValues=(names ,name)=>{
-        console.log(names)
+        // console.log(names);
+        // console.log("names");
         setvalues({ ... values,permissions:names})
     };
     const handelSubmit=async (e)=>{
