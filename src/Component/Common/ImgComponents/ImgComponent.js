@@ -4,7 +4,7 @@ import {
     CustomInput, InputGroupAddon, Button,
 } from "reactstrap";
  import ax from './../../Common/img/deault.svg'
-import IntlMessages from "../../../helpers/IntlMessages";
+import {ModalCropImage} from "../CropImg/ModalsCollection";
 
 
 
@@ -13,9 +13,57 @@ class ImgComponent extends Component {
         super(props);
         this.state={
             src:ax,touched:true,
-            ImgName:'',count:1
+            ImgName:undefined,count:1,isOpenImg:false,
+
         }
     }
+    // const [isOpenImg, setIsOpenImg] = useState(false);
+      HandelImg=(file,Destination , label ,base64)=>{
+        // let file=e.target.files;
+        // let DATA=file[0];
+        // if (file && file.length > 0) {
+        //     const reader = new FileReader();
+        //     reader.addEventListener("load", () =>
+        //         setImgValue({data:reader.result,file:DATA})
+        //     );
+        //     reader.readAsDataURL(e.target.files[0]);
+        // }
+
+        // GetImgFile(file,Destination , label ,base64){
+        console.log(file);
+        console.log(Destination);
+        console.log(label);
+        console.log(base64);
+
+
+        // setImgValue({data:base64,file:file});
+          this.setState({ src: base64,ImgName:file.name ,touched:false});
+          let{Type}=this.props;
+          this.props.GetData(Type,file);
+        // this.setState({
+        //     ax1File:file ,ax1:base64
+        // });
+
+
+          this.setState(prevState => ({
+              isOpenImg: !prevState.isOpenImg
+          }));
+
+
+        // this.setState(prevState => ({
+        //     isOpen: !prevState.isOpen
+        // }));
+        // }
+
+
+
+
+
+
+    };
+
+
+
 
     static getDerivedStateFromProps(props, state) {
         if (props.img !== state.src && props.img!==undefined &&  state.count===1) {
@@ -52,20 +100,31 @@ class ImgComponent extends Component {
             <div className='w-100 mb-5'>
 
                 <InputGroup className="mb-3">
-                    <CustomInput
-                        type="file"
-                        id={this.props.label}
-                        name="customFile"
-                        onChange={this.onSelectFile.bind(this)}
-                        label={ImgName}
+                    <div className="w-100 mt-3 mb-3">
+                        <label onClick={()=>{
+                            this.setState(prevState => ({isOpenImg: !prevState.isOpenImg}));}}
+                               className="btn green-background  br10px text-white  col-md-6 col-sm-12 offset-md-3 sendButton-shadow" htmlFor="upload_img">آپلود
+                            {this.state.ImgName||"عکس"}
+                        </label>
+                        {/*<input type="file" id="upload_img" className={"d-none"} onChange={HandelImg} />*/}
+                    </div>
 
-                    />
-                    <InputGroupAddon addonType="append"  >
-                    <Button outline color="primary">
-                        {this.props.label}
-                    </Button>
-                    </InputGroupAddon>
-                    {/*<InputGroupAddon addonType="append">Upload</InputGroupAddon>*/}
+                    {/*<CustomInput*/}
+                        {/*type="file"*/}
+                        {/*id={this.props.label}*/}
+                        {/*name="customFile"*/}
+                        {/*onChange={this.onSelectFile.bind(this)}*/}
+                        {/*label={ImgName}*/}
+
+                    {/*/>*/}
+                    {/*<InputGroupAddon addonType="append"  >*/}
+                    {/*<Button outline color="primary">*/}
+                        {/*{this.props.label}*/}
+                    {/*</Button>*/}
+                    {/*</InputGroupAddon>*/}
+
+
+
                 </InputGroup>
                 {errors[`${Type}`]  && touched  ? (
                     <div className="invalid-feedback d-block">
@@ -77,10 +136,12 @@ class ImgComponent extends Component {
                         <img  alt="img" className='img-self-fill br10px' src={src} />
                     </div>
                 )}
+                <ModalCropImage isOpen={this.state.isOpenImg} toggle={()=>{
+                    this.setState(prevState => ({
+                        isOpenImg: !prevState.isOpenImg
+                    }));
 
-
-
-
+                }} label={'انتخاب عکس'} aspect={1/1} GetImgFile={this.HandelImg}  />
 
             </div>
         );

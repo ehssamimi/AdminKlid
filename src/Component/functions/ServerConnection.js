@@ -3119,8 +3119,7 @@ export async  function  UploadDefaultImg(content){
         resp={state:200,Description:response.data};
     }).catch(function (error) {
         console.log(error);
-        console.log(error.message);
-        resp='error'
+        Error(error);
     });
     return resp;
 }
@@ -3238,8 +3237,8 @@ function Error2(error) {
     console.log(error.response);
 
     console.log(error);
-    var resp ="";
-    if (error.response.status===400) {
+     var resp ="";
+    if (error.response!==undefined && error.response.status===400) {
         resp={state: 400,Description: error.response.data.detail}
         if (error.response.data.detail==="access denied") {
             console.log("we are out !!!!!!!!!!");
@@ -3248,6 +3247,7 @@ function Error2(error) {
         }
 
     }else if (error.response===undefined){
+        console.log("aaaaaaaaaaaaaaaaaaaaaaaaaaa")
         resp={state: 400,Description: error.message}
 
     } else if (error.response.status===422){

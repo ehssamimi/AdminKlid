@@ -104,7 +104,7 @@ const LessonDetails = (props) => {
                         <AddTeacher2  {...props} id={params.id} Lesson_index={params.index} Lesson_name={params.lesson}  index={params.TeacherIndex} updateContent={getData}/>
                         <div dir="ltr" className="mt-5">
 
-                            <div className="row mt-5" dir="rtl">
+                            <div className="row " dir="rtl">
                                 {course.lessons[params.index].teachers.map((item, index) =>
 
                                         <TeacherCardMain {...item}  key={index}  {...props} index={index} updateContent={getData} getCourseID={getCourseID}/>

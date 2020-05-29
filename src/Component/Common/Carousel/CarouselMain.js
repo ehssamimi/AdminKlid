@@ -192,7 +192,7 @@ const CourseCarsMain = (props) => {
 
     return (
 
-        <Card  className= "m-2 br20px h-100 MainCardCourseHeight  box-shadow-custom FsFooterLogin" id={course_id}>
+        <Card  className= "m-2 br20px h-100 MainCardCourseHeight  card-active-shadow FsFooterLogin" id={course_id}>
             <Link to={`/content/course/${course_id}`}  className="pt-4">
 
 

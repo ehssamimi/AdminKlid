@@ -73,8 +73,8 @@ const LessonCardMain = (props) => {
 
 
     return (
-        <div className=" col-sm-12 col-md-4 p-0">
-            <Card className="m-2 br20px h-100 h-min-24vw  box-shadow-custom  " id={name}>
+        <div className=" col-sm-12 col-md-4 p-0 mt-5">
+            <Card className="m-2 br20px h-100 h-min-24vw  card-active-shadow  " id={name}>
                 <Link to={`/content/lesson/${course_id}/${props.index}/${name}`} className="pt-4">
 
                     <CardMedia

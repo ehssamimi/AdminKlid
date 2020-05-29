@@ -100,8 +100,8 @@ const ItemCardMain = (props) => {
 
 
     return (
-        <div className=" col-sm-12 col-md-4 p-0 mt-2" >
-            <Card className="m-2 br20px h-100 h-min-24vw  box-shadow-custom  " id={name}>
+        <div className=" col-sm-12 col-md-4 p-0 mt-5" >
+            <Card className="m-2 br20px h-100 h-min-24vw  card-active-shadow  " id={name}>
 
 
                 {/*TeacherIndex: "0"*/}

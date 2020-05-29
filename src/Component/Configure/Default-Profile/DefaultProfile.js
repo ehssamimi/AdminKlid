@@ -35,7 +35,8 @@ const DefaultProfile = (props) => {
         setisLoader(false);
     }
     const HandelAddImg = (type, value) => {
-        console.log(value)
+        console.log("value");
+        console.log(value);
         setFile(value)
     };
    const validateForm=(callback)=> {

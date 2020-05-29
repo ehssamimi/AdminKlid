@@ -24,9 +24,10 @@ const ShowUserItemsCourse = (props) => {
                     </div>
 
                     :
-                    <div className="d-flex flex-column mt-5">
-                        <p className="carousel-header">دوره ها</p>
-                        <p className="FsFooterLogin mt-4 ml-4"> دور ای برای این دانش آموز ثبت نشده است  </p>
+                    <div className="d-flex flex-column mt-5 ml-4">
+                        {/*<p className="carousel-header ">دوره ها</p>*/}
+                        <p className="  FsHeaderCarousal   "> دور ها  </p>
+                        <p className="FsFooterLogin "> دور ای برای این دانش آموز ثبت نشده است  </p>
                     </div>
 
             }

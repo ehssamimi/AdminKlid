@@ -176,7 +176,7 @@ const ChapterDetails = (props) => {
                         {/*<AddTeacher2  {...props} id={params.id} Lesson_index={params.index} Lesson_name={params.lesson}  index={params.TeacherIndex} updateContent={getData}/>*/}
                         <div dir="rtl" className="mt-5">
 
-                            <div className="row mt-5">
+                            <div className="row ">
                                 {course.lessons[params.index].teachers[params.TeacherIndex].chapters[params.chapterIndex].items.map((item, index) =>
                                         <ItemCardMain {...item} items={item}  key={index}  {...props} index={index} updateContent={getData} getCourseID={getCourseID}/>
                                     // *<TeacherCardMain {...item}  key={index}  {...props} index={index} updateContent={getData} getCourseID={getCourseID}/>*/}

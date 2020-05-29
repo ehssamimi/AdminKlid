@@ -177,7 +177,7 @@ const CourseDetail = (props) => {
                                     </div>
                                 </div>
                             </Card>
-                            <div className="row mt-5" dir="rtl">
+                            <div className="row  " dir="rtl">
                                 {course.lessons.map((item, index) =>
 
                                     <LessonCardMain {...item}  key={index}  {...props} index={index} updateContent={getData} getCourseID={getCourseID} changeIndex={ ()=>{setLesson_index(index)}}/>
