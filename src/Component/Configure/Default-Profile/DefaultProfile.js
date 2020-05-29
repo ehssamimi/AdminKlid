@@ -85,10 +85,13 @@ const DefaultProfile = (props) => {
     return (
         <div>
             <IsLoaderComponent isLoader={isLoader}>
-                <div className="col-md-4 col-sm-12">
-                    <ImgComponent GetData={HandelAddImg}   label={"اضافه کردن عکس اصلی"} img={file} Type="main"  errors={error}/>
+                <div className="col-md-4    col-sm-12">
+                    <ImgComponent GetData={HandelAddImg} label={"اضافه کردن عکس اصلی"} img={file} Type="main"
+                                  errors={error}/>
                     {/*<ImgComponent GetData={ HandelAddImg}   label={"اضافه کردن عکس اصلی"} img={defaultImg} Type="main"  errors={error}/>*/}
-                    <button className="btn btn-primary" onClick={handelSubmit}>ارسال</button>
+                    <div className="d-flex justify-content-center w-100">
+                        <button className="btn btn-primary " onClick={handelSubmit}>ارسال</button>
+                    </div>
                 </div>
             </IsLoaderComponent>
 

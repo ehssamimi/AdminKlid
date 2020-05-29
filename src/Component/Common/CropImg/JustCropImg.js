@@ -108,7 +108,7 @@ class JustCropImg extends Component {
             if (compressedFile.type!=="image/png" && compressedFile.type!=="image/jpeg") {
                 console.log("this is compressive  type");
                 validate=false;
-                error['name']='قرمت عکس باید png و یا jpeg باشد ';
+                error['name']='قرمت عکس باید png و یا jpg باشد ';
             }else if (compressedFile.size > 307200) {
                 console.log("this is    size");
                 validate=false;
@@ -208,7 +208,7 @@ class JustCropImg extends Component {
                     </FormGroup>
                     {
                         this.state.error['name'] !== '' ? <span
-                            className='fs-08vw color-theme-1 mr-3 d-flex justify-content-end mb-5 text-center'>{this.state.error['name']}</span> : ''
+                            className='fs-08vw red-color mr-3 d-flex   mb-5  d-flex justify-content-start' style={{fontWeight:800}}  >{this.state.error['name']}</span> : ''
                     }
                 </div>
 

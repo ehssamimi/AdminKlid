@@ -103,8 +103,8 @@ class ImgComponent extends Component {
                     <div className="w-100 mt-3 mb-3">
                         <label onClick={()=>{
                             this.setState(prevState => ({isOpenImg: !prevState.isOpenImg}));}}
-                               className="btn green-background  br10px text-white  col-md-6 col-sm-12 offset-md-3 sendButton-shadow" htmlFor="upload_img">آپلود
-                            {this.state.ImgName||"عکس"}
+                               className="btn btn-outline-primary  br10px  col-md-6 col-sm-12 offset-md-3 sendButton-shadow d-flex text-center justify-content-center" htmlFor="upload_img">
+                            {this.state.ImgName||" آپلود عکس"}
                         </label>
                         {/*<input type="file" id="upload_img" className={"d-none"} onChange={HandelImg} />*/}
                     </div>
