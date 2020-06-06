@@ -27,6 +27,7 @@ import AddPreviewPdf from "../../../Common/AddPdf/AddPreviewPdf";
 import AddVideoConvert from "../../../Common/AddVideoConver/AddVideoConvert";
 import PreviewVideoComponent from "../../../Common/PreviewVideoComponent/PreviewVideoComponent";
 import HeaderAddCommon from "../../../Common/HeaderAddCommon/HeaderAddCommon";
+import UploadComponentFrame from "../../../Common/UploadContentFrame/UploadComponentFrame";
 const SignupSchema = Yup.object().shape({
 
     name: Yup.string().required("نام اجباری است!"),
@@ -527,51 +528,88 @@ class AddItem extends Component {
                                                         {/*<ImgComponent GetData={this.HandelAddImg}  label={"اضافه کردن صدا"} img={Img["img_data"]["cover"]} Type="cover" errors={FileError} />*/}
                                                     </div>
                                                 </div>
+                                                <div className="w-100 row ">
+                                                    <div className=" col-sm-12 col-md-8  d-flex flex-column justify-content-between">
+                                                        <div className="w-100 row m-0 ">
 
-                                                <div className=" col-sm-12 col-md-8  d-flex flex-column justify-content-between">
-                                                    <div className="w-100 row m-0 ">
+                                                            <FormInput label='نام' type='text' name='name'
+                                                                       placeHolder='نام permission را وارد کنید !'
+                                                                       DivClass="col-sm-12  " setFieldTouched={setFieldTouched}
+                                                                       errors={errors} touched={touched}/>
 
-                                                        <FormInput label='نام' type='text' name='name'
-                                                                   placeHolder='نام permission را وارد کنید !'
-                                                                   DivClass="col-sm-12  " setFieldTouched={setFieldTouched}
-                                                                   errors={errors} touched={touched}/>
+                                                            <FormInput label='توضیحات' component='textarea' rows="4"
+                                                                       type='text'
+                                                                       name='Description' placeHolder='توضیحات را وارد کنید'
+                                                                       DivClass="col-sm-12 "
+                                                                       setFieldTouched={setFieldTouched}
+                                                                       errors={errors} touched={touched}/>
 
-                                                        <FormInput label='توضیحات' component='textarea' rows="4"
-                                                                   type='text'
-                                                                   name='Description' placeHolder='توضیحات را وارد کنید'
-                                                                   DivClass="col-sm-12 "
-                                                                   setFieldTouched={setFieldTouched}
-                                                                   errors={errors} touched={touched}/>
+                                                            <FormInput label='زمان تقریبی' type='number' name='time_to_done'
+                                                                       placeHolder='زمان تقریبی اتمام قسمت  زارا وارد کنید'
+                                                                       DivClass="col-sm-12  "
+                                                                       setFieldTouched={setFieldTouched}
+                                                                       errors={errors} touched={touched}/>
 
-                                                        <FormInput label='زمان تقریبی' type='number' name='time_to_done'
-                                                                   placeHolder='زمان تقریبی اتمام قسمت  زارا وارد کنید'
-                                                                   DivClass="col-sm-12  "
-                                                                   setFieldTouched={setFieldTouched}
-                                                                   errors={errors} touched={touched}/>
+                                                            <FormCheckBox label='محتوای مورد نظر رایگان ' type='number' name='isFree'
+                                                                          placeHolder='زمان تقریبی اتمام قسمت  زارا وارد کنید'
+                                                                          DivClass="col-sm-12  " values={values} option={options}
+                                                                          setFieldTouched={setFieldTouched} setFieldValue={setFieldValue}
+                                                                          errors={errors} touched={touched}/>
 
-                                                        <FormCheckBox label='محتوای مورد نظر رایگان ' type='number' name='isFree'
-                                                                   placeHolder='زمان تقریبی اتمام قسمت  زارا وارد کنید'
-                                                                   DivClass="col-sm-12  " values={values} option={options}
-                                                                   setFieldTouched={setFieldTouched} setFieldValue={setFieldValue}
-                                                                   errors={errors} touched={touched}/>
+                                                            {
+                                                                this.state.EditCourse!==undefined?
+                                                                    <div className="col-12 p-0">
+                                                                        <AddVideoConvert ListData={{
+                                                                            "course_id": this.props.id,
+                                                                            "lesson_name": this.props.Lesson_name,
+                                                                            "teacher_name": this.props.Teacher,
+                                                                            "chapter_name": this.props.chapter,
+                                                                            "item_name": this.state.DefaultValue["name"]
+                                                                        }} action={"item_video"}/>
 
+
+                                                                        {/*valid actions are ['item_audio', 'downloadable_content', 'raw-video']*/}
+                                                                    </div>
+
+                                                                    : ""
+                                                            }
+
+                                                            {/*<FormInput label='مازاد درصد دوره' type='number' name='additional_percentage_course'*/}
+                                                            {/*placeHolder='مازاد درصد دوره زا وارد کنید'*/}
+                                                            {/*DivClass="col-sm-12  " setFieldTouched={setFieldTouched}*/}
+                                                            {/*errors={errors} touched={touched}/>*/}
+                                                            {/*<FormInput label='مازاد درصد فصل' type='number' name='additional_percentage_chapters'*/}
+                                                            {/*placeHolder='مازاد درصد فصل را وارد کنید '*/}
+                                                            {/*DivClass="col-sm-12  " setFieldTouched={setFieldTouched}*/}
+                                                            {/*errors={errors} touched={touched}/>*/}
+
+                                                        </div>
+                                                    </div>
+                                                    <div className="col-sm-12 col-md-4">
                                                         {
                                                             this.state.EditCourse!==undefined?
-                                                                <AddVideoConvert ListData={{"course_id":this.props.id,"lesson_name":this.props.Lesson_name,"teacher_name":this.props.Teacher ,"chapter_name": this.props.chapter,"item_name": this.state.DefaultValue["name"]}} action={"item_video"} />
+                                                                <div className="w-100">
+
+                                                                    <UploadComponentFrame
+                                                                        ListData={{
+                                                                            "course_id": this.props.id,
+                                                                            "lesson_name": this.props.Lesson_name,
+                                                                            "teacher_name": this.props.Teacher,
+                                                                            "chapter_name": this.props.chapter,
+                                                                            "item_name": this.state.DefaultValue["name"]
+                                                                        }}
+                                                                        action={"downloadable_content"}/>
+
+                                                                    {/*valid actions are ['item_audio', 'downloadable_content', 'raw-video']*/}
+                                                                </div>
+
                                                                 : ""
                                                         }
 
-                                                        {/*<FormInput label='مازاد درصد دوره' type='number' name='additional_percentage_course'*/}
-                                                        {/*placeHolder='مازاد درصد دوره زا وارد کنید'*/}
-                                                        {/*DivClass="col-sm-12  " setFieldTouched={setFieldTouched}*/}
-                                                        {/*errors={errors} touched={touched}/>*/}
-                                                        {/*<FormInput label='مازاد درصد فصل' type='number' name='additional_percentage_chapters'*/}
-                                                        {/*placeHolder='مازاد درصد فصل را وارد کنید '*/}
-                                                        {/*DivClass="col-sm-12  " setFieldTouched={setFieldTouched}*/}
-                                                        {/*errors={errors} touched={touched}/>*/}
-
                                                     </div>
                                                 </div>
+
+
                                                 <div className="col-6 offset-3 ">
                                                     <button className="btn btn-success text-center col-6 offset-3 "
                                                             type="submit">

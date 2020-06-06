@@ -29,6 +29,7 @@ import AddPreviewPdf from "../../../../Common/AddPdf/AddPreviewPdf";
 import {Link} from "react-router-dom";
 import HeaderAddCommon from "../../../../Common/HeaderAddCommon/HeaderAddCommon";
 import PreviewVideoComponent from "../../../../Common/PreviewVideoComponent/PreviewVideoComponent";
+import UploadComponentFrame from "../../../../Common/UploadContentFrame/UploadComponentFrame";
 const SignupSchema = Yup.object().shape({
 
     Name: Yup.string()
@@ -431,6 +432,7 @@ class AddCourse extends Component {
                                                                     <div className="col-12 p-0">
                                                                         <PreviewVideoComponent video={ [courses["demo_video_cover"],courses["demo_video"]]}/>
                                                                     </div>
+
                                                                 </div>
 
 
@@ -475,6 +477,22 @@ class AddCourse extends Component {
 
 
                                                     </div>
+                                                </div>
+
+                                                <div className="col-sm-12 col-md-4">
+                                                    {
+                                                        this.state.id!==undefined?
+                                                            <div className="w-100">
+                                                                <UploadComponentFrame ListData={{"course_id":this.props.id}} action={"downloadable_content"}/>
+                                                                {/*valid actions are ['item_audio', 'downloadable_content', 'raw-video']*/}
+                                                            </div>
+
+
+                                                            : ""
+                                                    }
+
+
+
                                                 </div>
                                                 <div className="col-6 offset-3 ">
                                                     <button className="btn btn-success text-center col-6 offset-3 "

@@ -24,6 +24,7 @@ import AddPDf from "../../../Common/AddPdf/AddPDf";
 import Loader from "../../../Common/Loader/Loader";
 import AddVideoConvert from "../../../Common/AddVideoConver/AddVideoConvert";
 import HeaderAddCommon from "../../../Common/HeaderAddCommon/HeaderAddCommon";
+import UploadComponentFrame from "../../../Common/UploadContentFrame/UploadComponentFrame";
 const SignupSchema = Yup.object().shape({
 
     name: Yup.string()
@@ -384,18 +385,7 @@ class AddTeacher2 extends Component {
                                                                    placeHolder='زمان تقریبی کلی را وارد کنید'
                                                                    DivClass="col-sm-12  " setFieldTouched={setFieldTouched}
                                                                    errors={errors} touched={touched}/>
-                                                        {/*<FormInput label='تعداد فصل' type='number' name='chapter_count'*/}
-                                                                   {/*placeHolder='تعداد فصل ها را وارد کنید'*/}
-                                                                   {/*DivClass="col-sm-12  " setFieldTouched={setFieldTouched}*/}
-                                                                   {/*errors={errors} touched={touched}/>*/}
-                                                        {/*<FormInput label='مازاد درصد دوره' type='number' name='additional_percentage_course'*/}
-                                                                   {/*placeHolder='مازاد درصد دوره زا وارد کنید'*/}
-                                                                   {/*DivClass="col-sm-12  " setFieldTouched={setFieldTouched}*/}
-                                                                   {/*errors={errors} touched={touched}/>*/}
-                                                        {/*<FormInput label='مازاد درصد فصل' type='number' name='additional_percentage_chapters'*/}
-                                                                   {/*placeHolder='مازاد درصد فصل را وارد کنید '*/}
-                                                                   {/*DivClass="col-sm-12  " setFieldTouched={setFieldTouched}*/}
-                                                                   {/*errors={errors} touched={touched}/>*/}
+
 
                                                         {
                                                             this.state.EditCourse!==undefined?

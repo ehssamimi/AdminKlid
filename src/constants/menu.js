@@ -101,6 +101,11 @@ const data = [
                         to: "/content/permission/access-all",
                     }
                 ]
+            },{
+                icon: "simple-icon-paper-plane",
+                label: "اضافه کردن ویدیو",
+                to: "/content/add-video",
+
             }
         ]
     },

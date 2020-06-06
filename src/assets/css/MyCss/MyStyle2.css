@@ -872,3 +872,6 @@ select option:hover {
     direction: ltr !important;
 }
 
+.border-test{
+    border: 2vw solid  black;
+}
