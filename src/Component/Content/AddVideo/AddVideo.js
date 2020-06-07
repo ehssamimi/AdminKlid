@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import UploadComponentFrame from "../../Common/UploadContentFrame/UploadComponentFrame";
 import AddVideoConvert from "../../Common/AddVideoConver/AddVideoConvert";
+import AddDropZone from "../AddDropZone/AddDropZone";
 
 const AddVideo = (props) => {
     const [count, setCount] = useState(1);
@@ -11,7 +12,8 @@ const AddVideo = (props) => {
 
     return (
         <div className="col-6">
-            <UploadComponentFrame  action={"raw-video"} ListData="" />
+            {/*<UploadComponentFrame  action={"raw-video"} ListData="" />*/}
+            <AddDropZone/>
 
         </div>
     );

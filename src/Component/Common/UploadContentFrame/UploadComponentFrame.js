@@ -80,6 +80,9 @@ class UploadComponentFrame extends Component {
         return (
             <div>
                 {/*<Iframe url="https://upload.liara.run/?action=item_audio&&file_name=&&course_id=5ea9c1901314a6b4f5d06bbd&&lesson_name=%D9%81%DB%8C%D8%B2%DB%8C%DA%A9&&teacher_name=%D8%A7%D8%B3%D8%AA%D8%A7%D8%AF%20%D8%AF%D8%A7%D9%88%D9%88%D8%AF%20%D9%85%D8%AD%D9%85%D9%88%D8%AF%DB%8C&&chapter_name=%DA%A9%D8%A7%D8%B1%20%D9%88%20%D8%A7%D9%86%D8%B1%DA%98%DB%8C&&item_name=1"*/}
+
+
+
                 <Iframe url={this.state.URL}
                         width="100%"
                         height="350px"
