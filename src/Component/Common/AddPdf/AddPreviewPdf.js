@@ -40,6 +40,8 @@ class AddPreviewPdf extends Component {
     render() {
         let{src,ImgName,touched}=this.state;
         let{Type,errors}=this.props;
+        console.log("content page");
+        console.log(this.props.img);
 
 
 

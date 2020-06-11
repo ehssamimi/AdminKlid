@@ -19,6 +19,7 @@ export const aminJamal="https://converter.kelidiha.com/admin/";
 // export const jobsalef="https://jobsalef.liara.run/admin/";
 // export const jobsalef="http://194.5.206.127:3000/admin/";
 export const jobsalef="https://converter.kelidiha.com/admin/";
+export const resource="https://resourcealef.liara.run/";
 
 
 

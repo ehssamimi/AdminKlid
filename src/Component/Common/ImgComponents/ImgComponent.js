@@ -100,7 +100,7 @@ class ImgComponent extends Component {
             <div className='w-100 mb-5'>
 
                 <InputGroup className="mb-3">
-                    <div className="w-100 mt-3 mb-3">
+                    <div className="w-100   mb-3">
                         <label onClick={()=>{
                             this.setState(prevState => ({isOpenImg: !prevState.isOpenImg}));}}
                                className="btn btn-outline-primary  br10px  col-md-6 col-sm-12 offset-md-3 sendButton-shadow d-flex text-center justify-content-center" htmlFor="upload_img">

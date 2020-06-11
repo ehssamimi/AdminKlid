@@ -1,21 +1,18 @@
-import React, {Component} from 'react';
+ import React, {Component} from 'react';
 
-// import 'react-dropzone-uploader/dist/styles.css'
+import 'react-dropzone-uploader/dist/styles.css'
 import {getencodering, uploadDropZone} from "../../functions/ServerConnection";
 import DropzoneComponent from "react-dropzone-component";
 import "dropzone/dist/min/dropzone.min.css";
 import CustomSelectInput from "../../../components/common/CustomSelectInput";
 import Select from "react-select";
 import {FormGroup} from "reactstrap";
-import {error_Notification, success_Notification} from "../../functions/componentHelpFunction";
+ import {error_Notification, success_Notification} from "../../functions/componentHelpFunction";
 
 var ReactDOMServer = require('react-dom/server');
-// const selectData = [
-//     { label: "فایل صوتی", value: "item_audio", key: 0 },
-//     { label: "محتوای قابل دانلود", value: "downloadable_content", key: 1 },
-//  ];
 
-class AddDropZone extends Component {
+
+class VideoRowDropzone extends Component {
     constructor(props) {
         super(props);
         this.state={
@@ -30,7 +27,7 @@ class AddDropZone extends Component {
         this.djsConfig = {
             // addRemoveLinks: true,
             thumbnailHeight: 160,
-            acceptedFiles: "image/*, audio/*, video/*, text/*, application/*",
+            acceptedFiles: " video/* ",
             autoProcessQueue: false,
             maxFilesize: 2000,
             timeout:30000000,
@@ -38,9 +35,6 @@ class AddDropZone extends Component {
             maxfilesreached: 2000,
             maxfilesexceeded: 2000,
             paramName: "file",
-
-            dictDefaultMessage:"فایل را بکشید یا کلیک کنید  ",
-
             previewTemplate: ReactDOMServer.renderToStaticMarkup(
                 <div className="dz-preview dz-file-preview mb-3">
                     <div className="d-flex flex-row ">
@@ -91,42 +85,40 @@ class AddDropZone extends Component {
 
         this.dropzone = null;
     }
-    handleChange = selectedOption => {
-        this.setState({ selectedOption });
-    };
-    validateForm=(callback)=> {
-        // let errors={"name":"","class":"","fields":"","phoneNumber":""};
-        let  Errors={"type":"","content":"" };
-        let{nameList,selectedOption}=this.state;
-
-        let formValidate=true;
-
-
-            if (nameList.length===0) {
-                formValidate = false;
-                Errors['content'] = "محتوا باید انتخاب شود  ";
-            }
-            if (selectedOption==="") {
-                formValidate = false;
-                Errors['type'] = "نوع محتوا  باید انتخاب شود ";
-            }
-
-
-        // console.log("Error");
-        // console.log(Errors);
-
-        this.setState({
-            Errors
-        },()=>{
-            // console.log(this.state.Errors)
-        })
-        return callback(formValidate)
-    };
     handleRemove() {
         this.setState({
             nameList:[]
         })
     }
+    validateForm=(callback)=> {
+        // let errors={"name":"","class":"","fields":"","phoneNumber":""};
+        let  Errors={"type":"","content":"" };
+        let{nameList }=this.state;
+
+        let formValidate=true;
+
+
+        if (nameList.length===0) {
+            formValidate = false;
+            Errors['content'] = "محتوا باید انتخاب شود  ";
+        }
+
+
+
+        console.log("Error");
+        console.log(Errors);
+
+        this.setState({
+            Errors
+        },()=>{
+            console.log(this.state.Errors)
+        })
+        return callback(formValidate)
+    };
+
+    handleChange = selectedOption => {
+        this.setState({ selectedOption });
+    };
 
 
     async handleFileAdded(file,event) {
@@ -134,7 +126,6 @@ class AddDropZone extends Component {
         console.log(event);
         let{nameList}=this.state;
         nameList.push(file.name);
-        console.log(this.props.ListData);
         let data={
             "course_id": this.props.ListData.course_id,
             "lesson_name": this.props.ListData.lesson_name,
@@ -147,7 +138,8 @@ class AddDropZone extends Component {
         this.setState({
             encodering_code:Description
         });
-         console.log(Description);
+
+
 
     }
 
@@ -158,24 +150,20 @@ class AddDropZone extends Component {
                 this.dropzone.processQueue();
 
             } else {
-                console.log("we cant sending")
                 console.log(this.state.Errors)
             }
         })
-     }
+    }
 
 
-    async handelComplete(e) {
+    async handelComplete( ) {
 
         console.log("this file sending complete");
         console.log("this.state.encodering_code");
         let data=this.state.encodering_code;
-        data["file_name"]=this.state.nameList[0];
-        console.log(data );
-        console.log("selectedOption" );
-        console.log(this.state.selectedOption.value );
 
-        let {state, Description} = await uploadDropZone(data.file_name, this.state.selectedOption.value, data.course_id, data.lesson_name, data.teacher_name, data.chapter_name, data.item_name);
+         let {state, Description} = await uploadDropZone(this.state.nameList[0], this.state.action, data.course_id, data.lesson_name, data.teacher_name, data.chapter_name, data.item_name);
+
         console.log(state);
         console.log(Description);
         if (state!==200) {
@@ -183,6 +171,7 @@ class AddDropZone extends Component {
         }else {
             success_Notification("محتوای جدید با موفقیت ثبت شد ")
         }
+
     }
 
     render() {
@@ -195,36 +184,15 @@ class AddDropZone extends Component {
             addedfile: this.handleFileAdded.bind(this ),
             removedfile:this.handleRemove.bind(this),
             success: this.handelComplete.bind(this ),
-
         }
 
         return (
             <div className="w-100">
 
                 <div className="w-100  d-flex justify-content-center mb-3">
-                    <button onClick={this.handlePost.bind(this)} className="btn btn-outline-primary  br10px  col-md-6 col-sm-12   sendButton-shadow d-flex text-center justify-content-center">ارسال و آپلود محتوا</button>
+                    <button onClick={this.handlePost.bind(this)} className="btn btn-outline-primary  br10px  col-md-6 col-sm-12   sendButton-shadow d-flex text-center justify-content-center">آپلود محتوا</button>
                 </div>
-                <div className="w-100 mb-3 ">
-                    <FormGroup className="form-group has-float-label br20px">
-                    <label>
-                        نوع محتوا
-                    </label>
-                    <Select
-                        components={{Input: CustomSelectInput}}
-                        className="react-select  l-h-25 "
-                        classNamePrefix="react-select  "
-                        name="form-field-name"
-                        value={this.state.selectedOption}
-                        onChange={this.handleChange}
-                        options={this.props.selectData}
-                    />
-                        {this.state.Errors[`type`]  ? (
-                            <div className="invalid-feedback d-block">
-                                {this.state.Errors[`type`]}
-                            </div>
-                        ) : null}
-                    </FormGroup>
-                </div>
+
 
                 <DropzoneComponent config={config} eventHandlers={eventHandlers} djsConfig={djsConfig}/>
                 {this.state.Errors[`content`]  ? (
@@ -238,5 +206,5 @@ class AddDropZone extends Component {
     }
 }
 
-export default AddDropZone;
+export default VideoRowDropzone;
 

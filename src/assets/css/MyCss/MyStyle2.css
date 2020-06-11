@@ -875,3 +875,6 @@ select option:hover {
 .border-test{
     border: 2vw solid  black;
 }
+.l-h-25{
+    line-height: 2.5;
+}

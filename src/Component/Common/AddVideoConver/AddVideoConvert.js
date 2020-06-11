@@ -263,7 +263,7 @@ class AddVideoConvert extends Component {
                                     :""
                             }
                             {
-                                currentCount===0||currentCount===100?<span className="btn btn-outline-primary" onClick={this.toggle}>اضافه کردن ویدیو پیش نمایش </span>:""
+                                currentCount===0||currentCount===100?<span className="btn btn-outline-primary br10px  " onClick={this.toggle}>اضافه کردن ویدیو پیش نمایش </span>:""
 
                             }
 

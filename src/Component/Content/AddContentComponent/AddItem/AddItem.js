@@ -28,6 +28,8 @@ import AddVideoConvert from "../../../Common/AddVideoConver/AddVideoConvert";
 import PreviewVideoComponent from "../../../Common/PreviewVideoComponent/PreviewVideoComponent";
 import HeaderAddCommon from "../../../Common/HeaderAddCommon/HeaderAddCommon";
 import UploadComponentFrame from "../../../Common/UploadContentFrame/UploadComponentFrame";
+import AddDropZone from "../../AddDropZone/AddDropZone";
+import DownloadContentDropZone from "../../AddDropZone/DownloadContentDropZone";
 const SignupSchema = Yup.object().shape({
 
     name: Yup.string().required("نام اجباری است!"),
@@ -221,7 +223,7 @@ class AddItem extends Component {
 
 
                 if (this.state.EditCourse===undefined){
-                    console.log("submit item")
+                    console.log("submit item");
 
 
                     let Data = {
@@ -509,24 +511,84 @@ class AddItem extends Component {
                                                         <ImgComponent GetData={this.HandelAddImg}   label={"اضافه کردن عکس اصلی"} img={Img["img_data"]["main"]} Type="main"  errors={FileError}/>
                                                     </div>
                                                     <div className="col-md-4 col-sm-12 d-flex flex-column">
-                                                        <AddVoice GetData={this.HandelAddImg}
-                                                                  label={"اضافه کردن وویس اصلی"} img={voice["upload"]}
-                                                                  Type="voice" errors={FileError}/>
-                                                        {
-                                                            this.state.EditCourse!==undefined?
-                                                                <PreviewVideoComponent video={ this.state.videoURl}/>:""
-                                                        }
+                                                             {
+                                                                this.state.EditCourse!==undefined?
+                                                                    <div className="w-100">
+                                                                        <AddDropZone
+                                                                                     selectData={[
+                                                                                         {
+                                                                                             label: "فایل صوتی",
+                                                                                             value: "item_audio",
+                                                                                             key: 0
+                                                                                         },
+                                                                                         {
+                                                                                             label: "محتوای قابل دانلود",
+                                                                                             value: "downloadable_content",
+                                                                                             key: 1
+                                                                                         },
+                                                                                     ]} ListData={{
+                                                                            "course_id": this.props.id,
+                                                                            "lesson_name": this.props.Lesson_name,
+                                                                            "teacher_name": this.props.Teacher,
+                                                                            "chapter_name": this.props.chapter,
+                                                                            "item_name": this.state.DefaultValue["name"]
+                                                                        }}
+                                                                        />
+                                                                        <DownloadContentDropZone content={content["upload"]} audio={voice["upload"]} />
+                                                                        {/*<AddVoice GetData={this.HandelAddImg}*/}
+                                                                                  {/*label={"اضافه کردن وویس اصلی"} img={voice["upload"]}*/}
+                                                                                  {/*Type="voice" errors={FileError}/>*/}
+
+                                                                        {/*<AddPreviewPdf GetData={this.HandelAddImg}*/}
+                                                                        {/*label={"اضافه کردن فایل "} img={content["upload"]}*/}
+                                                                        {/*Type="content" errors={FileError}/>*/}
+
+                                                                        {/*<UploadComponentFrame*/}
+                                                                        {/*ListData={{*/}
+                                                                        {/*"course_id": this.props.id,*/}
+                                                                        {/*"lesson_name": this.props.Lesson_name,*/}
+                                                                        {/*"teacher_name": this.props.Teacher,*/}
+                                                                        {/*"chapter_name": this.props.chapter,*/}
+                                                                        {/*"item_name": this.state.DefaultValue["name"]*/}
+                                                                        {/*}}*/}
+                                                                        {/*action={"downloadable_content"}/>*/}
+
+                                                                        {/*valid actions are ['item_audio', 'downloadable_content', 'raw-video']*/}
+                                                                    </div>
+
+                                                                    : ""
+                                                            }
 
 
+                                                        {/*<AddVoice GetData={this.HandelAddImg}*/}
+                                                                  {/*label={"اضافه کردن وویس اصلی"} img={voice["upload"]}*/}
+                                                                  {/*Type="voice" errors={FileError}/>*/}
+                                                        {/*{*/}
+                                                            {/*this.state.EditCourse!==undefined?*/}
+                                                                {/*<PreviewVideoComponent video={ this.state.videoURl}/>:""*/}
+                                                        {/*}*/}
 
                                                     </div>
                                                     <div className="col-md-4 col-sm-12">
-                                                        {/*<AddPreviewPdf/>*/}
-                                                        <AddPreviewPdf GetData={this.HandelAddImg}
-                                                                label={"اضافه کردن فایل "} img={content["upload"]}
-                                                                Type="content" errors={FileError}/>
-                                                        {/*<ImgComponent GetData={this.HandelAddImg}  label={"اضافه کردن صدا"} img={Img["img_data"]["cover"]} Type="cover" errors={FileError} />*/}
-                                                    </div>
+                                                        {
+                                                        this.state.EditCourse!==undefined?
+                                                            <div className="w-100">
+                                                                <AddVideoConvert ListData={{
+                                                                    "course_id": this.props.id,
+                                                                    "lesson_name": this.props.Lesson_name,
+                                                                    "teacher_name": this.props.Teacher,
+                                                                    "chapter_name": this.props.chapter,
+                                                                    "item_name": this.state.DefaultValue["name"]
+                                                                }} action={"item_video"}/>
+                                                                    <PreviewVideoComponent video={ this.state.videoURl}/>
+
+                                                            </div>:""
+                                                        }
+
+                                                        {/*<AddPreviewPdf GetData={this.HandelAddImg}*/}
+                                                                {/*label={"اضافه کردن فایل "} img={content["upload"]}*/}
+                                                                {/*Type="content" errors={FileError}/>*/}
+                                                     </div>
                                                 </div>
                                                 <div className="w-100 row ">
                                                     <div className=" col-sm-12 col-md-8  d-flex flex-column justify-content-between">
@@ -559,13 +621,14 @@ class AddItem extends Component {
                                                             {
                                                                 this.state.EditCourse!==undefined?
                                                                     <div className="col-12 p-0">
-                                                                        <AddVideoConvert ListData={{
-                                                                            "course_id": this.props.id,
-                                                                            "lesson_name": this.props.Lesson_name,
-                                                                            "teacher_name": this.props.Teacher,
-                                                                            "chapter_name": this.props.chapter,
-                                                                            "item_name": this.state.DefaultValue["name"]
-                                                                        }} action={"item_video"}/>
+
+                                                                        {/*<AddVideoConvert ListData={{*/}
+                                                                            {/*"course_id": this.props.id,*/}
+                                                                            {/*"lesson_name": this.props.Lesson_name,*/}
+                                                                            {/*"teacher_name": this.props.Teacher,*/}
+                                                                            {/*"chapter_name": this.props.chapter,*/}
+                                                                            {/*"item_name": this.state.DefaultValue["name"]*/}
+                                                                        {/*}} action={"item_video"}/>*/}
 
 
                                                                         {/*valid actions are ['item_audio', 'downloadable_content', 'raw-video']*/}
@@ -585,28 +648,7 @@ class AddItem extends Component {
 
                                                         </div>
                                                     </div>
-                                                    <div className="col-sm-12 col-md-4">
-                                                        {
-                                                            this.state.EditCourse!==undefined?
-                                                                <div className="w-100">
 
-                                                                    <UploadComponentFrame
-                                                                        ListData={{
-                                                                            "course_id": this.props.id,
-                                                                            "lesson_name": this.props.Lesson_name,
-                                                                            "teacher_name": this.props.Teacher,
-                                                                            "chapter_name": this.props.chapter,
-                                                                            "item_name": this.state.DefaultValue["name"]
-                                                                        }}
-                                                                        action={"downloadable_content"}/>
-
-                                                                    {/*valid actions are ['item_audio', 'downloadable_content', 'raw-video']*/}
-                                                                </div>
-
-                                                                : ""
-                                                        }
-
-                                                    </div>
                                                 </div>
 
 

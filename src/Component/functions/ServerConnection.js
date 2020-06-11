@@ -3208,6 +3208,101 @@ export async  function  UpdateQoute(name,text){
     return resp;
 }
 
+
+
+
+
+// **********upload video*********
+export async  function  uploadDropZone(fileName,method,course_id,lesson_name,teacher_name,chapter_name,item_name){
+
+    let formData = new FormData();
+    formData.append("action", method);
+    formData.append("file_name", fileName);
+
+    //
+    // formData.append("item_name", item_name);
+    // formData.append("chapter_name", chapter_name);
+    // formData.append("teacher_name", teacher_name);
+    // formData.append("lesson_name", lesson_name);
+    // formData.append("course_id", course_id);
+
+    if (course_id) {
+        formData.append("course_id", course_id);
+    }
+    if (lesson_name) {
+        formData.append("lesson_name", lesson_name);
+    }else {
+        // formData.append("lesson_name", null);
+    }
+    if (teacher_name) {
+        formData.append("teacher_name", teacher_name);
+    }
+    if (chapter_name) {
+        formData.append("chapter_name", chapter_name);
+    }
+    if (item_name) {
+        formData.append("item_name", item_name);
+    }
+
+
+    let headers = {
+        'Token': Const.Token,
+        'Id': Const.ID,
+    };
+    var resp = '';
+
+    console.log("fileName:  "+fileName);
+    console.log("action:  "+method);
+    console.log("course_id:  "+course_id);
+    console.log("lesson_name:  "+lesson_name);
+    console.log("teacher_name:  "+teacher_name);
+    console.log("chapter_name:  "+chapter_name);
+    console.log("item_name:  "+item_name);
+
+    await axios.post(`https://upload.liara.run/form`, formData, {headers: headers}).then(function (response) {
+        console.log(response);
+        resp = {state: 200, Description: response.data};
+
+        // let {UploadId} = response.data;
+        // resp = UploadId;
+    }).catch(function (error) {
+        Error(error)
+    });
+    return resp
+}
+export async  function  getencodering(Data){
+
+    let headers = {
+        'Token': Const.Token,
+        'Content-Type': 'application/json',
+        'accept': 'application/json'
+    };
+    // console.log(Data);
+
+
+    var resp ="";
+    await axios.post(`${Const.resource}system/course/course/get_encoded_location`, Data, {headers: headers}).then(function (response) {
+        // console.log(response);
+        // console.log(response.data);
+
+        // let {Items} = response.data;
+        resp={state:200,Description:response.data};
+
+    }).catch(function (error) {
+        console.log(error.response);
+        console.log(error);
+        let {response}=error;
+        if (response===undefined){
+            resp={state: 400,Description: error.message}
+        }else if (response.status===422){
+            resp={state:422,Description:response.statusText}
+        } else{
+            resp={state:response.status||400,Description:response.data.detail||error.message}
+        }
+    });
+    return resp;
+}
+
 function Error(error) {
     console.log(error.response);
 

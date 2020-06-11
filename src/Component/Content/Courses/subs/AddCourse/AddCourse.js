@@ -30,6 +30,7 @@ import {Link} from "react-router-dom";
 import HeaderAddCommon from "../../../../Common/HeaderAddCommon/HeaderAddCommon";
 import PreviewVideoComponent from "../../../../Common/PreviewVideoComponent/PreviewVideoComponent";
 import UploadComponentFrame from "../../../../Common/UploadContentFrame/UploadComponentFrame";
+import AddDropZone from "../../../AddDropZone/AddDropZone";
 const SignupSchema = Yup.object().shape({
 
     Name: Yup.string()
@@ -483,8 +484,23 @@ class AddCourse extends Component {
                                                     {
                                                         this.state.id!==undefined?
                                                             <div className="w-100">
-                                                                <UploadComponentFrame ListData={{"course_id":this.props.id}} action={"downloadable_content"}/>
+                                                                {/*<UploadComponentFrame ListData={{"course_id":this.props.id}} action={"downloadable_content"}/>*/}
                                                                 {/*valid actions are ['item_audio', 'downloadable_content', 'raw-video']*/}
+                                                                {/*<AddDropZone*/}
+                                                                             {/*selectData={[*/}
+                                                                                 {/*{*/}
+                                                                                     {/*label: "فایل صوتی",*/}
+                                                                                     {/*value: "item_audio",*/}
+                                                                                     {/*key: 0*/}
+                                                                                 {/*}*/}
+                                                                             {/*]} ListData={{*/}
+                                                                    {/*"course_id": this.props.id,*/}
+                                                                    {/*"lesson_name": "none",*/}
+                                                                    {/*"teacher_name": "none",*/}
+                                                                    {/*"chapter_name": "none",*/}
+                                                                    {/*"item_name": "none"*/}
+                                                                {/*}}*/}
+                                                                {/*/>*/}
                                                             </div>
 
 
