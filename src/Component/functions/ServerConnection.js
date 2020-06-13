@@ -3303,6 +3303,80 @@ export async  function  getencodering(Data){
     return resp;
 }
 
+
+// ***************classRoom***********
+export async  function  AddClassroom(Data){
+
+    let headers = {
+        'Token': Const.Token,
+        'Content-Type': 'application/json',
+        'accept': 'application/json'
+    };
+    console.log(Data);
+
+
+    var resp ="";
+    await axios.post(`${Const.kelidihaadmin}admin/classroom/add`, Data, {headers: headers}).then(function (response) {
+
+
+        // let {Items} = response.data;
+        resp={state:200,Description:response.data};
+
+    }).catch(function (error) {
+        console.log(error.response);
+        console.log(error);
+        let {response}=error;
+        if (response===undefined){
+            resp={state: 400,Description: error.message}
+        }else if (response.status===422){
+            resp={state:422,Description:response.statusText}
+        } else{
+            resp={state:response.status||400,Description:response.data.detail||error.message}
+        }
+    });
+    return resp;
+}
+export async  function  Getallclassroom( grade,field,lesson_name){
+
+
+    let headers = {
+        'Token': Const.Token,
+        'Content-Type': 'application/x-www-form-urlencoded'
+    };
+    let url=`${Const.kelidihaadmin}admin/classroom/search/fixed_value?`;
+    if (grade) {
+        url = url + `grade=${grade}`;
+        if (field) {
+            url = url + `&field=${field}`;
+        }
+        if (lesson_name) {
+            url = url + `&lesson_name=${lesson_name}`;
+        }
+
+    } else if (field) {
+        url = url + `field=${field}`;
+        if (lesson_name) {
+            url = url + `&lesson_name=${field}`;
+        }
+    } else if (lesson_name) {
+        url = url + `lesson_name=${lesson_name}`;
+    }
+    console.log(url);
+
+
+    var resp ="";
+    await axios.get(url , {headers: headers}).then(function (response) {
+        console.log(response );
+        // let {Items} = response.data;
+        resp={state:200,Description:response.data};
+    }).catch(function (error) {
+        console.log(error);
+        console.log(error.message);
+        resp='error'
+    });
+    return resp;
+}
+
 function Error(error) {
     console.log(error.response);
 

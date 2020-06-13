@@ -13,6 +13,9 @@ export const ResourceAdmin="https://resource.kelidiha.com/admin/";
 export const admin_route="https://user.kelidiha.com/admin_route/";
 export const admin_route2="https://user.kelidiha.com/admin_route/";
 export const aminJamal="https://converter.kelidiha.com/admin/";
+export const kelidihaadmin="https://kelidihaadmin.liara.run/";
+
+
 // export const aminJamal2="http://aminjamal.ir/admin/";
 // export const admin_route="https://user.kelidiha.com/admin_route/"; https://resource.kelidiha.com/
 

@@ -42,6 +42,9 @@ const ViewAccessLevel = React.lazy(() =>
 const ViewUser = React.lazy(() =>
     import(/* webpackChunkName: "views-user" */ './views/user')
 );
+const ViewStudio = React.lazy(() =>
+    import(/* webpackChunkName: "views-user" */ './views/studio')
+);
 const ViewApp = React.lazy(() =>
   import(/* webpackChunkName: "views-app" */ './views/app')
 );
@@ -127,6 +130,7 @@ class App extends Component {
                     <AuthRoute path="/user"  component={ViewUser} {...this.props}/>
                     <AuthRoute path="/content"  component={ViewCourse} {...this.props}/>
                     <AuthRoute path="/upload"  component={ViewUpload} {...this.props}/>
+                    <AuthRoute path="/studio"  component={ViewStudio} {...this.props}/>
                     <AuthRoute path="/access-level"  component={ViewAccessLevel} {...this.props}/>
 
                     <AuthRoute path="/exit"  component={Exit} {...this.props}/>
