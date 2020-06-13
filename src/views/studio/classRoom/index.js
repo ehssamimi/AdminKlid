@@ -9,6 +9,12 @@ const ClassRoomList = React.lazy(() =>
 const ClassRoomCreate = React.lazy(() =>
   import(/* webpackChunkName: "viwes-gogo" */ '../../../Component/Studios/ClassRoom/ClassRoomCreate/ClassRoomCreate')
 );
+const ClassRoomEdit = React.lazy(() =>
+  import(/* webpackChunkName: "viwes-gogo" */ '../../../Component/Studios/ClassRoom/ClassRoomEdit/ClassRoomEdit')
+);
+const ClassRoomDetails = React.lazy(() =>
+  import(/* webpackChunkName: "viwes-gogo" */ '../../../Component/Studios/ClassRoom/ClassRoomDetails/ClassRoomDetails')
+);
 
 
 class App extends Component {
@@ -28,6 +34,14 @@ class App extends Component {
                 <Route
                 path={`${match.url}/create`}
                 render={props => <ClassRoomCreate {...props} />}
+              />
+                <Route
+                path={`${match.url}/edit/:id?`}
+                render={props => <ClassRoomEdit {...props} />}
+              />
+                <Route
+                path={`${match.url}/detail/:id?`}
+                render={props => <ClassRoomDetails {...props} />}
               />
               {/*<Route*/}
                 {/*path={`${match.url}/second-menu`}*/}

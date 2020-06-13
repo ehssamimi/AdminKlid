@@ -1,39 +1,51 @@
 import React, {useState, useEffect} from 'react';
-import {AddClassroom, Getallclassroom, GetAllUser, GetUserDropDown} from "../../../functions/ServerConnection";
-import {error_Notification, LabelValueOption, success_Notification} from "../../../functions/componentHelpFunction";
-import {Card, CardBody} from "reactstrap";
-import IsLoaderComponent from "../../../Common/ISLodader/IsLoader";
-import {Form, Formik} from "formik";
-import {FormInput, FormSelect} from "../../../Common/ComponentFunctional/FormFeilds";
-import * as Yup from "yup";
-import RowClassList from "./RowClassList";
-import InfiniteScroll from "react-infinite-scroller";
+import {
+    AddClassroom,
+    AddCourseDetail,
+    AddFileToCourse, GetClassroom,
+    GetUserDropDown, updateClassRoom,
+    UpdateCourseDetail
+} from "../../../functions/ServerConnection";
+import {Card, CardBody, Collapse} from "reactstrap";
 import Loader from "../../../Common/Loader/Loader";
-import PreviewUserCard from "../../../User/UserShowAll/Subs/PreviewUserCard";
-import ClassRoomLoader from "./ClassRoomLoader/ClassRoomLoader";
+import {Form, Formik} from "formik";
+import ImgComponent from "../../../Common/ImgComponents/ImgComponent";
+import AddPDf from "../../../Common/AddPdf/AddPDf";
+import AddVideoConvert from "../../../Common/AddVideoConver/AddVideoConvert";
+import PreviewVideoComponent from "../../../Common/PreviewVideoComponent/PreviewVideoComponent";
+import {FormInput, FormSelect} from "../../../Common/ComponentFunctional/FormFeilds";
+import {error_Notification, LabelValueOption, success_Notification} from "../../../functions/componentHelpFunction";
+import * as Yup from "yup";
+import IsLoaderComponent from "../../../Common/ISLodader/IsLoader";
 const SignupSchema = Yup.object().shape({
+
+    Name: Yup.string()
+        .required("نام اجباری است!"),
     // grade: Yup.object()
     //     .required("پایه اجباری است !"),
     // field: Yup.object()
     //     .required("رشته اجباری است !"),
     // lesson_names: Yup.object()
     //     .required("درس اجباری است !"),
+    price: Yup.number()
+        .required("هزینه اجباری است !"),
+
+
 
 });
-const ClassRoomList = (props) => {
-    const [IsLoadComponents, setIsLoadComponents] = useState(false);
+
+const ClassRoomEdit = (props) => {
     const [isLoader, setIsLoader] = useState(true);
+    const [class_id, setClass_id] = useState("");
+
     const [Option, setOptions] = useState({});
-    const[initialValue,setInitialValue]=useState({  grade: '', field: '',lesson_names:"" });
-
-
-
+    const[initialValue,setInitialValue]=useState({Name:'' , grade: "", field: '',lesson_names:"",price:""});
     useEffect(() => {
+        // Update the document title using the browser API
         async function  getDrops(){
             let{state ,Description}= await GetUserDropDown();
             setIsLoader(false);
-            console.log(state);
-            console.log(Description);
+
 
             if (state===200 ) {
                 setOptions(Description)
@@ -45,65 +57,69 @@ const ClassRoomList = (props) => {
 
 
         }
+
+        async function  getClassDetails(){
+
+            let{match:{params}}=props;
+            // console.log(params.id);
+            setClass_id(params.id);
+            let{state ,Description}= await GetClassroom(params.id);
+            setIsLoader(false);
+            // console.log(state);
+            // console.log(Description);
+            let{payment: {price}}=Description
+
+            if (state===200 ) {
+                setInitialValue({Name:"classical" , grade: {label:"دوره",value:"دوره"}, field:{label:"رشته",value:"رشته"} ,lesson_names:{label:"درس",value:"درس"} ,price:price})
+             } else {
+                error_Notification(state, Description)
+                // NotificationManager.error(state, Description);
+            }
+
+
+
+        }
         getDrops();
+        getClassDetails();
+
+    },[props]);
 
 
-    },[]);
-    const handleSubmit = async (values, {setSubmitting}) => {
+
+    const handleSubmit = async (values, { setSubmitting }) => {
 
 
         const payload = {
             ...values,
         };
-        setInitialValue({  grade: payload.grade.value, field: payload.field.value,lesson_names:payload.lesson_names.value });
-        console.log("validate");
-        console.log( payload );
-        setIsLoadComponents(true);
-        // console.log(payload);
+
 
         // **********send validate data*********
 
-        // let Data={
-        //     "information": {
-        //         "grade": payload.grade.value,
-        //         "field": payload.field.value,
-        //         "lesson_name":payload.lesson_names.value
-        //     },
-        //     "payment": {
-        //         "price": payload.price
-        //     },
-        //     "live_information": {
-        //         "key": payload.Name
-        //     },
-        //     "time_range": {
-        //         "start": {
-        //             "year": 0,
-        //             "month": 0,
-        //             "day": 0,
-        //             "hour": 0,
-        //             "minute": 0
-        //         },
-        //         "end": {
-        //             "year": 0,
-        //             "month": 0,
-        //             "day": 0,
-        //             "hour": 0,
-        //             "minute": 0
-        //         }
-        //     }
-        // };
-        // setIsLoader(true);
-        // let{state,Description}= await Getallclassroom(payload.grade.value,payload.field.value,payload.lesson_names.value);
-        // await Getallclassroom(payload.grade.value,payload.field.value,payload.lesson_names.value);
-        // setIsLoader(false);
-        // if (state === 200) {
-        //     success_Notification("کلاس مورد نظر ثبت شده است ")
-        // } else {
-        //     error_Notification(state, Description)
-        // }
+        let Data = {
+            "class_id": class_id,
+            "payment": {
+                "price": payload.price
+            },
+            "live_information": {
+                "key": payload.Name
+            }
+        };
+
+        setIsLoader(true);
+        let{state,Description}= await updateClassRoom(Data);
+        setIsLoader(false);
+        if (state === 200) {
+            success_Notification("کلاس مورد نظر به روز رسانی شد ");
+            setInitialValue({Name:payload.Name , grade: {label:"دوره",value:"دوره"}, field:{label:"رشته",value:"رشته"} ,lesson_names:{label:"درس",value:"درس"} ,price:payload.price})
+
+        } else {
+            error_Notification(state, Description)
+        }
 
     };
-
+    console.log("initialValue")
+    console.log(initialValue)
 
 
     return (
@@ -117,6 +133,7 @@ const ClassRoomList = (props) => {
                                 initialValues={
                                     initialValue
                                 }
+                                enableReinitialize
                                 validationSchema={SignupSchema}
                                 onSubmit={handleSubmit}
                             >
@@ -129,6 +146,7 @@ const ClassRoomList = (props) => {
                                       values,
                                       errors,
                                       touched,
+                                      // enableReinitialize=true,
                                       isSubmitting
                                   }) => (
                                     <Form className="av-tooltip tooltip-label-bottom w-100 row m-0">
@@ -139,25 +157,37 @@ const ClassRoomList = (props) => {
                                             <div className="w-100 row m-0 ">
 
 
-                                                <FormSelect label='پایه' option={LabelValueOption(Option.grade_type)}
+                                                <FormSelect label='پایه'
+                                                            // option={LabelValueOption(Option.grade_type)}
                                                             name='grade'
                                                             placeHolder='پایه خود را وارد کنید' values={values}
                                                             DivClass="col-sm-4  " setFieldTouched={setFieldTouched}
                                                             setFieldValue={setFieldValue}
                                                             errors={errors} touched={touched}/>
-                                                <FormSelect label='رشته' option={LabelValueOption(Option.field_type)}
+                                                <FormSelect label='رشته'
+                                                            // option={LabelValueOption(Option.field_type)}
                                                             name='field'
                                                             placeHolder='رشته خود را وارد کنید'
                                                             setFieldValue={setFieldValue}
                                                             DivClass="col-sm-4  " setFieldTouched={setFieldTouched}
                                                             values={values}
                                                             errors={errors} touched={touched}/>
-                                                <FormSelect label='درس' option={LabelValueOption(Option.lesson_names)}
+                                                <FormSelect label='درس'
+                                                            // option={LabelValueOption(Option.lesson_names)}
                                                             name='lesson_names'
                                                             placeHolder='در مورد نظر را وارد کنید' values={values}
                                                             DivClass="col-sm-4  " setFieldTouched={setFieldTouched}
                                                             setFieldValue={setFieldValue}
                                                             errors={errors} touched={touched}/>
+                                                <FormInput label='کلید' type='text' name='Name'
+                                                           placeHolder='نام permission را وارد کنید !'
+                                                           DivClass="col-sm-6  " setFieldTouched={setFieldTouched}
+                                                           errors={errors} touched={touched}/>
+                                                <FormInput label='هزینه' type='number' name='price'
+                                                           placeHolder='هزینه کلاس رو وارد کنید !'
+                                                           DivClass="col-sm-6  " setFieldTouched={setFieldTouched}
+                                                           errors={errors} touched={touched}/>
+
 
                                             </div>
                                         </div>
@@ -173,22 +203,12 @@ const ClassRoomList = (props) => {
                                     </Form>
                                 )}
                             </Formik>
-
-
-
                         </IsLoaderComponent>
                     }
                 </CardBody>
             </Card>
-            {
-                IsLoadComponents ?
-                    <ClassRoomLoader  attributes={initialValue} />
-                    : ""
-            }
-
-
         </div>
     );
 };
 
-export default ClassRoomList;
+export default ClassRoomEdit;

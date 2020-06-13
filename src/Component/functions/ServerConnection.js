@@ -3376,6 +3376,120 @@ export async  function  Getallclassroom( grade,field,lesson_name){
     });
     return resp;
 }
+export async  function  DeleteClassRoom(classroom){
+
+    let headers = {
+        'Token': Const.Token,
+        'accept': 'application/json',
+    };
+
+
+    var resp ="";
+    await axios.delete(`${Const.kelidihaadmin}admin/classroom/delete?class_id=${classroom}`, {headers: headers}).then(function (response) {
+        console.log(response );
+        let {Description}=response.data;
+        // let {Items} = response.data;
+        resp={state:200,Description:Description};
+
+    }).catch(function (error) {
+        resp=Error(error)
+    });
+    return resp;
+}
+export async  function  GetClassroom(id){
+
+    let headers = {
+        'Token': Const.Token,
+        'Content-Type': 'application/json',
+        'accept': 'application/json'
+    };
+
+
+    var resp ="";
+    await axios.get(`${Const.kelidihaadmin}admin/classroom/load?class_id=${id}`,   {headers: headers}).then(function (response) {
+
+
+        // let {Items} = response.data;
+        resp={state:200,Description:response.data};
+
+    }).catch(function (error) {
+        console.log(error.response);
+        console.log(error);
+        let {response}=error;
+        if (response===undefined){
+            resp={state: 400,Description: error.message}
+        }else if (response.status===422){
+            resp={state:422,Description:response.statusText}
+        } else{
+            resp={state:response.status||400,Description:response.data.detail||error.message}
+        }
+    });
+    return resp;
+}
+export async  function  updateClassRoom(Data){
+
+    let headers = {
+        'Token': Const.Token,
+        'Content-Type': 'application/json',
+        'accept': 'application/json',
+        'Access-Control-Allow-Origin':'*'
+    };
+
+
+    var resp ="";
+    await axios.put(`${Const.kelidihaadmin}admin/classroom/update`, Data, {headers: headers}).then(function (response) {
+
+        let {Description}=response.data;
+        // let {Items} = response.data;
+        resp={state:200,Description:Description};
+
+    }).catch(function (error) {
+
+        let {response}=error;
+        if (response===undefined){
+            resp={state: 400,Description: error.message}
+        } else{
+            resp={state:response.status||400,Description:response.data.detail||error.message}
+        }
+    });
+
+
+    return resp;
+}
+export async  function  SuggestUser(Name){
+
+    let headers = {
+        'Token': Const.Token,
+        'Content-Type': 'application/json',
+        'accept': 'application/json',
+        'Access-Control-Allow-Origin':'*'
+    };
+
+
+    var resp ="";
+    await axios.get(`${Const.admin_route2}search?value=${Name}`, {headers: headers}).then(function (response) {
+        // console.log(response );
+
+        // let {Items} = response.data;
+        resp={state:200,Description:response.data};
+
+    }).catch(function (error) {
+        console.log(error.response);
+        console.log(error);
+        let {response}=error;
+        if (response===undefined){
+            resp={state: 400,Description: error.message}
+        }else if (response.status===422){
+            resp={state:422,Description:response.statusText}
+        } else{
+            resp={state:response.status||400,Description:response.data.detail||error.message}
+        }
+    });
+    return resp;
+}
+
+
+
 
 function Error(error) {
     console.log(error.response);

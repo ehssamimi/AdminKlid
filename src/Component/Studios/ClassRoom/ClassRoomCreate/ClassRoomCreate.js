@@ -39,7 +39,7 @@ const SignupSchema = Yup.object().shape({
 const ClassRoomCreate = (props) => {
     const [isLoader, setIsLoader] = useState(true);
     const [Option, setOptions] = useState({});
-    const[initialValue,setInitialValue]=useState({Name:'' , grade: '', field: '',lesson_names:"",price:""});
+    const[initialValue,setInitialValue]=useState({Name:'' , grade: {"label":"هفتم","value":"هفتم"}, field: '',lesson_names:"",price:""});
     useEffect(() => {
         // Update the document title using the browser API
         async function  getDrops(){

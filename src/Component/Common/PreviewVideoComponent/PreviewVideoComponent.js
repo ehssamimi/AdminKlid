@@ -18,7 +18,7 @@ const PreviewVideoComponent = (props) => {
         <div className={"w-100"}>
             <div className=" mt-3 mr-3 green-them cursor-pointer" onClick={() => setIsOpenModal(!isOpenModal)}>
                 <span className=' '><FaRegPlayCircle/></span>
-                <span className='  mr-2'> مشاهده پیش نمایش ویدیو </span>
+                <span className='  mr-2'> { props.label||"مشاهده پیش نمایش ویدیو"} </span>
             </div>
 
 
