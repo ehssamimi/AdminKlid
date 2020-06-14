@@ -3487,6 +3487,47 @@ export async  function  SuggestUser(Name){
     });
     return resp;
 }
+export async  function useractioninclassroom(action,class_id,user_id,page){
+
+    let headers = {
+        'Token': Const.Token,
+        'Content-Type': 'application/json',
+        'accept': 'application/json',
+        'Access-Control-Allow-Origin':'*'
+    };
+    let url=`${Const.kelidihaadmin}`;
+    url=url+"admin/classroom/users/<action>?";
+    url=url+`action=${action}&class_id=${class_id}`;
+    if (user_id!==null){
+        url=url+`&user_id=${user_id}`
+    }
+    if (page!==null){
+        url=url+`&page=${user_id}`
+    }
+    console.log(url);
+
+
+    var resp ="";
+    await axios.post(url, null , {headers: headers}).then(function (response) {
+        console.log(response );
+
+        // let {Items} = response.data;
+        resp={state:200,Description:response.data};
+
+    }).catch(function (error) {
+        console.log(error.response);
+        console.log(error);
+        let {response}=error;
+        if (response===undefined){
+            resp={state: 400,Description: error.message}
+        }else if (response.status===422){
+            resp={state:422,Description:response.statusText}
+        } else{
+            resp={state:response.status||400,Description:response.data.detail||error.message}
+        }
+    });
+    return resp;
+}
 
 
 

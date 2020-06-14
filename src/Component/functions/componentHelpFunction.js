@@ -102,7 +102,8 @@ export const AutoSuggestUsers=(sub)=>{
 
         let SubCat=[];
         sub.map((each,index)=>{
-            let subRow= { name: each.name+" ("+each.phone_number+" )" , value: each.id  };
+            let simpleName=each.name+"("+each.phone_number+")";
+            let subRow= { name:each.name + each.phone_number  , value: each.id  };
             SubCat.push(subRow);
         });
         return SubCat;

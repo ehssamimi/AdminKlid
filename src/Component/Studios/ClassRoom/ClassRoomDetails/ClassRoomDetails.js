@@ -1,69 +1,61 @@
 import React, {Component} from 'react';
-import AutoSuggestEdit from "../../../Common/AutoSuggestEdit/AutoSuggestEdit";
-import {GetProgressive, SuggestName, SuggestUser} from "../../../functions/ServerConnection";
-import {AutoSuggestNameVAlue, AutoSuggestUsers} from "../../../functions/componentHelpFunction";
-import AutoSuggestEditwithOutLowerCase from "../../../Common/AutoSuggestEdit/AutoSuggestEditwithOutLowerCase";
+
+import AddUserToClass from "./AddUserToClassRoom/AddUserToClass";
+import IsLoaderComponent from "../../../Common/ISLodader/IsLoader";
+import {GetClassroom} from "../../../functions/ServerConnection";
+import {error_Notification} from "../../../functions/componentHelpFunction";
+import RowClassList from "../ClassRoomList/RowClassList";
+import DetailsClassRoom from "./DetaisClassRoom/DetaisClassRoom";
+import UsersInClassRoomLists from "./UsersInClassRoomLists/UsersInClassRoomLists";
 
 class ClassRoomDetails extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            value: "",error:"",
-            data:"",isOpenModal:false,isLoader:true,
-            currentCount:0,type:"info",textPercent:"ََشروع",time_left:0
+
+           isLoader:true,Description:""
+
         }
     }
-    async componentDidMount(){
-        let data=await this.getName("احسان");
+   async componentDidMount(){
+        let{match:{params}}=this.props;
+        // console.log(params.id);
 
-        // let {state ,Description }=await GetProgressive(this.props.action,this.props.ListData );
-        // console.log(Description)
+        let{state ,Description}= await GetClassroom(params.id);
         this.setState({
-            isLoader:false,   data
+            isLoader:false,Description
         });
 
+        // console.log(state);
+        // console.log(Description);
+        // let{payment: {price}}=Description
 
-
-
+        // if (state===200 ) {
+        //     setInitialValue({Name:"classical" , grade: {label:"دوره",value:"دوره"}, field:{label:"رشته",value:"رشته"} ,lesson_names:{label:"درس",value:"درس"} ,price:price})
+        // } else {
+        //     error_Notification(state, Description)
+        //     // NotificationManager.error(state, Description);
+        // }
+    }
+    UpdateClassList=()=>{
+        this.setState({
+            hasMore:true,
+        })
     }
 
-    getName=async (value)=>{
-        // let{state ,Description }= await SuggestName(value);
-        let{state ,Description }= await SuggestUser(value);
-        console.log("Description");
-        console.log( Description);
-        let Values={name:"",value:""};
-        if (state===200){
-            // Values=AutoSuggestNameVAlue(Description)
-            Values=AutoSuggestUsers(Description.users);
-            console.log(Values)
-        }
-        return  Values
-    };
-    onChangeValue=async(value)=>{
-        this.setState({
-            value
-        });
-        let data = await this.getName(value);
-        this.setState({
-            data
-        });
 
-        console.log("value");
-        console.log(value);
-    };
     render() {
         return (
             <div>
+                <IsLoaderComponent isLoader={this.state.isLoader}>
+                    <div>
+                        <DetailsClassRoom {...this.state.Description}/>
 
-                <span className="FsFooterLogin mb-3">انتخاب نام ویدیو:</span>
-                <AutoSuggestEditwithOutLowerCase
-                    placeholder={ "لطفا نام ویدیو را وارد کنید"}
-                    data={this.state.data}
-                    value={this.state.value}
-                    onChange={value => { this.onChangeValue(value)}}
-                />
+                        <AddUserToClass{...this.props}/>
+                        <UsersInClassRoomLists/>
+                    </div>
 
+                </IsLoaderComponent>
             </div>
         );
     }
