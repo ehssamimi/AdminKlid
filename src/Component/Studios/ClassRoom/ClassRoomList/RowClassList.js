@@ -26,7 +26,8 @@ const RowClassList = (props) => {
         setoption({"label":Object.keys(live_information),"value":Object.values(live_information)})
     },[]);
     const [isOpen, setIsOpen] = useState(false);
-    let{active,id,information:{grade,field,lesson_name},live_information:{dash,hls,http_flv,rtmp,websocket}}=props;
+    console.log(props);
+    let{active,id,information:{grade,field,lesson_name},live_information:{dash,hls,http_flv,rtmp,websocket},payment: {price}}=props;
     const handelDelete = async() => {
         let {state ,Description}=await DeleteClassRoom(id);
         if (state===200 ) {
@@ -58,11 +59,10 @@ const RowClassList = (props) => {
                     <RowShowShowColEdit label={"دوره"} value={grade}   className={"col-6 d-flex justify-content-start p-0"}/>
                     <RowShowShowColEdit label={"رشته"} value={field}   className={"col-6  d-flex justify-content-start p-0"}/>
                     <RowShowShowColEdit label={"درس"} value={lesson_name}   className={"col-6  d-flex justify-content-start p-0"}/>
-                    <RowShowShowColEdit label={"فعال"} value={active?"هست":"نیست"}   className={"col-6  d-flex justify-content-start p-0"}/>
+                    <RowShowShowColEdit label={"هزینه"} value={price }   className={"col-6  d-flex justify-content-start p-0"}/>
+                    {/*<RowShowShowColEdit label={"فعال"} value={active?"هست":"نیست"}   className={"col-6  d-flex justify-content-start p-0"}/>*/}
 
-                    {/*{*/}
-                        {/*option.label?  option.label.map((value,index)=> <RowShowShowColEdit label={value } value={option.value[index]} key={index}  className={"col-12"}/>):""*/}
-                    {/*}*/}
+
                     <div className="col-6 p-0">
                         <PreviewVideoComponent video={[defaultImg, dash]} label={"پخش dash"}/>
 

@@ -66,16 +66,16 @@ const ClassRoomEdit = (props) => {
             let{state ,Description}= await GetClassroom(params.id);
             setIsLoader(false);
             // console.log(state);
-            // console.log(Description);
-            let{payment: {price}}=Description
+            console.log(Description);
+             let{active,information:{grade,field,lesson_name},live_urls:{dash,hls,http_flv,rtmp,websocket,key},payment: {price}}=Description;
+
 
             if (state===200 ) {
-                setInitialValue({Name:"classical" , grade: {label:"دوره",value:"دوره"}, field:{label:"رشته",value:"رشته"} ,lesson_names:{label:"درس",value:"درس"} ,price:price})
+                setInitialValue({Name:key , grade: {label:grade,value:grade}, field:{label:field,value:field} ,lesson_names:{label:lesson_name,value:lesson_name} ,price:price})
              } else {
                 error_Notification(state, Description)
                 // NotificationManager.error(state, Description);
             }
-
 
 
         }

@@ -75,48 +75,48 @@ const data = [
     //         }
     //     ]
     // },
-    {
-        id: "studio",
-        icon: "iconsminds-gears",
-        label: "استودیو",
-        to: "/studio",
-        subs:[
-            {
-                icon: "iconsminds-gears",
-                label: "کلاس",
-                to: "/studio/classroom",
-                subs:[
-                    {
-                        icon: "iconsminds-gears",
-                        label: "لیست کلاس",
-                        to: "/studio/classroom/list",
-                    },
-                    {
-                        icon: "iconsminds-gears",
-                        label: "ایجاد کلاس",
-                        to: "/studio/classroom/create",
-                    }
-                ]
-            },
-            {
-                icon: "iconsminds-gears",
-                label: "استودیو",
-                to: "/studio/root",
-                subs:[
-                    {
-                        icon: "iconsminds-gears",
-                        label: "لیست استودیو",
-                        to: "/studio/root/list",
-                    },
-                    {
-                        icon: "iconsminds-gears",
-                        label: "ایجاد استودیو",
-                        to: "/studio/root/create",
-                    }
-                ]
-            },
-        ]
-    },
+    // {
+    //     id: "studio",
+    //     icon: "iconsminds-gears",
+    //     label: "استودیو",
+    //     to: "/studio",
+    //     subs:[
+    //         {
+    //             icon: "iconsminds-gears",
+    //             label: "کلاس",
+    //             to: "/studio/classroom",
+    //             subs:[
+    //                 {
+    //                     icon: "iconsminds-gears",
+    //                     label: "لیست کلاس",
+    //                     to: "/studio/classroom/list",
+    //                 },
+    //                 {
+    //                     icon: "iconsminds-gears",
+    //                     label: "ایجاد کلاس",
+    //                     to: "/studio/classroom/create",
+    //                 }
+    //             ]
+    //         },
+    //         {
+    //             icon: "iconsminds-gears",
+    //             label: "استودیو",
+    //             to: "/studio/root",
+    //             subs:[
+    //                 {
+    //                     icon: "iconsminds-gears",
+    //                     label: "لیست استودیو",
+    //                     to: "/studio/root/list",
+    //                 },
+    //                 {
+    //                     icon: "iconsminds-gears",
+    //                     label: "ایجاد استودیو",
+    //                     to: "/studio/root/create",
+    //                 }
+    //             ]
+    //         },
+    //     ]
+    // },
     {
         id: "content",
         icon: "iconsminds-data-center",

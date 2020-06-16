@@ -878,3 +878,12 @@ select option:hover {
 .l-h-25{
     line-height: 2.5;
 }
+.bg-plum{
+    background: plum;
+}
+.bg-coral{
+    background: coral;
+}
+.bg-lightskyblue{
+    background: lightskyblue;
+}

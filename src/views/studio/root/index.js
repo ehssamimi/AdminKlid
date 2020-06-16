@@ -9,6 +9,9 @@ const RootRoomList = React.lazy(() =>
 const RootRoomCreate = React.lazy(() =>
     import(/* webpackChunkName: "viwes-gogo" */ '../../../Component/Studios/Root/RootCreate/StudioCreate')
 );
+const StudioStep2 = React.lazy(() =>
+    import(/* webpackChunkName: "viwes-gogo" */ '../../../Component/Studios/Root/RootList/Step2/StudioStep2')
+);
 
 
 class App extends Component {
@@ -28,6 +31,10 @@ class App extends Component {
                         <Route
                             path={`${match.url}/create`}
                             render={props => <RootRoomCreate {...props} />}
+                        />
+                        <Route
+                            path={`${match.url}/details/:id?`}
+                            render={props => <StudioStep2 {...props} />}
                         />
                         {/*<Route*/}
                         {/*path={`${match.url}/second-menu`}*/}

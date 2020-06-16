@@ -1,10 +1,12 @@
 import React, {Component} from 'react';
+import StudioSteps1 from "./step1/StudioStep1";
 
 class StudioList extends Component {
     render() {
         return (
             <div>
-                <h2>studio list</h2>
+                <StudioSteps1/>
+
             </div>
         );
     }
