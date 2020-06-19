@@ -887,3 +887,19 @@ select option:hover {
 .bg-lightskyblue{
     background: lightskyblue;
 }
+table.table-bordered{
+    border:1px solid #c2cbcb !important;
+
+}
+table.table-bordered > thead > tr > th{
+    border:1px solid #c2cbcb!important;
+}
+table.table-bordered > tbody > tr > td{
+    border:1px solid #c2cbcb!important;
+}
+table.table-bordered > tbody > tr > th{
+    border:1px solid #c2cbcb!important;
+}
+.br-red{
+    border:2px solid red
+}

@@ -3579,7 +3579,105 @@ export async  function  loadStudio(id){
     });
     return resp;
 }
+export async  function  DeleteClassRoomFromStudio(Data){
 
+    let headers = {
+        'Token': Const.Token,
+        'accept': 'application/json',
+    };
+
+
+    var resp ="";
+    await axios.delete(`${Const.kelidihaadmin}admin/studio/event`  ,{headers: headers, data:Data}).then(function (response) {
+        console.log(response );
+        let {Description}=response.data;
+        // let {Items} = response.data;
+        resp={state:200,Description:Description};
+
+    }).catch(function (error) {
+        resp=Error(error);
+    });
+
+     return resp;
+}
+export async  function  AddClassRoomToStudio(Data){
+
+    let headers = {
+        'Token': Const.Token,
+        'Content-Type': 'application/json',
+        'accept': 'application/json',
+        'Access-Control-Allow-Origin':'*'
+    };
+
+
+    var resp ="";
+    await axios.put(`${Const.kelidihaadmin}admin/studio/event`, Data, {headers: headers}).then(function (response) {
+        console.log(response)
+
+        let {Description}=response.data;
+        // let {Items} = response.data;
+        resp={state:200,Description:Description};
+
+    }).catch(function (error) {
+
+        resp=Error(error);
+    });
+
+
+    return resp;
+}
+export async  function  AddStudios(Data){
+
+    let headers = {
+        'Token': Const.Token,
+        'Content-Type': 'application/json',
+        'accept': 'application/json',
+        'Access-Control-Allow-Origin':'*'
+    };
+    console.log(Data);
+
+
+    var resp ="";
+    await axios.post(`${Const.kelidihaadmin}admin/studio/add`, Data, {headers: headers}).then(function (response) {
+        console.log(response );
+
+        // let {Items} = response.data;
+        resp={state:200,Description:response.data};
+
+    }).catch(function (error) {
+        console.log(error.response);
+        console.log(error);
+        let {response}=error;
+        if (response===undefined){
+            resp={state: 400,Description: error.message}
+        }else if (response.status===422){
+            resp={state:422,Description:response.statusText}
+        } else{
+            resp={state:response.status||400,Description:response.data.detail||error.message}
+        }
+    });
+    return resp;
+}
+export async  function  DeleteStudios(Data){
+
+    let headers = {
+        'Token': Const.Token,
+        'accept': 'application/json',
+    };
+    console.log(Data)
+
+    var resp ="";
+    await axios.delete(`${Const.kelidihaadmin}admin/studio/delete`  ,{headers: headers, data:Data}).then(function (response) {
+        console.log(response );
+        let {Description}=response.data;
+        // let {Items} = response.data;
+        resp={state:200,Description:Description};
+
+    }).catch(function (error) {
+        resp=Error(error);
+    });
+    return resp;
+}
 
 
 function Error(error) {

@@ -6,6 +6,7 @@ import PreviewUserCard from "../../../../User/UserShowAll/Subs/PreviewUserCard";
 import RowClassList from "../RowClassList";
 import {Getallclassroom, GetAllUser} from "../../../../functions/ServerConnection";
 import {error_Notification} from "../../../../functions/componentHelpFunction";
+import SelectedRowClassList from "../SelectedRowClassList";
 
 class ClassRoomLoader extends Component {
     constructor(props) {
@@ -32,9 +33,9 @@ class ClassRoomLoader extends Component {
         return null;
     }
     UpdateClassList=()=>{
-        this.setState({
-            hasMore:true,
-        })
+        // this.setState({
+        //     hasMore:true,
+        // })
     }
 
     loadMore=async()=>{
@@ -53,7 +54,7 @@ class ClassRoomLoader extends Component {
 
 
         // let Response = await GetAllProduct(pageStart);
-        if (Response!=='error') {
+        if (state===200) {
             let{items,page}=Description;
             // *** modify  products to our label value ***
             let productsSeparate = items;
@@ -88,7 +89,11 @@ class ClassRoomLoader extends Component {
                         <div className='row rtl m-0 w-100 '  >
                             {productSeparate.length>0 && Array.isArray(productSeparate)  ?
                                 productSeparate.map((todo, index) =>
-                                    <div key={index} className="col-4"> <RowClassList  {...todo} UpdateClassList={this.UpdateClassList}/></div>
+                                    <div key={index} className={ this.props.type==="selected"?"col-12 p-0 mt-2":"col-sm-12 col-md-6 col-lg-4"}>{
+                                        this.props.type==="selected"?<SelectedRowClassList {...todo} {...this.props} />:   <RowClassList  {...todo} UpdateClassList={this.UpdateClassList}/>
+                                    }
+
+                                    </div>
 
 
 

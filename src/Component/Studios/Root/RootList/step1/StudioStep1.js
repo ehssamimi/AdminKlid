@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import LoadStudios from "./loadStudios/LoadStudios";
+import AddStudio from "./AddStudio/AddStudio";
 
 const StudioSteps1 = (props) => {
     // const [count, setCount] = useState(1);
@@ -9,6 +10,7 @@ const StudioSteps1 = (props) => {
 
     return (
         <div>
+            <AddStudio/>
             <LoadStudios/>
         </div>
     );

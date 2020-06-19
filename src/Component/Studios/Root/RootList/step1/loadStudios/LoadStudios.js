@@ -1,16 +1,21 @@
 import React, {useState, useEffect} from 'react';
-import {GetAllStudios, GetAllUser} from "../../../../../functions/ServerConnection";
-import {error_Notification} from "../../../../../functions/componentHelpFunction";
+import {DeleteClassRoom, DeleteStudios, GetAllStudios, GetAllUser} from "../../../../../functions/ServerConnection";
+import {error_Notification, success_Notification} from "../../../../../functions/componentHelpFunction";
 import InfiniteScroll from "react-infinite-scroller";
 import Loader from "../../../../../Common/Loader/Loader";
 import {Button, Card, CardBody} from "reactstrap";
+import CardActions from "@material-ui/core/CardActions/CardActions";
 import {Link} from"react-router-dom"
  import PreviewUserCard from "../../../../../User/UserShowAll/Subs/PreviewUserCard";
 import RowShowShowColEdit from "../../../../../Common/RowShowShowColEdit/RowShowShowColEdit";
+import {ModalDelete} from "../../../../../Common/Modals/ModalDelete/ModalDelete";
+import {TweenMax} from "gsap/TweenMax";
+import StudioInRow from "../StudioInRow/StudioInRow";
 
 const LoadStudios = (props) => {
     const [productSeparate, setproductSeparate] = useState([]);
     const [pageStart, setpageStart] = useState(1);
+
     const [hasMore, sethasMore] = useState(true);
 
     const loadMore=async()=>{
@@ -39,6 +44,7 @@ const LoadStudios = (props) => {
     };
 
 
+
     return (
         <InfiniteScroll
             className="row rtl m-0"
@@ -50,15 +56,11 @@ const LoadStudios = (props) => {
             <div className='d-flex  w-100  flex-wrap'  >
                 {productSeparate.length>0 && Array.isArray(productSeparate)  ?
                     productSeparate.map((todo, index) =>
-                        <Link to={`/studio/root/details/${todo.id}`} key={index} className="col-3 m-2">
+                        <StudioInRow todo={todo} key={index}/>
 
-                            <Card >
-                                <CardBody >
-                                    <RowShowShowColEdit label={"نام"} value={todo.name}   className={"col-6 d-flex justify-content-start p-0"}/>
 
-                                </CardBody>
-                            </Card>
-                        </Link>
+
+
 
 
 
@@ -66,6 +68,7 @@ const LoadStudios = (props) => {
 
                     ) : ''
                 }
+
             </div>
         </InfiniteScroll>
     );

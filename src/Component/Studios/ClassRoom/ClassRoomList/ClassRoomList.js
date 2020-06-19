@@ -1,16 +1,12 @@
 import React, {useState, useEffect} from 'react';
-import {AddClassroom, Getallclassroom, GetAllUser, GetUserDropDown} from "../../../functions/ServerConnection";
-import {error_Notification, LabelValueOption, success_Notification} from "../../../functions/componentHelpFunction";
-import {Card, CardBody} from "reactstrap";
+import {  GetUserDropDown} from "../../../functions/ServerConnection";
+import {error_Notification, LabelValueOption } from "../../../functions/componentHelpFunction";
+import {Card , CardTitle} from "reactstrap";
 import IsLoaderComponent from "../../../Common/ISLodader/IsLoader";
 import {Form, Formik} from "formik";
-import {FormInput, FormSelect} from "../../../Common/ComponentFunctional/FormFeilds";
+import { FormSelect} from "../../../Common/ComponentFunctional/FormFeilds";
 import * as Yup from "yup";
-import RowClassList from "./RowClassList";
-import InfiniteScroll from "react-infinite-scroller";
-import Loader from "../../../Common/Loader/Loader";
-import PreviewUserCard from "../../../User/UserShowAll/Subs/PreviewUserCard";
-import ClassRoomLoader from "./ClassRoomLoader/ClassRoomLoader";
+ import ClassRoomLoader from "./ClassRoomLoader/ClassRoomLoader";
 const SignupSchema = Yup.object().shape({
     // grade: Yup.object()
     //     .required("پایه اجباری است !"),
@@ -109,8 +105,10 @@ const ClassRoomList = (props) => {
     return (
         <div>
             <Card>
-                <CardBody>
-
+                <div className={ props.type==="selected"?"card-body":"card-body"}>
+                    <CardTitle>
+                        <span>انتخاب کلاس</span>
+                    </CardTitle>
                     {
                         <IsLoaderComponent isLoader={isLoader} >
                             <Formik
@@ -128,34 +126,33 @@ const ClassRoomList = (props) => {
                                       handleBlur,
                                       values,
                                       errors,
-                                      touched,
-                                      isSubmitting
-                                  }) => (
+                                      touched
+                                   }) => (
                                     <Form className="av-tooltip tooltip-label-bottom w-100 row m-0">
 
 
                                         <div
-                                            className=" col-sm-12 col-md-11  d-flex flex-column justify-content-between">
+                                            className=" col-sm-12 col-md-11  d-flex flex-column justify-content-between p-0">
                                             <div className="w-100 row m-0 ">
 
 
                                                 <FormSelect label='پایه' option={LabelValueOption(Option.grade_type)}
                                                             name='grade'
                                                             placeHolder='پایه خود را وارد کنید' values={values}
-                                                            DivClass="col-sm-4  " setFieldTouched={setFieldTouched}
+                                                            DivClass={props.type==="selected"?"col-12 p-0":"col-sm-12 col-md-4  "} setFieldTouched={setFieldTouched}
                                                             setFieldValue={setFieldValue}
                                                             errors={errors} touched={touched}/>
                                                 <FormSelect label='رشته' option={LabelValueOption(Option.field_type)}
                                                             name='field'
                                                             placeHolder='رشته خود را وارد کنید'
                                                             setFieldValue={setFieldValue}
-                                                            DivClass="col-sm-4  " setFieldTouched={setFieldTouched}
+                                                            DivClass={props.type==="selected"?"col-12 p-0":"col-sm-12 col-md-4  "} setFieldTouched={setFieldTouched}
                                                             values={values}
                                                             errors={errors} touched={touched}/>
                                                 <FormSelect label='درس' option={LabelValueOption(Option.lesson_names)}
                                                             name='lesson_names'
                                                             placeHolder='در مورد نظر را وارد کنید' values={values}
-                                                            DivClass="col-sm-4  " setFieldTouched={setFieldTouched}
+                                                            DivClass={props.type==="selected"?"col-12 p-0":"col-sm-12 col-md-4  "} setFieldTouched={setFieldTouched}
                                                             setFieldValue={setFieldValue}
                                                             errors={errors} touched={touched}/>
 
@@ -163,7 +160,7 @@ const ClassRoomList = (props) => {
                                         </div>
 
 
-                                        <div className="col-6 offset-3 ">
+                                        <div className={props.type==="selected"?"col-12 p-0":"col-6 offset-3 "} >
                                             <button className="btn btn-success text-center col-6 offset-3 "
                                                     type="submit">
                                                 فرستادن
@@ -178,11 +175,11 @@ const ClassRoomList = (props) => {
 
                         </IsLoaderComponent>
                     }
-                </CardBody>
+                </div>
             </Card>
             {
                 IsLoadComponents ?
-                    <ClassRoomLoader  attributes={initialValue} />
+                    <ClassRoomLoader  attributes={initialValue} {...props} />
                     : ""
             }
 

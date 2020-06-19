@@ -12,19 +12,6 @@ import {error_Notification, success_Notification} from "../../../functions/compo
 import {TweenMax} from "gsap/TweenMax";
 
 const RowClassList = (props) => {
-    const [option, setoption] = useState({});
-    useEffect(() => {
-        // Update the document title using the browser API
-        // document.title = `You clicked ${count} times`;
-        const live_information = {
-            "websocket": "ws://localhost:8000/live/ehsan.flv",
-            "hls": "http://localhost:8000/live/ehsan/index.m3u8",
-            "rtmp": "rtmp://localhost/live/ehsan",
-            "dash": "http://localhost:8000/live/ehsan/index.mpd",
-            "http_flv": "http://localhost:8000/live/ehsan.flv"
-        };
-        setoption({"label":Object.keys(live_information),"value":Object.values(live_information)})
-    },[]);
     const [isOpen, setIsOpen] = useState(false);
     console.log(props);
     let{active,id,information:{grade,field,lesson_name},live_information:{dash,hls,http_flv,rtmp,websocket},payment: {price}}=props;
