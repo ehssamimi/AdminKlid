@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import {Button, Card} from "reactstrap";
+import {Button, Card, CardTitle} from "reactstrap";
 import {Link} from "react-router-dom";
 import RowShowShowColEdit from "../../../../Common/RowShowShowColEdit/RowShowShowColEdit";
 import PreviewVideoComponent from "../../../../Common/PreviewVideoComponent/PreviewVideoComponent";
@@ -18,10 +18,16 @@ const DetailsClassRoom = (props) => {
 
     return (
         <div>
-            <Card className="mt-2 box-shadow-custom br20px" id={id}>
 
 
-                    <div className="row m-0 card-body">
+
+                    <div className="row m-0 " id={id}>
+                        <div className="w-100">
+                            <CardTitle>
+                                <span>مشخصات کلاس</span>
+                            </CardTitle>
+                        </div>
+
                         <RowShowShowColEdit label={"دوره"} value={grade}   className={"col-4 d-flex justify-content-start p-0"}/>
                         <RowShowShowColEdit label={"رشته"} value={field}   className={"col-4  d-flex justify-content-start p-0"}/>
                         <RowShowShowColEdit label={"درس"} value={lesson_name}   className={"col-4  d-flex justify-content-start p-0"}/>
@@ -58,7 +64,7 @@ const DetailsClassRoom = (props) => {
 
 
 
-            </Card>
+
 
         </div>
     );

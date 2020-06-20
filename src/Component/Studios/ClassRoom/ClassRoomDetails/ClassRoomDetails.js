@@ -7,6 +7,7 @@ import {error_Notification} from "../../../functions/componentHelpFunction";
 import RowClassList from "../ClassRoomList/RowClassList";
 import DetailsClassRoom from "./DetaisClassRoom/DetaisClassRoom";
 import UsersInClassRoomLists from "./UsersInClassRoomLists/UsersInClassRoomLists";
+import {Card,CardBody} from "reactstrap";
 
 class ClassRoomDetails extends Component {
     constructor(props) {
@@ -49,9 +50,13 @@ class ClassRoomDetails extends Component {
             <div>
                 <IsLoaderComponent isLoader={this.state.isLoader}>
                     <div>
-                        <DetailsClassRoom {...this.state.Description}/>
+                        <Card className="mt-2 box-shadow-custom br20px" >
+                            <CardBody>
+                                <DetailsClassRoom {...this.state.Description}/>
 
-                        <AddUserToClass{...this.props}/>
+                                <AddUserToClass{...this.props}/>
+                            </CardBody>
+                        </Card>
                         <UsersInClassRoomLists/>
                     </div>
 

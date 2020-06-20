@@ -3,6 +3,7 @@ import {SuggestUser, useractioninclassroom} from "../../../../functions/ServerCo
 import {AutoSuggestUsers, error_Notification, success_Notification} from "../../../../functions/componentHelpFunction";
 import IsLoaderComponent from "../../../../Common/ISLodader/IsLoader";
 import AutoSuggestEditwithOutLowerCase from "../../../../Common/AutoSuggestEdit/AutoSuggestEditwithOutLowerCase";
+import {Card, CardBody, CardTitle} from 'reactstrap'
 
 class AddUserToClass extends Component {
     constructor(props) {
@@ -106,22 +107,41 @@ class AddUserToClass extends Component {
     render() {
         return (
             <div>
-                <IsLoaderComponent isLoader={this.state.isLoader}>
 
-                    <span className="FsFooterLogin mb-3">انتخاب کاربر:</span>
-                    <AutoSuggestEditwithOutLowerCase
-                        placeholder={ "لطفا نام یا شماره تماس کاربر را وارد کنید"}
-                        data={this.state.data}
-                        value={this.state.value}
-                        onChange={value => { this.onChangeValue(value)}}
-                    />
-                    {this.state.error!=="" ? (
-                        <div className="invalid-feedback d-block">
-                            {this.state.error}
-                        </div>
-                    ) : null}
-                    <button onClick={this.handelSending}>add</button>
-                </IsLoaderComponent>
+
+
+                        <CardTitle className="mt-4 mb-1">
+                            <span>انتخاب کاربر </span>
+                        </CardTitle>
+                        <IsLoaderComponent isLoader={this.state.isLoader}>
+                            <div className="w-100 row m-0">
+                                <div className="col-11 p-0">
+                                    <AutoSuggestEditwithOutLowerCase
+                                        placeholder={ "لطفا نام یا شماره تماس کاربر را وارد کنید"}
+                                        data={this.state.data}
+                                        value={this.state.value}
+                                        onChange={value => { this.onChangeValue(value)}}
+                                    />
+                                    {this.state.error!=="" ? (
+                                        <div className="invalid-feedback d-block">
+                                            {this.state.error}
+                                        </div>
+                                    ) : null}
+                                </div>
+                                <div className="col-1 ">
+                                    <button onClick={this.handelSending}>add</button>
+                                </div>
+                            </div>
+
+
+                            {/*<span className="FsFooterLogin mb-3">انتخاب کاربر:</span>*/}
+
+
+                        </IsLoaderComponent>
+
+
+
+
 
 
             </div>

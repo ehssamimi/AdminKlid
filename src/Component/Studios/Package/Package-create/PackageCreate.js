@@ -1,22 +1,14 @@
 import React, {useState, useEffect} from 'react';
-import {
-    AddClassroom,
-    AddCourseDetail,
-    AddFileToCourse,
-    GetUserDropDown,
-    UpdateCourseDetail
-} from "../../../functions/ServerConnection";
-import {Card, CardBody, Collapse} from "reactstrap";
-import Loader from "../../../Common/Loader/Loader";
-import {Form, Formik} from "formik";
-import ImgComponent from "../../../Common/ImgComponents/ImgComponent";
-import AddPDf from "../../../Common/AddPdf/AddPDf";
-import AddVideoConvert from "../../../Common/AddVideoConver/AddVideoConvert";
-import PreviewVideoComponent from "../../../Common/PreviewVideoComponent/PreviewVideoComponent";
-import {FormInput, FormSelect} from "../../../Common/ComponentFunctional/FormFeilds";
-import {error_Notification, LabelValueOption, success_Notification} from "../../../functions/componentHelpFunction";
 import * as Yup from "yup";
+import {AddClassroom, AddPackage, GetUserDropDown} from "../../../functions/ServerConnection";
+import {error_Notification, LabelValueOption, success_Notification} from "../../../functions/componentHelpFunction";
+import {Card, CardBody} from "reactstrap";
 import IsLoaderComponent from "../../../Common/ISLodader/IsLoader";
+import {Form, Formik} from "formik";
+import {FormCheckBox, FormInput, FormSelect} from "../../../Common/ComponentFunctional/FormFeilds";
+
+
+
 const SignupSchema = Yup.object().shape({
 
     Name: Yup.string()
@@ -25,26 +17,26 @@ const SignupSchema = Yup.object().shape({
         .required("پایه اجباری است !"),
     field: Yup.object()
         .required("رشته اجباری است !"),
-    lesson_names: Yup.object()
-        .required("درس اجباری است !"),
-    price: Yup.number()
-        .required("هزینه اجباری است !"),
-
-
+    isActive: Yup.string().required("A radio option is required"),
 
 });
+const options = [
 
-const ClassRoomCreate = (props) => {
+    { value: "نیست", label: "نیست" },
+    { value: "هست", label: "هست" }
+];
+
+const PackageCreate = (props) => {
     const [isLoader, setIsLoader] = useState(true);
     const [Option, setOptions] = useState({});
-    const[initialValue,setInitialValue]=useState({Name:'' , grade: "", field: '',lesson_names:"",price:""});
+    const[initialValue,setInitialValue]=useState({Name:'' , grade: "", field: '',isActive: ""});
     useEffect(() => {
         // Update the document title using the browser API
         async function  getDrops(){
-           let{state ,Description}= await GetUserDropDown();
+            let{state ,Description}= await GetUserDropDown();
             setIsLoader(false);
-           console.log(state);
-           console.log(Description);
+            console.log(state);
+            console.log(Description);
 
             if (state===200 ) {
                 setOptions(Description)
@@ -52,7 +44,7 @@ const ClassRoomCreate = (props) => {
                 error_Notification(state, Description)
                 // NotificationManager.error(state, Description);
             }
-           let{field_type,grade_type,lesson_names}=Description
+            let{field_type,grade_type,lesson_names}=Description
 
 
         }
@@ -68,43 +60,25 @@ const ClassRoomCreate = (props) => {
         const payload = {
             ...values,
         };
+        console.log("payload");
+        console.log(payload);
 
         // **********send validate data*********
 
-        let Data={
+        let Data= {
+            "name": payload.Name,
             "information": {
-                "grade": payload.grade.value,
-                "field": payload.field.value,
-                "lesson_name":payload.lesson_names.value
-            },
-            "payment": {
-                "price": payload.price
-            },
-            "live_information": {
-                "key": payload.Name
-            },
-            "time_range": {
-                "start": {
-                    "year": 0,
-                    "month": 0,
-                    "day": 0,
-                    "hour": 0,
-                    "minute": 0
-                },
-                "end": {
-                    "year": 0,
-                    "month": 0,
-                    "day": 0,
-                    "hour": 0,
-                    "minute": 0
-                }
-            }
+            "grade": payload.grade.value,
+                "field": payload.field.value
+        },
+            "is_active": payload.isActive !== "نیست"
         };
+        console.log(Data);
         setIsLoader(true);
-       let{state,Description}= await AddClassroom(Data);
+        let{state,Description}= await AddPackage(JSON.stringify(Data));
         setIsLoader(false);
         if (state === 200) {
-            success_Notification("کلاس مورد نظر ثبت شده است ")
+            success_Notification("پکیج مورد نظر ثبت شده است ")
         } else {
             error_Notification(state, Description)
         }
@@ -143,6 +117,13 @@ const ClassRoomCreate = (props) => {
                                         <div
                                             className=" col-sm-12 col-md-11  d-flex flex-column justify-content-between">
                                             <div className="w-100 row m-0 ">
+                                                <div className="w-100">
+                                                    <FormInput label='نام' type='text' name='Name'
+                                                               placeHolder='نام پکیج را وارد کنید !'
+                                                               DivClass="col-sm-6  " setFieldTouched={setFieldTouched}
+                                                               errors={errors} touched={touched}/>
+                                                </div>
+
 
 
                                                 <FormSelect label='پایه' option={LabelValueOption(Option.grade_type)}
@@ -158,21 +139,12 @@ const ClassRoomCreate = (props) => {
                                                             DivClass="col-sm-4  " setFieldTouched={setFieldTouched}
                                                             values={values}
                                                             errors={errors} touched={touched}/>
-                                                <FormSelect label='درس' option={LabelValueOption(Option.lesson_names)}
-                                                            name='lesson_names'
-                                                            placeHolder='در مورد نظر را وارد کنید' values={values}
-                                                            DivClass="col-sm-4  " setFieldTouched={setFieldTouched}
-                                                            setFieldValue={setFieldValue}
-                                                            errors={errors} touched={touched}/>
-                                                <FormInput label='کلید' type='text' name='Name'
-                                                           placeHolder='نام permission را وارد کنید !'
-                                                           DivClass="col-sm-6  " setFieldTouched={setFieldTouched}
-                                                           errors={errors} touched={touched}/>
-                                                <FormInput label='هزینه' type='number' name='price'
-                                                           placeHolder='هزینه کلاس رو وارد کنید !'
-                                                           DivClass="col-sm-6  " setFieldTouched={setFieldTouched}
-                                                           errors={errors} touched={touched}/>
 
+                                                <FormCheckBox label='فعال ' type='number' name='isActive'
+                                                              placeHolder='زمان تقریبی اتمام قسمت  زارا وارد کنید'
+                                                              DivClass="col-sm-4  " values={values} option={options}
+                                                              setFieldTouched={setFieldTouched} setFieldValue={setFieldValue}
+                                                              errors={errors} touched={touched}/>
 
                                             </div>
                                         </div>
@@ -196,4 +168,4 @@ const ClassRoomCreate = (props) => {
     );
 };
 
-export default ClassRoomCreate;
+ export default PackageCreate;

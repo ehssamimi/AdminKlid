@@ -77,7 +77,7 @@ const data = [
     // },
     {
         id: "studio",
-        icon: "iconsminds-gears",
+        icon: "iconsminds-tv",
         label: "استودیو",
         to: "/studio",
         subs:[
@@ -87,12 +87,12 @@ const data = [
                 to: "/studio/classroom",
                 subs:[
                     {
-                        icon: "iconsminds-gears",
+                        icon: "simple-icon-list",
                         label: "لیست کلاس",
                         to: "/studio/classroom/list",
                     },
                     {
-                        icon: "iconsminds-gears",
+                        icon: "iconsminds-folder-add--",
                         label: "ایجاد کلاس",
                         to: "/studio/classroom/create",
                     }
@@ -104,9 +104,26 @@ const data = [
                 to: "/studio/root",
                 subs:[
                     {
-                        icon: "iconsminds-gears",
+                        icon: "iconsminds-calendar-4",
                         label: "مدیریت استودیو",
                         to: "/studio/root/list",
+                    },
+                    // {
+                    //     icon: "iconsminds-gears",
+                    //     label: "ایجاد استودیو",
+                    //     to: "/studio/root/create",
+                    // }
+                ]
+            },
+            {
+                icon: "iconsminds-gears",
+                label: "پکیج",
+                to: "/studio/package",
+                subs:[
+                    {
+                        icon: "iconsminds-gears",
+                        label: "ایجاد پکیج",
+                        to: "/studio/package/create",
                     },
                     // {
                     //     icon: "iconsminds-gears",

@@ -10,6 +10,9 @@ const ClassRoom = React.lazy(() =>
 const Root = React.lazy(() =>
   import(/* webpackChunkName: "viwes-gogo" */ './root/index')
 );
+const Package = React.lazy(() =>
+  import(/* webpackChunkName: "viwes-gogo" */ './Packages/index')
+);
 
 
 class App extends Component {
@@ -22,13 +25,18 @@ class App extends Component {
           <Suspense fallback={<div className="loading" />}>
             <Switch>
               <Redirect exact from={`${match.url}/`} to={`${match.url}/classroom`} />
-              <Route
-                path={`${match.url}/classroom`}
-                render={props => <ClassRoom {...props} />}
-              /> <Route
-                path={`${match.url}/root`}
-                render={props => <Root {...props} />}
-              />
+                <Route
+                    path={`${match.url}/classroom`}
+                    render={props => <ClassRoom {...props} />}
+                />
+                <Route
+                    path={`${match.url}/root`}
+                    render={props => <Root {...props} />}
+                />
+                <Route
+                    path={`${match.url}/package`}
+                    render={props => <Package {...props} />}
+                />
 
               <Redirect to="/error" />
             </Switch>

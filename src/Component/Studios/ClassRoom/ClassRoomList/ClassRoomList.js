@@ -54,50 +54,11 @@ const ClassRoomList = (props) => {
         setInitialValue({  grade: payload.grade.value, field: payload.field.value,lesson_names:payload.lesson_names.value });
         console.log("validate");
         console.log( payload );
-        setIsLoadComponents(true);
-        // console.log(payload);
-
-        // **********send validate data*********
-
-        // let Data={
-        //     "information": {
-        //         "grade": payload.grade.value,
-        //         "field": payload.field.value,
-        //         "lesson_name":payload.lesson_names.value
-        //     },
-        //     "payment": {
-        //         "price": payload.price
-        //     },
-        //     "live_information": {
-        //         "key": payload.Name
-        //     },
-        //     "time_range": {
-        //         "start": {
-        //             "year": 0,
-        //             "month": 0,
-        //             "day": 0,
-        //             "hour": 0,
-        //             "minute": 0
-        //         },
-        //         "end": {
-        //             "year": 0,
-        //             "month": 0,
-        //             "day": 0,
-        //             "hour": 0,
-        //             "minute": 0
-        //         }
-        //     }
-        // };
-        // setIsLoader(true);
-        // let{state,Description}= await Getallclassroom(payload.grade.value,payload.field.value,payload.lesson_names.value);
-        // await Getallclassroom(payload.grade.value,payload.field.value,payload.lesson_names.value);
-        // setIsLoader(false);
-        // if (state === 200) {
-        //     success_Notification("کلاس مورد نظر ثبت شده است ")
-        // } else {
-        //     error_Notification(state, Description)
-        // }
-
+        if (payload.grade.value!==undefined || payload.field.value!==undefined || payload.lesson_names.value!==undefined){
+            setIsLoadComponents(true);
+        } else {
+            error_Notification("نا موفق ","باید حداقل یک فیلد انتخاب شود")
+        }
     };
 
 

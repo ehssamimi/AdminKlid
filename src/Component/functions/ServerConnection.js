@@ -3678,6 +3678,29 @@ export async  function  DeleteStudios(Data){
     });
     return resp;
 }
+// *************package*************
+export async  function  AddPackage(Data){
+
+    let headers = {
+        'Token': Const.Token,
+        'Content-Type': 'application/json',
+        'accept': 'application/json'
+    };
+    console.log(Data);
+
+
+    var resp ="";
+    await axios.post(`${Const.kelidihaadmin}admin/package/add`, Data, {headers: headers}).then(function (response) {
+
+
+        // let {Items} = response.data;
+        resp={state:200,Description:response.data};
+
+    }).catch(function (error) {
+        resp=Error(error);
+    });
+    return resp;
+}
 
 
 function Error(error) {
