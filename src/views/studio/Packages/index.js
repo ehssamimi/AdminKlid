@@ -3,9 +3,9 @@ import { Route, withRouter, Switch, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 
-// const RootRoomList = React.lazy(() =>
-//     import(/* webpackChunkName: "viwes-gogo" */ '../../../Component/Studios/Root/RootList/StudioList')
-// );
+const PackageList = React.lazy(() =>
+    import(/* webpackChunkName: "viwes-gogo" */ '../../../Component/Studios/Package/Package-list/Package-list')
+);
 const PackageCreate = React.lazy(() =>
     import(/* webpackChunkName: "viwes-gogo" */ '../../../Component/Studios/Package/Package-create/PackageCreate')
 );
@@ -24,10 +24,10 @@ class App extends Component {
                 <Suspense fallback={<div className="loading" />}>
                     <Switch>
                         <Redirect exact from={`${match.url}/`} to={`${match.url}/create`} />
-                        {/*<Route*/}
-                            {/*path={`${match.url}/list`}*/}
-                            {/*render={props => <RootRoomList {...props} />}*/}
-                        {/*/>*/}
+                        <Route
+                            path={`${match.url}/list`}
+                            render={props => <PackageList {...props} />}
+                        />
                         <Route
                             path={`${match.url}/create`}
                             render={props => <PackageCreate {...props} />}

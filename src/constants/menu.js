@@ -125,11 +125,11 @@ const data = [
                         label: "ایجاد پکیج",
                         to: "/studio/package/create",
                     },
-                    // {
-                    //     icon: "iconsminds-gears",
-                    //     label: "ایجاد استودیو",
-                    //     to: "/studio/root/create",
-                    // }
+                    {
+                        icon: "iconsminds-gears",
+                        label: "لیست پکیج",
+                        to: "/studio/package/list",
+                    }
                 ]
             },
         ]

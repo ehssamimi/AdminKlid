@@ -3701,6 +3701,27 @@ export async  function  AddPackage(Data){
     });
     return resp;
 }
+export async  function  getPackage(value){
+
+    let headers = {
+        'Token': Const.Token,
+        'Content-Type': 'application/json',
+        'accept': 'application/json'
+    };
+
+
+    var resp ="";
+    await axios.post(`${Const.kelidihaadmin}admin/package/search?value=${value}`, "", {headers: headers}).then(function (response) {
+
+
+        // let {Items} = response.data;
+        resp={state:200,Description:response.data};
+
+    }).catch(function (error) {
+        resp=Error(error);
+    });
+    return resp;
+}
 
 
 function Error(error) {
