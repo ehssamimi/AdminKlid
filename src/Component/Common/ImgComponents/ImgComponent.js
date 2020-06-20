@@ -141,7 +141,7 @@ class ImgComponent extends Component {
                         isOpenImg: !prevState.isOpenImg
                     }));
 
-                }} label={'انتخاب عکس'} aspect={1/1} GetImgFile={this.HandelImg}  />
+                }} label={'انتخاب عکس'} aspect={1.71/1} GetImgFile={this.HandelImg}  />
 
             </div>
         );

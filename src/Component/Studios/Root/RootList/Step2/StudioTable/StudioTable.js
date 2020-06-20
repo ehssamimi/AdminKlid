@@ -38,7 +38,7 @@ class StudioTable extends Component {
 
      SetInitial=async ()=>{
          let {state,Description}=await loadStudio(this.props.match.params.id);
-         console.log(Description );
+         console.log("plan" );
          console.log(Description.plan);
 
          function convertIndex(x){
@@ -47,16 +47,19 @@ class StudioTable extends Component {
 
          let j=1;let descibe=[],ClassLists=this.state.ClassLists
          let dayss=Object.values(Description.plan);
+         console.log("dayss" );
+         console.log(dayss);
+
          function eachDay(item, index){
              console.log(item);
              let bg=bgClassroomConfige(item);
              for (let i = convertIndex(item.start); i <= convertIndex(item.end); i++) {
 
-                 $(`#${i+days[index+1]}`).addClass([ "selectedTab", bg ]).html(j);
+                 $(`#${i+days[index]}`).addClass([ "selectedTab", bg ]).html(j);
 
              }
              ClassLists.push({
-                 "day": convertshamcytomiladi(days[index+1]),
+                 "day": convertshamcytomiladi(days[index]),
                  "start": item.start,
                  "end": item.end,
                  "class_id": item.class_id,
