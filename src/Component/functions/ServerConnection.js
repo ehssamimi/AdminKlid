@@ -3722,6 +3722,93 @@ export async  function  getPackage(value){
     });
     return resp;
 }
+export async  function  getPackageDetail(id){
+
+    let headers = {
+        'Token': Const.Token,
+        'Content-Type': 'application/json',
+        'accept': 'application/json'
+    };
+
+
+    var resp ="";
+    await axios.get(`${Const.kelidihaadmin}admin/package/load?package_id=${id}` , {headers: headers}).then(function (response) {
+
+
+        // let {Items} = response.data;
+        resp={state:200,Description:response.data};
+
+    }).catch(function (error) {
+        resp=Error(error);
+    });
+    return resp;
+}
+export async  function  UpdatePackage(Data){
+
+    let headers = {
+        'Token': Const.Token,
+        'Content-Type': 'application/json',
+        'accept': 'application/json',
+        'Access-Control-Allow-Origin':'*'
+    };
+
+
+    var resp ="";
+    await axios.put(`${Const.kelidihaadmin}admin/package/update`, Data, {headers: headers}).then(function (response) {
+        console.log(response)
+
+        let {Description}=response.data;
+        // let {Items} = response.data;
+        resp={state:200,Description:Description};
+
+    }).catch(function (error) {
+
+        resp=Error(error);
+    });
+
+
+    return resp;
+}
+export async  function  DeletePackage(package_id){
+
+    let headers = {
+        'Token': Const.Token,
+        'accept': 'application/json',
+    };
+
+
+    var resp ="";
+    await axios.delete(`${Const.kelidihaadmin}admin//package/delete?package_id=${package_id}`, {headers: headers}).then(function (response) {
+        console.log(response );
+        let {Description}=response.data;
+        // let {Items} = response.data;
+        resp={state:200,Description:Description};
+
+    }).catch(function (error) {
+        resp=Error(error)
+    });
+    return resp;
+}
+export async  function  ActivePackage(package_id){
+
+    let headers = {
+        'Token': Const.Token,
+        'accept': 'application/json',
+    };
+
+
+    var resp ="";
+    await axios.get(`${Const.kelidihaadmin}package/active?package_id=${package_id}`, {headers: headers}).then(function (response) {
+        console.log(response );
+        let {Description}=response.data;
+        // let {Items} = response.data;
+        resp={state:200,Description:Description};
+
+    }).catch(function (error) {
+        resp=Error(error)
+    });
+    return resp;
+}
 
 
 function Error(error) {

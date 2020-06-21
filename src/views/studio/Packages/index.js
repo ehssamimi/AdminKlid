@@ -9,6 +9,9 @@ const PackageList = React.lazy(() =>
 const PackageCreate = React.lazy(() =>
     import(/* webpackChunkName: "viwes-gogo" */ '../../../Component/Studios/Package/Package-create/PackageCreate')
 );
+const PackageDetail = React.lazy(() =>
+    import(/* webpackChunkName: "viwes-gogo" */ '../../../Component/Studios/Package/PackageDetail/PackageDetail')
+);
 // const StudioStep2 = React.lazy(() =>
 //     import(/* webpackChunkName: "viwes-gogo" */ '../../../Component/Studios/Root/RootList/Step2/StudioStep2')
 // );
@@ -31,6 +34,14 @@ class App extends Component {
                         <Route
                             path={`${match.url}/create`}
                             render={props => <PackageCreate {...props} />}
+                        />
+                        <Route
+                            path={`${match.url}/detail/:id?`}
+                            render={props => <PackageDetail {...props} />}
+                        />
+                        <Route
+                            path={`${match.url}/update/:id?`}
+                            render={props => <PackageDetail {...props} />}
                         />
 
                         {/*<Route*/}

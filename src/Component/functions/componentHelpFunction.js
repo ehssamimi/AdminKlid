@@ -13,7 +13,7 @@ export const error_Notification=(state,Description)=>{
 };
 export const success_Notification=(Response)=>{
     return NotificationManager.success(
-        "تبریک",
+        "موفق شدید",
         Response,
         3000,
         null,
@@ -249,6 +249,21 @@ export const getProfileValue=(data)=>{
         "parent_code":parent.code!==null?parent.code.code:"--",
         "personal_schedule": personal_schedule
     } )
+}
+export const LabelValueSingle=(value)=>{
+
+    return { value: value , label: value  };
+}
+export const RemoveElement=(id)=>{
+
+    const $el = document.getElementById(`${id}`);
+    $el.classList.add("opacity-0")
+    const duration = 2;
+    const from = { opacity: 0};
+    TweenMax.to($el, duration, from);
+    setTimeout(() => {
+        $el.remove();
+    }, 2000)
 }
 
 // code: {code: 9721, create_at: "2020-05-04T11:32:56.059000", is_used: true}

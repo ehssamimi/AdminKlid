@@ -1,6 +1,6 @@
 import React, {Component, useState} from 'react';
-import {DeleteClassRoom} from "../../../../functions/ServerConnection";
-import {error_Notification, success_Notification} from "../../../../functions/componentHelpFunction";
+import {ActivePackage, DeleteClassRoom, DeletePackage} from "../../../../functions/ServerConnection";
+import {error_Notification, RemoveElement, success_Notification} from "../../../../functions/componentHelpFunction";
 import {TweenMax} from "gsap/TweenMax";
 import {Button, Card} from "reactstrap";
 import {Link} from "react-router-dom";
@@ -14,61 +14,61 @@ import {ModalDelete} from "../../../../Common/Modals/ModalDelete/ModalDelete";
 
 const PackageListRow = (props) => {
     const [isOpen, setIsOpen] = useState(false);
+    const [isActive, setIsActive] = useState(false);
+    const [Activate, setActivate] = useState(props.is_active);
+
     console.log(props);
-    // id: "5eede639b6b169988e473de5"
-    // information: {grade: "یازدهم", field: "تجربی"}
-    // is_active: false
-    // name: "new"
+
     let{is_active,id,information:{grade,field },name}=props;
     const handelDelete = async() => {
-        let {state ,Description}=await DeleteClassRoom(id);
+        let {state ,Description}=await DeletePackage(id);
         if (state===200 ) {
             success_Notification("حذف شد");
-            const $el = document.getElementById(`${id}`);
-            props.UpdateClassList();
-            console.log($el);
-            $el.classList.add("opacity-0")
-            const duration = 2;
-            const from = { opacity: 0};
-            TweenMax.to($el, duration, from);
-            setTimeout(() => {
-                $el.remove();
-            }, 2000)
+            RemoveElement(id)
 
         } else {
             error_Notification(state, Description)
         }
         setIsOpen(!isOpen)
     };
+    const handelَActive = async() => {
+        let {state ,Description}=await ActivePackage(id);
+        if (state===200 ) {
+            success_Notification(!Activate?"فعال شد":"غیرفعال شد");
+            setActivate(!Activate);
+
+        } else {
+            error_Notification(state, Description)
+        }
+        setIsActive(!isActive);
+        setActivate(!Activate);
+    };
 
     return (
-        <Card className="mt-2 box-shadow-custom br20px" id={id}>
+        <Card className="mt-2 box-shadow-custom br20px col-sm-12 col-md-6 col-lg-4" id={id}>
 
 
 
-            <Link to={`/studio/classroom/detail/${id}`}  >
+            <Link to={`/studio/package/detail/${id}`}  >
                 <div className="row m-0 card-body">
                     <RowShowShowColEdit label={"دوره"} value={grade}   className={"col-6 d-flex justify-content-start p-0"}/>
                     <RowShowShowColEdit label={"رشته"} value={field}   className={"col-6  d-flex justify-content-start p-0"}/>
-                      <RowShowShowColEdit label={"فعال"} value={is_active?"هست":"نیست"}   className={"col-6  d-flex justify-content-start p-0"}/>
-
-
-
-
+                      <RowShowShowColEdit label={"فعال"} value={Activate?"هست":"نیست"}   className={"col-6  d-flex justify-content-start p-0"}/>
 
                 </div>
             </Link>
             <CardActions className="d-flex justify-content-center">
                 <Button onClick={()=>{setIsOpen(!isOpen)}} className="btn red-background">حذف</Button>
-                <Link to={`/studio/classroom/edit/${id}`}  >
+                <Link to={`/studio/package/update/${id}`}  >
                     <Button   className="btn btn-warning">ویرایش</Button>
                 </Link>
+                <Button onClick={()=>{setIsActive(!isActive)}} className="btn btn-primary">{!Activate?"فعال":"غیر فعال"}</Button>
+
 
             </CardActions>
+                 <ModalDelete isOpen={isOpen} toggle={()=>{setIsOpen(!isOpen)}} item={"پکیج"}  deleteComponent={handelDelete}/>
+            <ModalDelete isOpen={isActive} toggle={()=>{setIsActive(!isActive)}} item={"پکیج"} type={!Activate?"فعال کردن":"غیرفعال کردن"}  deleteComponent={handelَActive}/>
 
-
-
-            <ModalDelete isOpen={isOpen} toggle={()=>{setIsOpen(!isOpen)}} item={"کلاس"}  deleteComponent={handelDelete}/>
 
         </Card>
 

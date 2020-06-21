@@ -38,10 +38,7 @@ const PackageList = (props) => {
             error_Notification("نا موفق", "فیلد نام اجباری است ");
         }
     };
-    // id: "5eede639b6b169988e473de5"
-    // information: {grade: "یازدهم", field: "تجربی"}
-    // is_active: false
-    // name: "new"
+
     return (
         <div>
             <Card>
@@ -69,9 +66,12 @@ const PackageList = (props) => {
             </Card>
 
             <IsLoaderComponent isLoader={isloader}>
-                {
-                    packages.length>0?packages.map((item,index)=><div className="col-sm-12 col-md-6 col-lg-4" key={index}><PackageListRow   {...item}/></div>):""
-                }
+                <div className="row p-0 m-0">
+                    {
+                        packages.length>0?packages.map((item,index)=> <PackageListRow  key={index} {...item}/> ):""
+                    }
+                </div>
+
 
             </IsLoaderComponent>
 
