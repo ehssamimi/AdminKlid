@@ -1,9 +1,6 @@
  import React, {useState, useEffect} from 'react';
 import * as Yup from "yup";
 import {
-    AddClassroom,
-    AddPackage,
-    getPackage,
     getPackageDetail,
     GetUserDropDown, UpdatePackage
 } from "../../../functions/ServerConnection";
@@ -13,10 +10,15 @@ import {
     LabelValueSingle,
     success_Notification
 } from "../../../functions/componentHelpFunction";
-import {Card, CardBody} from "reactstrap";
+import {Card, CardBody, CardTitle, Table} from "reactstrap";
 import IsLoaderComponent from "../../../Common/ISLodader/IsLoader";
 import {Form, Formik} from "formik";
 import {FormCheckBox, FormInput, FormSelect} from "../../../Common/ComponentFunctional/FormFeilds";
+ import {RowShowShowColEdit} from "../../../Common/RowShowShowColEdit/ShowInRowComponents";
+ import ClassRoomList from "../../ClassRoom/ClassRoomList/ClassRoomList";
+ import PreviewUserInClassroomList
+     from "../../ClassRoom/ClassRoomDetails/UsersInClassRoomLists/PreviewUserInClassroomList";
+ import ClassRowInPackageTable from "./ClassRowInPackageTable/ClassRowInPackageTable";
 
 
 
@@ -32,7 +34,6 @@ const SignupSchema = Yup.object().shape({
 
 });
 const options = [
-
     { value: "نیست", label: "نیست" },
     { value: "هست", label: "هست" }
 ];
@@ -64,7 +65,8 @@ const PackageDetail = (props) => {
              if (state === 200) {
                 console.log(Description);
                 console.log(Description.information.field);
-                setInitialValue({Name:Description.name , grade:LabelValueSingle(Description.information.grade)  , field:LabelValueSingle(Description.information.field),isActive: Description.is_active?"هست":"نیست" })
+                // setInitialValue({Name:Description.name , grade:LabelValueSingle(Description.information.grade)  , field:LabelValueSingle(Description.information.field),isActive: Description.is_active?"هست":"نیست" })
+                setInitialValue({Name:Description.name , grade:Description.information.grade , field:Description.information.field,isActive: Description.is_active?"هست":"نیست" })
                 setclassess( Description.classes);
 
             } else {
@@ -86,6 +88,14 @@ const PackageDetail = (props) => {
           getPackageDetails();
 
     },[props]);
+    const UpdateClassList=async ()=>{
+        let {state, Description} = await getPackageDetail(props.match.params.id);
+        if (state === 200) {
+                setclassess( Description.classes);
+        } else {
+            error_Notification(state, Description);
+        }
+    };
 
 
 
@@ -138,81 +148,54 @@ const PackageDetail = (props) => {
         <div>
             <Card>
                 <CardBody>
+                    <CardTitle className="mt-2  mb-3">
+                        <span>جزئیات پکیج</span>
+                    </CardTitle>
 
                     {
                         <IsLoaderComponent isLoader={isLoader} >
-                            <Formik
-                                initialValues={
-                                    initialValue
+                            <div className="row">
+                                <RowShowShowColEdit label="نام " value={initialValue.Name} className="col-sm-6 col-md-4 col-lg-3 "/>
+                                <RowShowShowColEdit label="دوره " value={initialValue.grade} className="col-sm-6 col-md-4 col-lg-3 "/>
+                                <RowShowShowColEdit label="رشته " value={initialValue.field} className="col-sm-6 col-md-4 col-lg-3 "/>
+                                <RowShowShowColEdit label="فعال " value={initialValue.isActive } className="col-sm-6 col-md-4 col-lg-3 "/>
+                            </div>
+
+                            <CardTitle className="mt-4  mb-3">
+                                <span>لیست کلاس های موجود در پکیج</span>
+                            </CardTitle>
+
+                            <Table striped>
+                                <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th className="text-center">پایه</th>
+                                    <th className="text-center">رشته</th>
+                                    <th className="text-center">درس</th>
+                                    <th className="text-center">اکشن</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+
+                                {classess.length>0 && Array.isArray(classess)  ?
+                                    classess.map((todo, index) =>
+                                        <ClassRowInPackageTable {...todo} key={index} index={index}  packageId={props.match.params.id} UpdateClassList={UpdateClassList}/>
+                                    ) : ''
                                 }
-                                validationSchema={SignupSchema}
-                                onSubmit={handleSubmit}
-                                enableReinitialize={true}
-                            >
-                                {({
-                                      handleSubmit,
-                                      setFieldValue,
-                                      setFieldTouched,
-                                      handleChange,
-                                      handleBlur,
-                                      values,
-                                      errors,
-                                      touched,
-                                      isSubmitting
-                                  }) => (
-                                    <Form className="av-tooltip tooltip-label-bottom w-100 row m-0">
+
+                                </tbody>
+                            </Table>
 
 
-                                        <div
-                                            className=" col-sm-12 col-md-11  d-flex flex-column justify-content-between">
-                                            <div className="w-100 row m-0 ">
-                                                <div className="w-100">
-                                                    <FormInput label='نام' type='text' name='Name'
-                                                               placeHolder='نام پکیج را وارد کنید !'
-                                                               DivClass="col-sm-6  " setFieldTouched={setFieldTouched}
-                                                               errors={errors} touched={touched}/>
-                                                </div>
-
-
-
-                                                <FormSelect label='پایه' option={LabelValueOption(Option.grade_type)}
-                                                            name='grade'
-                                                            placeHolder='پایه خود را وارد کنید' values={values}
-                                                            DivClass="col-sm-4  " setFieldTouched={setFieldTouched}
-                                                            setFieldValue={setFieldValue}
-                                                            errors={errors} touched={touched}/>
-                                                <FormSelect label='رشته' option={LabelValueOption(Option.field_type)}
-                                                            name='field'
-                                                            placeHolder='رشته خود را وارد کنید'
-                                                            setFieldValue={setFieldValue}
-                                                            DivClass="col-sm-4  " setFieldTouched={setFieldTouched}
-                                                            values={values}
-                                                            errors={errors} touched={touched}/>
-
-                                                <FormCheckBox label='فعال ' type='number' name='isActive'
-                                                              placeHolder='زمان تقریبی اتمام قسمت  زارا وارد کنید'
-                                                              DivClass="col-sm-4  " values={values} option={options}
-                                                              setFieldTouched={setFieldTouched} setFieldValue={setFieldValue}
-                                                              errors={errors} touched={touched}/>
-
-                                            </div>
-                                        </div>
-
-
-                                        <div className="col-6 offset-3 ">
-                                            <button className="btn btn-success text-center col-6 offset-3 "
-                                                    type="submit">
-                                                فرستادن
-                                            </button>
-                                        </div>
-
-                                    </Form>
-                                )}
-                            </Formik>
-                        </IsLoaderComponent>
+                         </IsLoaderComponent >
                     }
                 </CardBody>
             </Card>
+            <div className="w-100 mt-3">
+                <ClassRoomList type={"classPackage"} packageId={props.match.params.id} classess={classess} UpdateClassList={UpdateClassList}/>
+
+            </div>
+
         </div>
     );
 };

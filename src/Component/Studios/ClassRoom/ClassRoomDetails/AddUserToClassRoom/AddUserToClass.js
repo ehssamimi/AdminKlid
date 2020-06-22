@@ -3,7 +3,7 @@ import {SuggestUser, useractioninclassroom} from "../../../../functions/ServerCo
 import {AutoSuggestUsers, error_Notification, success_Notification} from "../../../../functions/componentHelpFunction";
 import IsLoaderComponent from "../../../../Common/ISLodader/IsLoader";
 import AutoSuggestEditwithOutLowerCase from "../../../../Common/AutoSuggestEdit/AutoSuggestEditwithOutLowerCase";
-import {Card, CardBody, CardTitle} from 'reactstrap'
+import {  CardTitle} from 'reactstrap'
 
 class AddUserToClass extends Component {
     constructor(props) {

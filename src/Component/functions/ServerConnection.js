@@ -3809,6 +3809,28 @@ export async  function  ActivePackage(package_id){
     });
     return resp;
 }
+export async  function  ActionCladdToPackage(action,package_id,class_id){
+
+    let headers = {
+        'Token': Const.Token,
+        'accept': 'application/json',
+    };
+
+
+    var resp ="";
+    await axios.put(`${Const.kelidihaadmin}admin/package/classes/${action}?package_id=${package_id}&class_id=${class_id}`, {headers: headers}).then(function (response) {
+        console.log(response );
+        let {Description}=response.data;
+        // let {Items} = response.data;
+        resp={state:200,Description:Description};
+
+    }).catch(function (error) {
+        resp=Error(error)
+    });
+    return resp;
+}
+
+
 
 
 function Error(error) {

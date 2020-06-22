@@ -7,6 +7,7 @@ import RowClassList from "../RowClassList";
 import {Getallclassroom, GetAllUser} from "../../../../functions/ServerConnection";
 import {error_Notification} from "../../../../functions/componentHelpFunction";
 import SelectedRowClassList from "../SelectedRowClassList";
+import ClassRoomSelectPackage from "../../ClassRoomSelectPackage/ClassRoomSelectPackage";
 
 class ClassRoomLoader extends Component {
     constructor(props) {
@@ -86,20 +87,37 @@ class ClassRoomLoader extends Component {
                         hasMore={this.state.hasMore}
                         loader={<div className="loader col-6 offset-3" key={0}><Loader/></div>}
                     >
-                        <div className='row rtl m-0 w-100 '  >
-                            {productSeparate.length>0 && Array.isArray(productSeparate)  ?
-                                productSeparate.map((todo, index) =>
-                                    <div key={index} className={ this.props.type==="selected"?"col-12 p-0 mt-2":"col-sm-12 col-md-6 col-lg-4"}>{
-                                        this.props.type==="selected"?<SelectedRowClassList {...todo} {...this.props} />:   <RowClassList  {...todo} UpdateClassList={this.UpdateClassList}/>
-                                    }
 
-                                    </div>
+                         <div className='row rtl m-0 w-100 '  >
+                                {productSeparate.length>0 && Array.isArray(productSeparate)  ?
+                                    productSeparate.map((todo, index) =>
+
+                                        <div key={index} className={ this.props.type==="selected"?"col-12 p-0 mt-2":"col-sm-12 col-md-6 col-lg-4"}>
+
+                                            {
+                                                this.props.type === "selected" ?
+                                                    <SelectedRowClassList {...todo} {...this.props} /> :""
+                                            }
+                                            {
+                                                this.props.type === undefined ?
+                                                    <RowClassList  {...todo} UpdateClassList={this.UpdateClassList}/> :""
+                                            }
+                                            {
+                                                this.props.type === "classPackage" ?
+                                                    <ClassRoomSelectPackage  {...todo} {...this.props} /> :""
+                                            }
+
+                                        </div>
 
 
 
-                                ) : ''
-                            }
-                        </div>
+                                    ) : ''
+                                }
+                            </div>
+
+
+
+
                     </InfiniteScroll>
 
                 </IsLoaderComponent>

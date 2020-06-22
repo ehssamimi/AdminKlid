@@ -53,7 +53,7 @@ const PackageListRow = (props) => {
                 <div className="row m-0 card-body">
                     <RowShowShowColEdit label={"دوره"} value={grade}   className={"col-6 d-flex justify-content-start p-0"}/>
                     <RowShowShowColEdit label={"رشته"} value={field}   className={"col-6  d-flex justify-content-start p-0"}/>
-                      <RowShowShowColEdit label={"فعال"} value={Activate?"هست":"نیست"}   className={"col-6  d-flex justify-content-start p-0"}/>
+                    <RowShowShowColEdit label={"فعال"} value={Activate?"هست":"نیست"}   className={"col-6  d-flex justify-content-start p-0"}/>
 
                 </div>
             </Link>

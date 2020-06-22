@@ -1,8 +1,7 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import RowShowShowColEdit from "../../../Common/RowShowShowColEdit/RowShowShowColEdit";
 import {Button, Card, CardBody} from "reactstrap"
-import {RowShowShowEditWithoutLabel} from "../../../Common/RowShowShowColEdit/ShowInRowComponents";
-import PreviewVideoComponent from "../../../Common/PreviewVideoComponent/PreviewVideoComponent";
+ import PreviewVideoComponent from "../../../Common/PreviewVideoComponent/PreviewVideoComponent";
 import defaultImg from'./../../../../assets/common/img/default_pic@3x.png'
 import {Link} from "react-router-dom";
 import CardActions from "@material-ui/core/CardActions/CardActions";

@@ -1,5 +1,4 @@
 import React, {useState, useEffect} from 'react';
-import * as Yup from "yup";
 import {getPackageDetail, GetUserDropDown, UpdatePackage} from "../../../functions/ServerConnection";
 import {
     error_Notification,
@@ -11,9 +10,7 @@ import {Card, CardBody} from "reactstrap";
 import IsLoaderComponent from "../../../Common/ISLodader/IsLoader";
 import {Form, Formik} from "formik";
 import {FormCheckBox, FormInput, FormSelect} from "../../../Common/ComponentFunctional/FormFeilds";
-
-
-
+import * as Yup from "yup";
 const SignupSchema = Yup.object().shape({
 
     Name: Yup.string()
@@ -30,8 +27,7 @@ const options = [
     { value: "نیست", label: "نیست" },
     { value: "هست", label: "هست" }
 ];
-
-const packageUpdateComponentes = (props) => {
+const PackageEdit = (props) => {
     const [isLoader, setIsLoader] = useState(true);
     const [Option, setOptions] = useState({});
     const [classess, setclassess] = useState([]);
@@ -211,4 +207,4 @@ const packageUpdateComponentes = (props) => {
     );
 };
 
-export default packageUpdateComponentes;
+export default PackageEdit;
