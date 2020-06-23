@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
-import {SuggestUser, useractioninclassroom} from "../../../../functions/ServerConnection";
+import {SuggestUser, UserActioninclassroom} from "../../../../functions/ServerConnection";
 import {AutoSuggestUsers, error_Notification, success_Notification} from "../../../../functions/componentHelpFunction";
 import IsLoaderComponent from "../../../../Common/ISLodader/IsLoader";
 import AutoSuggestEditwithOutLowerCase from "../../../../Common/AutoSuggestEdit/AutoSuggestEditwithOutLowerCase";
-import {  CardTitle} from 'reactstrap'
+import {CardBody, CardTitle, Input, InputGroup} from 'reactstrap'
 
 class AddUserToClass extends Component {
     constructor(props) {
@@ -22,9 +22,6 @@ class AddUserToClass extends Component {
         this.setState({
             isLoader:false,   data
         });
-
-
-
 
     }
 
@@ -86,11 +83,12 @@ class AddUserToClass extends Component {
             let data = await this.getName(this.state.finalNumber);
             let user_id = data[0].value;
             let class_id = this.props.match.params.id;
-            let {state, Description} = await useractioninclassroom("add", class_id, user_id, null);
+            let {state, Description} = await UserActioninclassroom("add", class_id, user_id, null);
             this.setState({
                 isLoader:false
             });
             if (state === 200) {
+                this.props.updateList(user_id);
                 success_Notification("کاربر با موفقیت به کلاس اضافه شد");
             } else {
                 error_Notification(state, Description);
@@ -111,31 +109,33 @@ class AddUserToClass extends Component {
 
 
                         <CardTitle className="mt-4 mb-1">
-                            <span>انتخاب کاربر </span>
+                            <span>اضافه کردن کاربر </span>
                         </CardTitle>
                         <IsLoaderComponent isLoader={this.state.isLoader}>
                             <div className="w-100 row m-0">
-                                <div className="col-11 p-0">
-                                    <AutoSuggestEditwithOutLowerCase
-                                        placeholder={ "لطفا نام یا شماره تماس کاربر را وارد کنید"}
-                                        data={this.state.data}
-                                        value={this.state.value}
-                                        onChange={value => { this.onChangeValue(value)}}
-                                    />
-                                    {this.state.error!=="" ? (
-                                        <div className="invalid-feedback d-block">
-                                            {this.state.error}
+
+                                <div className="w-100" dir="ltr">
+
+                                    <InputGroup>
+                                        <button className="default  ml-auto btn  br10px btn-outline-primary " onClick={ this.handelSending}>ارسال</button>
+                                        <div className="col-11 p-0">
+                                            <AutoSuggestEditwithOutLowerCase
+                                                placeholder={ "لطفا نام یا شماره تماس کاربر را وارد کنید"}
+                                                data={this.state.data}
+                                                value={this.state.value}
+                                                onChange={value => { this.onChangeValue(value)}}
+                                            />
+                                            {this.state.error!=="" ? (
+                                                <div className="invalid-feedback d-block">
+                                                    {this.state.error}
+                                                </div>
+                                            ) : null}
                                         </div>
-                                    ) : null}
+                                    </InputGroup>
+
                                 </div>
-                                <div className="col-1 ">
-                                    <button onClick={this.handelSending}>add</button>
-                                </div>
+
                             </div>
-
-
-                            {/*<span className="FsFooterLogin mb-3">انتخاب کاربر:</span>*/}
-
 
                         </IsLoaderComponent>
 

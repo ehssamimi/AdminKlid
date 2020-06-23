@@ -3487,7 +3487,7 @@ export async  function  SuggestUser(Name){
     });
     return resp;
 }
-export async  function useractioninclassroom(action,class_id,user_id,page){
+export async  function UserActioninclassroom(action, class_id, user_id, page){
 
     let headers = {
         'Token': Const.Token,
@@ -3495,6 +3495,11 @@ export async  function useractioninclassroom(action,class_id,user_id,page){
         'accept': 'application/json',
         'Access-Control-Allow-Origin':'*'
     };
+    // console.log("action"+action)
+    // console.log("class_id"+class_id)
+    // console.log("user_id"+user_id)
+    // console.log("page"+page)
+
     let url=`${Const.kelidihaadmin}`;
     url=url+"admin/classroom/users/<action>?";
     url=url+`action=${action}&class_id=${class_id}`;
@@ -3502,7 +3507,7 @@ export async  function useractioninclassroom(action,class_id,user_id,page){
         url=url+`&user_id=${user_id}`
     }
     if (page!==null){
-        url=url+`&page=${user_id}`
+        url=url+`&page=${page}`
     }
     console.log(url);
 

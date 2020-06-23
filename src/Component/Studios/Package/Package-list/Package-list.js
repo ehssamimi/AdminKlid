@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import {getPackage, useractioninclassroom} from "../../../functions/ServerConnection";
+import {getPackage, UserActioninclassroom} from "../../../functions/ServerConnection";
 import {Card, CardBody, CardTitle, InputGroup, InputGroupAddon, InputGroupText, Input, Button} from 'reactstrap';
 import TextField from '@material-ui/core/TextField';
 

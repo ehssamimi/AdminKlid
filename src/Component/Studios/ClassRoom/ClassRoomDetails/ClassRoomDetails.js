@@ -13,7 +13,7 @@ class ClassRoomDetails extends Component {
     constructor(props) {
         super(props);
         this.state = {
-
+            User_id:"" ,
            isLoader:true,Description:""
 
         }
@@ -53,11 +53,15 @@ class ClassRoomDetails extends Component {
                         <Card className="mt-2 box-shadow-custom br20px" >
                             <CardBody>
                                 <DetailsClassRoom {...this.state.Description}/>
+                                <UsersInClassRoomLists {...this.props}  />
+                                {/*<AddUserToClass {...this.props} updateList={(User_id)=>{this.setState(User_id)}}/>*/}
+                                {/*<AddUserToClass {...this.props} />*/}
 
-                                <AddUserToClass{...this.props}/>
+
+
                             </CardBody>
                         </Card>
-                        <UsersInClassRoomLists/>
+
                     </div>
 
                 </IsLoaderComponent>
