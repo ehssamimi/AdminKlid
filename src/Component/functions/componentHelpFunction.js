@@ -246,6 +246,7 @@ export const getProfileValue=(data)=>{
         "parent_num": parent.phone_number,
         "parent_verify":parent['verify'],
         "personal_code": data.code.code,
+        "is_used": data.code.is_used,
         "parent_code":parent.code!==null?parent.code.code:"--",
         "personal_schedule": personal_schedule
     } )

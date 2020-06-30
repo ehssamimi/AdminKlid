@@ -6,7 +6,6 @@ class StudioList extends Component {
         return (
             <div>
                 <StudioSteps1/>
-
             </div>
         );
     }

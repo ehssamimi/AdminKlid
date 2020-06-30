@@ -30,7 +30,7 @@ class StudioTable extends Component {
     }
     async componentDidMount(){
 
-        this.SetInitial()
+          this.SetInitial()
         this.setState({
             isLoader:false
         })

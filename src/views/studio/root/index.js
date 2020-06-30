@@ -12,6 +12,15 @@ const RootRoomCreate = React.lazy(() =>
 const StudioStep2 = React.lazy(() =>
     import(/* webpackChunkName: "viwes-gogo" */ '../../../Component/Studios/Root/RootList/Step2/StudioStep2')
 );
+const Studios = React.lazy(() =>
+    import(/* webpackChunkName: "viwes-gogo" */ '../../../Component/Studios/Root/CurrentStudio/Studios.js')
+);
+const StudiosInRow = React.lazy(() =>
+    import(/* webpackChunkName: "viwes-gogo" */ '../../../Component/Studios/Root/CurrentStudio/StudiosInRows/StudiosInRow')
+);
+const StudioClass = React.lazy(() =>
+    import(/* webpackChunkName: "viwes-gogo" */ '../../../Component/Studios/Root/CurrentStudio/StudioClass/StudioClass')
+);
 
 
 class App extends Component {
@@ -36,6 +45,20 @@ class App extends Component {
                             path={`${match.url}/details/:id?`}
                             render={props => <StudioStep2 {...props} />}
                         />
+                        <Route
+                            path={`${match.url}/current/:id?`}
+                            render={props => <StudiosInRow {...props} />}
+                        />
+                        <Route
+                            path={`${match.url}/studios`}
+                            render={props => <Studios {...props} />}
+                        />
+                        <Route
+                            path={`${match.url}/class/:id?`}
+                            render={props => <StudioClass {...props} />}
+                        />
+
+
                         {/*<Route*/}
                         {/*path={`${match.url}/second-menu`}*/}
                         {/*render={props => <SecondMenu {...props} />}*/}

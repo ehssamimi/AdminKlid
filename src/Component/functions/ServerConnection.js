@@ -3407,7 +3407,7 @@ export async  function  GetClassroom(id){
 
     var resp ="";
     await axios.get(`${Const.kelidihaadmin}admin/classroom/load?class_id=${id}`,   {headers: headers}).then(function (response) {
-
+console.log(response)
 
         // let {Items} = response.data;
         resp={state:200,Description:response.data};

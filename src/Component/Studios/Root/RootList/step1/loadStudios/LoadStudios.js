@@ -56,15 +56,7 @@ const LoadStudios = (props) => {
             <div className='d-flex  w-100  flex-wrap'  >
                 {productSeparate.length>0 && Array.isArray(productSeparate)  ?
                     productSeparate.map((todo, index) =>
-                        <StudioInRow todo={todo} key={index}/>
-
-
-
-
-
-
-
-
+                        <StudioInRow todo={todo} key={index} {...props}/>
 
                     ) : ''
                 }

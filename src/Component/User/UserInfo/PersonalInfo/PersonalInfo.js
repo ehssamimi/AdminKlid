@@ -82,8 +82,9 @@ let{values}=props;
                     <LabelValueRow label={"آیا شماره والد درست یابی شده؟"} value={values.parent_verify?"بله":"خیر"} className="col-6    justify-content-start FsFooterLogin "/>
 
                     <div className="w-100 mt-3 brt-s row m-0">
-                        <LabelValueRow label={"کد احراز هویت فردی"} value={values.personal_code} className="col-6   justify-content-start FsFooterLogin "/>
-                        <LabelValueRow label={"کد احزاز هویت والد"} value={values.parent_code} className="col-6  justify-content-start FsFooterLogin "/>
+                        <LabelValueRow label={"کد احراز هویت فردی"} value={values.personal_code} className="col-4   justify-content-start FsFooterLogin "/>
+                        <LabelValueRow label={"کد احزاز هویت والد"} value={values.parent_code} className="col-4  justify-content-start FsFooterLogin "/>
+                        <LabelValueRow label={"is_used"} value={values.is_used?"بله":"خیر" } className="col-4  justify-content-start FsFooterLogin "/>
                     </div>
 
                 </div>

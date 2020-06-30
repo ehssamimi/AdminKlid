@@ -108,11 +108,11 @@ const data = [
                         label: "مدیریت استودیو",
                         to: "/studio/root/list",
                     },
-                    // {
-                    //     icon: "iconsminds-gears",
-                    //     label: "ایجاد استودیو",
-                    //     to: "/studio/root/create",
-                    // }
+                    {
+                        icon: "iconsminds-gears",
+                        label: "استودیو",
+                        to: "/studio/root/studios",
+                    }
                 ]
             },
             {

@@ -39,8 +39,8 @@ const StudioInRow = (props) => {
 let{todo}=props;
     return (
         <Card className="col-3 m-2" id={todo.id}  >
-            <Link to={`/studio/root/details/${todo.id}`}   >
-                <CardBody >
+            <Link to={props.type==="currentStudio"?`/studio/root/current/${todo.id}`:`/studio/root/details/${todo.id}`}   >
+                 <CardBody >
                     <RowShowShowColEdit label={"نام"} value={todo.name}   className={"col-6 d-flex justify-content-start p-0"}/>
                 </CardBody>
             </Link>
