@@ -2,24 +2,27 @@ import React, {useState, useEffect} from 'react';
 import {GetClassroom} from "../../../../../functions/ServerConnection";
 import RowShowShowColEdit from "../../../../../Common/RowShowShowColEdit/RowShowShowColEdit";
 import IsLoaderComponent from "../../../../../Common/ISLodader/IsLoader";
+import ax from "../../../../../Common/img/final cover.jpg"
+import {Button} from "reactstrap";
 
 const ClassDetailInRoot = (props) => {
     const [Description, setDescription] = useState([]);
     const [isLoader, setisLoader] = useState(true);
-    useEffect(async () => {
+    useEffect(  () => {
         // Update the document title using the browser API
         // return //for componentDidMount
-        await getClassDetail(props.match.params.id)
+          getClassDetail(props.match.params.id)
         setisLoader(false);
+
+
+
+
+
     }, [props]);
     const getClassDetail=async (id)=>{
       let {state,Description}=  await GetClassroom(id)
-        console.log(Description);
-        setDescription(Description)
-        // const {active,id,information:{grade,field,lesson_name},payment: {price},live_urls:{dash,hls,http_flv,rtmp,websocket}}=Description;
-    }
-    if (Description.length!==0){
-
+         setDescription(Description)
+         // const {active,id,information:{grade,field,lesson_name},payment: {price},live_urls:{dash,hls,http_flv,rtmp,websocket}}=Description;
     }
 
 
@@ -28,13 +31,58 @@ const ClassDetailInRoot = (props) => {
         <IsLoaderComponent isLoader={isLoader}>
             <div>
                 {
-                    Description.length!==0 && Array.isArray(Description)?
-                        <div>
+                    Description.length!==0 && Description.information!==undefined?
+                        <div className=" row m-0">
                             <RowShowShowColEdit label={"دوره"} value={Description.information.grade}   className={"col-4 d-flex justify-content-start p-0"}/>
                             <RowShowShowColEdit label={"رشته"} value={Description.information.field}   className={"col-4  d-flex justify-content-start p-0"}/>
                             <RowShowShowColEdit label={"درس"} value={Description.information.lesson_name}   className={"col-4  d-flex justify-content-start p-0"}/>
                             <RowShowShowColEdit label={"فعال"} value={Description.active?"هست":"نیست"}   className={"col-4  d-flex justify-content-start p-0"}/>
                             <RowShowShowColEdit label={"قیمت"} value={Description.payment.price}   className={"col-4  d-flex justify-content-start p-0"}/>
+
+
+                            <div className="w-100">
+                                <Button outline size="sm" color="primary" className="float-right mt-3">
+                                    شروع کلاس
+                                </Button>
+                            </div>
+
+                            <div className="w-100 row    ">
+                                <div   className={['h-15em','d-flex','flex-column', ' col-4 mt-3' ,'align-items-center'  ].join(' ')}>
+                                    <img src={ax} alt={Description.live_urls.dash} className=' br10px h-100 w-100'/>
+                                    <label ><RowShowShowColEdit label={"پخش"} value={"dash" }  col={ 'col-12'} className='fS1vw'/>
+                                    </label>
+                                 </div>
+                                <div   className={['h-15em','d-flex','flex-column', ' col-4 mt-3' ,'align-items-center'  ].join(' ')}>
+                                    <img src={ax} alt={Description.live_urls.hls} className=' br10px h-100 w-100'/>
+
+                                    <label ><RowShowShowColEdit label={"پخش"} value={ "hls"}  col={ 'col-12'} className='fS1vw'/>
+                                    </label>
+                                </div>
+                                <div   className={['h-15em','d-flex','flex-column', ' col-4 mt-3' ,'align-items-center'  ].join(' ')}>
+                                    <img src={ax} alt={Description.live_urls.dash} className=' br10px h-100 w-100'/>
+                                    <label ><RowShowShowColEdit label={"پخش"} value={"dash" }  col={ 'col-12'} className='fS1vw'/>
+                                    </label>
+                                </div>
+                                <div   className={['h-15em','d-flex','flex-column', ' col-4 mt-5' ,'align-items-center'  ].join(' ')}>
+                                    <img src={ax} alt={Description.live_urls.http_flv} className=' br10px h-100 w-100'/>
+
+                                    <label ><RowShowShowColEdit label={"پخش"} value={ "http_flv"}  col={ 'col-12'} className='fS1vw'/>
+                                    </label>
+                                </div>
+                                <div   className={['h-15em','d-flex','flex-column', ' col-4 mt-5' ,'align-items-center'  ].join(' ')}>
+                                    <img src={ax} alt={Description.live_urls.rtmp} className=' br10px h-100 w-100'/>
+
+                                    <label ><RowShowShowColEdit label={"پخش"} value={"rtmp" }  col={ 'col-12'} className='fS1vw'/>
+                                    </label>
+                                </div>
+                                <div   className={['h-15em','d-flex','flex-column', ' col-4 mt-5' ,'align-items-center'  ].join(' ')}>
+                                    <img src={ax} alt={Description.live_urls.websocket} className=' br10px h-100 w-100'/>
+
+                                    <label ><RowShowShowColEdit label={"پخش"} value={"websocket" }  col={ 'col-12'} className='fS1vw'/>
+                                    </label>
+                                </div>
+                            </div>
+
                         </div>:""
                 }
 

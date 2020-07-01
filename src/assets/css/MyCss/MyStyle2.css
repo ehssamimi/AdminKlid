@@ -406,7 +406,8 @@ select option:hover {
     font-size: Calc(0.35vw + 0.35rem) !important;
     font-family: IRANSans!important;
 
-}.FsFooterLogin {
+}
+.FsFooterLogin {
     font-size: Calc(0.5vw + 0.5rem) !important;
     font-family: IRANSans!important;
 
@@ -436,6 +437,56 @@ select option:hover {
     font-family: IRANSans!important;
 
 }
+
+.Fs0 {
+    font-size: Calc(0.35vw + 0.35rem) !important;
+    font-family: IRANSans!important;
+
+}
+.Fs1 {
+    font-size: Calc(0.5vw + 0.5rem) !important;
+    font-family: IRANSans!important;
+
+}
+
+.Fs2 {
+    font-size: Calc(0.7vw + 0.5rem) !important;
+    font-family: IRANSans!important;
+
+}
+
+.Fs3{
+    font-size: Calc(1vw + 0.7rem);
+    font-family: IRANSans!important;
+}
+
+.Fs4 {
+    font-size: Calc(1vw + 1rem) !important;
+    font-family: IRANSans!important;
+
+}
+
+.Fs5{
+    font-size: calc(1.3vw + 0.5rem)!important;
+    font-family: IRANSans!important;
+
+}
+.Fs6{
+    font-size: Calc(1.9vw + 1.5rem);
+    font-family: IRANSans!important;
+
+}
+
+
+
+
+
+
+
+
+
+
+
 .fs10vw{
     font-size: 10vw;
 }
