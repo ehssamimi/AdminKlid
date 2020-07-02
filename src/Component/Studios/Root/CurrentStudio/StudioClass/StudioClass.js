@@ -21,6 +21,7 @@ import UsersInClassRoomLists from "../../../ClassRoom/ClassRoomDetails/UsersInCl
 import StudioInTable from "../StudioInTable/StudioInTable";
 import ClassDetailInRoot from "./ClassDetailInRoot/ClassDetailInRoot";
 import RowShowShowColEdit from "../../../../Common/RowShowShowColEdit/RowShowShowColEdit";
+import Tab2ChatBox from "./Tab2-ChatBox/Tab2-ChatBox";
 
 
 const StudioClass = (props) => {
@@ -127,9 +128,8 @@ const StudioClass = (props) => {
                                 <CardTitle className="mb-4">
                                     Wedding Cake with Flowers Macarons and Blueberries
                                 </CardTitle>
-                                <Button outline size="sm" color="primary">
-                                    Edit
-                                </Button>
+                                <Tab2ChatBox/>
+
                             </CardBody>
                         </Colxx>
                     </Row>

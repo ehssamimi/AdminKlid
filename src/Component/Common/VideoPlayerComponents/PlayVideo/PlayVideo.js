@@ -16,11 +16,12 @@ const PlayVideo169 = (props) => {
         aspectRatio: '16:9',
         controls: true,
         nativeControlsForTouch:true,
+
         sources: [
             {
                 // src: props.src,
                 src: props.video,
-                type:"application/x-mpegURL"
+                type:props.type || "application/x-mpegURL"
                 // type: 'video/m3u8',
             },
         ],

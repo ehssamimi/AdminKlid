@@ -2,22 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3127a07d-e1e7-46b9-a05b-d8fa367c791f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Component/Studios/Root/CurrentStudio/StudioClass/ClassDetailInRoot/ClassDetailInRoot.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Component/Studios/Root/CurrentStudio/StudioClass/StudioClass.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Component/Studios/Root/CurrentStudio/StudioInTable/StudioInTable.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Component/Studios/Root/CurrentStudio/Studios.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Component/Studios/Root/CurrentStudio/StudiosInRows/StudiosInRow.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Component/Studios/Root/CurrentStudio/StudioClass/ClassDetailInRoot/NewHLSPlayer/NewHLSPlayer.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Component/Studios/Root/CurrentStudio/StudioClass/ClassDetailInRoot/NewWebsocketPlayer/NewWebsocketPlayer.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Component/Studios/Root/CurrentStudio/StudioClass/Tab2-ChatBox/Chat-right-top/Chat-right-top.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Component/Studios/Root/CurrentStudio/StudioClass/Tab2-ChatBox/Tab2-ChatBox.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Component/Studios/Root/RootList/Step2/StudioTable/StudioTable.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/Studios/Root/RootList/Step2/StudioTable/StudioTable.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Component/Studios/Root/RootList/StudioList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/Studios/Root/RootList/StudioList.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Component/Studios/Root/RootList/step1/StudioInRow/StudioInRow.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/Studios/Root/RootList/step1/StudioInRow/StudioInRow.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Component/Studios/Root/RootList/step1/loadStudios/LoadStudios.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/Studios/Root/RootList/step1/loadStudios/LoadStudios.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Component/User/UserInfo/PersonalInfo/PersonalInfo.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/User/UserInfo/PersonalInfo/PersonalInfo.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Component/functions/ServerConnection.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/functions/ServerConnection.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Component/functions/componentHelpFunction.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/functions/componentHelpFunction.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/constants/menu.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/constants/menu.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/studio/root/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/studio/root/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Component/Common/VideoPlayerComponents/PlayVideo/PlayVideo.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/Common/VideoPlayerComponents/PlayVideo/PlayVideo.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Component/Common/VideoPlayerComponents/VideoModal/VideoModalDemo.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/Common/VideoPlayerComponents/VideoModal/VideoModalDemo.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Component/Studios/Root/CurrentStudio/StudioClass/ClassDetailInRoot/ClassDetailInRoot.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/Studios/Root/CurrentStudio/StudioClass/ClassDetailInRoot/ClassDetailInRoot.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Component/Studios/Root/CurrentStudio/StudioClass/StudioClass.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/Studios/Root/CurrentStudio/StudioClass/StudioClass.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/css/MyCss/MyStyle2.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/css/MyCss/MyStyle2.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/css/sass/_gogo.style.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/css/sass/_gogo.style.scss" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,7 +41,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../web content/Gogo-React" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Alef_UserPanel/Alef_user_panel" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -156,17 +153,11 @@
       <workItem from="1593461785339" duration="4002000" />
       <workItem from="1593494933884" duration="44000" />
       <workItem from="1593532041326" duration="13989000" />
+      <workItem from="1593583079558" duration="6328000" />
+      <workItem from="1593610154364" duration="6057000" />
+      <workItem from="1593673828219" duration="22247000" />
     </task>
     <servers />
-  </component>
-  <component name="TodoView">
-    <todo-panel id="selected-file">
-      <is-autoscroll-to-source value="true" />
-    </todo-panel>
-    <todo-panel id="all">
-      <are-packages-shown value="true" />
-      <is-autoscroll-to-source value="true" />
-    </todo-panel>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="2" />
@@ -180,11 +171,15 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="191" y="56" key="#Live_Templates/0.0.1920.1040@0.0.1920.1040" timestamp="1593533097712" />
-    <state x="686" y="211" key="FileChooserDialogImpl" timestamp="1593536234691">
+    <state x="730" y="310" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1593611886277">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="730" y="310" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1593611886277" />
+    <state x="686" y="211" key="FileChooserDialogImpl" timestamp="1593719951256">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1593494975860" />
-    <state x="686" y="211" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1593536234691" />
+    <state x="686" y="211" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1593719951256" />
     <state x="794" y="439" key="NewPhpFileDialog" timestamp="1593544327356">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -194,10 +189,10 @@
     </state>
     <state x="533" y="18" width="914" height="707" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1593465789120" />
     <state x="666" y="23" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1593533192033" />
-    <state width="498" height="398" key="SwitcherDM" timestamp="1593548825701">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state width="498" height="446" key="SwitcherDM" timestamp="1593612204733">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="498" height="398" key="SwitcherDM/0.0.1536.824@0.0.1536.824" timestamp="1593548825701" />
-    <state width="498" height="446" key="SwitcherDM/0.0.1920.1040@0.0.1920.1040" timestamp="1593545063300" />
+    <state width="498" height="446" key="SwitcherDM/0.0.1920.1040@0.0.1920.1040" timestamp="1593612204733" />
   </component>
 </project>

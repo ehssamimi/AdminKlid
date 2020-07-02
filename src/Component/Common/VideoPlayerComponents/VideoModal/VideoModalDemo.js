@@ -18,7 +18,7 @@ const VideoModalDemo = (props) => {
     return (
         <div className="w-100  " dir="rtl">
             <div style={{height:"100%"}}>
-                <PlayVideo169 video={props.video} img={props.img}/>
+                <PlayVideo169  {...props} />
             </div>
 
         </div>
