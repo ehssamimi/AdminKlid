@@ -8826,6 +8826,8 @@ $white-border: white !default;
 $border-r-Video:20px !default;
 $chat-my-self-bg: rgb(53, 69, 58) !default;
 $chat-other-bg: rgb(232, 237, 233) !default;
+$chat-header-name: rgb(195, 196, 189) !default;
+
 
 .br-over-g{
   border : solid 1.5px $green;
@@ -8872,6 +8874,9 @@ $background-color: #f7faf8 !important;
   align-items: center;
   cursor: pointer;
 }
+.chat-header{
+  color:$chat-header-name!important;
+}
 .bg-chat-mySelf{
   background: $chat-my-self-bg!important;
 }
@@ -8884,6 +8889,44 @@ $background-color: #f7faf8 !important;
 .border-chat-other{
   border-color: $chat-other-bg transparent transparent transparent!important;
 }
+.border-chat-left{
+  border-color: $green transparent transparent transparent;
+}
+.tri-right.right-top:after{
+  content: ' ';
+  position: absolute;
+  width: 0;
+  height: 0;
+  left: auto;
+  right: -20px;
+  top: 0px;
+  bottom: auto;
+  border: 20px solid;
+}
+.tri-right.left-top:after{
+  content: ' ';
+  position: absolute;
+  width: 0;
+  height: 0;
+  left: -15px;
+  right: auto;
+  top: 0px;
+  bottom: auto;
+  border: 22px solid;
+
+}
+.tri-right.bg-chat-mySelf:after{
+  border-color: $chat-my-self-bg transparent transparent transparent;
+}
+.tri-right.bg-chat-other:after{
+  border-color: $chat-other-bg transparent transparent transparent;
+}
+.tri-right.green-background:after{
+  border-color: $green transparent transparent transparent;
+}
+
+
+
 
 .br-y{
   border:3px solid $yellow;
@@ -9016,6 +9059,11 @@ $background-color: #f7faf8 !important;
   -webkit-border-radius: 30px 0 30px 30px;
   -moz-border-radius: 30px 0 30px 30px;
 }
+.round-top-left{
+  border-radius:0 30px  30px 30px;
+  -webkit-border-radius:0 30px  30px 30px;
+  -moz-border-radius:0 30px  30px 30px;
+}
 
 /* Right triangle placed top left flush. */
 .tri-right.border.left-top:before {
@@ -9030,17 +9078,7 @@ $background-color: #f7faf8 !important;
   border: 32px solid;
   border-color: #666 transparent transparent transparent;
 }
-.tri-right.left-top:after{
-  content: ' ';
-  position: absolute;
-  width: 0;
-  height: 0;
-  left: -15px;
-  right: auto;
-  top: 0px;
-  bottom: auto;
-  border: 22px solid;
- }
+
 
 /* Right triangle, left side slightly down */
 .tri-right.border.left-in:before {
@@ -9220,18 +9258,7 @@ $background-color: #f7faf8 !important;
   border: 32px solid;
   border-color: #666 transparent transparent transparent;
 }
-.tri-right.right-top:after{
-  content: ' ';
-  position: absolute;
-  width: 0;
-  height: 0;
-  left: auto;
-  right: -20px;
-  top: 0px;
-  bottom: auto;
-  border: 20px solid;
-  border-color: $chat-other-bg transparent transparent transparent;
-}
+
 
 /* talk bubble contents */
 .talktext{

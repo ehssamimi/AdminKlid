@@ -2,18 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3127a07d-e1e7-46b9-a05b-d8fa367c791f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Component/Studios/Root/CurrentStudio/StudioClass/ClassDetailInRoot/NewHLSPlayer/NewHLSPlayer.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Component/Studios/Root/CurrentStudio/StudioClass/ClassDetailInRoot/NewWebsocketPlayer/NewWebsocketPlayer.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Component/Studios/Root/CurrentStudio/StudioClass/Tab2-ChatBox/Chat-right-top/Chat-right-top.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Component/Studios/Root/CurrentStudio/StudioClass/Tab2-ChatBox/Tab2-ChatBox.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Component/Studios/Root/CurrentStudio/StudioClass/Tab2-ChatBox/ChatLeftRight/ChatLeftRight.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Component/Studios/Root/CurrentStudio/StudioClass/Tab2-ChatBox/InputSendMessage/InputSendMessage.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Component/Common/VideoPlayerComponents/PlayVideo/PlayVideo.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/Common/VideoPlayerComponents/PlayVideo/PlayVideo.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Component/Common/VideoPlayerComponents/VideoModal/VideoModalDemo.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/Common/VideoPlayerComponents/VideoModal/VideoModalDemo.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Component/Studios/Root/CurrentStudio/StudioClass/ClassDetailInRoot/ClassDetailInRoot.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/Studios/Root/CurrentStudio/StudioClass/ClassDetailInRoot/ClassDetailInRoot.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Component/Studios/Root/CurrentStudio/StudioClass/StudioClass.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/Studios/Root/CurrentStudio/StudioClass/StudioClass.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/css/MyCss/MyStyle2.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/css/MyCss/MyStyle2.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Component/Studios/Root/CurrentStudio/StudioClass/Tab2-ChatBox/Chat-right-top/Chat-right-top.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/Studios/Root/CurrentStudio/StudioClass/Tab2-ChatBox/Chat-right-top/Chat-right-top.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Component/Studios/Root/CurrentStudio/StudioClass/Tab2-ChatBox/Tab2-ChatBox.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/Studios/Root/CurrentStudio/StudioClass/Tab2-ChatBox/Tab2-ChatBox.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/assets/css/sass/_gogo.style.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/css/sass/_gogo.style.scss" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -155,7 +148,8 @@
       <workItem from="1593532041326" duration="13989000" />
       <workItem from="1593583079558" duration="6328000" />
       <workItem from="1593610154364" duration="6057000" />
-      <workItem from="1593673828219" duration="22247000" />
+      <workItem from="1593673828219" duration="22414000" />
+      <workItem from="1593758674985" duration="10076000" />
     </task>
     <servers />
   </component>

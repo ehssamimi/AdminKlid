@@ -8,18 +8,22 @@ const ChatRightTop = (props) => {
         // return //for componentDidMount
     }, []);
 
+
     return (
-        <div className="col-12 row m-0 p-0">
+        <div className="col-12 row  mt-3 p-0">
             <div className="width-chat-profile position-relative">
-               <div className="profile-pic-chat  br-r50  p-05 position-absolute">
-                    <img src={  profile} alt="profile" className="img-self-cover br-r50 br-y"/>
+               <div className="profile-pic-chat  br-r50  p-05 position-absolute br-g">
+                    <img src={  profile} alt="profile" className="img-self-cover br-r50 br-y "/>
                 </div>
             </div>
 
                 <div className={["talk-bubble tri-right round-top-right   right-top    ",`${props.chatBg}`].join(" ")}>
                 <div className="talktext">
-                    <p>سهند میرزایی</p>
-                    <p className="text-white   lineHeight3"  > اقا من مواردی که در بیان سینوس و کسینوس بود را متوجه نشدم میشه یه بار دیگه برام توضیح بدین اقا من مواردی که در بیان سینوس و کسینوس بود را متوجه نشدم میشه یه بار دیگه برام توضیح بدین!</p>
+                    <p className="chat-header  IranSans">سهند میرزایی</p>
+                    <p className={["lineHeight3 IranSans  ",`${props.chatBg.includes("bg-chat-other")?"text-black":"text-white"}`].join(" ")}   > اقا من مواردی که در بیان سینوس و کسینوس بود را متوجه نشدم میشه یه بار دیگه برام توضیح بدین اقا من مواردی که در بیان سینوس و کسینوس بود را متوجه نشدم میشه یه بار دیگه برام توضیح بدین!</p>
+                    <div className="w-100 d-flex justify-content-end">
+                        <span className= "chat-header  IranSans " >17:35</span>
+                    </div>
                 </div>
             </div>
         </div>
