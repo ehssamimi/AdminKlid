@@ -1,18 +1,17 @@
 import React, {useState, useEffect} from 'react';
 import {Input, InputGroup} from "reactstrap";
 import $ from 'jquery'
+import io from "socket.io-client";
+
 
 const InputSendMessage = (props) => {
     const [value, setvalue] = useState(" ");
-    useEffect(() => {
-        // Update the document title using the browser API
-        // return //for componentDidMount
-
-    }, []);
 
     const onFormSubmit = e => {
         e.preventDefault();
+        props.sendMessage(value)
          setvalue(" ");
+
     }
     const onchange = e => {
         setvalue(e.target.value)

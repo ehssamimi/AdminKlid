@@ -7,6 +7,7 @@ const ChatRightTop = (props) => {
         // Update the document title using the browser API
         // return //for componentDidMount
     }, []);
+    console.log(props);
 
 
     return (
@@ -19,8 +20,8 @@ const ChatRightTop = (props) => {
 
                 <div className={["talk-bubble tri-right round-top-right   right-top    ",`${props.chatBg}`].join(" ")}>
                 <div className="talktext">
-                    <p className="chat-header  IranSans">سهند میرزایی</p>
-                    <p className={["lineHeight3 IranSans  ",`${props.chatBg.includes("bg-chat-other")?"text-black":"text-white"}`].join(" ")}   > اقا من مواردی که در بیان سینوس و کسینوس بود را متوجه نشدم میشه یه بار دیگه برام توضیح بدین اقا من مواردی که در بیان سینوس و کسینوس بود را متوجه نشدم میشه یه بار دیگه برام توضیح بدین!</p>
+                    <p className="chat-header  IranSans">{props.sn}</p>
+                    <p className={["lineHeight3 IranSans  ",`${props.chatBg.includes("bg-chat-other")?"text-black":"text-white"}`].join(" ")}   >{props.cn}</p>
                     <div className="w-100 d-flex justify-content-end">
                         <span className= "chat-header  IranSans " >17:35</span>
                     </div>

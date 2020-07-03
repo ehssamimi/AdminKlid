@@ -29,7 +29,7 @@ const ClassDetailInRoot = (props) => {
     const getClassDetail=async (id)=>{
       let {state,Description}=  await GetClassroom(id)
          setDescription(Description)
-        console.log(Description)
+        // console.log(Description)
          // const {active,id,information:{grade,field,lesson_name},payment: {price},live_urls:{dash,hls,http_flv,rtmp,websocket}}=Description;
     }
 

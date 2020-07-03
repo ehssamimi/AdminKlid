@@ -7,7 +7,7 @@ const NewHLSPlayer = (props) => {
         // Update the document title using the browser API
         // return //for componentDidMount
     }, []);
-    console.log(props.url)
+    // console.log(props.url)
 
     return (
 
