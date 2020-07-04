@@ -5,9 +5,84 @@ import ChatLeftRight from "./ChatLeftRight/ChatLeftRight";
 import InputSendMessage from "./InputSendMessage/InputSendMessage";
 import io from "socket.io-client";
 import PackageListRow from "../../../../Package/Package-list/PAckage-list-row/PackageListRow";
+import {GetAllUser, GetHistoryChat, GetUserProfileImg} from "../../../../../functions/ServerConnection";
+import TestChat from "./TEST-CHAT";
+import {error_Notification} from "../../../../../functions/componentHelpFunction";
+import InfiniteScrollReverse from "react-infinite-scroll-reverse";
+import Loader from "../../../../../Common/Loader/Loader";
+import PreviewUserCard from "../../../../../User/UserShowAll/Subs/PreviewUserCard";
+import profile from "../../../../../../assets/common/img/profile-pic-l-5.jpg";
 
 
 const Tab2ChatBox = (props) => {
+    const [productSeparate, setproductSeparate] = useState([]);
+    const [pageStart, setpageStart] = useState(1);
+    const [hasMore, sethasMore] = useState(true);
+    const [Users, setUsers] = useState([]);
+
+    const loadMore = async () => {
+        // messages: (15) [{…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}]
+        // page: 1
+        // content: " ahmad"
+        // content_type: "txt"
+        // create_at: "2020-07-04T14:22:36.103000"
+        // group_id: "5efa3bafcd52cdd9ea00ddc2"
+        // id: "5f00d6fc2f3d927653560124"
+        // reply_to: null
+        // sender_id: "5e82a422dc5d87cead3bab42"
+        // sender_name: "amin jamal"
+        // ***get all product and current page ***
+        // let {state, Description} = await GetAllUser(pageStart);
+        let {state, Description} = await GetHistoryChat("5efa3bafcd52cdd9ea00ddc2",pageStart,"5efa3bafcd52cdd9ea00ddc2");
+        console.log("Description");
+        console.log(Description);
+        console.log("pageStart")
+        console.log(pageStart)
+
+
+        // let Response = await GetAllProduct(pageStart);
+        if (Response !== 'error') {
+            let {messages, page} = Description;
+            // *** modify  products to our label value ***
+            let productsSeparate =[];
+            messages.map((item, index)=>{
+               let product={}
+                product["sn"]=item.sender_name;
+                product["cn"]=item.content;
+                product["time"]=item.create_at.slice(11, 16);
+                productsSeparate.push(product)
+            })
+            console.log(productsSeparate)
+            // let {state ,Description }=await GetUserProfileImg(user_id);
+            // *******update state*****
+            setproductSeparate([...productSeparate, ...productsSeparate]);
+
+
+              await GetUserProfileImg("5e82a422dc5d87cead3bab42");
+             // content: " ahmad"
+            // content_type: "txt"
+            // create_at: "2020-07-04T14:22:36.103000"
+            // group_id: "5efa3bafcd52cdd9ea00ddc2"
+            // id: "5f00d6fc2f3d927653560124"
+            // reply_to: null
+            // sender_id: "5e82a422dc5d87cead3bab42"
+            // sender_name: "amin jamal"
+
+
+            setpageStart(page + 1);
+                        // ***** check if product length is zero then stop loop****
+            sethasMore(messages.length !== 0);
+        } else {
+            error_Notification('Network Error')
+        }
+    };
+
+
+
+
+
+
+
     const [messages, setMessage] = useState([]);
     const [InitialData, setInitialData] = useState({});
     const   socket = io.connect('http://live.kelidiha.com:3004/live_class', {
@@ -24,11 +99,11 @@ const Tab2ChatBox = (props) => {
     });
 
 
-    useEffect(() => {
-
+    useEffect(async () => {
+        // await getHistorychat()
 
         socket.on('set_user_info', (data) => {
-            console.log("set_user_info")
+            // console.log("set_user_info")
             console.log(data)
             setInitialData(data)
             // document.getElementById("user_id").textContent = data.message.user_id;
@@ -36,24 +111,48 @@ const Tab2ChatBox = (props) => {
             // document.getElementById('chat').disabled = false;
             // document.getElementById('send').disabled = false;
         })
+        // async function getNewChat(){
+        //
+        //
+        //
+        // }
+
+
         socket.on('gp_msg',(data)=>{
             console.log("gp_msg")
+            var d = new Date();
+            var h = d.getHours()+":"+d.getMinutes();
+            console.log(h)
+            data["time"]=h
+            // await getHistorychat(data.sid)
             console.log(data)
             setMessage(prevMessages=>[...prevMessages,data])
 
-            // console.log(data)
-            // add_to_history(data)
+            // cn: " پیام "
+            // ct: "txt"
+            // gid: "5efa3bafcd52cdd9ea00ddc2"
+            // sid: "5e82a422dc5d87cead3bab42"
+            // sn: "amin jamal"
+            // time: "23:27"
         })
-
-
-
-
 
 
         // Update the document title using the browser API
         // return //for componentDidMount
 
     }, []);
+
+    const getHistorychat=async ()=>{
+        let {state ,Description }=await GetHistoryChat("5efa3bafcd52cdd9ea00ddc2",1,"5efa3bafcd52cdd9ea00ddc2");
+        console.log(Description)
+    }
+    const getImgProfile=async (user_id)=>{
+        let {state ,Description }=await GetUserProfileImg(user_id);
+        console.log(Description)
+    }
+
+
+
     const sendMessage=(value)=>{
         let message = {
             cn: value,
@@ -74,14 +173,34 @@ const Tab2ChatBox = (props) => {
 
     return (
         <div className="row col-12">
-            <ChatLeftRight chatBg={"bg-chat-mySelf border-chat-mySelf"}/>
-            <ChatLeftRight chatBg={"bg-chat-other border-chat-other"}/>
-            {/*<ChatRightTop chatBg={"green-background border-chat-left"}/>*/}
-            {
+            {/*<ChatLeftRight chatBg={"bg-chat-mySelf border-chat-mySelf"}/>*/}
+            {/*<ChatLeftRight chatBg={"bg-chat-other border-chat-other"}/>*/}
+
+
+            <InfiniteScrollReverse
+                className="row rtl m-0 overFlow-scroll vh35"
+                pageStart={0}
+                loadMore={loadMore}
+                hasMore={hasMore}
+                loadArea={10}
+                loader={<div className="loader col-6 offset-3" key={0}><Loader/></div>}
+            >
+                <div className='d-flex  w-100  flex-wrap'>
+                    {productSeparate.length > 0 && Array.isArray(productSeparate) ?
+                        productSeparate.slice(0).reverse().map((todo, index) =>
+                            <ChatRightTop chatBg={"green-background border-chat-left"}  key={index} {...todo}/>
+                        ) : ''
+                    }
+                </div>
+            </InfiniteScrollReverse>
+
+             {
                 messages.length>0?
                     messages.map((item,index)=> <ChatRightTop chatBg={"green-background border-chat-left"}  key={index} {...item}/> )
                     :""
             }
+
+
 
 
             <InputSendMessage sendMessage={sendMessage}/>

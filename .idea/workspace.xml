@@ -2,14 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3127a07d-e1e7-46b9-a05b-d8fa367c791f" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/Component/Studios/Root/CurrentStudio/StudioClass/Tab2-ChatBox/TEST-CHAT.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Component/Studios/Root/CurrentStudio/StudioClass/ClassDetailInRoot/ClassDetailInRoot.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/Studios/Root/CurrentStudio/StudioClass/ClassDetailInRoot/ClassDetailInRoot.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Component/Studios/Root/CurrentStudio/StudioClass/ClassDetailInRoot/NewHLSPlayer/NewHLSPlayer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/Studios/Root/CurrentStudio/StudioClass/ClassDetailInRoot/NewHLSPlayer/NewHLSPlayer.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Component/Studios/Root/CurrentStudio/StudioClass/Tab2-ChatBox/Chat-right-top/Chat-right-top.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/Studios/Root/CurrentStudio/StudioClass/Tab2-ChatBox/Chat-right-top/Chat-right-top.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Component/Studios/Root/CurrentStudio/StudioClass/Tab2-ChatBox/InputSendMessage/InputSendMessage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/Studios/Root/CurrentStudio/StudioClass/Tab2-ChatBox/InputSendMessage/InputSendMessage.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Component/Studios/Root/CurrentStudio/StudioClass/Tab2-ChatBox/Tab2-ChatBox.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/Studios/Root/CurrentStudio/StudioClass/Tab2-ChatBox/Tab2-ChatBox.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Component/functions/ServerConnection.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/functions/ServerConnection.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/css/sass/_gogo.style.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/css/sass/_gogo.style.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/constants/ServerConst.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/constants/ServerConst.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -37,7 +37,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Chichi/Store/StoreDeployment" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -152,7 +152,10 @@
       <workItem from="1593583079558" duration="6328000" />
       <workItem from="1593610154364" duration="6057000" />
       <workItem from="1593673828219" duration="22414000" />
-      <workItem from="1593758674985" duration="20502000" />
+      <workItem from="1593758674985" duration="21002000" />
+      <workItem from="1593841541142" duration="34000" />
+      <workItem from="1593887984507" duration="3584000" />
+      <workItem from="1593891765749" duration="6162000" />
     </task>
     <servers />
   </component>
@@ -172,11 +175,11 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="730" y="310" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1593611886277" />
-    <state x="686" y="211" key="FileChooserDialogImpl" timestamp="1593806001483">
+    <state x="686" y="211" key="FileChooserDialogImpl" timestamp="1593841573018">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1593494975860" />
-    <state x="686" y="211" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1593806001483" />
+    <state x="686" y="211" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1593841573018" />
     <state x="794" y="439" key="NewPhpFileDialog" timestamp="1593544327356">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

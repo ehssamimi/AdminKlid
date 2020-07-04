@@ -7,7 +7,7 @@ const ChatRightTop = (props) => {
         // Update the document title using the browser API
         // return //for componentDidMount
     }, []);
-    console.log(props);
+    // console.log(props);
 
 
     return (
@@ -23,7 +23,7 @@ const ChatRightTop = (props) => {
                     <p className="chat-header  IranSans">{props.sn}</p>
                     <p className={["lineHeight3 IranSans  ",`${props.chatBg.includes("bg-chat-other")?"text-black":"text-white"}`].join(" ")}   >{props.cn}</p>
                     <div className="w-100 d-flex justify-content-end">
-                        <span className= "chat-header  IranSans " >17:35</span>
+                        <span className= "chat-header  IranSans " >{props.time}</span>
                     </div>
                 </div>
             </div>

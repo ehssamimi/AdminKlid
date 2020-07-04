@@ -14,6 +14,7 @@ export const admin_route="https://user.kelidiha.com/admin_route/";
 export const admin_route2="https://user.kelidiha.com/admin_route/";
 export const aminJamal="https://converter.kelidiha.com/admin/";
 export const kelidihaadmin="https://kelidihaadmin.liara.run/";
+export const LiveKelid="http://live.kelidiha.com:3004/";
 
 
 // export const aminJamal2="http://aminjamal.ir/admin/";
