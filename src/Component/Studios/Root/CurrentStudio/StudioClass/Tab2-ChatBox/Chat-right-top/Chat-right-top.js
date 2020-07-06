@@ -1,13 +1,31 @@
 import React, {useState, useEffect} from 'react';
-import profile from "../../../../../../../assets/common/img/profile-pic-l-5.jpg";
+import profile1 from "../../../../../../../assets/common/img/profile-pic-l-5.jpg";
+function search(nameKey, myArray){
+    for (var i=0; i < myArray.length; i++) {
+        if (myArray[i].sid === nameKey) {
+            return myArray[i];
+        }
+    }
+}
 
-const ChatRightTop = (props) => {
-    // const [count, setCount] = useState(1);
+ const ChatRightTop = (props) => {
+    const [profile, setProfile] = useState(profile1);
     useEffect(() => {
-        // Update the document title using the browser API
-        // return //for componentDidMount
-    }, []);
-    // console.log(props);
+        let arr=search(props.sid,props.UsersIDImg["UsersIDImg"])
+        console.log(props.sid)
+        console.log(props.UsersIDImg["UsersIDImg"])
+        console.log(arr)
+        console.log(arr.profile)
+         const reader = new FileReader();
+        reader.onload = () => {
+
+            setProfile( [reader.result])
+        };
+        reader.readAsDataURL(arr.profile );
+
+        console.log("next user")
+
+    }, [props]);
 
 
     return (

@@ -267,6 +267,13 @@ export const RemoveElement=(id)=>{
     }, 2000)
 }
 
+
+
+
+
+
+
+
 // code: {code: 9721, create_at: "2020-05-04T11:32:56.059000", is_used: true}
 // create_at: "2020-04-19T21:20:33.475000"
 // education: {grade: "نهم", field: "ریاضی فیزیک", gpa: 18, school_name: "شهید بهشتی", school_type: "تیزهوشان"}

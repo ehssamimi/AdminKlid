@@ -26,6 +26,7 @@ import Tab2ChatBox from "./Tab2-ChatBox/Tab2-ChatBox";
 
 const StudioClass = (props) => {
     const [activeSecondTab, setactiveSecondTab] = useState("1");
+    const [gid, setgid] = useState(null);
 
     useEffect(() => {
         console.log(props.match.params.id)
@@ -38,6 +39,10 @@ const StudioClass = (props) => {
         if (activeSecondTab !== tab) {
             setactiveSecondTab(tab);
         }
+    }
+    const getGroupId=(gid)=>{
+        setgid(gid)
+        console.log(gid)
     }
 
 
@@ -115,7 +120,7 @@ const StudioClass = (props) => {
                                 <CardTitle className="mb-4 Fs0 font-weight-bold">
                                     مشخصات کلاس
                                 </CardTitle>
-                                <ClassDetailInRoot {...props} />
+                                <ClassDetailInRoot {...props} getGroupId={getGroupId}/>
 
                             </CardBody>
                         </Colxx>
@@ -128,8 +133,7 @@ const StudioClass = (props) => {
                                 <CardTitle className="mb-4">
                                     Wedding Cake with Flowers Macarons and Blueberries
                                 </CardTitle>
-                                <Tab2ChatBox/>
-
+                                <Tab2ChatBox gid={gid}/>
                             </CardBody>
                         </Colxx>
                     </Row>

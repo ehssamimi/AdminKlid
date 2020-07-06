@@ -22,13 +22,11 @@ const ClassDetailInRoot = (props) => {
         setisLoader(false);
 
 
-
-
-
     }, [props]);
     const getClassDetail=async (id)=>{
       let {state,Description}=  await GetClassroom(id)
          setDescription(Description)
+        props.getGroupId(Description.group_chat_id);
         // console.log(Description)
          // const {active,id,information:{grade,field,lesson_name},payment: {price},live_urls:{dash,hls,http_flv,rtmp,websocket}}=Description;
     }

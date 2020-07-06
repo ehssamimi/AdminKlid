@@ -3849,10 +3849,13 @@ export async  function  GetUserProfileImg(user_id){
 
     var resp ="";
     // await axios.get(`${Const.kelidihaadmin}users/profile/by_user_id/${user_id}` , {headers: headers}).then(function (response) {
-    await axios.get(`https://user.kelidiha.com/users/profile/by_user_id/${user_id}` , {headers: headers}).then(function (response) {
+    await axios.get(`https://user.kelidiha.com/users/profile/by_user_id/${user_id}` , {headers: headers,responseType: 'blob'}).then(function (response) {
         console.log(response)
+        let imgfile =new File([response.data], 'profileImg');
+        console.log("imgfile")
+        console.log(imgfile)
         // let {Items} = response.data;
-        resp={state:200,Description:response.data};
+        resp={state:200,Description:imgfile};
 
     }).catch(function (error) {
         let {state,Description}=Error(error);
