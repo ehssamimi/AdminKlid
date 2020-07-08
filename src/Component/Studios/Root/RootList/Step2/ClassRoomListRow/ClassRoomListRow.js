@@ -12,7 +12,7 @@ console.log(props.list)
                 <CardBody>
                     <CardTitle>
                       <span>لیست کلاس ها</span>
-                        <div className="row w-100 justify-content-between">
+                        <div className="row w-100 justify-content-between log-indicator">
                             <div >
                                 <span className={`log-indicator align-middle bg-plum `}/>
                                 <span>public</span>

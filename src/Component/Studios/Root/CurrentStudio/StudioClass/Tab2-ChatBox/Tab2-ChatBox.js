@@ -13,24 +13,36 @@ import Loader from "../../../../../Common/Loader/Loader";
 import PreviewUserCard from "../../../../../User/UserShowAll/Subs/PreviewUserCard";
 import profile from "../../../../../../assets/common/img/profile-pic-l-5.jpg";
 
-const   socket = io.connect('http://live.kelidiha.com:3004/live_class', {
-    transportOptions: {
-        polling: {
-            extraHeaders: {
-                'token': "5e82a422dc5d87cead3bab42",
-                "gpid": "5efa3bafcd52cdd9ea00ddc2",
-                "classid": "includeamin"
-            }
-        }
-    },
-    path: '/ws/socket.io'
-});
+// const   socket = io.connect('http://live.kelidiha.com:3004/live_class', {
+//     transportOptions: {
+//         polling: {
+//             extraHeaders: {
+//                 'token': "5e82a422dc5d87cead3bab42",
+//                 "gpid": "5efa3bafcd52cdd9ea00ddc2",
+//                 "classid": "includeamin"
+//             }
+//         }
+//     },
+//     path: '/ws/socket.io'
+// });
 
 class Tab2ChatBox extends Component {
     constructor(props) {
         super(props);
         this.state={
             messages:[],InitialData:[],productSeparate:[],pageStart:1,hasMore:true,UsersIDImg:{UsersIDImg:[],UsersId:[]},gid:null,
+            socket: io.connect('http://live.kelidiha.com:3004/live_class', {
+                transportOptions: {
+                    polling: {
+                        extraHeaders: {
+                            'token': "5e82a422dc5d87cead3bab42",
+                            "gpid": props.gid,
+                            "classid": props.classId
+                        }
+                    }
+                },
+                path: '/ws/socket.io'
+            })
         }
     }
 
@@ -43,15 +55,15 @@ class Tab2ChatBox extends Component {
                 polling: {
                     extraHeaders: {
                         'token': "5e82a422dc5d87cead3bab42",
-                        "gpid": "5efa3bafcd52cdd9ea00ddc2",
-                        "classid": "includeamin"
+                        "gpid": this.props.gid,
+                        "classid": this.props.classId
                     }
                 }
             },
             path: '/ws/socket.io'
         });
 
-        socket.on('set_user_info', (data) => {
+        this.state.socket.on('set_user_info', (data) => {
             // console.log("set_user_info")
             console.log("componentDidMountcomponentDidMount")
             console.log(data)
@@ -70,7 +82,7 @@ class Tab2ChatBox extends Component {
         // }
 
         let ReciveData;
-        socket.on('gp_msg',async (data)=>{
+       socket.on('gp_msg',async (data)=>{
             console.log("gp_msg")
             var d = new Date();
             var h = d.getHours()+":"+d.getMinutes();
@@ -131,7 +143,7 @@ class Tab2ChatBox extends Component {
         // ***get all product and current page ***
         // let {state, Description} = await GetAllUser(pageStart);
           let{UsersIDImg,pageStart}=this.state;
-        let {state, Description} = await GetHistoryChat("5efa3bafcd52cdd9ea00ddc2",pageStart,"5efa3bafcd52cdd9ea00ddc2");
+        let {state, Description} = await GetHistoryChat(this.props.gid,pageStart,"5efa3bafcd52cdd9ea00ddc2");
         console.log("Description");
         console.log(Description);
         console.log("pageStart")
@@ -220,15 +232,17 @@ class Tab2ChatBox extends Component {
         let message = {
             cn: value,
             ct: "txt",
-            gid: "5efa3bafcd52cdd9ea00ddc2",
+            gid: this.props.gid,
             sn: InitialData.message.name,
             sid: InitialData.message.user_id
         }
 
         console.log(message)
-        socket.emit('send_packet',message)
+        this.state.socket.emit('send_packet',message)
         console.log("sendMessage")
         console.log(value)
+        // let ChatList=document.getElementById()
+        // window.scrollTo(0,document.body.scrollHeight);
         // setMessage(prevMessages=>[...prevMessages,message])
 
     }
@@ -249,7 +263,7 @@ class Tab2ChatBox extends Component {
                     loadArea={10}
                     loader={<div className="loader col-6 offset-3" key={0}><Loader/></div>}
                 >
-                    <div className='d-flex  w-100  flex-wrap'>
+                    <div className='d-flex  w-100  flex-wrap align-items-end'>
                         {productSeparate.length > 0 && Array.isArray(productSeparate) ?
                             productSeparate.slice(0).reverse().map((todo, index) =>
                                 <ChatRightTop chatBg={"green-background border-chat-left"}  key={index} {...todo} UsersIDImg={UsersIDImg}/>

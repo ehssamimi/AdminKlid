@@ -29,6 +29,7 @@ const StudioClass = (props) => {
     const [gid, setgid] = useState(null);
 
     useEffect(() => {
+        console.log("class id ")
         console.log(props.match.params.id)
         // Update the document title using the browser API
         // return //for componentDidMount
@@ -133,7 +134,11 @@ const StudioClass = (props) => {
                                 <CardTitle className="mb-4">
                                     Wedding Cake with Flowers Macarons and Blueberries
                                 </CardTitle>
-                                <Tab2ChatBox gid={gid}/>
+                                {
+                                    gid!==null?<Tab2ChatBox gid={gid} classId={props.match.params.id}/>:""
+                                }
+
+
                             </CardBody>
                         </Colxx>
                     </Row>
