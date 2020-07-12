@@ -21,6 +21,16 @@ export const success_Notification=(Response)=>{
         "success"
     );
 };
+export const warning_Notification=(state,Response)=>{
+    return NotificationManager.warning(
+        state,
+        Response,
+        3000,
+        null,
+        null,
+        "WARNING"
+    );
+};
 
 // *****show all product***
 export const getProductList=(Products)=>{

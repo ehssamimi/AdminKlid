@@ -22,7 +22,7 @@ const NewWebsocketPlayer = (props) => {
 
 
     return (
-        <div>
+        <div className="w-100">
             <ReactFlvPlayer
                 // url = "ws://live.kelidiha.com:8000/live/lomos.flv"
                 url ={props.url}

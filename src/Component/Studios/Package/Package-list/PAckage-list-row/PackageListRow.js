@@ -41,23 +41,24 @@ const PackageListRow = (props) => {
             error_Notification(state, Description)
         }
         setIsActive(!isActive);
-        setActivate(!Activate);
+        // setActivate(!Activate);
     };
 
     return (
-        <Card className="mt-2 box-shadow-custom br20px col-sm-12 col-md-6 col-lg-4" id={id}>
+        <Card className="mt-2 box-shadow-custom br20px col-sm-12 col-md-6 col-lg-4 " id={id}>
 
 
 
             <Link to={`/studio/package/detail/${id}`}  >
-                <div className="row m-0 card-body">
-                    <RowShowShowColEdit label={"دوره"} value={grade}   className={"col-6 d-flex justify-content-start p-0"}/>
-                    <RowShowShowColEdit label={"رشته"} value={field}   className={"col-6  d-flex justify-content-start p-0"}/>
-                    <RowShowShowColEdit label={"فعال"} value={Activate?"هست":"نیست"}   className={"col-6  d-flex justify-content-start p-0"}/>
+                <div className="row m-0 card-body justify-content-center FsFooterLogin">
+                    <RowShowShowColEdit label={"نام"} value={name}  className={"col-6 d-flex justify-content-center p-0"}/>
+                    <RowShowShowColEdit label={"دوره"} value={grade}   className={"col-6 d-flex justify-content-center p-0"}/>
+                    <RowShowShowColEdit label={"رشته"} value={field}   className={"col-6  d-flex justify-content-center p-0"}/>
+                    <RowShowShowColEdit label={"فعال"} value={Activate?"هست":"نیست"}   className={"col-6  d-flex justify-content-center p-0"}/>
 
                 </div>
             </Link>
-            <CardActions className="d-flex justify-content-center">
+            <CardActions className="d-flex justify-content-between col-8 offset-2 align-items-baseline">
                 <Button onClick={()=>{setIsOpen(!isOpen)}} className="btn red-background">حذف</Button>
                 <Link to={`/studio/package/update/${id}`}  >
                     <Button   className="btn btn-warning">ویرایش</Button>

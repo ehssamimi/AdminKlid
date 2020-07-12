@@ -21,10 +21,10 @@ const PreviewUserInClassroomList = (props) => {
 
      return (
         <tr id={user_id}>
-            <th scope="row">{index+1}</th>
-            <td className="text-center">{name}</td>
-            <td className="text-center">{phone_number}</td>
-            <td className="text-center">{add_by}</td>
+            <th scope="row vertical-middle">{index+1}</th>
+            <td className="text-center vertical-middle FsFooterLogin">{name}</td>
+            <td className="text-center vertical-middle FsFooterLogin">{phone_number}</td>
+            <td className="text-center vertical-middle FsFooterLogin">{add_by}</td>
             <td  className="d-flex justify-content-center"><button className="  btn btn-outline-danger br10px" onClick={ handelDelete}>حذف</button></td>
         </tr>
     );

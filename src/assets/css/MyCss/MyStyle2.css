@@ -528,6 +528,12 @@ select option:hover {
     max-width: 40%;
     height: auto;
 }
+.vertical-middle{
+    vertical-align: middle!important;
+}
+.gray1{
+    color: dimgray;
+}
 
 
 /* Extra small devices (phones, 600px and down) */

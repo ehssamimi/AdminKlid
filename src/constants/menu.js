@@ -109,26 +109,27 @@ const data = [
                         to: "/studio/root/list",
                     },
                     {
-                        icon: "iconsminds-gears",
+                        icon: "iconsminds-video-tripod",
                         label: "استودیو",
                         to: "/studio/root/studios",
                     }
                 ]
             },
             {
-                icon: "iconsminds-gears",
+                icon: "iconsminds-shop-2",
                 label: "پکیج",
                 to: "/studio/package",
                 subs:[
+
                     {
-                        icon: "iconsminds-gears",
-                        label: "ایجاد پکیج",
-                        to: "/studio/package/create",
-                    },
-                    {
-                        icon: "iconsminds-gears",
+                        icon: "simple-icon-list",
                         label: "لیست پکیج",
                         to: "/studio/package/list",
+                    },
+                    {
+                        icon: "iconsminds-folder-add--",
+                        label: "ایجاد پکیج",
+                        to: "/studio/package/create",
                     }
                 ]
             },

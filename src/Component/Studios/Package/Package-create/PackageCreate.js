@@ -111,11 +111,15 @@ const PackageCreate = (props) => {
                                       touched,
                                       isSubmitting
                                   }) => (
+
                                     <Form className="av-tooltip tooltip-label-bottom w-100 row m-0">
+                                        <div className="col-12 mb-3">
+                                            <h2>ایجاد پکیج</h2>
+                                        </div>
 
 
                                         <div
-                                            className=" col-sm-12 col-md-11  d-flex flex-column justify-content-between">
+                                            className=" col-sm-12 col-md-11  d-flex flex-column justify-content-between pl-1">
                                             <div className="w-100 row m-0 ">
                                                 <div className="w-100">
                                                     <FormInput label='نام' type='text' name='Name'
@@ -123,8 +127,6 @@ const PackageCreate = (props) => {
                                                                DivClass="col-sm-6  " setFieldTouched={setFieldTouched}
                                                                errors={errors} touched={touched}/>
                                                 </div>
-
-
 
                                                 <FormSelect label='پایه' option={LabelValueOption(Option.grade_type)}
                                                             name='grade'
@@ -153,7 +155,7 @@ const PackageCreate = (props) => {
                                         <div className="col-6 offset-3 ">
                                             <button className="btn btn-success text-center col-6 offset-3 "
                                                     type="submit">
-                                                فرستادن
+                                                ارسال
                                             </button>
                                         </div>
 

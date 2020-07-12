@@ -1,22 +1,16 @@
 import React, {useState, useEffect} from 'react';
 import {
-    AddClassroom,
-    AddCourseDetail,
-    AddFileToCourse, GetClassroom,
+     GetClassroom,
     GetUserDropDown, updateClassRoom,
-    UpdateCourseDetail
-} from "../../../functions/ServerConnection";
-import {Card, CardBody, Collapse} from "reactstrap";
-import Loader from "../../../Common/Loader/Loader";
-import {Form, Formik} from "formik";
-import ImgComponent from "../../../Common/ImgComponents/ImgComponent";
-import AddPDf from "../../../Common/AddPdf/AddPDf";
-import AddVideoConvert from "../../../Common/AddVideoConver/AddVideoConvert";
-import PreviewVideoComponent from "../../../Common/PreviewVideoComponent/PreviewVideoComponent";
+ } from "../../../functions/ServerConnection";
+import {Card, CardBody} from "reactstrap";
+ import {Form, Formik} from "formik";
+
 import {FormInput, FormSelect} from "../../../Common/ComponentFunctional/FormFeilds";
 import {error_Notification, LabelValueOption, success_Notification} from "../../../functions/componentHelpFunction";
 import * as Yup from "yup";
 import IsLoaderComponent from "../../../Common/ISLodader/IsLoader";
+import HeaderContentNavigation from "../../../Content/HeaderContentNavigation/HeaderContentNavigation";
 const SignupSchema = Yup.object().shape({
 
     Name: Yup.string()
@@ -111,7 +105,13 @@ const ClassRoomEdit = (props) => {
         setIsLoader(false);
         if (state === 200) {
             success_Notification("کلاس مورد نظر به روز رسانی شد ");
-            setInitialValue({Name:payload.Name , grade: {label:"دوره",value:"دوره"}, field:{label:"رشته",value:"رشته"} ,lesson_names:{label:"درس",value:"درس"} ,price:payload.price})
+            setInitialValue({
+                Name: payload.Name,
+                // grade: {label: "دوره", value: "دوره"},
+                // field: {label: "رشته", value: "رشته"},
+                // lesson_names: {label: "درس", value: "درس"},
+                price: payload.price
+            })
 
         } else {
             error_Notification(state, Description)
@@ -124,6 +124,10 @@ const ClassRoomEdit = (props) => {
 
     return (
         <div>
+            <HeaderContentNavigation list={[{"name": "لیست کلاس ها", "address": "/studio/classroom/list"}, {
+                "name": "ویرایش کلاس",
+                "address": `/studio/classroom/edit/${props.match.params.id}`}]}/>
+
             <Card>
                 <CardBody>
 
@@ -196,7 +200,7 @@ const ClassRoomEdit = (props) => {
                                         <div className="col-6 offset-3 ">
                                             <button className="btn btn-success text-center col-6 offset-3 "
                                                     type="submit">
-                                                فرستادن
+                                                ارسال
                                             </button>
                                         </div>
 

@@ -3414,16 +3414,7 @@ console.log(response)
         resp={state:200,Description:response.data};
 
     }).catch(function (error) {
-        console.log(error.response);
-        console.log(error);
-        let {response}=error;
-        if (response===undefined){
-            resp={state: 400,Description: error.message}
-        }else if (response.status===422){
-            resp={state:422,Description:response.statusText}
-        } else{
-            resp={state:response.status||400,Description:response.data.detail||error.message}
-        }
+    resp=Error(error);
     });
     return resp;
 }
@@ -3534,6 +3525,34 @@ export async  function UserActioninclassroom(action, class_id, user_id, page){
     });
     return resp;
 }
+export async  function  activeClassRoom(class_id){
+
+    let headers = {
+        'Token': Const.Token,
+        'Content-Type': 'application/json',
+        'accept': 'application/json',
+        'Access-Control-Allow-Origin':'*'
+    };
+
+
+    var resp ="";
+    await axios.put(`${Const.kelidihaadmin}admin/classroom/active?class_id=${class_id}`, "", {headers: headers}).then(function (response) {
+
+        let {Description}=response.data;
+        // let {Items} = response.data;
+        resp={state:200,Description:Description};
+
+    }).catch(function (error) {
+
+      resp=Error(error);
+    });
+
+
+    return resp;
+}
+
+
+
 // *********studios*************
 export async  function  GetAllStudios(page_num){
 
@@ -3804,7 +3823,7 @@ export async  function  ActivePackage(package_id){
 
 
     var resp ="";
-    await axios.get(`${Const.kelidihaadmin}package/active?package_id=${package_id}`, {headers: headers}).then(function (response) {
+    await axios.get(`${Const.kelidihaadmin}admin/package/active?package_id=${package_id}`, {headers: headers}).then(function (response) {
         console.log(response );
         let {Description}=response.data;
         // let {Items} = response.data;
@@ -3893,16 +3912,16 @@ function Error(error) {
 
     console.log(error);
     var resp ="";
-    if (error.response.status===400) {
+    if (error.response===undefined){
+        resp={state: 400,Description: error.message}
+
+    } else if (error.response.status===400) {
         resp={state: 400,Description: error.response.data.detail}
         if (error.response.data.detail==="access denied") {
             console.log("we are out !!!!!!!!!!");
-             // localStorage.clear();
-             //     window.location.reload();
+            // localStorage.clear();
+            //     window.location.reload();
         }
-
-    }else if (error.response===undefined){
-        resp={state: 400,Description: error.message}
 
     } else if (error.response.status===422){
         resp={state:422,Description:error.response.statusText}

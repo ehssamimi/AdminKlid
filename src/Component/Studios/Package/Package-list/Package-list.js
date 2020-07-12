@@ -5,8 +5,9 @@ import TextField from '@material-ui/core/TextField';
 
 
 import IsLoaderComponent from "../../../Common/ISLodader/IsLoader";
-import {error_Notification, success_Notification} from "../../../functions/componentHelpFunction";
+import {error_Notification, success_Notification, warning_Notification} from "../../../functions/componentHelpFunction";
 import PackageListRow from "./PAckage-list-row/PackageListRow";
+import HeaderContentNavigation from "../../../Content/HeaderContentNavigation/HeaderContentNavigation";
 
 const PackageList = (props) => {
     const [isloader, setIsLoader] = useState(false);
@@ -28,7 +29,11 @@ const PackageList = (props) => {
             setIsLoader(true);
             let {state, Description} = await getPackage(value);
             if (state === 200) {
-                console.log(Description.packages[0])
+                console.log(Description.packages)
+                if (Description.packages.length===0){
+                    warning_Notification("پکیجی با این مشخصات یافت نشد! ")
+                }
+
                  setPackages(Description.packages)
             } else {
                 error_Notification(state, Description);
@@ -41,23 +46,27 @@ const PackageList = (props) => {
 
     return (
         <div>
+            <HeaderContentNavigation list={[{"name": "لیست پکیج ها", "address": "/studio/package/list"} ]}/>
             <Card>
                 <CardBody>
-                    <CardTitle className="mt-4 mb-1">
-                        <span>وارد کردن نام یا رشته یا پایه</span>
+                    <CardTitle className="mt-2 mb-2">
+                        <span className="FsFooterLogin">وارد کردن نام یا رشته یا پایه</span>
                     </CardTitle>
 
 
                     <div className="w-100" dir="ltr">
+                        <form>
+                            <InputGroup>
 
-                        <InputGroup>
-
-                            <button className="default  ml-auto btn  br10px btn-outline-primary " onClick={(e) =>handelSubmit(e)}>ارسال</button>
+                                <button className="default  ml-auto btn  br10px btn-outline-primary " type="submit" onClick={(e) =>handelSubmit(e)}>ارسال</button>
 
 
-                            <Input placeholder="نام - پایه - رشته" className="col-10" onChange={(e) =>setvalue(`${e.target.value}`)} />
+                                <Input placeholder="نام - پایه - رشته" className="col-10" onChange={(e) =>setvalue(`${e.target.value}`)} />
 
-                        </InputGroup>
+                            </InputGroup>
+                        </form>
+
+
 
 
 

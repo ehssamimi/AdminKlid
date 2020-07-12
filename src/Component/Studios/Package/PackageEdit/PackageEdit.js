@@ -11,6 +11,7 @@ import IsLoaderComponent from "../../../Common/ISLodader/IsLoader";
 import {Form, Formik} from "formik";
 import {FormCheckBox, FormInput, FormSelect} from "../../../Common/ComponentFunctional/FormFeilds";
 import * as Yup from "yup";
+import HeaderContentNavigation from "../../../Content/HeaderContentNavigation/HeaderContentNavigation";
 const SignupSchema = Yup.object().shape({
 
     Name: Yup.string()
@@ -126,6 +127,9 @@ const PackageEdit = (props) => {
 
     return (
         <div>
+            <HeaderContentNavigation list={[{"name": "پکیج ها", "address": "/studio/package/list"}, {
+                "name": "ویرایش پکیج",
+                "address": `/studio/package/edit/${props.match.params.id}`}]}/>
             <Card>
                 <CardBody>
 

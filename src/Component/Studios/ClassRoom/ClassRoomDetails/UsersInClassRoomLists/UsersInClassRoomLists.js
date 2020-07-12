@@ -174,6 +174,7 @@ class UsersInClassRoomLists extends Component {
         let{hasMore,productSeparate}=this.state;
         return (
             <div className="w-100">
+                <br/>
                 <InfiniteScroll
                     className="row rtl m-0"
                     pageStart={0}
@@ -181,35 +182,38 @@ class UsersInClassRoomLists extends Component {
                     hasMore={hasMore}
                     loader={<div className="loader col-6 offset-3" key={0}><Loader/></div>}
                 >
-                    <Colxx xxs="12" className="mt-4">
+                    <div className="w-100 mt-4">
 
                         <CardTitle>
-                            لیست کاربران
+                           <h2> لیست کاربران</h2>
                         </CardTitle>
+                        <div className="w-100 pl-1">
+                            <Table striped>
+                                <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th className="text-center">نام و نام خانوادگی</th>
+                                    <th className="text-center">شماره تماس</th>
+                                    <th className="text-center">ادمین اضافه کننده</th>
+                                    <th className="text-center">اکشن</th>
+                                </tr>
+                                </thead>
+                                <tbody>
 
-                        <Table striped>
-                            <thead>
-                            <tr>
-                                <th>#</th>
-                                <th className="text-center">نام و نام خانوادگی</th>
-                                <th className="text-center">شماره تماس</th>
-                                <th className="text-center">ادمین اضافه کننده</th>
-                                <th className="text-center">اکشن</th>
-                            </tr>
-                            </thead>
-                            <tbody>
+                                {productSeparate.length>0 && Array.isArray(productSeparate)  ?
+                                    productSeparate.map((todo, index) =>
+                                        <PreviewUserInClassroomList key={index} {...todo} index={index} class_id={this.props.match.params.id} updateList={this.updateList}/>
 
-                            {productSeparate.length>0 && Array.isArray(productSeparate)  ?
-                                productSeparate.map((todo, index) =>
-                                    <PreviewUserInClassroomList key={index} {...todo} index={index} class_id={this.props.match.params.id} updateList={this.updateList}/>
+                                    ) : ''
+                                }
 
-                                ) : ''
-                            }
+                                </tbody>
+                            </Table>
+                        </div>
 
-                            </tbody>
-                        </Table>
 
-                    </Colxx>
+
+                    </div>
 
 
 

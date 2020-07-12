@@ -7,6 +7,7 @@ import {Form, Formik} from "formik";
 import { FormSelect} from "../../../Common/ComponentFunctional/FormFeilds";
 import * as Yup from "yup";
  import ClassRoomLoader from "./ClassRoomLoader/ClassRoomLoader";
+import HeaderContentNavigation from "../../../Content/HeaderContentNavigation/HeaderContentNavigation";
 const SignupSchema = Yup.object().shape({
     // grade: Yup.object()
     //     .required("پایه اجباری است !"),
@@ -26,18 +27,16 @@ const ClassRoomList = (props) => {
 
     useEffect(() => {
         async function  getDrops(){
+
+            // ****get options****
             let{state ,Description}= await GetUserDropDown();
             setIsLoader(false);
-            console.log(state);
-            console.log(Description);
-
             if (state===200 ) {
                 setOptions(Description)
             } else {
                 error_Notification(state, Description)
-                // NotificationManager.error(state, Description);
-            }
-            let{field_type,grade_type,lesson_names}=Description
+             }
+            // let{field_type,grade_type,lesson_names}=Description
 
 
         }
@@ -46,11 +45,10 @@ const ClassRoomList = (props) => {
 
     },[]);
     const handleSubmit = async (values, {setSubmitting}) => {
-
-
         const payload = {
             ...values,
         };
+        // ***send Input Values for show Classes*****
         setInitialValue({  grade: payload.grade.value, field: payload.field.value,lesson_names:payload.lesson_names.value });
         console.log("validate");
         console.log( payload );
@@ -65,6 +63,10 @@ const ClassRoomList = (props) => {
 
     return (
         <div>
+            {
+                props.ClassTypes==="package"?"":  <HeaderContentNavigation list={[{"name": "لیست کلاس ها", "address": "/studio/classroom/list"}]}/>
+            }
+
             <Card>
                 <div className={ props.type==="selected"?"card-body":"card-body"}>
                     <CardTitle>
@@ -124,7 +126,7 @@ const ClassRoomList = (props) => {
                                         <div className={props.type==="selected"?"col-12 p-0":"col-6 offset-3 "} >
                                             <button className="btn btn-success text-center col-6 offset-3 "
                                                     type="submit">
-                                                فرستادن
+                                                ارسال
                                             </button>
                                         </div>
 

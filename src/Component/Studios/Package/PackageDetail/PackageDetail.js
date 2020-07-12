@@ -6,37 +6,18 @@ import {
 } from "../../../functions/ServerConnection";
 import {
     error_Notification,
-    LabelValueOption,
-    LabelValueSingle,
+
     success_Notification
 } from "../../../functions/componentHelpFunction";
 import {Card, CardBody, CardTitle, Table} from "reactstrap";
 import IsLoaderComponent from "../../../Common/ISLodader/IsLoader";
-import {Form, Formik} from "formik";
-import {FormCheckBox, FormInput, FormSelect} from "../../../Common/ComponentFunctional/FormFeilds";
- import {RowShowShowColEdit} from "../../../Common/RowShowShowColEdit/ShowInRowComponents";
- import ClassRoomList from "../../ClassRoom/ClassRoomList/ClassRoomList";
- import PreviewUserInClassroomList
-     from "../../ClassRoom/ClassRoomDetails/UsersInClassRoomLists/PreviewUserInClassroomList";
- import ClassRowInPackageTable from "./ClassRowInPackageTable/ClassRowInPackageTable";
+import {RowShowShowColEdit} from "../../../Common/RowShowShowColEdit/ShowInRowComponents";
+import ClassRoomList from "../../ClassRoom/ClassRoomList/ClassRoomList";
+import ClassRowInPackageTable from "./ClassRowInPackageTable/ClassRowInPackageTable";
 
 
 
-const SignupSchema = Yup.object().shape({
 
-    Name: Yup.string()
-        .required("نام اجباری است!"),
-    grade: Yup.object()
-        .required("پایه اجباری است !"),
-    field: Yup.object()
-        .required("رشته اجباری است !"),
-    isActive: Yup.string().required("A radio option is required"),
-
-});
-const options = [
-    { value: "نیست", label: "نیست" },
-    { value: "هست", label: "هست" }
-];
 
 const PackageDetail = (props) => {
     const [isLoader, setIsLoader] = useState(true);
@@ -192,7 +173,7 @@ const PackageDetail = (props) => {
                 </CardBody>
             </Card>
             <div className="w-100 mt-3">
-                <ClassRoomList type={"classPackage"} packageId={props.match.params.id} classess={classess} UpdateClassList={UpdateClassList}/>
+                <ClassRoomList type={"classPackage"} packageId={props.match.params.id} classess={classess} UpdateClassList={UpdateClassList} ClassTypes={"package"}/>
 
             </div>
 

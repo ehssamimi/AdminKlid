@@ -1,8 +1,7 @@
 import React, {useState} from 'react';
 import RowShowShowColEdit from "../../../Common/RowShowShowColEdit/RowShowShowColEdit";
-import {Button, Card, CardBody} from "reactstrap"
- import PreviewVideoComponent from "../../../Common/PreviewVideoComponent/PreviewVideoComponent";
-import defaultImg from'./../../../../assets/common/img/default_pic@3x.png'
+import {Button, Card } from "reactstrap"
+
 import {Link} from "react-router-dom";
 import CardActions from "@material-ui/core/CardActions/CardActions";
 import {ModalDelete} from "../../../Common/Modals/ModalDelete/ModalDelete";
@@ -13,7 +12,7 @@ import {TweenMax} from "gsap/TweenMax";
 const RowClassList = (props) => {
     const [isOpen, setIsOpen] = useState(false);
     console.log(props);
-    let{active,id,information:{grade,field,lesson_name},live_information:{dash,hls,http_flv,rtmp,websocket},payment: {price}}=props;
+    let{active,id,information:{grade,field,lesson_name},live_information:{dash,hls,http_flv,rtmp,websocket,key},payment: {price}}=props;
     const handelDelete = async() => {
         let {state ,Description}=await DeleteClassRoom(id);
         if (state===200 ) {
@@ -46,34 +45,35 @@ const RowClassList = (props) => {
                     <RowShowShowColEdit label={"رشته"} value={field}   className={"col-6  d-flex justify-content-start p-0"}/>
                     <RowShowShowColEdit label={"درس"} value={lesson_name}   className={"col-6  d-flex justify-content-start p-0"}/>
                     <RowShowShowColEdit label={"هزینه"} value={price }   className={"col-6  d-flex justify-content-start p-0"}/>
+                    <RowShowShowColEdit label={"کلید"} value={key }   className={"col-6  d-flex justify-content-start p-0"}/>
                     {/*<RowShowShowColEdit label={"فعال"} value={active?"هست":"نیست"}   className={"col-6  d-flex justify-content-start p-0"}/>*/}
 
 
-                    <div className="col-6 p-0">
-                        <PreviewVideoComponent video={[defaultImg, dash]} label={"پخش dash"}/>
+                    {/*<div className="col-6 p-0">*/}
+                    {/*    <PreviewVideoComponent video={[defaultImg, dash]} label={"پخش dash"}/>*/}
 
-                    </div>
-                    <div className="col-6 p-0">
-                        <PreviewVideoComponent video={[defaultImg, hls]} label={"پخش hls"}/>
+                    {/*</div>*/}
+                    {/*<div className="col-6 p-0">*/}
+                    {/*    <PreviewVideoComponent video={[defaultImg, hls]} label={"پخش hls"}/>*/}
 
-                    </div>
-                    <div className="col-6 p-0">
-                        <PreviewVideoComponent video={[defaultImg, http_flv]} label={"پخش http_flv"}/>
+                    {/*</div>*/}
+                    {/*<div className="col-6 p-0">*/}
+                    {/*    <PreviewVideoComponent video={[defaultImg, http_flv]} label={"پخش http_flv"}/>*/}
 
-                    </div>
-                    <div className="col-6 p-0">
-                        <PreviewVideoComponent video={[defaultImg, rtmp]} label={"پخش rtmp"}/>
+                    {/*</div>*/}
+                    {/*<div className="col-6 p-0">*/}
+                    {/*    <PreviewVideoComponent video={[defaultImg, rtmp]} label={"پخش rtmp"}/>*/}
 
-                    </div>
-                    <div className="col-6 p-0">
-                        <PreviewVideoComponent video={[defaultImg, websocket]} label={"پخش websocket"}/>
+                    {/*</div>*/}
+                    {/*<div className="col-6 p-0">*/}
+                    {/*    <PreviewVideoComponent video={[defaultImg, websocket]} label={"پخش websocket"}/>*/}
 
-                    </div>
+                    {/*</div>*/}
 
 
                 </div>
             </Link>
-                <CardActions className="d-flex justify-content-center">
+                <CardActions className="d-flex justify-content-center col-6 offset-3 justify-content-between">
                     <Button onClick={()=>{setIsOpen(!isOpen)}} className="btn red-background">حذف</Button>
                     <Link to={`/studio/classroom/edit/${id}`}  >
                         <Button   className="btn btn-warning">ویرایش</Button>

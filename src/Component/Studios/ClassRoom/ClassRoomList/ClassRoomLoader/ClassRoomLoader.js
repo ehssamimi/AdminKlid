@@ -1,11 +1,10 @@
-import React, {Component, useState} from 'react';
+import React, {Component } from 'react';
 import IsLoaderComponent from "../../../../Common/ISLodader/IsLoader";
 import InfiniteScroll from "react-infinite-scroller";
 import Loader from "../../../../Common/Loader/Loader";
-import PreviewUserCard from "../../../../User/UserShowAll/Subs/PreviewUserCard";
-import RowClassList from "../RowClassList";
+ import RowClassList from "../RowClassList";
 import {Getallclassroom, GetAllUser} from "../../../../functions/ServerConnection";
-import {error_Notification} from "../../../../functions/componentHelpFunction";
+import {error_Notification, warning_Notification} from "../../../../functions/componentHelpFunction";
 import SelectedRowClassList from "../SelectedRowClassList";
 import ClassRoomSelectPackage from "../../ClassRoomSelectPackage/ClassRoomSelectPackage";
 
@@ -22,7 +21,7 @@ class ClassRoomLoader extends Component {
     }
     static getDerivedStateFromProps(props, state) {
         if (props.attributes !== state.attributes) {
-            console.log(props.attributes);
+            // console.log(props.attributes);
             return {
                 attributes: props.attributes,
                 isLoader:false,
@@ -40,18 +39,18 @@ class ClassRoomLoader extends Component {
     }
 
     loadMore=async()=>{
-          console.log("started loading");
+          // console.log("started loading");
           let{grade,field,lesson_names}=this.state.attributes;
 
 
         // ***get all product and current page ***
-        // let {state,Description}=await GetAllUser(pageStart);
+
         let {state,Description}= await Getallclassroom(grade,field,lesson_names);
 
-        console.log("Description");
-        console.log(Description);
-        console.log("pageStart");
-        console.log(this.state.page);
+        // console.log("Description");
+        // console.log(Description);
+        // console.log("pageStart");
+        // console.log(this.state.page);
 
 
         // let Response = await GetAllProduct(pageStart);
@@ -59,6 +58,11 @@ class ClassRoomLoader extends Component {
             let{items,page}=Description;
             // *** modify  products to our label value ***
             let productsSeparate = items;
+            console.log("productsSeparate");
+            console.log(productsSeparate);
+            if (productsSeparate.length===0){
+                warning_Notification("کلاسی  ثبت نشده است","")
+            }
             // *******update state*****
             this.setState(prevState => ({
                 productSeparate:[...prevState.productSeparate,...productsSeparate],
@@ -66,11 +70,7 @@ class ClassRoomLoader extends Component {
                 // hasMore:items.length !== 0
                 hasMore:false
             }))
-            // setproductSeparate([...productSeparate,...productsSeparate]);
-            // console.log(productSeparate);
-            // setpageStart(page+1);
-            // ***** check if product length is zero then stop loop****
-            // sethasMore(users.length !== 0);
+
         }else {
             error_Notification('Network Error')
         }
@@ -111,7 +111,8 @@ class ClassRoomLoader extends Component {
 
 
 
-                                    ) : ''
+                                    ) :""
+                                    // <div className="card card-body mt-3 text-center"><p className= "FsFooterLogin IranSans">کلاسی با این مشخصات ثبت نشده است  است </p></div>
                                 }
                             </div>
 

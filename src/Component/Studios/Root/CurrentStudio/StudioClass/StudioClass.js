@@ -16,9 +16,7 @@ import {
 import { NavLink } from "react-router-dom";
 import {Colxx} from "../../../../../components/common/CustomBootstrap";
 import classnames from "classnames";
-import DetailsClassRoom from "../../../ClassRoom/ClassRoomDetails/DetaisClassRoom/DetaisClassRoom";
-import UsersInClassRoomLists from "../../../ClassRoom/ClassRoomDetails/UsersInClassRoomLists/UsersInClassRoomLists";
-import StudioInTable from "../StudioInTable/StudioInTable";
+
 import ClassDetailInRoot from "./ClassDetailInRoot/ClassDetailInRoot";
 import RowShowShowColEdit from "../../../../Common/RowShowShowColEdit/RowShowShowColEdit";
 import Tab2ChatBox from "./Tab2-ChatBox/Tab2-ChatBox";
@@ -118,8 +116,8 @@ const StudioClass = (props) => {
                     <Row>
                         <Colxx sm="12">
                             <CardBody>
-                                <CardTitle className="mb-4 Fs0 font-weight-bold">
-                                    مشخصات کلاس
+                                <CardTitle className="mb-4  font-weight-bold">
+                                   <h3 className="FsFooterLogin IranSans"> مشخصات کلاس</h3>
                                 </CardTitle>
                                 <ClassDetailInRoot {...props} getGroupId={getGroupId}/>
 
@@ -132,13 +130,11 @@ const StudioClass = (props) => {
                         <Colxx sm="12">
                             <CardBody>
                                 <CardTitle className="mb-4">
-                                    Wedding Cake with Flowers Macarons and Blueberries
+
                                 </CardTitle>
                                 {
                                     gid!==null?<Tab2ChatBox gid={gid} classId={props.match.params.id}/>:""
                                 }
-
-
                             </CardBody>
                         </Colxx>
                     </Row>
