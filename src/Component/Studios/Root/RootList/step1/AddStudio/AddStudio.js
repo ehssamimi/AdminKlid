@@ -1,16 +1,11 @@
 import * as Yup from "yup";
 import {Component} from "react";
 import {
-    AddCourseDetail,
-    AddFileToCourse, AddStudios,
-    GetUserDropDown,
-    loadCourse,
-    UpdateCourseDetail
+  AddStudios,
 } from "../../../../../functions/ServerConnection";
 import {
     error_Notification,
-    LabelValueOption,
-    success_Notification
+     success_Notification
 } from "../../../../../functions/componentHelpFunction";
 import HeaderAddCommon from "../../../../../Common/HeaderAddCommon/HeaderAddCommon";
 import {Card, CardBody, Collapse} from "reactstrap";
@@ -18,13 +13,12 @@ import Loader from "../../../../../Common/Loader/Loader";
 import {Form, Formik} from "formik";
  import {FormInput, FormSelect} from "../../../../../Common/ComponentFunctional/FormFeilds";
 import React from "react";
+import IsLoaderComponent from "../../../../../Common/ISLodader/IsLoader";
 
 const SignupSchema = Yup.object().shape({
 
     Name: Yup.string()
         .required("نام اجباری است!"),
-
-
 
 });
 
@@ -46,14 +40,6 @@ class AddStudio extends Component {
     }
 
 
-
-
-
-
-
-
-
-
     toggle = () => {
         this.setState((prevState) => ({
             collapse: !prevState.collapse
@@ -62,15 +48,7 @@ class AddStudio extends Component {
 
 
 
-
-
     handleSubmit = async (values, { setSubmitting }) => {
-
-
-                console.log("validate");
-
-
-
 
                 const payload = {
                     ...values,
@@ -83,29 +61,26 @@ class AddStudio extends Component {
         }
 
         //
-                this.setState({
-                    isLoader: true
-                });
-        let {state, Description}= await AddStudios(JSON.stringify(Data));
-        if (state===200){
-            success_Notification( "اطلاعات شما با موفقیت ثبت شد");
+        this.setState({
+            isLoader: true
+        });
+        let {state, Description} = await AddStudios(JSON.stringify(Data));
+        if (state === 200) {
+            success_Notification("اطلاعات شما با موفقیت ثبت شد");
             this.setState({
-                isLoader:false
+                isLoader: false
             });
+            console.log("Description")
+            console.log(Description)
+           this.props.HandelAdd(Description.message)
 
 
-         } else {
-            error_Notification(state,Description);
+        } else {
+            error_Notification(state, Description);
             this.setState({
-                isLoader:false
+                isLoader: false
             });
         }
-
-
-
-
-
-
 
 
     };
@@ -113,9 +88,6 @@ class AddStudio extends Component {
 
     render() {
         let{collapse,isLoader,initialValue,id }=this.state;
-
-
-
 
         return (
             <div>
@@ -130,59 +102,50 @@ class AddStudio extends Component {
                 >
                     <Card>
                         <CardBody>
+                            <IsLoaderComponent  isLoader={ isLoader}>
+                                <Formik
+                                    initialValues={
+                                        initialValue
+                                    }
+                                    validationSchema={SignupSchema}
+                                    onSubmit={this.handleSubmit}
+                                >
+                                    {({
+                                          handleSubmit,
+                                          setFieldValue,
+                                          setFieldTouched,
+                                          handleChange,
+                                          handleBlur,
+                                          values,
+                                          errors,
+                                          touched,
+                                          isSubmitting
+                                      }) => (
+                                        <Form className="av-tooltip tooltip-label-bottom w-100 row m-0">
 
-                            {
-                                isLoader ? <div className='d-flex justify-content-center align-items-center'>
-                                        <div className='col-6'>
-                                            <Loader/>
-                                        </div>
-                                    </div> :
-                                    <Formik
-                                        initialValues={
-                                            initialValue
-                                        }
-                                        validationSchema={SignupSchema}
-                                        onSubmit={this.handleSubmit}
-                                    >
-                                        {({
-                                              handleSubmit,
-                                              setFieldValue,
-                                              setFieldTouched,
-                                              handleChange,
-                                              handleBlur,
-                                              values,
-                                              errors,
-                                              touched,
-                                              isSubmitting
-                                          }) => (
-                                            <Form className="av-tooltip tooltip-label-bottom w-100 row m-0">
+                                            <div className=" col-sm-12    d-flex flex-column justify-content-between">
+                                                <div className="w-100 row m-0 ">
 
-                                                <div className=" col-sm-12 col-md-8  d-flex flex-column justify-content-between">
-                                                    <div className="w-100 row m-0 ">
-
-                                                        <FormInput label='نام' type='text' name='Name'
-                                                                   placeHolder='نام استودیو را وارد کنید !'
-                                                                   DivClass="col-sm-12  " setFieldTouched={setFieldTouched}
-                                                                   errors={errors} touched={touched}/>
+                                                    <FormInput label='نام' type='text' name='Name'
+                                                               placeHolder='نام استودیو را وارد کنید !'
+                                                               DivClass="col-10  " setFieldTouched={setFieldTouched}
+                                                               errors={errors} touched={touched}/>
 
 
-
-
-                                                    </div>
-                                                </div>
-
-
-                                                <div className="col-6 offset-3 ">
-                                                    <button className="btn btn-success text-center col-6 offset-3 "
+                                                    <button className="col-sm-2 col-md-1  h-100   ml-auto btn  text-center  br10px btn-outline-primary form-control "
                                                             type="submit">
                                                         ارسال
                                                     </button>
-                                                </div>
 
-                                            </Form>
-                                        )}
-                                    </Formik>
-                            }
+
+                                                </div>
+                                            </div>
+
+                                        </Form>
+                                    )}
+                                </Formik>
+                            </IsLoaderComponent>
+
                         </CardBody>
                     </Card>
                 </Collapse>

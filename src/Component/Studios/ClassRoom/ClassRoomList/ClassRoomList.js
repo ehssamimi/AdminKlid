@@ -64,7 +64,7 @@ const ClassRoomList = (props) => {
     return (
         <div>
             {
-                props.ClassTypes==="package"?"":  <HeaderContentNavigation list={[{"name": "لیست کلاس ها", "address": "/studio/classroom/list"}]}/>
+                (props.ClassTypes==="package" ||props.type==="selected")?"":  <HeaderContentNavigation list={[{"name": "لیست کلاس ها", "address": "/studio/classroom/list"}]}/>
             }
 
             <Card>

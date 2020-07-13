@@ -45,7 +45,7 @@ class TopNav extends Component {
     };
   }
   async componentDidMount(){
-    console.log("thi sis  profile ");
+    // console.log("thi sis  profile ");
 
     if(localStorage.getItem("token")){
       // if (localStorage.getItem("ItemValue")) {
@@ -56,7 +56,7 @@ class TopNav extends Component {
       // }else {
           const {state, Description}=await GetUserProfile();
           if (state===200 ) {
-              console.log(Description);
+              // console.log(Description);
               let ItemValue = [Description.personal_info.name, Description.profile.image_id, Description.education.grade];
               localStorage.setItem("ItemValue",ItemValue );
               // localStorage.setItem("ItemValue",ItemValue.toString());

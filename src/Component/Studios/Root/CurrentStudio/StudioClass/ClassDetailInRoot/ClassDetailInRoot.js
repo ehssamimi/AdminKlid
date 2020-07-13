@@ -10,6 +10,7 @@ import ModalCustomVideo from "../../../../../Common/Modals/ModalCustom";
 import NewWebsocketPlayer from "./NewWebsocketPlayer/NewWebsocketPlayer";
 import NewHLSPlayer from "./NewHLSPlayer/NewHLSPlayer";
 import {error_Notification} from "../../../../../functions/componentHelpFunction";
+import ReactPlayerConf from "./ReactPlayer/ReactPlayer";
 const video= "https://resource.kelidiha.com/admin/course/stream/item_video/5ea9dac81314a6b4f5d06bbf/2LLYqNin2YYg2KfZhtqv2YTbjNiz24w=/2K7Yp9mG2YUg2KfYs9iq2KfYryDYrNi52YHYsduM/TGVzc29uIDEgOiAgTXkgTmF0aW9uYWxpdHk=/2b7Yp9ix2KogMQ==/index.m3u8"
 const video_cover= "https://stream.kelidiha.com/public/item/5ea9dac81314a6b4f5d06bbf/2LLYqNin2YYg2KfZhtqv2YTbjNiz24w=/2K7Yp9mG2YUg2KfYs9iq2KfYryDYrNi52YHYsduM/TGVzc29uIDEgOiAgTXkgTmF0aW9uYWxpdHk=/2b7Yp9ix2KogMQ==/video_cover/image.png"
 
@@ -29,7 +30,7 @@ const ClassDetailInRoot = (props) => {
       let {state,Description}=  await GetClassroom(id)
          setDescription(Description)
         props.getGroupId(Description.group_chat_id);
-        // console.log(Description)
+        console.log(Description)
          // const {active,id,information:{grade,field,lesson_name},payment: {price},live_urls:{dash,hls,http_flv,rtmp,websocket}}=Description;
     }
     const HandelActive=async ()=>{
@@ -68,15 +69,21 @@ const ClassDetailInRoot = (props) => {
                                 !Active?   <div className="w-100 row    ">
 
 
-                                    <div   className={['h-15em','d-flex','flex-column', ' col-6 mt-5' ,'align-items-center'  ].join(' ')}>
-                                        <NewWebsocketPlayer  url={Description.live_urls.http_flv}/>
-                                        <label ><RowShowShowColEdit label={"پخش"} value={"http_flv" }  col={ 'col-12'} className='fS1vw'/>
-                                        </label>
-                                    </div>
+                                    {/*<div   className={['h-15em','d-flex','flex-column', ' col-6 mt-5' ,'align-items-center'  ].join(' ')}>*/}
+                                    {/*    <NewWebsocketPlayer  url={Description.live_urls.http_flv}/>*/}
+                                    {/*    <label ><RowShowShowColEdit label={"پخش"} value={"http_flv" }  col={ 'col-12'} className='fS1vw'/>*/}
+                                    {/*    </label>*/}
+                                    {/*</div>*/}
+                                    {/*<div  className={['h-15em','d-flex','flex-column', ' col-6 mt-5' ,'align-items-center'  ].join(' ')}>*/}
+                                    {/*    <NewWebsocketPlayer  url={Description.live_urls.websocket}/>*/}
+                                    {/*    <label ><RowShowShowColEdit label={"پخش"} value={"websocket" }  col={ 'col-12'} className='fS1vw'/>*/}
+                                    {/*    </label>*/}
+                                    {/*</div>  */}
                                     <div  className={['h-15em','d-flex','flex-column', ' col-6 mt-5' ,'align-items-center'  ].join(' ')}>
-                                        <NewWebsocketPlayer  url={Description.live_urls.websocket}/>
-                                        <label ><RowShowShowColEdit label={"پخش"} value={"websocket" }  col={ 'col-12'} className='fS1vw'/>
-                                        </label>
+                                        {/*<NewWebsocketPlayer  url={Description.live_urls.web_rtc}/>*/}
+                                        <ReactPlayerConf  url={Description.live_urls.web_rtc}/>
+                                        {/*<label ><RowShowShowColEdit label={"پخش"} value={"websocket" }  col={ 'col-12'} className='fS1vw'/>*/}
+                                        {/*</label>*/}
                                     </div>
 
                                     {/*<div   className={['h-15em','d-flex','flex-column', ' col-4 mt-5' ,'align-items-center'  ].join(' ')}>*/}

@@ -19,17 +19,7 @@ const StudioInRow = (props) => {
         console.log(data)
         let {state ,Description}=await DeleteStudios(data);
         if (state===200 ) {
-            success_Notification("حذف شد");
-            const $el = document.getElementById(`${id}`);
-
-            console.log($el);
-            $el.classList.add("opacity-0")
-            const duration = 2;
-            const from = { opacity: 0};
-            TweenMax.to($el, duration, from);
-            setTimeout(() => {
-                $el.remove();
-            }, 2000)
+             props.UpdateClassList()
 
         } else {
             error_Notification(state, Description)
@@ -38,13 +28,13 @@ const StudioInRow = (props) => {
     };
 let{todo}=props;
     return (
-        <Card className="col-3 m-2" id={todo.id}  >
+        <Card className="col-2 m-2" id={todo.id}  >
             <Link to={props.type==="currentStudio"?`/studio/root/current/${todo.id}`:`/studio/root/details/${todo.id}`}   >
                  <CardBody >
-                    <RowShowShowColEdit label={"نام"} value={todo.name}   className={"col-6 d-flex justify-content-start p-0"}/>
+                    <RowShowShowColEdit label={"نام"} value={todo.name}   className={"col-12 d-flex justify-content-center p-0"}/>
                 </CardBody>
             </Link>
-            <CardActions>
+            <CardActions className="d-flex justify-content-center">
                 <Button onClick={()=>{setIsOpen(!isOpen)}} className="btn red-background">حذف</Button>
             </CardActions>
             <ModalDelete isOpen={isOpen} toggle={()=>{setIsOpen(!isOpen)}} item={"استودیو"}  deleteComponent={()=>{handelDelete(todo.id)}}/>

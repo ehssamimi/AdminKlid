@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import LoadStudios from "../RootList/step1/loadStudios/LoadStudios";
+import LoadStusios2 from "../RootList/step1/loadStudios/LoadStusios2";
 
 const Studios = (props) => {
     // const [count, setCount] = useState(1);
@@ -10,7 +11,7 @@ const Studios = (props) => {
 
     return (
         <div>
-            <LoadStudios type={"currentStudio"}/>
+            <LoadStusios2 type={"currentStudio"}/>
         </div>
     );
 };

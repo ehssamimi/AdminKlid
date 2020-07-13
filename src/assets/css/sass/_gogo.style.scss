@@ -9281,8 +9281,130 @@ $background-color: #f7faf8 !important;
 
 
 
+//*********new Style********
+//*********new Style********
+//*********new Style********
 
 
+
+
+.mainColor{
+  color: $green !important
+}
+.border-main-green{
+  border: 2px solid $green !important;
+}
+.bg-main{
+  background: $green !important;
+}
+.red-color{
+  color:red;
+}
+.dark-red-color{
+  color: #8f2c30;
+}
+.border-table-red{
+  border: 2px dashed #8f2c30 !important;
+}
+.br-r-11{
+  border-radius: 11px!important;
+}
+
+
+.br-y{
+  border:3px solid $yellow;
+}
+.br-g{
+  border : dashed 2px $green;
+}
+.br-w {
+  border: dashed  2px $white-border;
+  letter-spacing: 4px;
+}
+table {
+  border-collapse: collapse!important;
+  table-layout: fixed;
+  border: 1px solid rgba(64,69,66, 0.28) !important;
+
+}
+.table-br{
+  border: 1px solid rgba(64, 69, 66, 0.09) !important;
+}
+.table-br-b{
+  border-bottom:1px solid rgba(64, 69, 66, 0.09) !important;
+}
+
+.br-th-column{
+  border-top: 1px solid transparent!important;
+  border-bottom: 1px solid transparent!important;
+}
+.br-th-row{
+  border-top: 1px solid transparent!important;
+  border-left: 1px solid transparent!important;
+  border-right: 1px solid transparent!important;
+}
+.w-12{
+  width: 12.5% !important;
+}
+.w-135{
+  width: 13.5% !important;
+}
+
+
+
+.hollow-pointer-circle {
+  -moz-border-radius: 50px/50px;
+  -webkit-border-radius: 50px 50px;
+  border-radius: 50px/50px;
+  width: 20px;
+  height: 20px;
+}
+.pointer-circle {
+  -moz-border-radius: 50px ;
+  -webkit-border-radius: 50px;
+  border-radius: 50px ;
+  width: 20px;
+  height: 20px;
+}
+
+
+.talk-bubble {
+  display: inline-block;
+  position: relative;
+  width: 62%;
+  height: auto;
+}
+.p-s-0{
+
+  padding-top: 0!important;
+  padding-bottom: 1.5rem!important;
+
+  font-weight: 100;
+
+}
+
+.spanInTh{
+  position: absolute;
+  top: -22%;
+  left: 12%;
+}
+
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+  .p-s-0{
+    padding:0!important;
+  }
+  .talk-bubble {
+    display: inline-block;
+    position: relative;
+    width: 72%;
+    height: auto;
+    line-height: 4!important;
+
+  }
+
+}
 
 
 

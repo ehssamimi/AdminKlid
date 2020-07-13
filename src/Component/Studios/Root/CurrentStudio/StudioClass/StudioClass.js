@@ -86,28 +86,28 @@ const StudioClass = (props) => {
                            }}
                         >پیامها</a>
                     </NavItem>
-                    <NavItem className="w-25 text-center">
-                        <a href="#" className={classnames({
-                            active: activeSecondTab === "3",
-                            "nav-link": true,
-                            "Fs1":true
-                        })}
-                           onClick={() => {
-                               toggleSecondTab("3");
-                           }}
-                        >آپلود محتوا</a>
-                    </NavItem>
-                    <NavItem className="w-25 text-center">
-                        <a href="#" className={classnames({
-                            active: activeSecondTab === "4",
-                            "nav-link": true,
-                            "Fs1":true
-                        })}
-                           onClick={() => {
-                               toggleSecondTab("4");
-                           }}
-                        >آزمون</a>
-                    </NavItem>
+                    {/*<NavItem className="w-25 text-center">*/}
+                    {/*    <a href="#" className={classnames({*/}
+                    {/*        active: activeSecondTab === "3",*/}
+                    {/*        "nav-link": true,*/}
+                    {/*        "Fs1":true*/}
+                    {/*    })}*/}
+                    {/*       onClick={() => {*/}
+                    {/*           toggleSecondTab("3");*/}
+                    {/*       }}*/}
+                    {/*    >آپلود محتوا</a>*/}
+                    {/*</NavItem>*/}
+                    {/*<NavItem className="w-25 text-center">*/}
+                    {/*    <a href="#" className={classnames({*/}
+                    {/*        active: activeSecondTab === "4",*/}
+                    {/*        "nav-link": true,*/}
+                    {/*        "Fs1":true*/}
+                    {/*    })}*/}
+                    {/*       onClick={() => {*/}
+                    {/*           toggleSecondTab("4");*/}
+                    {/*       }}*/}
+                    {/*    >آزمون</a>*/}
+                    {/*</NavItem>*/}
                 </Nav>
             </CardHeader>
 
@@ -139,34 +139,34 @@ const StudioClass = (props) => {
                         </Colxx>
                     </Row>
                 </TabPane>
-                <TabPane tabId="3">
-                    <Row>
-                        <Colxx sm="12">
-                            <CardBody>
-                                <CardTitle className="mb-4">
-                                    3
-                                </CardTitle>
-                                <Button outline size="sm" color="primary">
-                                    Edit
-                                </Button>
-                            </CardBody>
-                        </Colxx>
-                    </Row>
-                </TabPane>
-                <TabPane tabId="4">
-                    <Row>
-                        <Colxx sm="12">
-                            <CardBody>
-                                <CardTitle className="mb-4">
-                                    4
-                                </CardTitle>
-                                <Button outline size="sm" color="primary">
-                                    Edit
-                                </Button>
-                            </CardBody>
-                        </Colxx>
-                    </Row>
-                </TabPane>
+                {/*<TabPane tabId="3">*/}
+                {/*    <Row>*/}
+                {/*        <Colxx sm="12">*/}
+                {/*            <CardBody>*/}
+                {/*                <CardTitle className="mb-4">*/}
+                {/*                    3*/}
+                {/*                </CardTitle>*/}
+                {/*                <Button outline size="sm" color="primary">*/}
+                {/*                    Edit*/}
+                {/*                </Button>*/}
+                {/*            </CardBody>*/}
+                {/*        </Colxx>*/}
+                {/*    </Row>*/}
+                {/*</TabPane>*/}
+                {/*<TabPane tabId="4">*/}
+                {/*    <Row>*/}
+                {/*        <Colxx sm="12">*/}
+                {/*            <CardBody>*/}
+                {/*                <CardTitle className="mb-4">*/}
+                {/*                    4*/}
+                {/*                </CardTitle>*/}
+                {/*                <Button outline size="sm" color="primary">*/}
+                {/*                    Edit*/}
+                {/*                </Button>*/}
+                {/*            </CardBody>*/}
+                {/*        </Colxx>*/}
+                {/*    </Row>*/}
+                {/*</TabPane>*/}
             </TabContent>
         </Card>
     </Colxx>

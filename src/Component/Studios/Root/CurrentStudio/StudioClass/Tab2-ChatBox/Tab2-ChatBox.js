@@ -94,9 +94,19 @@ class Tab2ChatBox extends Component {
             let{UsersIDImg}=this.state;
             if ( UsersIDImg["UsersId"].includes(data.sid)){
 
-                this.setState(prevState => ({
-                    messages:[...prevState.messages,data]
-                }));
+                // this.setState(prevState => ({
+                //     messages:[...prevState.messages,data]
+                // }));
+                let MList = this.state.productSeparate;
+                console.log("MList")
+                console.log(MList)
+                MList.unshift(data);
+                console.log(MList)
+                this.setState({
+                    productSeparate:MList
+                })
+
+
             }else {
                 let {state ,Description }=await GetUserProfileImg(data.sid);
                 console.log("Description")
@@ -105,10 +115,20 @@ class Tab2ChatBox extends Component {
                 let Use={"sid":data.sid,"profile":Description}
                 Ussers["UsersId"].push(data.sid);
                 Ussers["UsersIDImg"].push(Use);
-                this.setState(prevState => ({
-                    messages:[...prevState.messages,data],
+                // this.setState(prevState => ({
+                //     messages:[...prevState.messages,data],
+                //     UsersIDImg:Ussers
+                // }));
+                let MList = this.state.productSeparate;
+                console.log("MList")
+                console.log(MList)
+                MList.unshift(data);
+                console.log(MList)
+                this.setState({
+                    productSeparate:MList,
                     UsersIDImg:Ussers
-                }));
+                })
+
 
 
             }
@@ -125,7 +145,7 @@ class Tab2ChatBox extends Component {
         })
 
 
-        await this.loadMore();
+        // await this.loadMore();
 
     }
 
@@ -154,17 +174,38 @@ class Tab2ChatBox extends Component {
         if (Response !== 'error') {
             let {messages, page} = Description;
             // *** modify  products to our label value ***
+
+
+            // content: "hi im ehsan but in amin account"
+            // content_type: "txt"
+            // create_at: "2020-07-13T10:45:22.122000"
+            // group_id: "5f0b520d0668b20bda5e957a"
+            // id: "5f0c3e420c195e3a2d575bbc"
+            // reply_to: null
+            // sender_id: "5e82a422dc5d87cead3bab42"
+            // sender_name: "amin jamal"
+            // sender_type: "admin"
+
+
+            // cn: " غهع"
+            // ct: "txt"
+            // gid: "5f0b520d0668b20bda5e957a"
+            // sid: "5e82a422dc5d87cead3bab42"
+            // sn: "amin jamal"
+            // st: "admin"
+            // time: "14:55"
             let productsSeparate =[];
+            console.log(messages);
             messages.map((item, index)=>{
                 let product={}
                 product["sn"]=item.sender_name;
                 product["cn"]=item.content;
                 product["sid"]=item.sender_id;
                 product["time"]=item.create_at.slice(11, 16);
+                product["st"]=item.sender_type;
 
                 productsSeparate.push(product)
             })
-            console.log(productsSeparate)
 
             for (let i=0;i<messages.length;i++){
                 if (UsersIDImg["UsersId"].includes(messages[i].sender_id)){
@@ -186,12 +227,16 @@ class Tab2ChatBox extends Component {
             }
             // let {state ,Description }=await GetUserProfileImg(user_id);
             // *******update state*****
+            console.log(productsSeparate)
+            console.log(this.state.productSeparate)
+            console.log(this.state.pageStart)
             this.setState(prevState => ({
                 productSeparate:[...prevState.productSeparate,...productsSeparate],
                 pageStart:page + 1,
                 hasMore:messages.length !== 0
 
             }),()=>{
+                console.log(this.state.pageStart)
                 console.log(this.state.productSeparate)
                 console.log(this.state.UsersIDImg)
             });
@@ -234,7 +279,8 @@ class Tab2ChatBox extends Component {
             ct: "txt",
             gid: this.props.gid,
             sn: InitialData.message.name,
-            sid: InitialData.message.user_id
+            sid: InitialData.message.user_id,
+            st:"admin"
         }
 
         console.log(message)
@@ -256,33 +302,43 @@ class Tab2ChatBox extends Component {
 
 
                 <InfiniteScrollReverse
-                    className="row rtl m-0 overFlow-y-scroll hpx300 pl-4"
+                    className="row rtl m-0 overFlow-y-scroll hpx300 pl-4 d-flex  w-100  flex-wrap align-items-end"
                     pageStart={0}
                     loadMore={this.loadMore}
                     hasMore={ hasMore}
                     loadArea={10}
                     loader={<div className="loader col-6 offset-3" key={0}><Loader/></div>}
                 >
-                    <div className='d-flex  w-100  flex-wrap align-items-end'>
+                    {/*<div className='d-flex  w-100  flex-wrap align-items-end'>*/}
                         {productSeparate.length > 0 && Array.isArray(productSeparate) ?
                             productSeparate.slice(0).reverse().map((todo, index) =>
-                                <ChatRightTop chatBg={"green-background border-chat-left"}  key={index} {...todo} UsersIDImg={UsersIDImg}/>
+                                todo.st === "admin" ?
+                                    <ChatRightTop chatBg={"green-background border-chat-left"}
+                                                   key={index} {...todo} UsersIDImg={UsersIDImg}/>
+
+
+                                    : <ChatLeftRight chatBg={"bg-chat-other border-chat-other"}
+                                                     key={index} {...todo} UsersIDImg={UsersIDImg}/>
+
+
+
+                            // <ChatRightTop chatBg={"green-background border-chat-left"}  key={index} {...todo} UsersIDImg={UsersIDImg}/>
                             ) : ''
                         }
-                    </div>
+                    {/*</div>*/}
                 </InfiniteScrollReverse>
 
 
 
-                {
-                    messages.length>0?
-                        messages.map((item,index)=>
-                                <ChatRightTop chatBg={"green-background border-chat-left"}  key={index} {...item} UsersIDImg={UsersIDImg}/>
-                            // <ChatRightTop chatBg={"green-background border-chat-left"}  key={index} {...item}/>
+                {/*{*/}
+                {/*    messages.length>0?*/}
+                {/*        messages.map((item,index)=>*/}
+                {/*                <ChatRightTop chatBg={"green-background border-chat-left"}  key={index} {...item} UsersIDImg={UsersIDImg}/>*/}
+                {/*            // <ChatRightTop chatBg={"green-background border-chat-left"}  key={index} {...item}/>*/}
 
-                            )
-                        :""
-                }
+                {/*            )*/}
+                {/*        :""*/}
+                {/*}*/}
                 <InputSendMessage sendMessage={this.sendMessage}/>
 
             </div>

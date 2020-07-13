@@ -99,6 +99,12 @@ class SelectedRowClassList extends Component {
         // Return null if the state hasn't changed
         return null;
     }
+    changeInputs=(value)=>{
+
+        this.setState({value:value},()=>{
+            this.handelCLick()
+        })
+    }
 
 
 
@@ -128,7 +134,8 @@ class SelectedRowClassList extends Component {
                                     name="form-field-name"
                                     value={this.state.value}
                                     // onChange={(value)=>{setValue(value)}}
-                                    onChange={(value)=>{this.setState({value})}}
+                                    // onChange={(value)=>{this.setState({value})}}
+                                    onChange={(value)=>{this.changeInputs( value )}}
                                     options={LabelValueOption(class_type)}
                                 />
 

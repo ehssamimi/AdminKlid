@@ -1,13 +1,30 @@
-
 import React, {useState, useEffect} from 'react';
 import profile from "../../../../../../../assets/common/img/profile-pic-l-5.jpg";
+function search(nameKey, myArray){
+    for (var i=0; i < myArray.length; i++) {
+        if (myArray[i].sid === nameKey) {
+            return myArray[i];
+        }
+    }
+}
 
 const ChatLeftRight = (props) => {
-    // const [count, setCount] = useState(1);
+    const [profile, setProfile] = useState(profile);
     useEffect(() => {
-        // Update the document title using the browser API
-        // return //for componentDidMount
-    }, []);
+        let arr=search(props.sid,props.UsersIDImg["UsersIDImg"])
+        console.log(props )
+
+        const reader = new FileReader();
+        reader.onload = () => {
+
+            setProfile( [reader.result])
+        };
+        reader.readAsDataURL(arr.profile );
+
+        console.log("next user")
+
+    }, [props]);
+
 
 
     return (
@@ -20,13 +37,17 @@ const ChatLeftRight = (props) => {
 
             <div className={["talk-bubble tri-right round-top-left  left-top   ",`${props.chatBg}`].join(" ")}>
                 <div className="talktext">
-                    <p className="chat-header  IranSans d-flex justify-content-start">سهند میرزایی</p>
-                    <p style={{direction:"rtl"}} className={["lineHeight3 IranSans text-justify ",`${props.chatBg.includes("bg-chat-other")?"text-black":"text-white"}`].join(" ")}   > اقا من مواردی که در بیان سینوس و کسینوس بود را متوجه نشدم میشه یه بار دیگه برام توضیح بدین اقا من مواردی که در بیان سینوس و کسینوس بود را متوجه نشدم میشه یه بار دیگه برام توضیح بدین!</p>
-               <div className="w-100 d-flex justify-content-end">
-                   <span className= "chat-header  IranSans " >17:35</span>
-               </div>
+                    <p className="chat-header  IranSans d-flex justify-content-start">{props.sn}</p>
+                    <p style={{direction:"rtl"}} className={["  IranSans text-justify ",`${props.chatBg.includes("bg-chat-other")?"text-black":"text-white"}`].join(" ")}   >{props.cn}</p>
+                    <div className="w-100 d-flex justify-content-end">
+                        <span className= "chat-header  IranSans " >{props.time}</span>
+                    </div>
                 </div>
             </div>
+
+
+
+
         </div>
     );
 };

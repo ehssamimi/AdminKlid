@@ -12,10 +12,10 @@ function search(nameKey, myArray){
     const [profile, setProfile] = useState(profile1);
     useEffect(() => {
         let arr=search(props.sid,props.UsersIDImg["UsersIDImg"])
-        console.log(props.sid)
-        console.log(props.UsersIDImg["UsersIDImg"])
-        console.log(arr)
-        console.log(arr.profile)
+        // console.log(props.sid)
+        // console.log(props.UsersIDImg["UsersIDImg"])
+        // console.log(arr)
+        // console.log(arr.profile)
          const reader = new FileReader();
         reader.onload = () => {
 

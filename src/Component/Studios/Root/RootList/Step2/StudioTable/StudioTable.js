@@ -47,11 +47,11 @@ class StudioTable extends Component {
 
          let j=1;let descibe=[],ClassLists=this.state.ClassLists
          let dayss=Object.values(Description.plan);
-         console.log("dayss" );
+         console.log("plan" );
          console.log(dayss);
 
          function eachDay(item, index){
-             console.log(item);
+             // console.log(item);
              let bg=bgClassroomConfige(item);
              for (let i = convertIndex(item.start); i <= convertIndex(item.end); i++) {
 
@@ -193,13 +193,21 @@ class StudioTable extends Component {
         console.log(state);
         console.log(Description);
         if (state===200){
-            console.log("congratulaton");
-            success_Notification("کلاس جدید اضافه شد");
-            this.SetInitial();
+            this.setState({
+                days: "",
+                start: "",
+                end: "",
+                ClassLists: [],
+                id: "",
+                isOpen: false,
+                DeleteIndex: ""
+            })
+             success_Notification("کلاس جدید اضافه شد");
+               await this.SetInitial();
 
         }else {
             error_Notification(state,Description);
-            this.SetInitial();
+            await this.SetInitial();
         }
 
 
@@ -266,8 +274,11 @@ class StudioTable extends Component {
                             </tbody>
                         </Table>
                     </Card>
+                    <div className="w-100 mt-2 d-flex justify-content-end">
+                        <button  className="btn btn-outline-primary br20px col-sm-2 col-md-1 text-center " onClick={this.handelSend.bind(this)}>ارسال</button>
 
-                    <button  className="btn btn-success" onClick={this.handelSend.bind(this)}>send</button>
+                    </div>
+
                 </div>
                 <ModalDelete isOpen={this.state.isOpen} toggle={() =>
                     this.setState(prevState=>({

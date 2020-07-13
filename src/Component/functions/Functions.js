@@ -148,6 +148,35 @@ export function bgClassroomConfige(item){
     }
     return bg
 }
+export function changeTime(time){
+    let timeInArray= time.toString().split(".");
+    if (timeInArray.length===1){
+        if (timeInArray[0].length===1){
+            return 0+timeInArray[0]+":"+0+0
+        }else {
+            return  timeInArray[0]+":"+0+0
+        }
+    }else {
+        if (timeInArray[0].length===1){
+            return 0+timeInArray[0]+":"+3+0
+        }else {
+            return  timeInArray[0]+":"+3+0
+        }
+    }
+}
+export function bgClassroomConfige2(item){
+
+    // let bg;
+    let value={bg:"",border:"",mainColor:"",SecondColor:""};
+    if (item.class_type==="public"){
+        value={bg:"bg-white",border:"border-main-green br-r-11",mainColor:"mainColor",SecondColor:"mainColor"};
+    }else if (item.class_type==="special") {
+        value={bg:"bg-white",border:"border-table-red br-r-11",mainColor:"dark-red-color",SecondColor:"mainColor"};
+    }else {
+        value={bg:" ",border:"br-r-11 bg-main border-primary-s",mainColor:"text-white",SecondColor:"text-white"};
+    }
+    return value
+}
 export function convertshamcytomiladi(day){
     let days=["شنبه","یکشنبه","دوشنبه","سهشنبه","چهارشنبه","پنجشنبه","جمعه"];
     let milady=""
