@@ -54,15 +54,15 @@ class ReactPlayerConf extends Component {
                         api += '/';
                     }
 
-                    var url = schema + '//' + urlObject.server + ':' + port + api;
-                    for (var key in urlObject.user_query) {
-                        if (key != 'api' && key != 'play') {
-                            url += '&' + key + '=' + urlObject.user_query[key];
-                        }
-                    }
+                    // var url = schema + '//' + urlObject.server + ':' + port + api;
+                    // for (var key in urlObject.user_query) {
+                    //     if (key != 'api' && key != 'play') {
+                    //         url += '&' + key + '=' + urlObject.user_query[key];
+                    //     }
+                    // }
                     // Replace /rtc/v1/play/&k=v to /rtc/v1/play/?k=v
-                    url = url.replace(api + '&', api + '?');
-
+                    // url = url.replace(api + '&', api + '?');
+                    var url ='https:'+'//'+urlObject.server+"/1985"+api;
                     // @see https://github.com/rtcdn/rtcdn-draft
                     var data = {
                         api: url, streamurl: urlObject.url, clientip: null, sdp: offer.sdp

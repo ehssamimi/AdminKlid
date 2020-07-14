@@ -1,5 +1,6 @@
 import React, {useState, useEffect,Component} from 'react';
 // import React, {Component} from 'react';
+import * as Const from "../../../../../../constants/ServerConst";
 import ChatRightTop from "./Chat-right-top/Chat-right-top";
 import ChatLeftRight from "./ChatLeftRight/ChatLeftRight";
 import InputSendMessage from "./InputSendMessage/InputSendMessage";
@@ -31,11 +32,11 @@ class Tab2ChatBox extends Component {
         super(props);
         this.state={
             messages:[],InitialData:[],productSeparate:[],pageStart:1,hasMore:true,UsersIDImg:{UsersIDImg:[],UsersId:[]},gid:null,
-            socket: io.connect('http://live.kelidiha.com:3004/live_class', {
+            socket: io.connect(Const.LiveClass, {
                 transportOptions: {
                     polling: {
                         extraHeaders: {
-                            'token': "5e82a422dc5d87cead3bab42",
+                            'token': Const.Token,
                             "gpid": props.gid,
                             "classid": props.classId
                         }
@@ -50,11 +51,11 @@ class Tab2ChatBox extends Component {
 
     async componentDidMount() {
 
-        const   socket = io.connect('http://live.kelidiha.com:3004/live_class', {
+        const   socket = io.connect(Const.LiveClass, {
             transportOptions: {
                 polling: {
                     extraHeaders: {
-                        'token': "5e82a422dc5d87cead3bab42",
+                        'token': Const.Token,
                         "gpid": this.props.gid,
                         "classid": this.props.classId
                     }
@@ -163,7 +164,7 @@ class Tab2ChatBox extends Component {
         // ***get all product and current page ***
         // let {state, Description} = await GetAllUser(pageStart);
           let{UsersIDImg,pageStart}=this.state;
-        let {state, Description} = await GetHistoryChat(this.props.gid,pageStart,"5efa3bafcd52cdd9ea00ddc2");
+        let {state, Description} = await GetHistoryChat(this.props.gid,pageStart,Const.Token);
         console.log("Description");
         console.log(Description);
         console.log("pageStart")
