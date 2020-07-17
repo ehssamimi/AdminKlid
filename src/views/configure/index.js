@@ -10,6 +10,9 @@ const Default = React.lazy(() =>
 const Quote = React.lazy(() =>
   import(/* webpackChunkName: "viwes-gogo" */ '../../Component/Configure/Quote/Quote')
 );
+const Modal = React.lazy(() =>
+  import(/* webpackChunkName: "viwes-gogo" */ './modal')
+);
 
 
 class App extends Component {
@@ -25,9 +28,14 @@ class App extends Component {
               <Route
                 path={`${match.url}/default-profile`}
                 render={props => <Default {...props} />}
-              /> <Route
+              />
+              <Route
                 path={`${match.url}/quote`}
                 render={props => <Quote {...props} />}
+              />
+              <Route
+                path={`${match.url}/modal`}
+                render={props => <Modal {...props} />}
               />
 
               <Redirect to="/error" />

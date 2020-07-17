@@ -226,6 +226,22 @@ const data = [
                 icon: "iconsminds-speach-bubble-5",
                 label: "سخن بزرگان",
                 to: "/configure/quote"
+            },
+            {
+                icon: "iconsminds-speach-bubble-5",
+                label: "پیام ورودی",
+                to: "/configure/modal",
+                subs:[
+                    {
+                        icon: "iconsminds-speach-bubble-5",
+                        label: "اضافه کردن",
+                        to: "/configure/modal/add"
+                    },  {
+                        icon: "iconsminds-speach-bubble-5",
+                        label: "لیست پیام ها",
+                        to: "/configure/modal/list"
+                    }
+                ]
             }
 
         ]

@@ -3905,6 +3905,47 @@ export async  function  GetHistoryChat(gp_id,page,token){
     return resp;
 }
 
+// **************Modal********
+export async  function  AddModal(action,data){
+
+    let headers = {
+        'Token': Const.Token,
+        'accept': 'application/json',
+    };
+
+
+    var resp ="";
+    await axios.post(`${Const.userKilidiha}modal/admin/${action}`,data ,{headers: headers}).then(function (response) {
+        console.log(response );
+        let {Description}=response.data;
+        // let {Items} = response.data;
+        resp={state:200,Description:Description};
+
+    }).catch(function (error) {
+        resp=Error(error)
+    });
+    return resp;
+}
+export async  function  ModalList( ){
+
+    let headers = {
+        'Token': Const.Token,
+        'accept': 'application/json',
+    };
+
+
+    var resp ="";
+    await axios.get(`${Const.userKilidiha}modal/` ,{headers: headers}).then(function (response) {
+        console.log(response );
+
+        // let {Items} = response.data;
+        resp={state:200,Description:response.data};
+
+    }).catch(function (error) {
+        resp=Error(error)
+    });
+    return resp;
+}
 
 
 function Error(error) {
