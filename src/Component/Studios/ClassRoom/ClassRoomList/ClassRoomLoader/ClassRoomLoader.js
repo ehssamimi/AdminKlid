@@ -92,7 +92,7 @@ class ClassRoomLoader extends Component {
                                 {productSeparate.length>0 && Array.isArray(productSeparate)  ?
                                     productSeparate.map((todo, index) =>
 
-                                        <div key={index} className={ this.props.type==="selected"?"col-12 p-0 mt-2":"col-sm-12 col-md-6 col-lg-4"}>
+                                        <div key={index} className={ this.props.type==="selected"?"col-sm-12 col-md-6 col-lg-4 mt-2":"col-sm-12 col-md-6 col-lg-4"}>
 
                                             {
                                                 this.props.type === "selected" ?

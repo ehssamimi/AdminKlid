@@ -25,12 +25,13 @@ const InputSendMessage = (props) => {
 
 
     return (
-        <div className="w-100 position-relative">
+        <div className="w-100 position-relative   ">
             <form onSubmit={ onFormSubmit}>
                 <InputGroup>
 
-                    <textarea placeholder="تایپ کنید ..." className="col-10 text-break form-control" onChange={ onchange}  onKeyDown={ handleKeyDown} value={value} />
-                    <button className="default  ml-auto btn  br10px btn-outline-primary " type="submit">ارسال</button>
+                    <textarea placeholder="تایپ کنید ..." className="col-12   text-break form-control" style={{ paddingLeft:"8em" }} onChange={ onchange}  onKeyDown={ handleKeyDown} value={value} />
+                    {/*<button className="default  ml-auto btn  br10px btn-outline-primary " type="submit">ارسال</button>*/}
+                    <button className=" default  ml-auto btn h-input-s br5px  btn-outline-primary  position-absolute zIndex-3  text-center" style={{"left":0,width:"8em"}} type="submit">ارسال</button>
 
                 </InputGroup>
 

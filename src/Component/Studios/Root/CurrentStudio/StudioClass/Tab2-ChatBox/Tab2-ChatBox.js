@@ -299,7 +299,7 @@ class Tab2ChatBox extends Component {
         let{messages,productSeparate,hasMore,UsersIDImg}=this.state
         console.log(productSeparate);
         return (
-            <div>
+            <div className=" ">
 
 
                 <InfiniteScrollReverse

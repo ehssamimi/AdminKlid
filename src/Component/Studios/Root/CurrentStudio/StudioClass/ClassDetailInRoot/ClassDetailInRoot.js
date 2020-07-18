@@ -69,16 +69,16 @@ const ClassDetailInRoot = (props) => {
                                 !Active?   <div className="w-100 row    ">
 
 
-                                    {/*<div   className={['h-15em','d-flex','flex-column', ' col-6 mt-5' ,'align-items-center'  ].join(' ')}>*/}
-                                    {/*    <NewWebsocketPlayer  url={Description.live_urls.http_flv}/>*/}
-                                    {/*    <label ><RowShowShowColEdit label={"پخش"} value={"http_flv" }  col={ 'col-12'} className='fS1vw'/>*/}
-                                    {/*    </label>*/}
-                                    {/*</div>*/}
+                                    <div   className={['h-15em','d-flex','flex-column', ' col-6 mt-5' ,'align-items-center'  ].join(' ')}>
+                                        <NewWebsocketPlayer  url={Description.live_urls.http_flv}/>
+                                        <label ><RowShowShowColEdit label={"پخش"} value={"http_flv" }  col={ 'col-12'} className='fS1vw'/>
+                                        </label>
+                                    </div>
                                     {/*<div  className={['h-15em','d-flex','flex-column', ' col-6 mt-5' ,'align-items-center'  ].join(' ')}>*/}
                                     {/*    <NewWebsocketPlayer  url={Description.live_urls.websocket}/>*/}
                                     {/*    <label ><RowShowShowColEdit label={"پخش"} value={"websocket" }  col={ 'col-12'} className='fS1vw'/>*/}
                                     {/*    </label>*/}
-                                    {/*</div>  */}
+                                    {/*</div>*/}
                                     <div  className={['h-15em','d-flex','flex-column', ' col-6 mt-5' ,'align-items-center'  ].join(' ')}>
                                         {/*<NewWebsocketPlayer  url={Description.live_urls.web_rtc}/>*/}
                                         <ReactPlayerConf  url={Description.live_urls.web_rtc}/>

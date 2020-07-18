@@ -71,6 +71,9 @@ const PackageDetail = (props) => {
     },[props]);
     const UpdateClassList=async ()=>{
         let {state, Description} = await getPackageDetail(props.match.params.id);
+
+        console.log("update class")
+        console.log(Description)
         if (state === 200) {
                 setclassess( Description.classes);
         } else {
@@ -130,7 +133,7 @@ const PackageDetail = (props) => {
             <Card>
                 <CardBody>
                     <CardTitle className="mt-2  mb-3">
-                        <span>جزئیات پکیج</span>
+                        <span className="Fs2  ">جزئیات پکیج</span>
                     </CardTitle>
 
                     {
@@ -143,7 +146,7 @@ const PackageDetail = (props) => {
                             </div>
 
                             <CardTitle className="mt-4  mb-3">
-                                <span>لیست کلاس های موجود در پکیج</span>
+                                <span className="Fs2  ">لیست کلاس های موجود در پکیج</span>
                             </CardTitle>
 
                             <Table striped>

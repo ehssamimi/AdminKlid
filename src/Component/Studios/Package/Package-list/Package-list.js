@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import {getPackage, UserActioninclassroom} from "../../../functions/ServerConnection";
 import {Card, CardBody, CardTitle, InputGroup, InputGroupAddon, InputGroupText, Input, Button} from 'reactstrap';
 import TextField from '@material-ui/core/TextField';
@@ -13,36 +13,33 @@ const PackageList = (props) => {
     const [isloader, setIsLoader] = useState(false);
     const [value, setvalue] = useState("");
     const [packages, setPackages] = useState("");
-    useEffect(() => {
 
-      });
-    const handelgetPackage=async (value)=>{
-        let {state,Description}=getPackage(value);
-        console.log(Description);
-
-
-    };
     const handelSubmit=async (e)=>{
         e.preventDefault();
         if (value.length!==0){
-            console.log("send");
-            setIsLoader(true);
-            let {state, Description} = await getPackage(value);
-            if (state === 200) {
-                console.log(Description.packages)
-                if (Description.packages.length===0){
-                    warning_Notification("پکیجی با این مشخصات یافت نشد! ")
-                }
-
-                 setPackages(Description.packages)
-            } else {
-                error_Notification(state, Description);
-            }
-            setIsLoader(false);
+            await HandelGetPackageList(value)
          } else {
             error_Notification("نا موفق", "فیلد نام اجباری است ");
         }
     };
+    const HandelGetPackageList=async (value)=>{
+        console.log("send");
+        setIsLoader(true);
+        let {state, Description} = await getPackage(value);
+        if (state === 200) {
+            console.log(Description.packages)
+            if (Description.packages.length===0){
+                warning_Notification("پکیجی با این مشخصات یافت نشد! ")
+            }
+
+            setPackages(Description.packages)
+        } else {
+            error_Notification(state, Description);
+        }
+        setIsLoader(false);
+    }
+
+
 
     return (
         <div>
@@ -66,10 +63,6 @@ const PackageList = (props) => {
                             </InputGroup>
                         </form>
 
-
-
-
-
                     </div>
                 </CardBody>
             </Card>
@@ -77,7 +70,7 @@ const PackageList = (props) => {
             <IsLoaderComponent isLoader={isloader}>
                 <div className="row p-0 m-0">
                     {
-                        packages.length>0?packages.map((item,index)=> <PackageListRow  key={index} {...item}/> ):""
+                        packages.length>0?packages.map((item,index)=> <PackageListRow  key={index} {...item} UpdateList={()=>HandelGetPackageList(value)}/> ):""
                     }
                 </div>
 

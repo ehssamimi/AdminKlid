@@ -70,7 +70,7 @@ const ClassRoomList = (props) => {
             <Card>
                 <div className={ props.type==="selected"?"card-body":"card-body"}>
                     <CardTitle>
-                        <span>انتخاب کلاس</span>
+                        <span className={props.type==="selected"?"mainColor FsHeaderLogin1 font-weight-bold":"Fs2"}>انتخاب کلاس</span>
                     </CardTitle>
                     {
                         <IsLoaderComponent isLoader={isLoader} >
@@ -96,7 +96,7 @@ const ClassRoomList = (props) => {
 
                                         <div
                                             className=" col-sm-12 col-md-11  d-flex flex-column justify-content-between p-0">
-                                            <div className="w-100 row m-0 ">
+                                            <div className="w-100 row m-0  ">
 
 
                                                 <FormSelect label='پایه' option={LabelValueOption(Option.grade_type)}
@@ -123,8 +123,8 @@ const ClassRoomList = (props) => {
                                         </div>
 
 
-                                        <div className={props.type==="selected"?"col-12 p-0":"col-6 offset-3 "} >
-                                            <button className="btn btn-success text-center col-6 offset-3 "
+                                        <div className={props.type==="selected"?"col-6 offset-3":"col-6 offset-3 "} >
+                                            <button className="btn   Btn-Submit-Primary    col-6 offset-3 "
                                                     type="submit">
                                                 ارسال
                                             </button>

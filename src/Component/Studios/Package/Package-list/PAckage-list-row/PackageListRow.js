@@ -24,7 +24,9 @@ const PackageListRow = (props) => {
         let {state ,Description}=await DeletePackage(id);
         if (state===200 ) {
             success_Notification("حذف شد");
-            RemoveElement(id)
+            setIsOpen(!isOpen)
+            props.UpdateList()
+            // RemoveElement(id)
 
         } else {
             error_Notification(state, Description)

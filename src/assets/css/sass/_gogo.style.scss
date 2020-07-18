@@ -706,6 +706,13 @@ button {
     border-color: darken($theme-color-2, 8%);
   }
 }
+.btn-secondary-withOut-hover {
+  background-color: $theme-color-2;
+  border-color: $theme-color-2;
+  color: $button-text-color;
+
+
+}
 
 .btn-secondary:not(:disabled):not(.disabled):active,
 .btn-secondary:not(:disabled):not(.disabled).active,
@@ -8904,21 +8911,21 @@ $background-color: #f7faf8 !important;
   width: 0;
   height: 0;
   left: auto;
-  right: -20px;
+  right: -8px;
   top: 0px;
   bottom: auto;
-  border: 20px solid;
+  border: 14px solid;
 }
 .tri-right.left-top:after{
   content: ' ';
   position: absolute;
   width: 0;
   height: 0;
-  left: -15px;
+  left: -8px;
   right: auto;
   top: 0px;
   bottom: auto;
-  border: 22px solid;
+  border: 9px solid;
 
 }
 .tri-right.bg-chat-mySelf:after{
@@ -9056,19 +9063,19 @@ $background-color: #f7faf8 !important;
   border: 8px solid #666;
 }
 .round{
-  border-radius: 30px;
-  -webkit-border-radius: 30px;
-  -moz-border-radius: 30px;
+  border-radius: 12px;
+  -webkit-border-radius: 12px;
+  -moz-border-radius: 12px;
 }
 .round-top-right{
-  border-radius: 30px 0 30px 30px;
-  -webkit-border-radius: 30px 0 30px 30px;
-  -moz-border-radius: 30px 0 30px 30px;
+  border-radius: 12px 0 12px 12px;
+  -webkit-border-radius: 12px 0 12px 12px;
+  -moz-border-radius: 12px 0 12px 12px;
 }
 .round-top-left{
-  border-radius:0 30px  30px 30px;
-  -webkit-border-radius:0 30px  30px 30px;
-  -moz-border-radius:0 30px  30px 30px;
+  border-radius:0 12px  12px 12px;
+  -webkit-border-radius:0 12px  12px 12px;
+  -moz-border-radius:0 12px  12px 12px;
 }
 
 /* Right triangle placed top left flush. */
@@ -9268,15 +9275,16 @@ $background-color: #f7faf8 !important;
 
 /* talk bubble contents */
 .talktext{
-  padding: 1em;
+  padding:  0.3em 0.7rem 0.2rem 0.7rem;
   text-align: left;
-  line-height: 1.5em;
+  line-height: 1.4em;
   min-height: 3rem;
 }
 .talktext p{
   /* remove webkit p margins */
   -webkit-margin-before: 0em;
   -webkit-margin-after: 0em;
+  margin-bottom: 0!important;
 }
 
 
@@ -9349,7 +9357,20 @@ table {
 .w-135{
   width: 13.5% !important;
 }
+.Btn-Submit-Primary{
+  color: $theme-color-1;
+  border-color: $theme-color-1;
+  border-radius: 20px!important;
+  text-align:center !important;
 
+  &:hover {
+    color: $foreground-color;
+    background-color: $theme-color-1;
+    border-color: $theme-color-1;
+  }
+
+
+}
 
 
 .hollow-pointer-circle {

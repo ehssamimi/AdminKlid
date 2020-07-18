@@ -12,12 +12,12 @@ import {TweenMax} from "gsap/TweenMax";
 
 const ClassRoomSelectPackage = (props) => {
     const [IsInclude, setIsInclude] = useState(false);
-    console.log(props);
+    // console.log(props);
     let{id,information:{grade,field,lesson_name},live_information:{dash,hls,http_flv,rtmp,websocket},payment: {price}}=props;
 
     useEffect(() => {
         const array=props.classess.map(item=>item.id===props.id );
-        console.log(array);
+        // console.log(array);
         let x=array.includes(true);
         setIsInclude(x)
 
@@ -30,12 +30,12 @@ const ClassRoomSelectPackage = (props) => {
 
             success_Notification(action==="add"?"کلاس مورد نظر اضافه شد":"کلاس مورد نظر با موفقیت حذف شد");
             props.UpdateClassList();
-            RemoveElement(id);
+            // RemoveElement(id);
         } else {
             error_Notification(state, Description)
         }
      };
-console.log(IsInclude);
+// console.log(IsInclude);
     return (
         <Card className="mt-2 box-shadow-custom br20px" id={id}>
 

@@ -60,7 +60,9 @@
 .p6px{
     padding: 6px!important;
 }
-.br10px{
+.br5px{
+    border-radius:5px!important;
+}.br10px{
     border-radius: 10px!important;
 }
 .br20px{
@@ -304,6 +306,9 @@ select option:hover {
     position: absolute;
     left: 3rem;
     top:3.5rem;
+}
+.selectedTab{
+    /*cursor: pointer!important;*/
 }
 .bg-login{
     /*background-image: url("./../../../src/Common/img/alex-simpson-8DaRtnotCoQ-unsplash.png");*/

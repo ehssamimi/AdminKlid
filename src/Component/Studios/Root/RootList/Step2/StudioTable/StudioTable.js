@@ -4,7 +4,12 @@ import {Card, Table} from "reactstrap";
 import $ from "jquery";
 import {AddClassRoomToStudio, DeleteClassRoomFromStudio, loadStudio} from "../../../../../functions/ServerConnection";
 import {error_Notification, success_Notification} from "../../../../../functions/componentHelpFunction";
-import {bgClassroomConfige, changeIndexToHoures, convertshamcytomiladi} from "../../../../../functions/Functions";
+import {
+    bgClassroomConfige, bgClassroomConfige2,
+    changeIndexToHoures,
+    changeTime,
+    convertshamcytomiladi
+} from "../../../../../functions/Functions";
 import IsLoaderComponent from "../../../../../Common/ISLodader/IsLoader";
 import {ModalDelete} from "../../../../../Common/Modals/ModalDelete/ModalDelete";
 
@@ -52,12 +57,31 @@ class StudioTable extends Component {
 
          function eachDay(item, index){
              // console.log(item);
-             let bg=bgClassroomConfige(item);
+
+             // let bg=bgClassroomConfige(item);
+             // for (let i = convertIndex(item.start); i <= convertIndex(item.end); i++) {
+             //
+             //     $(`#${i+days[index]}`).addClass([ "selectedTab", bg ]).html(j);
+             //
+             // }
+             let {bg ,border ,mainColor ,SecondColor }=bgClassroomConfige2(item);
              for (let i = convertIndex(item.start); i <= convertIndex(item.end); i++) {
+             // .find("a").attr("href",`/studio/root/class/${item.class_id}`)
 
-                 $(`#${i+days[index]}`).addClass([ "selectedTab", bg ]).html(j);
+                 $(`#${i+days[index]}`).addClass([ "selectedTab", bg ]).find("div").addClass(border)  ;
 
+                 $(`#${i+days[index]}`).find(".lesson").addClass(mainColor).html(item.class_information.lesson_name)
+                 $(`#${i+days[index]}`).find(".grade").addClass(SecondColor).html(item.class_information.grade+" - "+item.class_information.field)
+                 $(`#${i+days[index]}`).find(".addClassNumber").html(j);
+
+
+
+
+                 // /class/:id?
              }
+
+
+
              ClassLists.push({
                  "day": convertshamcytomiladi(days[index]),
                  "start": item.start,
@@ -91,7 +115,8 @@ class StudioTable extends Component {
 //         *****Delete classRoom from Studio***
         if ( $(`#${id}`).hasClass( "selectedTab" )) {
             this.setState({
-                DeleteIndex:parseInt($(`#${id}`).html())-1,
+                // DeleteIndex:parseInt($(`#${id}`).html())-1,
+                DeleteIndex:parseInt( $(`#${id}`).find(".addClassNumber").html())-1,
                 isOpen:true
             })
 
@@ -99,15 +124,15 @@ class StudioTable extends Component {
 
 
         }else {
-
+            // btn-secondary
 
             //         *****Add classRoom from Studio***
 // ********************check classRoom selected or Not *****************
             //         *****classRoomSelected***
             if (this.props.id !== "") {
                 if (this.state.days !== day ) {
-                    $("#table").find(".bg-success").removeClass("bg-success");
-                    $(`#${id}`).addClass("bg-success");
+                    $("#table").find(".btn-secondary-withOut-hover").removeClass(" btn-secondary-withOut-hover");
+                    $(`#${id}`).addClass(" btn-secondary-withOut-hover");
                     console.log("aaaaaaaa")
                     this.setState({
                         days: day,
@@ -133,7 +158,7 @@ class StudioTable extends Component {
                         if (validate) {
                             for (i = less; i <= big; i++) {
 
-                                $(`#${i + day}`).addClass("bg-success");
+                                $(`#${i + day}`).addClass(" btn-secondary-withOut-hover");
                             }
                             this.setState({
                                 start: less, end: big
@@ -145,7 +170,7 @@ class StudioTable extends Component {
 
                     } else {
                         console.log("bbbbbbb")
-                        $(`#${id}`).addClass("bg-success");
+                        $(`#${id}`).addClass(" btn-secondary-withOut-hover");
                         if (this.state.start === "") {
                             this.setState({
                                 start: index
@@ -161,7 +186,7 @@ class StudioTable extends Component {
                 }
                 //         *****classRoomNotSelected***
             } else {
-                error_Notification("برای اضافه کردن کلاس", "ابتدا باید کلاس مورد نظر انتخاب شود")
+                error_Notification("از تب انتخاب کلاس جسنجو کنید!", "ابتدا باید کلاس مورد نظر انتخاب شود")
             }
 
 
@@ -215,6 +240,11 @@ class StudioTable extends Component {
     handelDelete =async ()=>{
 
         let Data=this.state.ClassLists[this.state.DeleteIndex];
+        console.log("this.props.match" )
+        console.log(this.props.match.params.id)
+        console.log("Data" )
+        console.log(Data )
+
         Data["studio_id"]=this.props.match.params.id;
         console.log(Data);
         this.setState({
@@ -222,6 +252,15 @@ class StudioTable extends Component {
         })
         let {state ,Description}=await DeleteClassRoomFromStudio(Data);
         if (state===200){
+            this.setState({
+                days: "",
+                start: "",
+                end: "",
+                ClassLists: [],
+                id: "",
+                isOpen: false,
+                DeleteIndex: ""
+            })
             success_Notification("کلاس موزد نظر حذف شد ");
             this.SetInitial();
 
@@ -244,38 +283,88 @@ class StudioTable extends Component {
         return (
 
             <IsLoaderComponent isLoader={this.state.isLoader}>
+
                 <div id="table">
+                    <div className="row m-0 pt-4">
+                        <div>
+                            <p className="mainColor FsHeaderLogin1 font-weight-bold">برنامه کلاسی آنلاین </p>
+                        </div>
+                        <div className=" d-flex ml-auto  align-items-center">
+                            <div className="d-flex " >
+                                <span>کلاس عمومی</span>
+                                <div className="hollow-pointer-circle border-main-green  ml-1  "></div>
+                            </div>
+                            <div className="d-flex ml-2" >
+                                <span>کلاس اختصاصی</span>
+                                <div className="hollow-pointer-circle  border-table-red  ml-1  "></div>
+                            </div>
+                            <div className="d-flex ml-2" >
+                                <span>کلاس انفرادی </span>
+                                <div className="pointer-circle   bg-main  ml-1  "></div>
+                            </div>
+
+                        </div>
+                    </div>
                     <Card>
+
+
+
                         <Table  bordered>
-                            <thead>
+                            <thead className="pt-2">
                             <tr>
-                                <th>ساعت </th>
+                                <th className="Fs-Table-h   br-th-column br-th-row">ساعت  </th>
                                 {days.map(item =>
-                                    <th key={item }>{item }</th>
+                                    <th key={item } className="Fs-Table-h w-135 br-th-row mainColor table-br-b text-center">{item }</th>
                                 )}
+
+
+                                {/*<th>ساعت </th>*/}
+                                {/*{days.map(item =>*/}
+                                {/*    <th key={item }>{item }</th>*/}
+                                {/*)}*/}
                             </tr>
                             </thead>
                             <tbody>
+                            {/*{row.map((item,index) =>*/}
+                            {/*    <tr key={item.id+index }>*/}
+                            {/*        <th scope="row">{item.id }</th>*/}
+                            {/*        <td className="a" id={index+days[0]}  onClick={()=> this.handelClick(item.id,days[0],index+days[0],index)}> </td>*/}
+                            {/*        <td className="a" id={index+days[1]}  onClick={()=>  this.handelClick(item.id,days[1],index+days[1],index)}>  </td>*/}
+                            {/*        <td className="a" id={index+days[2]}  onClick={()=>  this.handelClick(item.id,days[2],index+days[2],index)}> </td>*/}
+                            {/*        <td className="a"  id={index+days[3]}  onClick={()=>  this.handelClick(item.id,days[3],index+days[3],index)}> </td>*/}
+                            {/*        <td className="a"  id={index+days[4]}  onClick={()=>  this.handelClick(item.id,days[4],index+days[4],index)}> </td>*/}
+                            {/*        <td className="a" id={index+days[5]}  onClick={()=> this.handelClick(item.id,days[5],index+days[5],index)}> </td>*/}
+                            {/*        <td className="a" id={index+days[6]}  onClick={()=>  this.handelClick(item.id,days[6],index+days[6],index)}> </td>*/}
+
+                            {/*    </tr>*/}
+                            {/*)}*/}
                             {row.map((item,index) =>
-                                <tr key={item.id+index }>
-                                    <th scope="row">{item.id }</th>
-                                    <td className="a" id={index+days[0]}  onClick={()=> this.handelClick(item.id,days[0],index+days[0],index)}> </td>
-                                    <td className="a" id={index+days[1]}  onClick={()=>  this.handelClick(item.id,days[1],index+days[1],index)}>  </td>
-                                    <td className="a" id={index+days[2]}  onClick={()=>  this.handelClick(item.id,days[2],index+days[2],index)}> </td>
-                                    <td className="a"  id={index+days[3]}  onClick={()=>  this.handelClick(item.id,days[3],index+days[3],index)}> </td>
-                                    <td className="a"  id={index+days[4]}  onClick={()=>  this.handelClick(item.id,days[4],index+days[4],index)}> </td>
-                                    <td className="a" id={index+days[5]}  onClick={()=> this.handelClick(item.id,days[5],index+days[5],index)}> </td>
-                                    <td className="a" id={index+days[6]}  onClick={()=>  this.handelClick(item.id,days[6],index+days[6],index)}> </td>
+                                <tr key={item.id+index } className="Fs-Table    ">
+                                    <th scope="     " className={"p-s-0 br-th-column   green-them FsFooterLogin text-right position-relative"}  ><span className={"spanInTh"} >{changeTime(item.id) }</span> <span style={{opacity:0}}> x</span></th>
+                                    {days.map((day,iterate) =>
+                                        <td className="p-0 m-0 align-middle w-135 wrapper-login table-br"
+                                            id={index + days[iterate]}
+                                            onClick={() => this.handelClick(item.id, days[iterate], index + days[iterate], index)}>
+
+                                                <div className="pl-2 pr-1 d-none d-sm-block cursor-pointer">
+                                                    <p className="mb-0 lesson FsFooterLogin text-right font-weight-bold"></p>
+                                                    <p className="mb-0 grade FS0 text-right IranSans"></p>
+                                                </div>
+                                                <div className=" d-sm-none addClassNumber" >
+
+                                                </div>
+
+                                        </td>
+                                    )}
 
                                 </tr>
                             )}
-
 
                             </tbody>
                         </Table>
                     </Card>
                     <div className="w-100 mt-2 d-flex justify-content-end">
-                        <button  className="btn btn-outline-primary br20px col-sm-2 col-md-1 text-center " onClick={this.handelSend.bind(this)}>ارسال</button>
+                        <button  className="btn Btn-Submit-Primary col-sm-3     " onClick={this.handelSend.bind(this)}>ارسال</button>
 
                     </div>
 

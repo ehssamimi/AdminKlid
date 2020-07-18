@@ -11,7 +11,7 @@ const ClassRowInPackageTable = (props) => {
         if (state===200 ) {
             success_Notification("کلاس مورد نظر حذف شد");
             props.UpdateClassList();
-            RemoveElement(id);
+            // RemoveElement(id);
         } else {
             error_Notification(state, Description)
         }

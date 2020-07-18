@@ -159,7 +159,7 @@ class StudioInTable extends Component {
                             <div className="hollow-pointer-circle  border-table-red  ml-1  "></div>
                         </div>
                         <div className="d-flex ml-2" >
-                            <span>کلاس خاص </span>
+                            <span>کلاس انفرادی </span>
                             <div className="pointer-circle   bg-main  ml-1  "></div>
                         </div>
 

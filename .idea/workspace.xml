@@ -2,15 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3127a07d-e1e7-46b9-a05b-d8fa367c791f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Component/Configure/POPUp/CreatePopUp.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Component/Configure/POPUp/PopUpLists/PopComponent/PopUpComponent.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Component/Configure/POPUp/PopUpLists/PopUpLists.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/views/configure/modal/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Component/functions/ServerConnection.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/functions/ServerConnection.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/constants/ServerConst.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/constants/ServerConst.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/constants/menu.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/constants/menu.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/configure/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/configure/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Component/Studios/ClassRoom/ClassRoomList/ClassRoomList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/Studios/ClassRoom/ClassRoomList/ClassRoomList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Component/Studios/ClassRoom/ClassRoomList/ClassRoomLoader/ClassRoomLoader.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/Studios/ClassRoom/ClassRoomList/ClassRoomLoader/ClassRoomLoader.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Component/Studios/Root/CurrentStudio/StudioInTable/StudioInTable.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/Studios/Root/CurrentStudio/StudioInTable/StudioInTable.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Component/Studios/Root/RootList/Step2/StudioStep2.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/Studios/Root/RootList/Step2/StudioStep2.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Component/Studios/Root/RootList/Step2/StudioTable/StudioTable.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/Studios/Root/RootList/Step2/StudioTable/StudioTable.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/css/sass/_gogo.style.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/css/sass/_gogo.style.scss" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,7 +35,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/views/configure/modal" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Alef_UserPanel/Alef_user_panel" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -185,7 +183,8 @@
       <workItem from="1594561912505" duration="36180000" />
       <workItem from="1594764729420" duration="2458000" />
       <workItem from="1594797665934" duration="44000" />
-      <workItem from="1595015703662" duration="11318000" />
+      <workItem from="1595015703662" duration="11551000" />
+      <workItem from="1595053375287" duration="4674000" />
     </task>
     <servers />
   </component>
@@ -205,31 +204,31 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="730" y="310" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1593611886277" />
-    <state x="686" y="211" key="FileChooserDialogImpl" timestamp="1594307598359">
+    <state x="686" y="211" key="FileChooserDialogImpl" timestamp="1595053534059">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1593494975860" />
-    <state x="686" y="211" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1594307598359" />
-    <state width="1488" height="203" key="GridCell.Tab.0.bottom" timestamp="1595016361225">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state x="686" y="211" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1595053534059" />
+    <state width="1877" height="274" key="GridCell.Tab.0.bottom" timestamp="1595053441305">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1488" height="203" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1595016361225" />
-    <state width="1877" height="275" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1594765402739" />
-    <state width="1488" height="203" key="GridCell.Tab.0.center" timestamp="1595016361224">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state width="1877" height="274" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1595053441305" />
+    <state width="1877" height="274" key="GridCell.Tab.0.center" timestamp="1595053441304">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1488" height="203" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1595016361224" />
-    <state width="1877" height="275" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1594765402739" />
-    <state width="1488" height="203" key="GridCell.Tab.0.left" timestamp="1595016361224">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state width="1877" height="274" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1595053441304" />
+    <state width="1877" height="274" key="GridCell.Tab.0.left" timestamp="1595053441304">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1488" height="203" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1595016361224" />
-    <state width="1877" height="275" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1594765402739" />
-    <state width="1488" height="203" key="GridCell.Tab.0.right" timestamp="1595016361224">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state width="1877" height="274" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1595053441304" />
+    <state width="1877" height="274" key="GridCell.Tab.0.right" timestamp="1595053441304">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1488" height="203" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1595016361224" />
-    <state width="1877" height="275" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1594765402739" />
+    <state width="1877" height="274" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1595053441304" />
     <state x="794" y="439" key="NewPhpFileDialog" timestamp="1593544327356">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
