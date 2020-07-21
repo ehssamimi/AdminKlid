@@ -98,7 +98,7 @@ const CreatePopUp = (props) => {
 
 
                                     <div className="col-6 offset-3 ">
-                                        <button className="btn btn-success text-center col-6 offset-3 "
+                                        <button className="btn fS1vw btn btn-outline-primary text-center col-6 offset-3 "
                                                 type="submit">
                                             ارسال
                                         </button>

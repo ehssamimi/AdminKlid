@@ -70,7 +70,7 @@ const ClassRoomList = (props) => {
             <Card>
                 <div className={ props.type==="selected"?"card-body":"card-body"}>
                     <CardTitle>
-                        <span className={props.type==="selected"?"mainColor FsHeaderLogin1 font-weight-bold":"Fs2"}>انتخاب کلاس</span>
+                        <span className={props.type==="selected"?"mainColor FsHeaderLogin1 font-weight-bold":"Fs2"}>جستجوی کلاس</span>
                     </CardTitle>
                     {
                         <IsLoaderComponent isLoader={isLoader} >
@@ -102,20 +102,20 @@ const ClassRoomList = (props) => {
                                                 <FormSelect label='پایه' option={LabelValueOption(Option.grade_type)}
                                                             name='grade'
                                                             placeHolder='پایه خود را وارد کنید' values={values}
-                                                            DivClass={props.type==="selected"?"col-12 p-0":"col-sm-12 col-md-4  "} setFieldTouched={setFieldTouched}
+                                                            DivClass={props.type==="selected"?"col-sm-12 col-md-4":"col-sm-12 col-md-4  "} setFieldTouched={setFieldTouched}
                                                             setFieldValue={setFieldValue}
                                                             errors={errors} touched={touched}/>
                                                 <FormSelect label='رشته' option={LabelValueOption(Option.field_type)}
                                                             name='field'
                                                             placeHolder='رشته خود را وارد کنید'
                                                             setFieldValue={setFieldValue}
-                                                            DivClass={props.type==="selected"?"col-12 p-0":"col-sm-12 col-md-4  "} setFieldTouched={setFieldTouched}
+                                                            DivClass={props.type==="selected"?"col-sm-12 col-md-4":"col-sm-12 col-md-4  "} setFieldTouched={setFieldTouched}
                                                             values={values}
                                                             errors={errors} touched={touched}/>
                                                 <FormSelect label='درس' option={LabelValueOption(Option.lesson_names)}
                                                             name='lesson_names'
                                                             placeHolder='در مورد نظر را وارد کنید' values={values}
-                                                            DivClass={props.type==="selected"?"col-12 p-0":"col-sm-12 col-md-4  "} setFieldTouched={setFieldTouched}
+                                                            DivClass={props.type==="selected"?"col-sm-12 col-md-4":"col-sm-12 col-md-4  "} setFieldTouched={setFieldTouched}
                                                             setFieldValue={setFieldValue}
                                                             errors={errors} touched={touched}/>
 
@@ -126,7 +126,7 @@ const ClassRoomList = (props) => {
                                         <div className={props.type==="selected"?"col-6 offset-3":"col-6 offset-3 "} >
                                             <button className="btn   Btn-Submit-Primary    col-6 offset-3 "
                                                     type="submit">
-                                                ارسال
+                                                جستجو
                                             </button>
                                         </div>
 

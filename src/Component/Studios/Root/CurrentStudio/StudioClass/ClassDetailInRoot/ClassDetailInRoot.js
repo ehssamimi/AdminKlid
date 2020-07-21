@@ -71,8 +71,8 @@ const ClassDetailInRoot = (props) => {
 
                                     <div   className={['h-15em','d-flex','flex-column', ' col-6 mt-5' ,'align-items-center'  ].join(' ')}>
                                         <NewWebsocketPlayer  url={Description.live_urls.http_flv}/>
-                                        <label ><RowShowShowColEdit label={"پخش"} value={"http_flv" }  col={ 'col-12'} className='fS1vw'/>
-                                        </label>
+                                        {/*<label ><RowShowShowColEdit label={"پخش"} value={"http_flv" }  col={ 'col-12'} className='fS1vw'/>*/}
+                                        {/*</label>*/}
                                     </div>
                                     {/*<div  className={['h-15em','d-flex','flex-column', ' col-6 mt-5' ,'align-items-center'  ].join(' ')}>*/}
                                     {/*    <NewWebsocketPlayer  url={Description.live_urls.websocket}/>*/}

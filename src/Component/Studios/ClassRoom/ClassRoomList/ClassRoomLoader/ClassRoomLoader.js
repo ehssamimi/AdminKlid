@@ -80,6 +80,19 @@ class ClassRoomLoader extends Component {
         return (
             <div>
                 <IsLoaderComponent isLoader={isLoader}>
+                    <div>
+                        {
+                            this.props.type === "classPackage" ?
+                              <pre className="text-center w-100">
+                                  .
+                                  .
+                                  .
+                                  .
+                              </pre> :""
+                        }
+                    </div>
+
+
                     <InfiniteScroll
                         className="row rtl m-0 w-100  "
                         pageStart={0}

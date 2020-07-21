@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
-import ReactPlayer from 'react-player';
+// import ReactPlayer from 'react-player';
 import $ from 'jquery'
+import bg from './../../../../../../../assets/common/img/default_pic@3x.png'
+
 import {parse_query_string, parse_rtmp_url, srs_init_rtc} from "../../../../../../functions/WEBRTC";
 import RowShowShowColEdit from "../../../../../../Common/RowShowShowColEdit/RowShowShowColEdit";
 class ReactPlayerConf extends Component {
@@ -62,7 +64,7 @@ class ReactPlayerConf extends Component {
                     // }
                     // Replace /rtc/v1/play/&k=v to /rtc/v1/play/?k=v
                     // url = url.replace(api + '&', api + '?');
-                    var url ='https:'+'//'+urlObject.server+"/1985"+api;
+                    var url ='https:'+'//'+urlObject.server+"/1958"+api;
                     // @see https://github.com/rtcdn/rtcdn-draft
                     var data = {
                         api: url, streamurl: urlObject.url, clientip: null, sdp: offer.sdp
@@ -108,12 +110,13 @@ class ReactPlayerConf extends Component {
         return (
             <div className="w-100">
                 {/*<ReactPlayer id="rtc_media_player" url={this.props.url} />*/}
-                <video id="rtc_media_player" controls autoPlay  className="w-100"/>
+                <video id="rtc_media_player" controls autoPlay  className="w-100" poster={bg}/>
                 <div className="form-inline">
                     {/*URL:*/}
                     <input type="text" id="txt_url" className="input-xxlarge d-none" value={this.props.url}/>
                     {/*<button className="btn btn-primary d-none" id="btn_play">播放视频</button>*/}
-                    <div id="btn_play" className=' w-100 d-flex justify-content-center fS1vw'><RowShowShowColEdit label={"پخش"} value={"WebRTC"}  className='fS1vw btn btn-outline-primary'/></div>
+                    <div id="btn_play" className=' w-100 d-flex justify-content-center fS1vw'><RowShowShowColEdit
+                        label={"پخش"} value={"WebRTC"} className='fS1vw btn btn-outline-primary'/></div>
 
                 </div>
 
