@@ -12,10 +12,9 @@ class ReactPlayerConf extends Component {
     }
     componentDidMount() {
         var pc = null;
-        var startPlay = function() {
+        var startPlay = function () {
             $('#rtc_media_player').show();
             var urlObject = parse_rtmp_url($("#txt_url").val());
-            var schema = window.location.protocol;
 
             // Close PC when user replay.
             if (pc) {
@@ -23,75 +22,58 @@ class ReactPlayerConf extends Component {
             }
 
             pc = new RTCPeerConnection(null);
+
+            // var audioConstarints = new MediaConstraints();
+            // audioConstarints.mandatory.add(new MediaConstraints.KeyValuePair("googNoiseSuppression", "true"));
             pc.onaddstream = function (event) {
                 console.log('Start play, event: ', event);
                 $('#rtc_media_player').prop('srcObject', event.stream);
             };
-
-            new Promise(function(resolve, reject) {
+            new Promise(function (resolve, reject) {
                 pc.addTransceiver("audio", {direction: "recvonly"});
                 pc.addTransceiver("video", {direction: "recvonly"});
 
-                pc.createOffer(function(offer){
+                pc.createOffer(function (offer) {
                     resolve(offer);
-                },function(reason){
+                }, function (reason) {
                     reject(reason);
                 });
-            }).then(function(offer) {
-                return pc.setLocalDescription(offer).then(function(){ return offer; });
-            }).then(function(offer) {
-                return new Promise(function(resolve, reject) {
-                    var port = urlObject.port || 1985;
+            }).then(function (offer) {
+                return pc.setLocalDescription(offer).then(function () {
+                    return offer;
+                });
+            }).then(function (offer) {
+                return new Promise(function (resolve, reject) {
 
-                    // @see https://github.com/rtcdn/rtc
-                    //
-                    //
-                    //
-                    //
-                    //
-                    //
-                    // dn-draft
-                    var api = urlObject.user_query.play || '/rtc/v1/play/';
-                    if (api.lastIndexOf('/') != api.length - 1) {
-                        api += '/';
-                    }
-
-                    // var url = schema + '//' + urlObject.server + ':' + port + api;
-                    // for (var key in urlObject.user_query) {
-                    //     if (key != 'api' && key != 'play') {
-                    //         url += '&' + key + '=' + urlObject.user_query[key];
-                    //     }
-                    // }
-                    // Replace /rtc/v1/play/&k=v to /rtc/v1/play/?k=v
-                    // url = url.replace(api + '&', api + '?');
-                    var url ='https:'+'//'+urlObject.server+"/1958"+api;
                     // @see https://github.com/rtcdn/rtcdn-draft
+                    var api = '/rtc/v1/play/';
+                    var url = 'https:' + '//' + urlObject.server + "/1985" + api;
+
+
                     var data = {
                         api: url, streamurl: urlObject.url, clientip: null, sdp: offer.sdp
                     };
-                    console.log("Generated offer: ", data);
-
+                    //'https://srs.kelidiha.com/1985/rtc/v1/play/'
                     $.ajax({
                         type: "POST", url: url, data: JSON.stringify(data),
-                        contentType:'application/json', dataType: 'json'
-                    }).done(function(data) {
+                        contentType: 'application/json', dataType: 'json'
+                    }).done(function (data) {
                         console.log("Got answer: ", data);
                         resolve(data.sdp);
-                    }).fail(function(reason){
+                    }).fail(function (reason) {
                         reject(reason);
                     });
                 });
-            }).then(function(answer) {
+            }).then(function (answer) {
                 return pc.setRemoteDescription(new RTCSessionDescription({type: 'answer', sdp: answer}));
-            }).catch(function(reason) {
+            }).catch(function (reason) {
                 throw reason;
             });
         };
 
-        $('#rtc_media_player').hide();
+
         var query = parse_query_string();
-        srs_init_rtc("#txt_url", query);
-        query.autostart='true';
+        // srs_init_rtc("#txt_url", query);
 
         $("#btn_play").click(startPlay);
         if (query.autostart === 'true') {
@@ -99,9 +81,6 @@ class ReactPlayerConf extends Component {
             $('#rtc_media_player').prop('muted', true);
             startPlay();
         }
-
-
-
 
     }
 
