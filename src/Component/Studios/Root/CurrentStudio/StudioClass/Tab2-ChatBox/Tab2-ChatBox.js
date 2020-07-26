@@ -66,8 +66,8 @@ class Tab2ChatBox extends Component {
 
         this.state.socket.on('set_user_info', (data) => {
             // console.log("set_user_info")
-            console.log("componentDidMountcomponentDidMount")
-            console.log(data)
+            // console.log("componentDidMountcomponentDidMount")
+            // console.log(data)
             this.setState({
                 InitialData:data
             })
@@ -84,13 +84,13 @@ class Tab2ChatBox extends Component {
 
         let ReciveData;
        socket.on('gp_msg',async (data)=>{
-            console.log("gp_msg")
+            // console.log("gp_msg")
             var d = new Date();
             var h = d.getHours()+":"+d.getMinutes();
-            console.log(h)
+            // console.log(h)
             data["time"]=h
             // await getHistorychat(data.sid)
-            console.log(data)
+            // console.log(data)
             // setMessage(prevMessages=>[...prevMessages,data])
             let{UsersIDImg}=this.state;
             if ( UsersIDImg["UsersId"].includes(data.sid)){
@@ -99,10 +99,10 @@ class Tab2ChatBox extends Component {
                 //     messages:[...prevState.messages,data]
                 // }));
                 let MList = this.state.productSeparate;
-                console.log("MList")
-                console.log(MList)
+                // console.log("MList")
+                // console.log(MList)
                 MList.unshift(data);
-                console.log(MList)
+                // console.log(MList)
                 this.setState({
                     productSeparate:MList
                 })
@@ -110,8 +110,8 @@ class Tab2ChatBox extends Component {
 
             }else {
                 let {state ,Description }=await GetUserProfileImg(data.sid);
-                console.log("Description")
-                console.log(Description)
+                // console.log("Description")
+                // console.log(Description)
                 let Ussers=UsersIDImg;
                 let Use={"sid":data.sid,"profile":Description}
                 Ussers["UsersId"].push(data.sid);
@@ -121,10 +121,10 @@ class Tab2ChatBox extends Component {
                 //     UsersIDImg:Ussers
                 // }));
                 let MList = this.state.productSeparate;
-                console.log("MList")
-                console.log(MList)
+                // console.log("MList")
+                // console.log(MList)
                 MList.unshift(data);
-                console.log(MList)
+                // console.log(MList)
                 this.setState({
                     productSeparate:MList,
                     UsersIDImg:Ussers
@@ -165,10 +165,10 @@ class Tab2ChatBox extends Component {
         // let {state, Description} = await GetAllUser(pageStart);
           let{UsersIDImg,pageStart}=this.state;
         let {state, Description} = await GetHistoryChat(this.props.gid,pageStart,Const.Token);
-        console.log("Description");
-        console.log(Description);
-        console.log("pageStart")
-        console.log(pageStart)
+        // console.log("Description");
+        // console.log(Description);
+        // console.log("pageStart")
+        // console.log(pageStart)
 
 
         // let Response = await GetAllProduct(pageStart);
@@ -213,8 +213,8 @@ class Tab2ChatBox extends Component {
 
                 }else {
                     let {state ,Description }=await GetUserProfileImg(messages[i].sender_id);
-                    console.log("Description")
-                    console.log(Description)
+                    // console.log("Description")
+                    // console.log(Description)
                     let Ussers=UsersIDImg;
                     let Use={"sid":messages[i].sender_id,"profile":Description}
                     Ussers["UsersId"].push(messages[i].sender_id);
@@ -228,18 +228,18 @@ class Tab2ChatBox extends Component {
             }
             // let {state ,Description }=await GetUserProfileImg(user_id);
             // *******update state*****
-            console.log(productsSeparate)
-            console.log(this.state.productSeparate)
-            console.log(this.state.pageStart)
+            // console.log(productsSeparate)
+            // console.log(this.state.productSeparate)
+            // console.log(this.state.pageStart)
             this.setState(prevState => ({
                 productSeparate:[...prevState.productSeparate,...productsSeparate],
                 pageStart:page + 1,
                 hasMore:messages.length !== 0
 
             }),()=>{
-                console.log(this.state.pageStart)
-                console.log(this.state.productSeparate)
-                console.log(this.state.UsersIDImg)
+                // console.log(this.state.pageStart)
+                // console.log(this.state.productSeparate)
+                // console.log(this.state.UsersIDImg)
             });
             // setproductSeparate([...productSeparate, ...productsSeparate]);
 
@@ -284,10 +284,10 @@ class Tab2ChatBox extends Component {
             st:"admin"
         }
 
-        console.log(message)
+        // console.log(message)
         this.state.socket.emit('send_packet',message)
-        console.log("sendMessage")
-        console.log(value)
+        // console.log("sendMessage")
+        // console.log(value)
         // let ChatList=document.getElementById()
         // window.scrollTo(0,document.body.scrollHeight);
         // setMessage(prevMessages=>[...prevMessages,message])
@@ -297,7 +297,7 @@ class Tab2ChatBox extends Component {
 
     render() {
         let{messages,productSeparate,hasMore,UsersIDImg}=this.state
-        console.log(productSeparate);
+        // console.log(productSeparate);
         return (
             <div className=" ">
 

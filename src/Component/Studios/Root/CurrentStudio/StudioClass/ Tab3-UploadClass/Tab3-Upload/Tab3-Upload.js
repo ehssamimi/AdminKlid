@@ -1,21 +1,23 @@
- import React, {Component} from 'react';
+import React, {Component} from 'react';
+import {getencodering, uploadDropZone, uploadFileToClass} from "../../../../../../functions/ServerConnection";
+import {error_Notification, formatBytes, success_Notification} from "../../../../../../functions/componentHelpFunction";
+import DropzoneComponent from "react-dropzone-component";
 
 import 'react-dropzone-uploader/dist/styles.css'
-import {getencodering, uploadDropZone} from "../../functions/ServerConnection";
-import DropzoneComponent from "react-dropzone-component";
-import "dropzone/dist/min/dropzone.min.css";
-import CustomSelectInput from "../../../components/common/CustomSelectInput";
-import Select from "react-select";
-import {FormGroup} from "reactstrap";
- import {error_Notification, success_Notification} from "../../functions/componentHelpFunction";
+  import "dropzone/dist/min/dropzone.min.css";
+import {TextInput} from "../../../../../../Common/Forms/textInput/TextInput";
+// import CustomSelectInput from "../../../components/common/CustomSelectInput";
+// import Select from "react-select";
+// import {FormGroup} from "reactstrap";
 
 var ReactDOMServer = require('react-dom/server');
 
-
-class VideoRowDropzone extends Component {
+class Tab3Upload extends Component {
     constructor(props) {
         super(props);
         this.state={
+            title:"",
+            fileSize:[],
             nameList: [],
             encodering_code: {},
             selectedOption: "",
@@ -27,7 +29,7 @@ class VideoRowDropzone extends Component {
         this.djsConfig = {
             // addRemoveLinks: true,
             thumbnailHeight: 160,
-            acceptedFiles: " video/* ",
+            acceptedFiles: "video/*,audio/*,image/*,text/*, application/*,.pdf ",
             autoProcessQueue: false,
             maxFilesize: 2000,
             timeout:30000000,
@@ -87,7 +89,7 @@ class VideoRowDropzone extends Component {
     }
     handleRemove() {
         this.setState({
-            nameList:[]
+            nameList:[],fileSize:[]
         })
     }
     validateForm=(callback)=> {
@@ -124,20 +126,24 @@ class VideoRowDropzone extends Component {
     async handleFileAdded(file,event) {
         console.log("event");
         console.log(event);
-        let{nameList}=this.state;
+        let{nameList,fileSize}=this.state;
         nameList.push(file.name);
-        let data={
-            "course_id": this.props.ListData.course_id,
-            "lesson_name": this.props.ListData.lesson_name,
-            "teacher_name": this.props.ListData.teacher_name,
-            "chapter_name": this.props.ListData.chapter_name,
-            "item_name": this.props.ListData.item_name
-        };
-        console.log(data);
-        let {state,Description}=await getencodering(JSON.stringify(data));
-        this.setState({
-            encodering_code:Description
-        });
+
+        fileSize.push(formatBytes(file.size));
+        console.log(file);
+        console.log(formatBytes(file.size));
+        // let data={
+        //     "course_id": this.props.ListData.course_id,
+        //     "lesson_name": this.props.ListData.lesson_name,
+        //     "teacher_name": this.props.ListData.teacher_name,
+        //     "chapter_name": this.props.ListData.chapter_name,
+        //     "item_name": this.props.ListData.item_name
+        // };
+        // console.log(data);
+        // let {state,Description}=await getencodering(JSON.stringify(data));
+        // this.setState({
+        //     encodering_code:Description
+        // });
 
 
 
@@ -158,20 +164,42 @@ class VideoRowDropzone extends Component {
 
     async handelComplete( ) {
 
+
         console.log("this file sending complete");
         console.log("this.state.encodering_code");
-        let data=this.state.encodering_code;
+        let{nameList,title,fileSize}=this.state;
+        console.log( "file_name") ;
+        console.log( nameList) ;
+        console.log( "class_id") ;
+        console.log( this.props.class_id) ;
+        console.log( "title") ;
+        console.log(title) ;
+        console.log( "file_size") ;
+        console.log(fileSize[0]) ;
 
-        let {state, Description} = await uploadDropZone(this.state.nameList[0], this.state.action, data.course_id, data.lesson_name, data.teacher_name, data.chapter_name, data.item_name);
 
+
+        // let data=this.state.encodering_code;
+
+        let {state, Description} = await uploadFileToClass(nameList[0],title,this.props.class_id,fileSize[0] );
+        //
         console.log(state);
         console.log(Description);
         if (state!==200) {
             error_Notification(state  , Description  );
+
         }else {
             success_Notification("محتوای جدید با موفقیت ثبت شد ")
+            this.props.updateList(nameList[0]);
         }
 
+    }
+
+     handelChangeInput = (value,id) => {
+
+         this.setState({
+             title:value
+         })
     }
 
     render() {
@@ -189,9 +217,8 @@ class VideoRowDropzone extends Component {
         return (
             <div className="w-100">
 
-                <div className="w-100  d-flex justify-content-center mb-3">
-                    <button onClick={this.handlePost.bind(this)} className="btn btn-outline-primary  br10px  col-md-6 col-sm-12   sendButton-shadow d-flex text-center justify-content-center">آپلود محتوا</button>
-                </div>
+
+                 <TextInput id={"title"}  label={"توضیحات"} onChange={this.handelChangeInput } error={""}/>
 
 
                 <DropzoneComponent config={config} eventHandlers={eventHandlers} djsConfig={djsConfig}/>
@@ -201,10 +228,13 @@ class VideoRowDropzone extends Component {
                     </div>
                 ) : null}
 
+                <div className="w-100  d-flex justify-content-center mb-3">
+                    <button onClick={this.handlePost.bind(this)} className="btn btn-outline-primary  br10px  col-md-6 col-sm-12   sendButton-shadow d-flex text-center justify-content-center">آپلود محتوا</button>
+                </div>
+
             </div>
         );
     }
 }
 
-export default VideoRowDropzone;
-
+export default Tab3Upload;

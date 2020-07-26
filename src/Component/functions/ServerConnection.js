@@ -3317,7 +3317,7 @@ export async  function  AddClassroom(Data){
 
 
     var resp ="";
-    await axios.post(`${Const.kelidihaadmin}admin/classroom/add`, Data, {headers: headers}).then(function (response) {
+    await axios.post(`${Const.ClassRoom}admin/classroom/add`, Data, {headers: headers}).then(function (response) {
 
 
         // let {Items} = response.data;
@@ -3344,7 +3344,7 @@ export async  function  Getallclassroom( grade,field,lesson_name){
         'Token': Const.Token,
         'Content-Type': 'application/x-www-form-urlencoded'
     };
-    let url=`${Const.kelidihaadmin}admin/classroom/search/fixed_value?`;
+    let url=`${Const.ClassRoom}admin/classroom/search/fixed_value?`;
     if (grade) {
         url = url + `grade=${grade}`;
         if (field) {
@@ -3386,7 +3386,7 @@ export async  function  DeleteClassRoom(classroom){
 
 
     var resp ="";
-    await axios.delete(`${Const.kelidihaadmin}admin/classroom/delete?class_id=${classroom}`, {headers: headers}).then(function (response) {
+    await axios.delete(`${Const.ClassRoom}admin/classroom/delete?class_id=${classroom}`, {headers: headers}).then(function (response) {
         console.log(response );
         let {Description}=response.data;
         // let {Items} = response.data;
@@ -3407,7 +3407,7 @@ export async  function  GetClassroom(id){
 
 
     var resp ="";
-    await axios.get(`${Const.kelidihaadmin}admin/classroom/load?class_id=${id}`,   {headers: headers}).then(function (response) {
+    await axios.get(`${Const.ClassRoom}admin/classroom/load?class_id=${id}`,   {headers: headers}).then(function (response) {
 console.log(response)
 
         // let {Items} = response.data;
@@ -3429,7 +3429,7 @@ export async  function  updateClassRoom(Data){
 
 
     var resp ="";
-    await axios.put(`${Const.kelidihaadmin}admin/classroom/update`, Data, {headers: headers}).then(function (response) {
+    await axios.put(`${Const.ClassRoom}admin/classroom/update`, Data, {headers: headers}).then(function (response) {
 
         let {Description}=response.data;
         // let {Items} = response.data;
@@ -3492,7 +3492,7 @@ export async  function UserActioninclassroom(action, class_id, user_id, page){
     // console.log("user_id"+user_id)
     // console.log("page"+page)
 
-    let url=`${Const.kelidihaadmin}`;
+    let url=`${Const.ClassRoom}`;
     url=url+"admin/classroom/users/<action>?";
     url=url+`action=${action}&class_id=${class_id}`;
     if (user_id!==null){
@@ -3536,7 +3536,7 @@ export async  function  activeClassRoom(class_id){
 
 
     var resp ="";
-    await axios.put(`${Const.kelidihaadmin}admin/classroom/active?class_id=${class_id}`, "", {headers: headers}).then(function (response) {
+    await axios.put(`${Const.ClassRoom}admin/classroom/active?class_id=${class_id}`, "", {headers: headers}).then(function (response) {
 
         let {Description}=response.data;
         // let {Items} = response.data;
@@ -3549,6 +3549,80 @@ export async  function  activeClassRoom(class_id){
 
 
     return resp;
+}
+
+export async  function  uploadFileToClass(file_name,title,class_id,file_size){
+
+    let formData = new FormData();
+    formData.append("file_name", file_name);
+    formData.append("title", title);
+    formData.append("class_id", class_id);
+    formData.append("file_size", file_size);
+
+
+    let headers = {
+        'Token': Const.Token,
+        'Id': Const.ID,
+    };
+    var resp = '';
+
+    console.log("file_name:  "+file_name);
+    console.log("title:  "+title);
+    console.log("class_id:  "+class_id);
+
+
+    await axios.post(`https://upload.liara.run/live-class-file`, formData, {headers: headers}).then(function (response) {
+        console.log(response);
+        resp = {state: 200, Description: response.data};
+
+        // let {UploadId} = response.data;
+        // resp = UploadId;
+    }).catch(function (error) {
+        resp= Error(error)
+    });
+    return resp
+}
+
+export async  function ShowFileToClass( class_id){
+
+    let headers = {
+        'token': Const.Token,
+        'Id': Const.ID,
+    };
+    var resp = '';
+
+
+
+
+    await axios.get(`${Const.ClassRoom}user/live-class/files?class_id=${class_id}` , {headers: headers}).then(function (response) {
+        console.log(response);
+        resp = {state: 200, Description: response.data};
+
+        // let {UploadId} = response.data;
+        // resp = UploadId;
+    }).catch(function (error) {
+        Error(error)
+    });
+    return resp
+}
+export async  function DeleteFileFromClass( class_id,file_name){
+
+    let headers = {
+        'token': Const.Token,
+        'Id': Const.ID,
+    };
+    var resp = '';
+
+    await axios.delete(`${Const.ClassRoom}admin/classroom/files?class_id=${class_id}&file_name=${file_name}` , {headers: headers}).then(function (response) {
+        console.log(response);
+        resp = {state: 200, Description: response.data};
+
+        // let {UploadId} = response.data;
+        // resp = UploadId;
+    }).catch(function (error) {
+        Error(error)
+    });
+    return resp
 }
 
 

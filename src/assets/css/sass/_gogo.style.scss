@@ -9395,6 +9395,12 @@ table {
   width: 62%;
   height: auto;
 }
+.upload-bubble {
+  display: inline-block;
+  position: relative;
+  width: 98%;
+  height: auto;
+}
 .p-s-0{
 
   padding-top: 0!important;
@@ -9408,6 +9414,13 @@ table {
   position: absolute;
   top: -22%;
   left: 12%;
+}
+.hidden-txt{
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  width: 90%;
+  display: inline-block;
+  overflow: hidden;
 }
 
 

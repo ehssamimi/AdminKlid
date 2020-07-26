@@ -12,7 +12,7 @@ const ChatLeftRight = (props) => {
     const [profile, setProfile] = useState(profile);
     useEffect(() => {
         let arr=search(props.sid,props.UsersIDImg["UsersIDImg"])
-        console.log(props )
+        // console.log(props )
 
         const reader = new FileReader();
         reader.onload = () => {
@@ -21,7 +21,7 @@ const ChatLeftRight = (props) => {
         };
         reader.readAsDataURL(arr.profile );
 
-        console.log("next user")
+        // console.log("next user")
 
     }, [props]);
 

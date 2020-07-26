@@ -23,7 +23,7 @@ function search(nameKey, myArray){
         };
         reader.readAsDataURL(arr.profile );
 
-        console.log("next user")
+        // console.log("next user")
 
     }, [props]);
 

@@ -31,6 +31,12 @@
     border-top-left-radius: calc(0.15rem - 1px);
     border-top-right-radius: calc(0.15rem - 1px);
 }
+.overflow-scroll{
+    overflow: scroll;
+}
+.overflow-hidden{
+    overflow: hidden;
+}
 .vh25{
     height: 25vh;
 }
@@ -1006,4 +1012,19 @@ table.table-bordered > tbody > tr > th{
     border-top: 1px solid transparent!important;
     border-left: 1px solid transparent!important;
     border-right: 1px solid transparent!important;
+}
+
+.closeBtnModal{
+    color: white;
+    position: absolute;
+    left: 0 ;
+    top: -3%;
+}
+.pointer-circle {
+    -moz-border-radius: 50px ;
+    -webkit-border-radius: 50px;
+    border-radius: 50px ;
+    width: 17px;
+    height: 17px;
+    background: white;
 }

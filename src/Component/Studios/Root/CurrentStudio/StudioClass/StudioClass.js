@@ -20,15 +20,18 @@ import classnames from "classnames";
 import ClassDetailInRoot from "./ClassDetailInRoot/ClassDetailInRoot";
 import RowShowShowColEdit from "../../../../Common/RowShowShowColEdit/RowShowShowColEdit";
 import Tab2ChatBox from "./Tab2-ChatBox/Tab2-ChatBox";
+import Tab3UploadClass from "./ Tab3-UploadClass/Tab3UploadClass";
 
 
 const StudioClass = (props) => {
     const [activeSecondTab, setactiveSecondTab] = useState("1");
+
     const [gid, setgid] = useState(null);
 
     useEffect(() => {
         console.log("class id ")
         console.log(props.match.params.id)
+
         // Update the document title using the browser API
         // return //for componentDidMount
     }, []);
@@ -86,17 +89,17 @@ const StudioClass = (props) => {
                            }}
                         >پیامها</a>
                     </NavItem>
-                    {/*<NavItem className="w-25 text-center">*/}
-                    {/*    <a href="#" className={classnames({*/}
-                    {/*        active: activeSecondTab === "3",*/}
-                    {/*        "nav-link": true,*/}
-                    {/*        "Fs1":true*/}
-                    {/*    })}*/}
-                    {/*       onClick={() => {*/}
-                    {/*           toggleSecondTab("3");*/}
-                    {/*       }}*/}
-                    {/*    >آپلود محتوا</a>*/}
-                    {/*</NavItem>*/}
+                    <NavItem className="w-25 text-center">
+                        <a href="#" className={classnames({
+                            active: activeSecondTab === "3",
+                            "nav-link": true,
+                            "Fs1":true
+                        })}
+                           onClick={() => {
+                               toggleSecondTab("3");
+                           }}
+                        >آپلود محتوا</a>
+                    </NavItem>
                     {/*<NavItem className="w-25 text-center">*/}
                     {/*    <a href="#" className={classnames({*/}
                     {/*        active: activeSecondTab === "4",*/}
@@ -139,20 +142,19 @@ const StudioClass = (props) => {
                         </Colxx>
                     </Row>
                 </TabPane>
-                {/*<TabPane tabId="3">*/}
-                {/*    <Row>*/}
-                {/*        <Colxx sm="12">*/}
-                {/*            <CardBody>*/}
-                {/*                <CardTitle className="mb-4">*/}
-                {/*                    3*/}
-                {/*                </CardTitle>*/}
-                {/*                <Button outline size="sm" color="primary">*/}
-                {/*                    Edit*/}
-                {/*                </Button>*/}
-                {/*            </CardBody>*/}
-                {/*        </Colxx>*/}
-                {/*    </Row>*/}
-                {/*</TabPane>*/}
+                <TabPane tabId="3">
+                    <Row>
+                        <Colxx sm="12">
+                            <CardBody>
+                                <CardTitle className="mb-4  font-weight-bold">
+                                    <h3 className="FsFooterLogin IranSans">آپلود محتوا</h3>
+                                </CardTitle>
+                                <Tab3UploadClass class_id={props.match.params.id}/>
+
+                            </CardBody>
+                        </Colxx>
+                    </Row>
+                </TabPane>
                 {/*<TabPane tabId="4">*/}
                 {/*    <Row>*/}
                 {/*        <Colxx sm="12">*/}
