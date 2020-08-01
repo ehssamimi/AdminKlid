@@ -36,7 +36,7 @@ const Tab3UploadFile = (props) => {
                 </div>
                 <div className="talktext">
                     {/*<p className="chat-header  IranSans mb-0 text-right FS01">{"استاد امین بابازاده"}</p>*/}
-                    <p className=  "  IranSans text-justify mb-0 FS02 text-white"  >{title}</p>
+                    <p className=  " IranSans text-justify mb-0 FS02 text-white "  >{title}</p>
                     <div className="text-left mb-2">
                         <div className="row">
                             <div className="col-sm-12 col-md-9">
